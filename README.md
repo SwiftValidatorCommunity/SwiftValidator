@@ -6,7 +6,7 @@ Swift Validator is a rule-based validation library for Swift.
 Core Concepts
 
 * ```UITextField``` + ```ValidationRule``` go into  ```Validator```
-* ```UITextFields``` and ```ValidationError``` come out of ```Validator```
+* ```UITextFields``` + ```ValidationError``` come out of ```Validator```
 * ```UITextField``` is registered to ```Validator```
 * ```Validator``` evaluates ```ValidationRules``` sequentially and stops evaluating when a ```ValidationRule``` fails. 
 
