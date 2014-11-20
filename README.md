@@ -9,7 +9,7 @@ Core Concepts
 * ```UITextField``` + ```ValidationError``` come out of ```Validator```
 * ```UITextField``` is registered to ```Validator```
 * ```Validator``` evaluates ```ValidationRules``` sequentially and stops evaluating when a ```ValidationRule``` fails. 
-* Keys are used to allow registration in TableViewControllers and complex view hierarchies
+* Keys are used to allow field registration in TableViewControllers and complex view hierarchies
 
 ## Quick Start
 
