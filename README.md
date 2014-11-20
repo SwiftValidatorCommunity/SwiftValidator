@@ -6,7 +6,7 @@ Swift Validator is a rule-based validation library for Swift.
 Core Concepts
 
 * ```UITextField``` + ```ValidationRule``` go into  ```Validator```
-* ```UITextFields``` + ```ValidationError``` come out of ```Validator```
+* ```UITextField``` + ```ValidationError``` come out of ```Validator```
 * ```UITextField``` is registered to ```Validator```
 * ```Validator``` evaluates ```ValidationRules``` sequentially and stops evaluating when a ```ValidationRule``` fails. 
 
@@ -94,7 +94,7 @@ class SSNValidation: Validation {
             if ssnTest.evaluateWithObject(value) {
                 return (true, .NoError)
             }
-            return (false, .SocialSecurity) // We will create this later ValidationErrorTYpe
+            return (false, .SocialSecurity) // We will create this later ValidationErrorType.SocialSecurity
         }
         return (false, .SocialSecurity)
     }
@@ -103,7 +103,7 @@ class SSNValidation: Validation {
 
 ```
 
-Add the ```.SocialSecurity``` ValidationRuleType
+Add the ```ValidationRuleType.SocialSecurity``` 
 
 ```swift
 
@@ -116,12 +116,12 @@ enum ValidationRuleType {
     ZipCode,
     PhoneNumber,
     FullName,
-    SocialSecurity	// Added to the Rule Types
+    SocialSecurity	// Added to the ValidationRuleTypes
 }
 
 ```
 
-Add the ```.SocialSecurity``` ValidationErrorType and description()
+Add the ```ValidationErrorType.SocialSecurity``` and ```description()```
 
 ```swift
 
@@ -134,7 +134,7 @@ enum ValidationErrorType {
     ZipCode,
     PhoneNumber,
     FullName,
-    SocialSecurity,	// Added to the Error Types
+    SocialSecurity,	// Added to the ValidationErrorTypes
     NoError
     
     func description() -> String {
@@ -164,7 +164,7 @@ enum ValidationErrorType {
 }
 
 ```
-Register the Validation with the ValidationFactory
+Register the ```SSNValidation``` with the ```ValidationFactory```
 
 ```swift
 
