@@ -3,7 +3,7 @@ Swift-Validator
 
 Swift Validator is a rule-based validation library for Swift.
 
-Core Concepts
+## Core Concepts
 
 * ```UITextField``` + ```ValidationRule``` go into  ```Validator```
 * ```UITextField``` + ```ValidationError``` come out of ```Validator```
@@ -20,9 +20,9 @@ Initialize the ```Validator``` by setting a delegate to a View Controller or oth
 // ViewController.swift
 
 override func viewDidLoad() {
-        super.viewDidLoad()
+    super.viewDidLoad()
         
-        var validator = Validator(delegate: self)
+    var validator = Validator(delegate: self)
 }
 
 ```
@@ -44,7 +44,7 @@ Validate Individual Field
 
 ```swift
 
-func validator.validateFieldBy(fields[0], delegate:self)
+validator.validateFieldBy(fields[0], delegate:self)
 
 // ValidationFieldDelegate methods
 func validationFieldSuccess(key:String, validField:UITextField){
@@ -65,11 +65,11 @@ validator.validateAllBy(fields, delegate:self)
 
 // ValidationDelegate methods
 
-func validationWasSuccessful(){
+func validationWasSuccessful(successfulFields:[String:ValidationRule]) {
 	// submit the form
 }
 
-func validationFailed(key:String, errors[String:ValidationError]){
+func validationFailed(errors:[String:ValidationError]){
 	// turn the fields to red
 	for error in errors.values {
 		error.textField.backgroundColor = UIColor.redColor()
