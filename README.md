@@ -3,7 +3,7 @@ Swift-Validator
 
 Swift Validator is a rule-based validation library for Swift.
 
-![Swift Validator](https://dl.dropboxusercontent.com/u/18055521/out.gif)
+![Swift Validator](https://dl.dropboxusercontent.com/u/18055521/swift-validator.gif)
 
 ## Core Concepts
 
