@@ -10,6 +10,14 @@ import Foundation
 
 class PasswordValidation : Validation {
 
+    // Alternative Regexes
+
+    // 8 characters. One uppercase. One Lowercase. One number.
+    // var PASSWORD_REGEX = "^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[a-z]).{8,}$"
+    //
+    // no length. One uppercase. One lowercae. One number.
+    // var PASSWORD_REGEX = "^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[a-z]).*?$"
+    
     // 8 characters. one uppercase
     var PASSWORD_REGEX = "^(?=.*?[A-Z]).{8,}$"
     
