@@ -19,10 +19,10 @@ Initialize the ```Validator``` by setting a delegate to a View Controller or oth
 
 // ViewController.swift
 
+let validator = Validator()
+
 override func viewDidLoad() {
     super.viewDidLoad()
-        
-    var validator = Validator(delegate: self)
 }
 
 ```
