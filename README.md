@@ -34,9 +34,9 @@ Register the fields that you want to validate
 var fields:[String] = ["FullName", "Email", "Phone"]
 
 // Validation Rules are evaluated from left to right. The first rule is ValidationRuleType.Required the second is ValidationRuleType.FullName.
-validator.registerField(fields[0], textField:nameTextField, rules: [.Required, .FullName])
-validator.registerField(fields[1], textField:emailTextField, rules: [.Required, .Email])
-validator.registerField(fields[2], textField:phoneTextField, rules: [.Required, .PhoneNumber])
+validator.registerFieldByKey(fields[0], textField:nameTextField, rules: [.Required, .FullName])
+validator.registerFieldByKey(fields[1], textField:emailTextField, rules: [.Required, .Email])
+validator.registerFieldByKe(fields[2], textField:phoneTextField, rules: [.Required, .PhoneNumber])
 
 ```
 
@@ -44,7 +44,7 @@ Validate Individual Field
 
 ```swift
 
-validator.validateFieldBy(fields[0], delegate:self)
+validator.validateFieldByKey(fields[0], delegate:self)
 
 // ValidationFieldDelegate methods
 func validationFieldSuccess(key:String, validField:UITextField){
@@ -61,11 +61,11 @@ Validate All Fields
 
 ```swift
 
-validator.validateAllBy(fields, delegate:self)
+validator.validateAllKeys(delegate:self)
 
 // ValidationDelegate methods
 
-func validationWasSuccessful(successfulFields:[String:ValidationRule]) {
+func validationWasSuccessful() {
 	// submit the form
 }
 
