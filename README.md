@@ -201,7 +201,7 @@ class ValidationFactory {
 Credits
 -------
 
-Swift Validator is written and maintained by Jeff Potter (@jpotts18) and friends.
+Swift Validator is written and maintained by Jeff Potter [@jpotts18](http://twitter.com/jpotts18) and friends.
 
 Currently funded and maintained by [RingSeven](http://ringseven.com)
 
@@ -209,8 +209,8 @@ Currently funded and maintained by [RingSeven](http://ringseven.com)
 
 ## Contributing
 
-1. Fork it ( https://github.com/jpotts18/swift-validator/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
+1. [Fork it](https://github.com/jpotts18/swift-validator/fork)
+2. Create your feature branch `git checkout -b my-new-feature`
+3. Commit your changes `git commit -am 'Add some feature'`
+4. Push to the branch `git push origin my-new-feature`
 5. Create a new Pull Request
