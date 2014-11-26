@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol ValidationDelegate {
     func validationWasSuccessful()
@@ -19,15 +20,15 @@ protocol ValidationFieldDelegate {
 }
 
 class Validator {
+    // dictionary to handle complex view hierarchies like dynamic tableview cells
     var validationRules:[String:ValidationRule] = [:]
     var validationErrors:[String:ValidationError] = [:]
-    let delegate:ValidationDelegate
+        
+    init(){}
     
-    init(delegate:ValidationDelegate){
-        self.delegate = delegate
-    }
+    // MARK: Using Keys
     
-    func registerField(key:String, textField:UITextField, rules:[ValidationRuleType]) {
+    func registerFieldByKey(key:String, textField:UITextField, rules:[ValidationRuleType]) {
         validationRules[key] = ValidationRule(textField: textField, rules: rules)
     }
     
@@ -41,9 +42,9 @@ class Validator {
         }
     }
     
-    func validateAllBy(keys:[String], delegate:ValidationDelegate){
+    func validateAllKeys(delegate:ValidationDelegate){
         
-        for key in keys {
+        for key in validationRules.keys {
             if let currentRule:ValidationRule = validationRules[key] {
                 if var error:ValidationError = currentRule.validateField() {
                     validationErrors[key] = error

@@ -10,14 +10,14 @@
 	<string>Validator</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>44BA2A1DF8B8E3EE0CCBE8F37625F38B9979A032</key>
+		<key>42B8B6166721AE55A9AFCAC5F4DF5276CF0E0973</key>
 		<string>github.com:jpotts18/swift-validator.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Validator.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>44BA2A1DF8B8E3EE0CCBE8F37625F38B9979A032</key>
+		<key>42B8B6166721AE55A9AFCAC5F4DF5276CF0E0973</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>44BA2A1DF8B8E3EE0CCBE8F37625F38B9979A032</string>
+	<string>42B8B6166721AE55A9AFCAC5F4DF5276CF0E0973</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>44BA2A1DF8B8E3EE0CCBE8F37625F38B9979A032</string>
+			<string>42B8B6166721AE55A9AFCAC5F4DF5276CF0E0973</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Validator</string>
 		</dict>

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class ValidationRule {
     let textField:UITextField
