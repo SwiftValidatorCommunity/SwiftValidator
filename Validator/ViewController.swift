@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController , ValidationDelegate {
+class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate {
 
     // TextFields
     @IBOutlet weak var fullNameTextField: UITextField!
@@ -28,7 +28,12 @@ class ViewController: UIViewController , ValidationDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        fullNameTextField.delegate = self
+        emailTextField.delegate = self
+        phoneNumberTextField.delegate = self
+        zipcodeTextField.delegate = self
+        
         validator.registerFieldByKey(KEYS[0], textField: fullNameTextField, rules: [.Required, .FullName])
         validator.registerFieldByKey(KEYS[1], textField: emailTextField, rules: [.Required, .Email])
         validator.registerFieldByKey(KEYS[2], textField: phoneNumberTextField, rules: [.Required, .PhoneNumber])
@@ -43,13 +48,36 @@ class ViewController: UIViewController , ValidationDelegate {
     }
 
     @IBAction func submitTapped(sender: AnyObject) {
-        println("submit tapped")
+        println("Validating...")
         validator.validateAllKeys(self)
+    }
+    
+    // MARK: Error Styling
+    
+    func setError(label:UILabel, error:ValidationError) {
+        label.hidden = false
+        label.text = error.error.description()
+        error.textField.layer.borderColor = UIColor.redColor().CGColor
+        error.textField.layer.borderWidth = 2.0
+    }
+
+    func removeError(label:UILabel, textField:UITextField) {
+        label.hidden = true
+        textField.layer.borderWidth = 0.0
+    }
+    
+    func removeAllErrors(){
+        removeError(fullNameErrorLabel, textField: fullNameTextField)
+        removeError(emailErrorLabel, textField: emailTextField)
+        removeError(phoneNumberErrorLabel, textField: phoneNumberTextField)
+        removeError(zipcodeErrorLabel, textField: zipcodeTextField)
     }
     
     // MARK: ValidationDelegate Methods
     
     func validationFailed(errors: [String : ValidationError]) {
+        
+        println("Found \(errors.count) errors")
         
         if var fullNameError = errors[KEYS[0]] {
             setError(fullNameErrorLabel, error: fullNameError)
@@ -76,18 +104,15 @@ class ViewController: UIViewController , ValidationDelegate {
         }
     }
     
-    func setError(label:UILabel, error:ValidationError) {
-        label.hidden = false
-        label.text = error.error.description()
-        error.textField.layer.borderColor = UIColor.redColor().CGColor
-        error.textField.layer.borderWidth = 2.0
-    }
-    func removeError(label:UILabel, textField:UITextField) {
-        label.hidden = true
-        textField.layer.borderWidth = 0.0
-    }
-    
     func validationWasSuccessful() {
+        
+        println("Everything checks out!")
+        
+        removeAllErrors()
+        
+        var alert = UIAlertController(title: "Valid!", message: "Everything looks good to me", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
         
     }
 
