@@ -66,7 +66,6 @@
 		62D1AE541A1E700200E4DFF8 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		62D1AE551A1E700200E4DFF8 /* ZipCodeValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipCodeValidation.swift; sourceTree = "<group>"; };
 		62D1AE561A1E700200E4DFF8 /* PasswordValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordValidation.swift; sourceTree = "<group>"; };
-		62D1AE5C1A1E78EE00E4DFF8 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +89,6 @@
 		62D1AE0E1A1E6D4400E4DFF8 = {
 			isa = PBXGroup;
 			children = (
-				62D1AE5C1A1E78EE00E4DFF8 /* MyPlayground.playground */,
 				62D1AE191A1E6D4400E4DFF8 /* Validator */,
 				62D1AE2F1A1E6D4500E4DFF8 /* ValidatorTests */,
 				62D1AE181A1E6D4400E4DFF8 /* Products */,
@@ -483,6 +481,7 @@
 				62D1AE381A1E6D4500E4DFF8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		62D1AE391A1E6D4500E4DFF8 /* Build configuration list for PBXNativeTarget "ValidatorTests" */ = {
 			isa = XCConfigurationList;
@@ -491,6 +490,7 @@
 				62D1AE3B1A1E6D4500E4DFF8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
