@@ -86,6 +86,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		626BE5EE1A9B8EC600FE6D5C /* Swift-Validator */ = {
+			isa = PBXGroup;
+			children = (
+				62D1AE3C1A1E6FAF00E4DFF8 /* Core */,
+				62D1AE5B1A1E701B00E4DFF8 /* Validations */,
+			);
+			name = "Swift-Validator";
+			sourceTree = "<group>";
+		};
 		62D1AE0E1A1E6D4400E4DFF8 = {
 			isa = PBXGroup;
 			children = (
@@ -107,7 +116,7 @@
 		62D1AE191A1E6D4400E4DFF8 /* Validator */ = {
 			isa = PBXGroup;
 			children = (
-				62D1AE3C1A1E6FAF00E4DFF8 /* lib */,
+				626BE5EE1A9B8EC600FE6D5C /* Swift-Validator */,
 				62D1AE1C1A1E6D4400E4DFF8 /* AppDelegate.swift */,
 				62D1AE1E1A1E6D4400E4DFF8 /* ViewController.swift */,
 				62D1AE201A1E6D4400E4DFF8 /* Main.storyboard */,
@@ -143,24 +152,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		62D1AE3C1A1E6FAF00E4DFF8 /* lib */ = {
+		62D1AE3C1A1E6FAF00E4DFF8 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				62D1AE5B1A1E701B00E4DFF8 /* Validations */,
 				62D1AE531A1E700200E4DFF8 /* ValidationRuleType.swift */,
 				62D1AE541A1E700200E4DFF8 /* Validator.swift */,
 				62D1AE451A1E6FF800E4DFF8 /* ValidationError.swift */,
 				62D1AE461A1E6FF800E4DFF8 /* ValidationErrorType.swift */,
 				62D1AE471A1E6FF800E4DFF8 /* ValidationFactory.swift */,
 				62D1AE481A1E6FF800E4DFF8 /* ValidationRule.swift */,
+				62D1AE441A1E6FF800E4DFF8 /* Validation.swift */,
 			);
-			name = lib;
+			name = Core;
 			sourceTree = "<group>";
 		};
 		62D1AE5B1A1E701B00E4DFF8 /* Validations */ = {
 			isa = PBXGroup;
 			children = (
-				62D1AE441A1E6FF800E4DFF8 /* Validation.swift */,
 				62D1AE3D1A1E6FEF00E4DFF8 /* FullNameValidation.swift */,
 				62D1AE421A1E6FF800E4DFF8 /* PhoneNumberValidation.swift */,
 				62D1AE431A1E6FF800E4DFF8 /* RequiredValidation.swift */,
