@@ -37,15 +37,14 @@ Register the fields that you want to validate
 validator.registerField(fullNameTextField, rules: [RequiredRule(), FullNameRule()])
 
 // You can pass in error labels with your rules
-
 validator.registerField(emailTextField, errorLabel: emailErrorLabel, rules: [RequiredRule(), EmailRule()])
 
-// You can validate against other fields
-validator.registerField(emailConfirmTextField, errorLabel: emailConfirmErrorLabel, rules: [RequiredRule(), EmailRule(), ConfirmationRule(confirmField: emailTextField)])
+// You can validate against other fields using ConfirmRule
+validator.registerField(emailConfirmTextField, errorLabel: emailConfirmErrorLabel, rules: [ConfirmationRule(confirmField: emailTextField)])
 
-// You can now pass in regex and length parameters through  overloaded contructors
+// You can now pass in regex and length parameters through overloaded contructors
 validator.registerField(phoneNumberTextField, errorLabel: phoneNumberErrorLabel, rules: [RequiredRule(), MinLengthRule(length: 9)])
-validator.registerField(zipcodeTextField, errorLabel: zipcodeErrorLabel, rules: [RequiredRule(), ZipCodeRule()])
+validator.registerField(zipcodeTextField, errorLabel: zipcodeErrorLabel, rules: [RequiredRule(), ZipCodeRule(regex = "\\d{5}")])
 
 ```
 
@@ -54,7 +53,7 @@ Validate All Fields
 
 ```swift
 
-validator.validateAllKeys(delegate:self)
+validator.validateAll(delegate:self)
 
 // ValidationDelegate methods
 
@@ -62,12 +61,14 @@ func validationWasSuccessful() {
 	// submit the form
 }
 
-func validationFailed(errors:[String:ValidationError]){
+func validationFailed(errors:[UITextField:ValidationError]) {
 	// turn the fields to red
-	for error in errors.values {
-		error.textField.backgroundColor = UIColor.redColor()
-		println("error -> \(error.error.description)")
-	}
+    for (field, error) in validator.errors {
+        field.layer.borderColor = UIColor.redColor().CGColor
+        field.layer.borderWidth = 1.0
+        error.errorLabel?.text = error.errorMessage // works if you added labels
+        error.errorLabel?.hidden = false
+    }
 }
 
 ```
@@ -80,7 +81,7 @@ Create a class that implements the Validation protocol
 
 ```swift
 
-class SSNValidation: Validation {
+class SSNVRule: Rule {
     let SSN_REGEX = "^\\d{3}-\\d{2}-\\d{4}$"
     
     func validate(value: String) -> (Bool, ValidationErrorType) {
@@ -91,6 +92,10 @@ class SSNValidation: Validation {
             return (false, .SocialSecurity) // We will create this later ValidationErrorType.SocialSecurity
         }
         return (false, .SocialSecurity)
+    }
+
+    func errorMessage() -> String{
+        return "Not a valid SSN"
     }
     
 }
