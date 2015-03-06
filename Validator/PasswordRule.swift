@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PasswordValidation : Validation {
+class PasswordRule : Rule {
 
     // Alternative Regexes
 
@@ -19,15 +19,30 @@ class PasswordValidation : Validation {
     // var PASSWORD_REGEX = "^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[a-z]).*?$"
     
     // 8 characters. one uppercase
-    var PASSWORD_REGEX = "^(?=.*?[A-Z]).{8,}$"
     
-    func validate(value: String) -> (Bool, ValidationErrorType) {
-        if let passwordTes = NSPredicate(format: "SELF MATCHES %@", PASSWORD_REGEX) {
+    var REGEX = "^(?=.*?[A-Z]).{8,}$"
+    
+    init(){}
+    
+    init(regex:String){
+        self.REGEX = regex
+    }
+    
+    var message:String {
+        return "Must be 8 characters with 1 uppercase"
+    }
+    
+    func validate(value: String) -> Bool {
+        if let passwordTes = NSPredicate(format: "SELF MATCHES %@", REGEX) {
             if passwordTes.evaluateWithObject(value) {
-                return (true, .NoError)
+                return true
             }
-            return (false, .Password)
+            return false
         }
-        return (false, .Password)
+        return false
+    }
+    
+    func errorMessage() -> String {
+        return self.message
     }
 }

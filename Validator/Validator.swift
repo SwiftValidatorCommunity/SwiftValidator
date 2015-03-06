@@ -9,57 +9,52 @@
 import Foundation
 import UIKit
 
-protocol ValidationDelegate {
+@objc protocol ValidationDelegate {
     func validationWasSuccessful()
-    func validationFailed(errors:[String:ValidationError])
-}
-
-protocol ValidationFieldDelegate {
-    func validationFieldFailed(key:String, error:ValidationError)
-    func validationFieldSuccess(key:String, validField:UITextField)
+    func validationFailed(errors:[UITextField:ValidationError])
 }
 
 class Validator {
     // dictionary to handle complex view hierarchies like dynamic tableview cells
-    var validationRules:[String:ValidationRule] = [:]
-    var validationErrors:[String:ValidationError] = [:]
-        
+    var errors:[UITextField:ValidationError] = [:]
+    var validations:[UITextField:ValidationRule] = [:]
+    
     init(){}
     
     // MARK: Using Keys
     
-    func registerFieldByKey(key:String, textField:UITextField, rules:[ValidationRuleType]) {
-        validationRules[key] = ValidationRule(textField: textField, rules: rules)
+    func registerField(textField:UITextField, rules:[Rule]) {
+        validations[textField] = ValidationRule(textField: textField, rules: rules, errorLabel: nil)
     }
     
-    func validateFieldByKey(key:String, delegate:ValidationFieldDelegate) {
-        if let currentRule:ValidationRule = validationRules[key] {
-            if var error:ValidationError = currentRule.validateField() {
-                delegate.validationFieldFailed(key, error:error)
-            } else {
-                delegate.validationFieldSuccess(key, validField:currentRule.textField)
-            }
-        }
+    func registerField(textField:UITextField, errorLabel:UILabel, rules:[Rule]) {
+        validations[textField] = ValidationRule(textField: textField, rules:rules, errorLabel:errorLabel)
     }
     
-    func validateAllKeys(delegate:ValidationDelegate){
+    func validateAll(delegate:ValidationDelegate) {
         
-        for key in validationRules.keys {
-            if let currentRule:ValidationRule = validationRules[key] {
+        for field in validations.keys {
+            if let currentRule:ValidationRule = validations[field] {
                 if var error:ValidationError = currentRule.validateField() {
-                    validationErrors[key] = error
+                    if (currentRule.errorLabel != nil) {
+                        error.errorLabel = currentRule.errorLabel
+                    }
+                    errors[field] = error
                 } else {
-                    validationErrors.removeValueForKey(key)
+                    errors.removeValueForKey(field)
                 }
             }
         }
         
-        if validationErrors.isEmpty {
+        if errors.isEmpty {
             delegate.validationWasSuccessful()
         } else {
-            delegate.validationFailed(validationErrors)
+            delegate.validationFailed(errors)
         }
-        
+    }
+    
+    func clearErrors(){
+        self.errors = [:]
     }
     
 }

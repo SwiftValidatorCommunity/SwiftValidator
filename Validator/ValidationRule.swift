@@ -10,20 +10,21 @@ import Foundation
 import UIKit
 
 class ValidationRule {
-    let textField:UITextField
-    var rules:[ValidationRuleType] = []
+    var textField:UITextField
+    var errorLabel:UILabel?
+    var rules:[Rule] = []
     
-    init(textField:UITextField, rules:[ValidationRuleType]){
+    init(textField: UITextField, rules:[Rule], errorLabel:UILabel?){
         self.textField = textField
+        self.errorLabel = errorLabel
         self.rules = rules
     }
     
     func validateField() -> ValidationError? {
         for rule in rules {
-            var validation = ValidationFactory.validationForRule(rule)
-            var attempt:(isValid:Bool, error:ValidationErrorType) = validation.validate(textField.text)
-            if !attempt.isValid {
-                return ValidationError(textField: textField, error: attempt.error)
+            var isValid:Bool = rule.validate(textField.text)
+            if !isValid {
+                return ValidationError(textField: self.textField, error: rule.errorMessage())
             }
         }
         return nil

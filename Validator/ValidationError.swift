@@ -11,11 +11,12 @@ import UIKit
 
 class ValidationError {
     let textField:UITextField
-    let error:ValidationErrorType
+    var errorLabel:UILabel?
+    let errorMessage:String
     
-    init(textField:UITextField, error:ValidationErrorType){
+    init(textField:UITextField, error:String){
         self.textField = textField
-        self.error = error
+        self.errorMessage = error
     }
     
 }

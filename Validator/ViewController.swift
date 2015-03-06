@@ -6,7 +6,9 @@
 //  Copyright (c) 2014 jpotts18. All rights reserved.
 //
 
+import Foundation
 import UIKit
+
 
 class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate {
 
@@ -15,29 +17,26 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var zipcodeTextField: UITextField!
+    @IBOutlet weak var emailConfirmTextField: UITextField!
     
     // Error Labels
     @IBOutlet weak var fullNameErrorLabel: UILabel!
     @IBOutlet weak var emailErrorLabel: UILabel!
     @IBOutlet weak var phoneNumberErrorLabel: UILabel!
     @IBOutlet weak var zipcodeErrorLabel: UILabel!
-    
-    let KEYS = ["Full Name", "Email", "Phone", "ZipCode"]
+    @IBOutlet weak var emailConfirmErrorLabel: UILabel!
     
     let validator = Validator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fullNameTextField.delegate = self
-        emailTextField.delegate = self
-        phoneNumberTextField.delegate = self
-        zipcodeTextField.delegate = self
         
-        validator.registerFieldByKey(KEYS[0], textField: fullNameTextField, rules: [.Required, .FullName])
-        validator.registerFieldByKey(KEYS[1], textField: emailTextField, rules: [.Required, .Email])
-        validator.registerFieldByKey(KEYS[2], textField: phoneNumberTextField, rules: [.Required, .PhoneNumber])
-        validator.registerFieldByKey(KEYS[3], textField: zipcodeTextField, rules: [.Required, .ZipCode])
+        validator.registerField(fullNameTextField, errorLabel: fullNameErrorLabel , rules: [RequiredRule(), FullNameRule()])
+        validator.registerField(emailTextField, errorLabel: emailErrorLabel, rules: [RequiredRule(), EmailRule()])
+        validator.registerField(emailConfirmTextField, errorLabel: emailConfirmErrorLabel, rules: [RequiredRule(), EmailRule(), ConfirmationRule(confirmField: emailTextField)])
+        validator.registerField(phoneNumberTextField, errorLabel: phoneNumberErrorLabel, rules: [RequiredRule(), MinLengthRule(length: 9)])
+        validator.registerField(zipcodeTextField, errorLabel: zipcodeErrorLabel, rules: [RequiredRule(), ZipCodeRule()])
         
     }
 
@@ -49,17 +48,11 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
 
     @IBAction func submitTapped(sender: AnyObject) {
         println("Validating...")
-        validator.validateAllKeys(self)
+        self.clearErrors()
+        validator.validateAll(self)
     }
     
     // MARK: Error Styling
-    
-    func setError(label:UILabel, error:ValidationError) {
-        label.hidden = false
-        label.text = error.error.description()
-        error.textField.layer.borderColor = UIColor.redColor().CGColor
-        error.textField.layer.borderWidth = 2.0
-    }
 
     func removeError(label:UILabel, textField:UITextField) {
         label.hidden = true
@@ -75,45 +68,33 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
     
     // MARK: ValidationDelegate Methods
     
-    func validationFailed(errors: [String : ValidationError]) {
-        
-        println("Found \(errors.count) errors")
-        
-        if var fullNameError = errors[KEYS[0]] {
-            setError(fullNameErrorLabel, error: fullNameError)
-        } else {
-            removeError(fullNameErrorLabel, textField: fullNameTextField)
-        }
-        
-        if var emailNameError = errors[KEYS[1]] {
-            setError(emailErrorLabel, error: emailNameError)
-        } else {
-            removeError(emailErrorLabel, textField: emailTextField)
-        }
-        
-        if var phoneError = errors[KEYS[2]] {
-            setError(phoneNumberErrorLabel, error: phoneError)
-        } else {
-            removeError(phoneNumberErrorLabel, textField: phoneNumberTextField)
-        }
-        
-        if var zipError = errors[KEYS[3]] {
-            setError(zipcodeErrorLabel, error: zipError)
-        } else {
-            removeError(zipcodeErrorLabel, textField: zipcodeTextField)
+    func validationWasSuccessful() {
+        println("Validation Success!")
+        var alert = UIAlertController(title: "Success", message: "You are validated!", preferredStyle: UIAlertControllerStyle.Alert)
+        var defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alert.addAction(defaultAction)
+        self.presentViewController(alert, animated: true, completion: nil)
+    
+    }
+    func validationFailed(errors:[UITextField:ValidationError]) {
+        println("Validation FAILED!")
+        self.setErrors()
+    }
+    
+    private func setErrors(){
+        for (field, error) in validator.errors {
+            field.layer.borderColor = UIColor.redColor().CGColor
+            field.layer.borderWidth = 1.0
+            error.errorLabel?.text = error.errorMessage
+            error.errorLabel?.hidden = false
         }
     }
     
-    func validationWasSuccessful() {
-        
-        println("Everything checks out!")
-        
-        removeAllErrors()
-        
-        var alert = UIAlertController(title: "Valid!", message: "Everything looks good to me", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
-        
+    private func clearErrors(){
+        for (field, error) in validator.errors {
+            field.layer.borderWidth = 0.0
+            error.errorLabel?.hidden = true
+        }
     }
 
 }

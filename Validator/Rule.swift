@@ -8,6 +8,7 @@
 
 import Foundation
 
-protocol Validation {
-    func validate(value:String) -> (Bool, ValidationErrorType)
+protocol Rule {
+    func validate(value:String) -> Bool
+    func errorMessage() -> String
 }
