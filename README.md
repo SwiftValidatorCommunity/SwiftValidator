@@ -99,6 +99,7 @@ class SSNVRule: Rule {
     }
     
 }
+```
 
 Credits
 -------
