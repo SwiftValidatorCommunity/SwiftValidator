@@ -22,38 +22,37 @@ Initialize the ``Validator`` by setting a delegate to a View Controller or other
 
 let validator = Validator()
 
-override func viewDidLoad() {
-    super.viewDidLoad()
-}
-
 ```
 
 Register the fields that you want to validate
 
 ```swift
+override func viewDidLoad() {
+	super.viewDidLoad()
 
-// Validation Rules are evaluated from left to right.
-validator.registerField(fullNameTextField, rules: [RequiredRule(), FullNameRule()])
+	// Validation Rules are evaluated from left to right.
+	validator.registerField(fullNameTextField, rules: [RequiredRule(), FullNameRule()])
+	
+	// You can pass in error labels with your rules
+	validator.registerField(emailTextField, errorLabel: emailErrorLabel, rules: [RequiredRule(), EmailRule()])
+	
+	// You can validate against other fields using ConfirmRule
+	validator.registerField(emailConfirmTextField, errorLabel: emailConfirmErrorLabel, rules: [ConfirmationRule(confirmField: emailTextField)])
+	
+	// You can now pass in regex and length parameters through overloaded contructors
+	validator.registerField(phoneNumberTextField, errorLabel: phoneNumberErrorLabel, rules: [RequiredRule(), MinLengthRule(length: 9)])
+	validator.registerField(zipcodeTextField, errorLabel: zipcodeErrorLabel, rules: [RequiredRule(), ZipCodeRule(regex = "\\d{5}")])
 
-// You can pass in error labels with your rules
-validator.registerField(emailTextField, errorLabel: emailErrorLabel, rules: [RequiredRule(), EmailRule()])
-
-// You can validate against other fields using ConfirmRule
-validator.registerField(emailConfirmTextField, errorLabel: emailConfirmErrorLabel, rules: [ConfirmationRule(confirmField: emailTextField)])
-
-// You can now pass in regex and length parameters through overloaded contructors
-validator.registerField(phoneNumberTextField, errorLabel: phoneNumberErrorLabel, rules: [RequiredRule(), MinLengthRule(length: 9)])
-validator.registerField(zipcodeTextField, errorLabel: zipcodeErrorLabel, rules: [RequiredRule(), ZipCodeRule(regex = "\\d{5}")])
-
+}
 ```
 
 
-Validate Fields on button tap or as the fields
+Validate Fields on button tap or however you would like to trigger it. 
 
 ```swift
-
-validator.validateAll(delegate:self)
-
+@IBAction func signupTapped(sender: AnyObject) {
+	validator.validateAll(delegate:self)
+}
 ```
 
 Implement the Validation Delegate in your View controller
@@ -68,12 +67,12 @@ func validationWasSuccessful() {
 
 func validationFailed(errors:[UITextField:ValidationError]) {
 	// turn the fields to red
-    for (field, error) in validator.errors {
-        field.layer.borderColor = UIColor.redColor().CGColor
-        field.layer.borderWidth = 1.0
-        error.errorLabel?.text = error.errorMessage // works if you added labels
-        error.errorLabel?.hidden = false
-    }
+	for (field, error) in validator.errors {
+		field.layer.borderColor = UIColor.redColor().CGColor
+		field.layer.borderWidth = 1.0
+		error.errorLabel?.text = error.errorMessage // works if you added labels
+		error.errorLabel?.hidden = false
+	}
 }
 
 ```
