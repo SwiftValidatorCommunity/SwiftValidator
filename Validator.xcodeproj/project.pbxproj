@@ -78,13 +78,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		626BE5EE1A9B8EC600FE6D5C /* Swift-Validator */ = {
+		626BE5EE1A9B8EC600FE6D5C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				62DC8D661AAA42700095DFA7 /* Rules */,
 				62D1AE3C1A1E6FAF00E4DFF8 /* Core */,
 			);
-			name = "Swift-Validator";
+			name = Classes;
 			sourceTree = "<group>";
 		};
 		62D1AE0E1A1E6D4400E4DFF8 = {
@@ -108,7 +108,7 @@
 		62D1AE191A1E6D4400E4DFF8 /* Validator */ = {
 			isa = PBXGroup;
 			children = (
-				626BE5EE1A9B8EC600FE6D5C /* Swift-Validator */,
+				626BE5EE1A9B8EC600FE6D5C /* Classes */,
 				62D1AE1C1A1E6D4400E4DFF8 /* AppDelegate.swift */,
 				62D1AE1E1A1E6D4400E4DFF8 /* ViewController.swift */,
 				62D1AE201A1E6D4400E4DFF8 /* Main.storyboard */,
