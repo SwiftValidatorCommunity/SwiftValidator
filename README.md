@@ -3,15 +3,14 @@ Swift-Validator
 
 Swift Validator is a rule-based validation library for Swift.
 
+
 ![Swift Validator](/swift-validator-v2.gif)
 
 ## Core Concepts
 
-* ``UITextField`` + ``ValidationRule`` go into  ```Validator``
-* ``ITextField`` + ``ValidationError`` come out of ```Validator``
-* ``UITextField`` is registered to ``Validator``
-* ``Validator`` evaluates ``ValidationRules`` sequentially and stops evaluating when a ``ValidationRule`` fails. 
-* Keys are used to allow field registration in TableViewControllers and complex view hierarchies
+* ``UITextField`` + ``[Rule]`` + (and optional error ``UILabel``) go into  ``Validator``
+* ``UITextField`` + ``ValidationError`` come out of ```Validator``
+* ``Validator`` evaluates ``[Rule]`` sequentially and stops evaluating when a ``Rule`` fails. 
 
 ## Quick Start
 
@@ -23,37 +22,42 @@ Initialize the ``Validator`` by setting a delegate to a View Controller or other
 
 let validator = Validator()
 
-override func viewDidLoad() {
-    super.viewDidLoad()
-}
-
 ```
 
 Register the fields that you want to validate
 
 ```swift
+override func viewDidLoad() {
+	super.viewDidLoad()
 
-// Validation Rules are evaluated from left to right.
-validator.registerField(fullNameTextField, rules: [RequiredRule(), FullNameRule()])
+	// Validation Rules are evaluated from left to right.
+	validator.registerField(fullNameTextField, rules: [RequiredRule(), FullNameRule()])
+	
+	// You can pass in error labels with your rules
+	validator.registerField(emailTextField, errorLabel: emailErrorLabel, rules: [RequiredRule(), EmailRule()])
+	
+	// You can validate against other fields using ConfirmRule
+	validator.registerField(emailConfirmTextField, errorLabel: emailConfirmErrorLabel, rules: [ConfirmationRule(confirmField: emailTextField)])
+	
+	// You can now pass in regex and length parameters through overloaded contructors
+	validator.registerField(phoneNumberTextField, errorLabel: phoneNumberErrorLabel, rules: [RequiredRule(), MinLengthRule(length: 9)])
+	validator.registerField(zipcodeTextField, errorLabel: zipcodeErrorLabel, rules: [RequiredRule(), ZipCodeRule(regex = "\\d{5}")])
 
-// You can pass in error labels with your rules
-validator.registerField(emailTextField, errorLabel: emailErrorLabel, rules: [RequiredRule(), EmailRule()])
-
-// You can validate against other fields using ConfirmRule
-validator.registerField(emailConfirmTextField, errorLabel: emailConfirmErrorLabel, rules: [ConfirmationRule(confirmField: emailTextField)])
-
-// You can now pass in regex and length parameters through overloaded contructors
-validator.registerField(phoneNumberTextField, errorLabel: phoneNumberErrorLabel, rules: [RequiredRule(), MinLengthRule(length: 9)])
-validator.registerField(zipcodeTextField, errorLabel: zipcodeErrorLabel, rules: [RequiredRule(), ZipCodeRule(regex = "\\d{5}")])
-
+}
 ```
 
 
-Validate All Fields
+Validate Fields on button tap or however you would like to trigger it. 
 
 ```swift
+@IBAction func signupTapped(sender: AnyObject) {
+	validator.validateAll(delegate:self)
+}
+```
 
-validator.validateAll(delegate:self)
+Implement the Validation Delegate in your View controller
+
+```swift
 
 // ValidationDelegate methods
 
@@ -63,47 +67,53 @@ func validationWasSuccessful() {
 
 func validationFailed(errors:[UITextField:ValidationError]) {
 	// turn the fields to red
-    for (field, error) in validator.errors {
-        field.layer.borderColor = UIColor.redColor().CGColor
-        field.layer.borderWidth = 1.0
-        error.errorLabel?.text = error.errorMessage // works if you added labels
-        error.errorLabel?.hidden = false
-    }
+	for (field, error) in validator.errors {
+		field.layer.borderColor = UIColor.redColor().CGColor
+		field.layer.borderWidth = 1.0
+		error.errorLabel?.text = error.errorMessage // works if you added labels
+		error.errorLabel?.hidden = false
+	}
 }
 
 ```
 
 ## Custom Validation 
 
-We will create a ```SSNValidation``` class to show how to create your own Validation. A United States Social Security Number (or SSN) is a field that consists of XXX-XX-XXXX. 
+We will create a ```SSNRule``` class to show how to create your own Validation. A United States Social Security Number (or SSN) is a field that consists of XXX-XX-XXXX. 
 
-Create a class that implements the Validation protocol
+Create a class that implements the Rule protocol
 
 ```swift
 
 class SSNVRule: Rule {
-    let SSN_REGEX = "^\\d{3}-\\d{2}-\\d{4}$"
+    let REGEX = "^\\d{3}-\\d{2}-\\d{4}$"
     
-    func validate(value: String) -> (Bool, ValidationErrorType) {
-        if let ssnTest = NSPredicate(format: "SELF MATCHES %@", SSN_REGEX) {
-            if ssnTest.evaluateWithObject(value) {
-                return (true, .NoError)
-            }
-            return (false, .SocialSecurity) // We will create this later ValidationErrorType.SocialSecurity
-        }
-        return (false, .SocialSecurity)
+    init(){}
+    
+    // allow for custom variables to be passed
+    init(regex:String){
+        self.REGEX = regex
     }
-
+    
+    func validate(value: String) -> Bool {
+        if let ssnTest = NSPredicate(format: "SELF MATCHES %@", REGEX) {
+            if ssnTest.evaluateWithObject(value) {
+                return true
+            }
+            return false
+        }
+    }
+    
     func errorMessage() -> String{
         return "Not a valid SSN"
     }
-    
 }
+```
 
 Credits
 -------
 
-Swift Validator is written and maintained by Jeff Potter [@jpotts18](http://twitter.com/jpotts18) and friends.
+Swift Validator is written and maintained by Jeff Potter [@jpotts18](http://twitter.com/jpotts18).
 
 ## Contributing
 
