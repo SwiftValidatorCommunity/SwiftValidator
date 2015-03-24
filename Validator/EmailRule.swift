@@ -10,31 +10,25 @@ import Foundation
 
 class EmailRule: Rule {
     
-    let REGEX = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
+    var REGEX : String
     
-    init(){}
+    init(){
+        self.REGEX = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
+    }
     
     init(regex:String){
-        self.REGEX = regex
+        REGEX = regex
     }
     
-    var message:String {
-        return "Must be a valid email address"
-    }
-    
-    func validate(value:String) -> Bool {
-        
-        if let emailTest = NSPredicate(format: "SELF MATCHES %@", REGEX) {
-            if emailTest.evaluateWithObject(value) {
-                return true
-            } else {
-                return false
-            }
+    func validate(value: String) -> Bool {
+        let test = NSPredicate(format: "SELF MATCHES %@", self.REGEX)
+        if test.evaluateWithObject(value) {
+            return true
         }
         return false
     }
     
     func errorMessage() -> String {
-        return self.message
+        return "Must be a valid email address"
     }
 }

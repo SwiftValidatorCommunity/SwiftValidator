@@ -20,29 +20,25 @@ class PasswordRule : Rule {
     
     // 8 characters. one uppercase
     
-    var REGEX = "^(?=.*?[A-Z]).{8,}$"
+    private let REGEX: String
     
-    init(){}
+    init(){
+        self.REGEX = "^(?=.*?[A-Z]).{8,}$"
+    }
     
     init(regex:String){
         self.REGEX = regex
     }
     
-    var message:String {
-        return "Must be 8 characters with 1 uppercase"
-    }
-    
     func validate(value: String) -> Bool {
-        if let passwordTes = NSPredicate(format: "SELF MATCHES %@", REGEX) {
-            if passwordTes.evaluateWithObject(value) {
-                return true
-            }
-            return false
+        let test = NSPredicate(format: "SELF MATCHES %@", self.REGEX)
+        if test.evaluateWithObject(value) {
+            return true
         }
         return false
     }
     
     func errorMessage() -> String {
-        return self.message
+        return "Must be 8 characters with 1 uppercase"
     }
 }

@@ -31,6 +31,7 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "hideKeyboard"))
         
         validator.registerField(fullNameTextField, errorLabel: fullNameErrorLabel , rules: [RequiredRule(), FullNameRule()])
         validator.registerField(emailTextField, errorLabel: emailErrorLabel, rules: [RequiredRule(), EmailRule()])
@@ -95,6 +96,10 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
             field.layer.borderWidth = 0.0
             error.errorLabel?.hidden = true
         }
+    }
+    
+    func hideKeyboard(){
+        self.view.endEditing(true)
     }
 
 }
