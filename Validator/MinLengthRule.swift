@@ -22,7 +22,7 @@ class MinLengthRule : Rule {
     }
     
     func validate(value: String) -> Bool {
-        if count(value) <= DEFAULT_MIN_LENGTH {
+        if count(value) < DEFAULT_MIN_LENGTH {
             return false
         }
         return true
