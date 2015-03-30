@@ -31,9 +31,10 @@ class PasswordRule : Rule {
     }
     
     func validate(value: String) -> Bool {
-        let test = NSPredicate(format: "SELF MATCHES %@", self.REGEX)
-        if test.evaluateWithObject(value) {
-            return true
+        if let test = NSPredicate(format: "SELF MATCHES %@", self.REGEX) {
+            if test.evaluateWithObject(value) {
+                return true
+            }
         }
         return false
     }
