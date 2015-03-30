@@ -21,10 +21,9 @@ class EmailRule: Rule {
     }
     
     func validate(value: String) -> Bool {
-        if let test = NSPredicate(format: "SELF MATCHES %@", self.REGEX) {
-            if test.evaluateWithObject(value) {
-                return true
-            }
+        let test = NSPredicate(format: "SELF MATCHES \(self.REGEX)")
+        if test.evaluateWithObject(value) {
+            return true
         }
         return false
     }
