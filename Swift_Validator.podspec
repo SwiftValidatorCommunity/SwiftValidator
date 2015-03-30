@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name         = "Swift-Validator"
+  s.name         = "Swift_Validator"
   s.version      = "2.0.1"
   s.summary      = "A UITextField Validation library for Swift"
   s.homepage     = "https://github.com/jpotts18/swift-validator"
