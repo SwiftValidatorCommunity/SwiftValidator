@@ -9,22 +9,22 @@
 import Foundation
 
 
-class RequiredRule: Rule {
+public class RequiredRule: Rule {
     
-    init(){}
+    public init(){}
     
     var message: String {
         return "This field is required"
     }
     
-    func validate(value:String) -> Bool {
+    public func validate(value:String) -> Bool {
         if value.isEmpty {
             return false
         }
         return true
     }
     
-    func errorMessage() -> String {
+    public func errorMessage() -> String {
         return message
     }
 }

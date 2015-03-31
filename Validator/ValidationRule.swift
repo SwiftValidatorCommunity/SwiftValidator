@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-class ValidationRule {
+public class ValidationRule {
     var textField:UITextField
     var errorLabel:UILabel?
     var rules:[Rule] = []
     
-    init(textField: UITextField, rules:[Rule], errorLabel:UILabel?){
+    public init(textField: UITextField, rules:[Rule], errorLabel:UILabel?){
         self.textField = textField
         self.errorLabel = errorLabel
         self.rules = rules

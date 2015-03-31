@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PasswordRule : Rule {
+public class PasswordRule : Rule {
 
     // Alternative Regexes
 
@@ -22,15 +22,15 @@ class PasswordRule : Rule {
     
     private let REGEX: String
     
-    init(){
+    public init(){
         self.REGEX = "^(?=.*?[A-Z]).{8,}$"
     }
     
-    init(regex:String){
+    public init(regex:String){
         self.REGEX = regex
     }
     
-    func validate(value: String) -> Bool {
+    public func validate(value: String) -> Bool {
         if let test = NSPredicate(format: "SELF MATCHES %@", self.REGEX) {
             if test.evaluateWithObject(value) {
                 return true
@@ -39,7 +39,7 @@ class PasswordRule : Rule {
         return false
     }
     
-    func errorMessage() -> String {
+    public func errorMessage() -> String {
         return "Must be 8 characters with 1 uppercase"
     }
 }
