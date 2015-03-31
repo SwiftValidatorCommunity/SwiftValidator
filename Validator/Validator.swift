@@ -17,7 +17,7 @@ import UIKit
 public class Validator {
     // dictionary to handle complex view hierarchies like dynamic tableview cells
     public var errors:[UITextField:ValidationError] = [:]
-    var validations:[UITextField:ValidationRule] = [:]
+    public var validations:[UITextField:ValidationRule] = [:]
     
     public init(){}
     
