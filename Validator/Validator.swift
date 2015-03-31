@@ -16,22 +16,22 @@ import UIKit
 
 public class Validator {
     // dictionary to handle complex view hierarchies like dynamic tableview cells
-    var errors:[UITextField:ValidationError] = [:]
+    public var errors:[UITextField:ValidationError] = [:]
     var validations:[UITextField:ValidationRule] = [:]
     
     public init(){}
     
     // MARK: Using Keys
     
-    func registerField(textField:UITextField, rules:[Rule]) {
+    public func registerField(textField:UITextField, rules:[Rule]) {
         validations[textField] = ValidationRule(textField: textField, rules: rules, errorLabel: nil)
     }
     
-    func registerField(textField:UITextField, errorLabel:UILabel, rules:[Rule]) {
+    public func registerField(textField:UITextField, errorLabel:UILabel, rules:[Rule]) {
         validations[textField] = ValidationRule(textField: textField, rules:rules, errorLabel:errorLabel)
     }
     
-    func validateAll(delegate:ValidationDelegate) {
+    public func validateAll(delegate:ValidationDelegate) {
         
         for field in validations.keys {
             if let currentRule:ValidationRule = validations[field] {
