@@ -29,7 +29,7 @@ public class PasswordRule : Rule {
     public init(regex:String){
         self.REGEX = regex
     }
-    
+
     public func validate(value: String) -> Bool {
         if let test = NSPredicate(format: "SELF MATCHES %@", self.REGEX) {
             if test.evaluateWithObject(value) {

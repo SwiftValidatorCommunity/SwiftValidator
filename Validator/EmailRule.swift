@@ -10,7 +10,7 @@ import Foundation
 
 public class EmailRule: Rule {
     
-    var REGEX : String
+    private let REGEX: String
     
     public init(){
         self.REGEX = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
@@ -19,7 +19,7 @@ public class EmailRule: Rule {
     public init(regex:String){
         REGEX = regex
     }
-    
+
     public func validate(value: String) -> Bool {
         if let test = NSPredicate(format: "SELF MATCHES %@", self.REGEX) {
             if test.evaluateWithObject(value) {

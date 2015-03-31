@@ -9,6 +9,7 @@
 import Foundation
 
 public class ZipCodeRule: Rule {
+
     private let REGEX: String
     
     init(){
@@ -17,7 +18,7 @@ public class ZipCodeRule: Rule {
     init(regex:String){
         self.REGEX = regex
     }
-    
+
     public func validate(value: String) -> Bool {
         if let test = NSPredicate(format: "SELF MATCHES %@", self.REGEX) {
             if test.evaluateWithObject(value) {
