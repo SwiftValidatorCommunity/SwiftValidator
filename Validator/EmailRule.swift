@@ -10,13 +10,11 @@ import Foundation
 
 class EmailRule: Rule {
     
-    private let REGEX: String
+    private let REGEX: String = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
     
-    init(){
-        self.REGEX = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
-    }
+    init(){}
     
-    init(regex:String){
+    init(regex: String){
         REGEX = regex
     }
     

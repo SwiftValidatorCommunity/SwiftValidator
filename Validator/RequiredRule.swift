@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 class RequiredRule: Rule {
     
     init(){}
@@ -17,11 +16,8 @@ class RequiredRule: Rule {
         return "This field is required"
     }
     
-    func validate(value:String) -> Bool {
-        if value.isEmpty {
-            return false
-        }
-        return true
+    func validate(value: String) -> Bool {
+        return !value.isEmpty
     }
     
     func errorMessage() -> String {

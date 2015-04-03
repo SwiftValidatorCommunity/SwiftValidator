@@ -18,15 +18,10 @@ class ConfirmationRule: Rule {
     }
     
     func validate(value: String) -> Bool {
-        if self.confirmField.text == value {
-            return true
-        } else {
-            return false
-        }
+        return confirmField.text == value
     }
     
     func errorMessage() -> String {
         return "This field does not match"
     }
-    
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PasswordRule : Rule {
+class PasswordRule: Rule {
 
     // Alternative Regexes
 
@@ -20,13 +20,11 @@ class PasswordRule : Rule {
     
     // 8 characters. one uppercase
     
-    private let REGEX: String
+    private let REGEX: String = "^(?=.*?[A-Z]).{8,}$"
     
-    init(){
-        self.REGEX = "^(?=.*?[A-Z]).{8,}$"
-    }
+    init(){}
     
-    init(regex:String){
+    init(regex: String){
         self.REGEX = regex
     }
     

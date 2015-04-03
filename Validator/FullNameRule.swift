@@ -8,20 +8,15 @@
 
 import Foundation
 
-
-class FullNameRule : Rule {
+class FullNameRule: Rule {
     
     var message:String {
         return "Please provide a first & last name"
     }
     
-    func validate(value:String) -> Bool {
-        
-        var nameArray:[String] = split(value) { $0 == " " }
-        if nameArray.count >= 2 {
-            return true
-        }
-        return false
+    func validate(value: String) -> Bool {
+        var nameArray: [String] = split(value) { $0 == " " }
+        return nameArray.count >= 2
     }
     
     func errorMessage() -> String {
