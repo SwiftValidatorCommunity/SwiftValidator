@@ -1,8 +1,15 @@
-Swift-Validator
+SwiftValidator
 ===============
 
 Swift Validator is a rule-based validation library for Swift.
 
+```ruby
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, "8.1"
+
+use_frameworks!
+pod 'SwiftValidator', :git => 'https://github.com/jpotts18/swift-validator'
+```
 
 ![Swift Validator](/swift-validator-v2.gif)
 
@@ -17,11 +24,8 @@ Swift Validator is a rule-based validation library for Swift.
 Initialize the ``Validator`` by setting a delegate to a View Controller or other object.
 
 ```swift
-
 // ViewController.swift
-
 let validator = Validator()
-
 ```
 
 Register the fields that you want to validate
@@ -58,7 +62,6 @@ Validate Fields on button tap or however you would like to trigger it.
 Implement the Validation Delegate in your View controller
 
 ```swift
-
 // ValidationDelegate methods
 
 func validationWasSuccessful() {
