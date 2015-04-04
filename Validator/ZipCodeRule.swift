@@ -15,7 +15,8 @@ public class ZipCodeRule: Rule {
     init(){
         self.REGEX = "\\d{5}"
     }
-    init(regex:String){
+    
+    init(regex: String){
         self.REGEX = regex
     }
 
@@ -31,5 +32,4 @@ public class ZipCodeRule: Rule {
     public func errorMessage() -> String {
         return "Enter a valid 5 digit zipcode"
     }
-    
 }

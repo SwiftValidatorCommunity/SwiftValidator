@@ -3,7 +3,7 @@
 //  Pingo
 //
 //  Created by Jeff Potter on 11/13/14.
-//  Copyright (c) 2014 Byron Mackay. All rights reserved.
+//  Copyright (c) 2015 jpotts18. All rights reserved.
 //
 
 import Foundation
@@ -20,11 +20,9 @@ public class PasswordRule : Rule {
     
     // 8 characters. one uppercase
     
-    private let REGEX: String
+    private let REGEX: String = "^(?=.*?[A-Z]).{8,}$"
     
-    public init(){
-        self.REGEX = "^(?=.*?[A-Z]).{8,}$"
-    }
+    init(){}
     
     public init(regex:String){
         self.REGEX = regex

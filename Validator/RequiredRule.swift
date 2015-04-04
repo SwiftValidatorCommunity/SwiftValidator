@@ -3,11 +3,10 @@
 //  pyur-ios
 //
 //  Created by Jeff Potter on 12/22/14.
-//  Copyright (c) 2014 ringseven. All rights reserved.
+//  Copyright (c) 2015 jpotts18. All rights reserved.
 //
 
 import Foundation
-
 
 public class RequiredRule: Rule {
     
@@ -17,11 +16,8 @@ public class RequiredRule: Rule {
         return "This field is required"
     }
     
-    public func validate(value:String) -> Bool {
-        if value.isEmpty {
-            return false
-        }
-        return true
+    func validate(value: String) -> Bool {
+        return !value.isEmpty
     }
     
     public func errorMessage() -> String {

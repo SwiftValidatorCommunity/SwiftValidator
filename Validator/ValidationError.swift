@@ -3,7 +3,7 @@
 //  Pingo
 //
 //  Created by Jeff Potter on 11/11/14.
-//  Copyright (c) 2014 Byron Mackay. All rights reserved.
+//  Copyright (c) 2015 jpotts18. All rights reserved.
 //
 
 import Foundation
@@ -18,5 +18,4 @@ public class ValidationError {
         self.textField = textField
         self.errorMessage = error
     }
-    
 }
