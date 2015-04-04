@@ -8,28 +8,18 @@
 
 import Foundation
 
-public class ZipCodeRule: Rule {
-
-    private let REGEX: String
+public class ZipCodeRule: RegexRule {
     
-    init(){
-        self.REGEX = "\\d{5}"
+    public init(){
+        super.init(regex: "\\d{5}")
     }
     
-    init(regex: String){
-        self.REGEX = regex
-    }
-
-    public func validate(value: String) -> Bool {
-        if let test = NSPredicate(format: "SELF MATCHES %@", self.REGEX) {
-            if test.evaluateWithObject(value) {
-                return true
-            }
-        }
-        return false
+    override public init(regex: String) {
+        super.init(regex: regex)
     }
     
-    public func errorMessage() -> String {
+    public override func errorMessage() -> String {
         return "Enter a valid 5 digit zipcode"
     }
+    
 }

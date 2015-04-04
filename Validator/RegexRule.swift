@@ -7,3 +7,25 @@
 //
 
 import Foundation
+
+public class RegexRule : Rule {
+    
+    private var REGEX: String = "^(?=.*?[A-Z]).{8,}$"
+    
+    init(regex: String){
+        self.REGEX = regex
+    }
+    
+    public func validate(value: String) -> Bool {
+        if let test = NSPredicate(format: "SELF MATCHES %@", self.REGEX) {
+            if test.evaluateWithObject(value) {
+                return true
+            }
+        }
+        return false
+    }
+    
+    public func errorMessage() -> String {
+        return "Invalid Regular Expression"
+    }
+}

@@ -24,6 +24,7 @@
 		62DC8D6D1AAA42CE0095DFA7 /* RequiredRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DC8D6A1AAA42CE0095DFA7 /* RequiredRule.swift */; };
 		62DC8D6E1AAA42CE0095DFA7 /* PasswordRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DC8D6B1AAA42CE0095DFA7 /* PasswordRule.swift */; };
 		62DC8D711AAA43110095DFA7 /* ZipCodeRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DC8D701AAA43110095DFA7 /* ZipCodeRule.swift */; };
+		62E9E2AD1ACFB336000A939C /* RegexRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E9E2AC1ACFB336000A939C /* RegexRule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		62DC8D6A1AAA42CE0095DFA7 /* RequiredRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequiredRule.swift; sourceTree = "<group>"; };
 		62DC8D6B1AAA42CE0095DFA7 /* PasswordRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordRule.swift; sourceTree = "<group>"; };
 		62DC8D701AAA43110095DFA7 /* ZipCodeRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipCodeRule.swift; sourceTree = "<group>"; };
+		62E9E2AC1ACFB336000A939C /* RegexRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegexRule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 				62DC8D671AAA42920095DFA7 /* FullNameRule.swift */,
 				62DC8D701AAA43110095DFA7 /* ZipCodeRule.swift */,
 				628637271AAA49E300BC8FCF /* ConfirmRule.swift */,
+				62E9E2AC1ACFB336000A939C /* RegexRule.swift */,
 			);
 			name = Rules;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62DC8D681AAA42920095DFA7 /* FullNameRule.swift in Sources */,
+				62E9E2AD1ACFB336000A939C /* RegexRule.swift in Sources */,
 				62D1AE4F1A1E6FF800E4DFF8 /* ValidationError.swift in Sources */,
 				62DC8D6E1AAA42CE0095DFA7 /* PasswordRule.swift in Sources */,
 				62DC8D6C1AAA42CE0095DFA7 /* EmailRule.swift in Sources */,

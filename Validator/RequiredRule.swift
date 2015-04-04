@@ -16,7 +16,7 @@ public class RequiredRule: Rule {
         return "This field is required"
     }
     
-    func validate(value: String) -> Bool {
+    public func validate(value: String) -> Bool {
         return !value.isEmpty
     }
     

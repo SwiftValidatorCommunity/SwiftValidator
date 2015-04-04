@@ -10,7 +10,7 @@ import Foundation
 
 class MinLengthRule: Rule {
     
-    private let DEFAULT_MIN_LENGTH: Int = 3
+    private var DEFAULT_MIN_LENGTH: Int = 3
     
     init(){}
     
