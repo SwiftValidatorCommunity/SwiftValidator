@@ -3,7 +3,7 @@
 //  Pingo
 //
 //  Created by Jeff Potter on 11/10/14.
-//  Copyright (c) 2014 Byron Mackay. All rights reserved.
+//  Copyright (c) 2015 jpotts18. All rights reserved.
 //
 
 import Foundation
@@ -11,7 +11,7 @@ import UIKit
 
 @objc public protocol ValidationDelegate {
     func validationWasSuccessful()
-    func validationFailed(errors:[UITextField:ValidationError])
+    func validationFailed(errors: [UITextField:ValidationError])
 }
 
 public class Validator {
@@ -34,9 +34,9 @@ public class Validator {
     public func validateAll(delegate:ValidationDelegate) {
         
         for field in validations.keys {
-            if let currentRule:ValidationRule = validations[field] {
-                if var error:ValidationError = currentRule.validateField() {
-                    if (currentRule.errorLabel != nil) {
+            if let currentRule: ValidationRule = validations[field] {
+                if var error: ValidationError = currentRule.validateField() {
+                    if currentRule.errorLabel != nil {
                         error.errorLabel = currentRule.errorLabel
                     }
                     errors[field] = error
@@ -53,8 +53,7 @@ public class Validator {
         }
     }
     
-    func clearErrors(){
+    func clearErrors() {
         self.errors = [:]
     }
-    
 }

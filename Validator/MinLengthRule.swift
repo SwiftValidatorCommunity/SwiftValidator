@@ -8,24 +8,18 @@
 
 import Foundation
 
-
-class MinLengthRule : Rule {
+class MinLengthRule: Rule {
     
-    private let DEFAULT_MIN_LENGTH: Int
+    private var DEFAULT_MIN_LENGTH: Int = 3
     
-    init(){
-        DEFAULT_MIN_LENGTH = 3
-    }
+    init(){}
     
-    init(length:Int){
+    init(length: Int){
         self.DEFAULT_MIN_LENGTH = length
     }
     
     func validate(value: String) -> Bool {
-        if countElements(value) < DEFAULT_MIN_LENGTH {
-            return false
-        }
-        return true
+        return countElements(value) > DEFAULT_MIN_LENGTH
     }
     
     func errorMessage() -> String {

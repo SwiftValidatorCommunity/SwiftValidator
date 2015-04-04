@@ -3,7 +3,7 @@
 //  Pingo
 //
 //  Created by Jeff Potter on 11/11/14.
-//  Copyright (c) 2014 Byron Mackay. All rights reserved.
+//  Copyright (c) 2015 jpotts18. All rights reserved.
 //
 
 import Foundation
@@ -22,12 +22,10 @@ public class ValidationRule {
     
     public func validateField() -> ValidationError? {
         for rule in rules {
-            var isValid:Bool = rule.validate(textField.text)
-            if !isValid {
+            if !rule.validate(textField.text) {
                 return ValidationError(textField: self.textField, error: rule.errorMessage())
             }
         }
         return nil
     }
-    
 }
