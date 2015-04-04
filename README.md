@@ -3,23 +3,24 @@ SwiftValidator
 
 Swift Validator is a rule-based validation library for Swift.
 
-```ruby
-source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, "8.1"
-
-use_frameworks!
-pod 'SwiftValidator', :git => 'https://github.com/jpotts18/swift-validator'
-```
-
 ![Swift Validator](/swift-validator-v2.gif)
 
 ## Core Concepts
 
 * ``UITextField`` + ``[Rule]`` + (and optional error ``UILabel``) go into  ``Validator``
-* ``UITextField`` + ``ValidationError`` come out of ```Validator``
+* ``UITextField`` + ``ValidationError`` come out of ``Validator``
 * ``Validator`` evaluates ``[Rule]`` sequentially and stops evaluating when a ``Rule`` fails. 
 
 ## Quick Start
+
+```ruby
+# Podfile
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, "8.1"
+
+use_frameworks!
+pod 'SwiftValidator', '2.0.6'
+```
 
 Initialize the ``Validator`` by setting a delegate to a View Controller or other object.
 
