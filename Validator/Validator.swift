@@ -9,29 +9,29 @@
 import Foundation
 import UIKit
 
-@objc protocol ValidationDelegate {
+@objc public protocol ValidationDelegate {
     func validationWasSuccessful()
     func validationFailed(errors:[UITextField:ValidationError])
 }
 
-class Validator {
+public class Validator {
     // dictionary to handle complex view hierarchies like dynamic tableview cells
-    var errors:[UITextField:ValidationError] = [:]
-    var validations:[UITextField:ValidationRule] = [:]
+    public var errors:[UITextField:ValidationError] = [:]
+    public var validations:[UITextField:ValidationRule] = [:]
     
-    init(){}
+    public init(){}
     
     // MARK: Using Keys
     
-    func registerField(textField:UITextField, rules:[Rule]) {
+    public func registerField(textField:UITextField, rules:[Rule]) {
         validations[textField] = ValidationRule(textField: textField, rules: rules, errorLabel: nil)
     }
     
-    func registerField(textField:UITextField, errorLabel:UILabel, rules:[Rule]) {
+    public func registerField(textField:UITextField, errorLabel:UILabel, rules:[Rule]) {
         validations[textField] = ValidationRule(textField: textField, rules:rules, errorLabel:errorLabel)
     }
     
-    func validateAll(delegate:ValidationDelegate) {
+    public func validateAll(delegate:ValidationDelegate) {
         
         for field in validations.keys {
             if let currentRule:ValidationRule = validations[field] {

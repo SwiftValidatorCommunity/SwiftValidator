@@ -9,18 +9,18 @@
 import Foundation
 import UIKit
 
-class ValidationRule {
-    var textField:UITextField
-    var errorLabel:UILabel?
-    var rules:[Rule] = []
+public class ValidationRule {
+    public var textField:UITextField
+    public var errorLabel:UILabel?
+    public var rules:[Rule] = []
     
-    init(textField: UITextField, rules:[Rule], errorLabel:UILabel?){
+    public init(textField: UITextField, rules:[Rule], errorLabel:UILabel?){
         self.textField = textField
         self.errorLabel = errorLabel
         self.rules = rules
     }
     
-    func validateField() -> ValidationError? {
+    public func validateField() -> ValidationError? {
         for rule in rules {
             var isValid:Bool = rule.validate(textField.text)
             if !isValid {

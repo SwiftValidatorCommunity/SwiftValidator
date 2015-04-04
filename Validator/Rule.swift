@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol Rule {
+public protocol Rule {
     func validate(value:String) -> Bool
     func errorMessage() -> String
 }

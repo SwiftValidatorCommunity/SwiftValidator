@@ -9,13 +9,13 @@
 import Foundation
 
 
-class FullNameRule : Rule {
+public class FullNameRule : Rule {
     
     var message:String {
         return "Please provide a first & last name"
     }
     
-    func validate(value:String) -> Bool {
+    public func validate(value:String) -> Bool {
         
         var nameArray:[String] = split(value) { $0 == " " }
         if nameArray.count >= 2 {
@@ -23,8 +23,7 @@ class FullNameRule : Rule {
         }
         return false
     }
-    
-    func errorMessage() -> String {
+    public func errorMessage() -> String {
         return message
     }
 }
