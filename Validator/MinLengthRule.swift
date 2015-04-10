@@ -10,19 +10,19 @@ import Foundation
 
 public class MinLengthRule: Rule {
     
-    private var DEFAULT_MIN_LENGTH: Int = 3
+    private var DEFAULT_LENGTH: Int = 3
     
     public init(){}
     
     public init(length: Int){
-        self.DEFAULT_MIN_LENGTH = length
+        self.DEFAULT_LENGTH = length
     }
     
     public func validate(value: String) -> Bool {
-        return countElements(value) >= DEFAULT_MIN_LENGTH
+        return countElements(value) >= DEFAULT_LENGTH
     }
     
     public func errorMessage() -> String {
-        return "Must be at least \(DEFAULT_MIN_LENGTH) characters long"
+        return "Must be at least \(DEFAULT_LENGTH) characters long"
     }
 }

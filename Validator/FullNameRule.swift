@@ -15,6 +15,8 @@ public class FullNameRule : Rule {
         return "Please provide a first & last name"
     }
     
+    public init(){}
+    
     public func validate(value: String) -> Bool {
         var nameArray: [String] = split(value) { $0 == " " }
         return nameArray.count >= 2

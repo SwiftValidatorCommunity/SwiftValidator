@@ -11,9 +11,9 @@ import UIKit
 
 public class ConfirmationRule: Rule {
     
-    let confirmField: UITextField
+    private let confirmField: UITextField
     
-    init(confirmField: UITextField) {
+    public init(confirmField: UITextField) {
         self.confirmField = confirmField
     }
     
