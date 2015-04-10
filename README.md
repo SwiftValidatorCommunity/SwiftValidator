@@ -19,7 +19,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, "8.1"
 
 use_frameworks!
-pod 'SwiftValidator', '2.0.6'
+pod 'SwiftValidator', '2.0.7'
 ```
 
 Initialize the ``Validator`` by setting a delegate to a View Controller or other object.
@@ -56,7 +56,7 @@ Validate Fields on button tap or however you would like to trigger it.
 
 ```swift
 @IBAction func signupTapped(sender: AnyObject) {
-	validator.validateAll(delegate:self)
+	validator.validate(delegate:self)
 }
 ```
 
@@ -121,7 +121,7 @@ Swift Validator is written and maintained by Jeff Potter [@jpotts18](http://twit
 
 ## Contributing
 
-1. [Fork it](https://github.com/jpotts18/swift-validator/fork)
+1. [Fork it](https://github.com/jpotts18/SwiftValidator/fork)
 2. Create your feature branch `git checkout -b my-new-feature`
 3. Commit your changes `git commit -am 'Add some feature'`
 4. Push to the branch `git push origin my-new-feature`

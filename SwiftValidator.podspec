@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "SwiftValidator"
-  s.version      = "2.0.6"
+  s.version      = "2.0.7"
   s.summary      = "A UITextField Validation library for Swift"
   s.homepage     = "https://github.com/jpotts18/SwiftValidator"
   s.screenshots  = "https://raw.githubusercontent.com/jpotts18/SwiftValidator/master/swift-validator-v2.gif"
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.social_media_url   = "http://twitter.com/jpotts18"
   s.platform     = :ios
   s.ios.deployment_target	= '8.0'
-  s.source       = { :git => "https://github.com/jpotts18/SwiftValidator.git", :tag => "2.0.6" }
+  s.source       = { :git => "https://github.com/jpotts18/SwiftValidator.git", :tag => "2.0.7" }
   s.source_files  = "Validator/*.swift"
   s.frameworks   = ['Foundation', 'UIKit']
   s.requires_arc = true
