@@ -20,7 +20,6 @@ class ValidatorTests: XCTestCase {
     let VALID_EMAIL = "jiggy@gmail.com"
     let INVALID_EMAIL = "This is not a valid email"
     
-    
     let CONFIRM_TXT_FIELD = UITextField()
     let CONFIRM_TEXT = "Confirm this!"
     let CONFIRM_TEXT_DIFF = "I am not the same as the string above"
@@ -143,11 +142,6 @@ class ValidatorTests: XCTestCase {
     
     func testFullNameInvalid(){
         XCTAssertFalse(FullNameRule().validate("Carl"), "Full Name should be invalid")
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
     }
     
 }
