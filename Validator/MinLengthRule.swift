@@ -8,21 +8,21 @@
 
 import Foundation
 
-class MinLengthRule: Rule {
+public class MinLengthRule: Rule {
     
     private var DEFAULT_MIN_LENGTH: Int = 3
     
-    init(){}
+    public init(){}
     
-    init(length: Int){
+    public init(length: Int){
         self.DEFAULT_MIN_LENGTH = length
     }
     
-    func validate(value: String) -> Bool {
-        return countElements(value) > DEFAULT_MIN_LENGTH
+    public func validate(value: String) -> Bool {
+        return countElements(value) >= DEFAULT_MIN_LENGTH
     }
     
-    func errorMessage() -> String {
+    public func errorMessage() -> String {
         return "Must be at least \(DEFAULT_MIN_LENGTH) characters long"
     }
 }

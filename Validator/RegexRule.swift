@@ -12,7 +12,7 @@ public class RegexRule : Rule {
     
     private var REGEX: String = "^(?=.*?[A-Z]).{8,}$"
     
-    init(regex: String){
+    public init(regex: String){
         self.REGEX = regex
     }
     

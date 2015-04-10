@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 @objc public protocol ValidationDelegate {
-    func validationWasSuccessful()
+    func validationSuccessful()
     func validationFailed(errors: [UITextField:ValidationError])
 }
 
@@ -31,7 +31,7 @@ public class Validator {
         validations[textField] = ValidationRule(textField: textField, rules:rules, errorLabel:errorLabel)
     }
     
-    public func validateAll(delegate:ValidationDelegate) {
+    public func validate(delegate:ValidationDelegate) {
         
         for field in validations.keys {
             if let currentRule: ValidationRule = validations[field] {
@@ -47,7 +47,7 @@ public class Validator {
         }
         
         if errors.isEmpty {
-            delegate.validationWasSuccessful()
+            delegate.validationSuccessful()
         } else {
             delegate.validationFailed(errors)
         }
