@@ -7,21 +7,21 @@
 
 import Foundation
 
-class MaxLengthRule: Rule {
+public class MaxLengthRule: Rule {
     
     private var DEFAULT_MAX_LENGTH: Int = 16
     
-    init(){}
+    public init(){}
     
-    init(length: Int){
+    public init(length: Int){
         self.DEFAULT_MAX_LENGTH = length
     }
     
-    func validate(value: String) -> Bool {
+    public func validate(value: String) -> Bool {
         return countElements(value) <= DEFAULT_MAX_LENGTH
     }
     
-    func errorMessage() -> String {
+    public func errorMessage() -> String {
         return "Must be at most \(DEFAULT_MAX_LENGTH) characters long"
     }
 }
