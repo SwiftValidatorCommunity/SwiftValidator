@@ -17,12 +17,8 @@ public class RegexRule : Rule {
     }
     
     public func validate(value: String) -> Bool {
-        if let test = NSPredicate(format: "SELF MATCHES %@", self.REGEX) {
-            if test.evaluateWithObject(value) {
-                return true
-            }
-        }
-        return false
+        let test = NSPredicate(format: "SELF MATCHES %@", self.REGEX)
+        return test.evaluateWithObject(value)
     }
     
     public func errorMessage() -> String {

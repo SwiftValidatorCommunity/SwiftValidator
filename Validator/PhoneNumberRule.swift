@@ -17,13 +17,8 @@ class PhoneNumberRule: Rule {
     }
     
     func validate(value: String) -> Bool {
-        if let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX) {
-            if phoneTest.evaluateWithObject(value) {
-                return true
-            }
-            return false
-        }
-        return false
+        var phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
+        return phoneTest.evaluateWithObject(value)
     }
     
     func errorMessage() -> String {
