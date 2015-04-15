@@ -65,7 +65,7 @@ Implement the Validation Delegate in your View controller
 ```swift
 // ValidationDelegate methods
 
-func validationWasSuccessful() {
+func validationSuccessful() {
 	// submit the form
 }
 
