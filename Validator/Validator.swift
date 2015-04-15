@@ -31,6 +31,10 @@ public class Validator {
         validations[textField] = ValidationRule(textField: textField, rules:rules, errorLabel:errorLabel)
     }
     
+    public func unregisterField(textField:UITextField) {
+        validations.removeValueForKey(textField)
+    }
+    
     public func validate(delegate:ValidationDelegate) {
         
         for field in validations.keys {

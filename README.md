@@ -48,6 +48,8 @@ override func viewDidLoad() {
 	validator.registerField(phoneNumberTextField, errorLabel: phoneNumberErrorLabel, rules: [RequiredRule(), MinLengthRule(length: 9)])
 	validator.registerField(zipcodeTextField, errorLabel: zipcodeErrorLabel, rules: [RequiredRule(), ZipCodeRule(regex = "\\d{5}")])
 
+	// You can unregister a text field if you no longer want to validate it
+	validator.unregisterField(fullNameTextField)
 }
 ```
 
