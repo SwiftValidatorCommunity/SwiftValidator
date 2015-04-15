@@ -31,6 +31,14 @@ class ValidatorTests: XCTestCase {
     let LEN_5 = "Howdy"
     let LEN_20 = "Paint the cat orange"
     
+    let REGISTER_TXT_FIELD = UITextField()
+    let REGISTER_VALIDATOR = Validator()
+    let REGISTER_RULES = [Rule]()
+    
+    let UNREGISTER_TXT_FIELD = UITextField()
+    let UNREGISTER_VALIDATOR = Validator()
+    let UNREGISTER_RULES = [Rule]()
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -144,4 +152,16 @@ class ValidatorTests: XCTestCase {
         XCTAssertFalse(FullNameRule().validate("Carl"), "Full Name should be invalid")
     }
     
+    // MARK: Register Field
+    
+    func testRegisterField(){
+        REGISTER_VALIDATOR.registerField(REGISTER_TXT_FIELD, rules: REGISTER_RULES)
+        XCTAssert(REGISTER_VALIDATOR.validations[REGISTER_TXT_FIELD] != nil, "Textfield should register")
+    }
+    
+    func testUnregisterField(){
+        UNREGISTER_VALIDATOR.registerField(UNREGISTER_TXT_FIELD, rules: UNREGISTER_RULES)
+        UNREGISTER_VALIDATOR.unregisterField(UNREGISTER_TXT_FIELD)
+        XCTAssert(UNREGISTER_VALIDATOR.validations[UNREGISTER_TXT_FIELD] == nil, "Textfield should unregister")
+    }
 }
