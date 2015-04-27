@@ -18,7 +18,7 @@ public class MaxLengthRule: Rule {
     }
     
     public func validate(value: String) -> Bool {
-        return countElements(value) <= DEFAULT_LENGTH
+        return count(value) <= DEFAULT_LENGTH
     }
     
     public func errorMessage() -> String {

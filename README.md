@@ -22,6 +22,20 @@ use_frameworks!
 pod 'SwiftValidator', '2.0.7'
 ```
 
+Install into your project:
+
+```
+$ pod install
+```
+
+Open your project in Xcode from the .xcworkspace file (not the usual project file):
+
+```
+$ open MyProject.xcworkspace
+```
+
+You can now import SwiftValidator framework into your files.
+
 Initialize the ``Validator`` by setting a delegate to a View Controller or other object.
 
 ```swift
