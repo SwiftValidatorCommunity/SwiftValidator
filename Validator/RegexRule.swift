@@ -17,12 +17,15 @@ public class RegexRule : Rule {
     }
     
     public func validate(value: String) -> Bool {
-        if let test = NSPredicate(format: "SELF MATCHES %@", self.REGEX) {
-            if test.evaluateWithObject(value) {
-                return true
-            }
+        var test = NSPredicate(format: "SELF MATCHES %@", self.REGEX)
+        
+        if test.evaluateWithObject(value) {
+            return true
         }
-        return false
+        else {
+            return false
+        }
+        
     }
     
     public func errorMessage() -> String {
