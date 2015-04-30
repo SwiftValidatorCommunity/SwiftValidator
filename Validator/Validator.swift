@@ -57,6 +57,21 @@ public class Validator {
         }
     }
     
+    public func validate(callback:(errors:[UITextField:ValidationError])->Void) -> Void {
+        
+        for field in validations.keys {
+            if let currentRule:ValidationRule = validations[field] {
+                if var error:ValidationError = currentRule.validateField() {
+                    errors[field] = error
+                } else {
+                    errors.removeValueForKey(field)
+                }
+            }
+        }
+        
+        callback(errors: errors)
+    }
+    
     func clearErrors() {
         self.errors = [:]
     }
