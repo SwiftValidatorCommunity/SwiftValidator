@@ -164,4 +164,18 @@ class ValidatorTests: XCTestCase {
         UNREGISTER_VALIDATOR.unregisterField(UNREGISTER_TXT_FIELD)
         XCTAssert(UNREGISTER_VALIDATOR.validations[UNREGISTER_TXT_FIELD] == nil, "Textfield should unregister")
     }
+    
+    // MARK: Validate Functions
+    
+    func testValidateWithCallback() {
+        REGISTER_VALIDATOR.registerField(REGISTER_TXT_FIELD, rules: [EmailRule()])
+        REGISTER_TXT_FIELD.text = VALID_EMAIL
+        REGISTER_VALIDATOR.validate { (errors) -> Void in
+            XCTAssert(errors.count == 0, "Should not come back with errors")
+        }
+        REGISTER_TXT_FIELD.text = INVALID_EMAIL
+        REGISTER_VALIDATOR.validate { (errors) -> Void in
+            XCTAssert(errors.count == 1, "Should come back with 1 error")
+        }
+    }
 }
