@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.author             = { "Jeff Potter" => "jeff.potter6@gmail.com" }
   s.social_media_url   = "http://twitter.com/jpotts18"
   s.platform     = :ios
-  s.ios.deployment_target	= '8.0'
+  s.ios.deployment_target	= '7.0'
   s.source       = { :git => "https://github.com/jpotts18/SwiftValidator.git", :tag => "2.0.7" }
   s.source_files  = "Validator/*.swift"
   s.frameworks   = ['Foundation', 'UIKit']
