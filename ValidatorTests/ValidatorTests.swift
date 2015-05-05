@@ -39,6 +39,9 @@ class ValidatorTests: XCTestCase {
     let UNREGISTER_VALIDATOR = Validator()
     let UNREGISTER_RULES = [Rule]()
     
+    let UNREGISTER_ERRORS_TXT_FIELD = UITextField()
+    let UNREGISTER_ERRORS_VALIDATOR = Validator()
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -163,6 +166,18 @@ class ValidatorTests: XCTestCase {
         UNREGISTER_VALIDATOR.registerField(UNREGISTER_TXT_FIELD, rules: UNREGISTER_RULES)
         UNREGISTER_VALIDATOR.unregisterField(UNREGISTER_TXT_FIELD)
         XCTAssert(UNREGISTER_VALIDATOR.validations[UNREGISTER_TXT_FIELD] == nil, "Textfield should unregister")
+    }
+    
+    func testUnregisterError(){
+        UNREGISTER_ERRORS_VALIDATOR.registerField(UNREGISTER_ERRORS_TXT_FIELD, rules: [EmailRule()])
+        UNREGISTER_ERRORS_TXT_FIELD.text = INVALID_EMAIL
+        UNREGISTER_ERRORS_VALIDATOR.validate { (errors) -> Void in
+            XCTAssert(errors.count == 1, "Should come back with errors")
+        }
+        UNREGISTER_ERRORS_VALIDATOR.unregisterField(UNREGISTER_ERRORS_TXT_FIELD)
+        UNREGISTER_ERRORS_VALIDATOR.validate { (errors) -> Void in
+            XCTAssert(errors.count == 0, "Should not come back with errors")
+        }
     }
     
     // MARK: Validate Functions
