@@ -33,6 +33,7 @@ public class Validator {
     
     public func unregisterField(textField:UITextField) {
         validations.removeValueForKey(textField)
+        errors.removeValueForKey(textField)
     }
     
     public func validate(delegate:ValidationDelegate) {
