@@ -23,7 +23,7 @@ public class ValidationRule {
     public func validateField() -> ValidationError? {
         for rule in rules {
             if !rule.validate(textField.text) {
-                return ValidationError(textField: self.textField, error: rule.errorMessage())
+                return ValidationError(textField: self.textField, errorLabel:self.errorLabel, error: rule.errorMessage())
             }
         }
         return nil
