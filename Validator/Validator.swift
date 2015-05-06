@@ -42,6 +42,11 @@ public class Validator {
         field.layer.borderWidth = 1.0
     }
     
+    private func unmarkTextFieldAsInError(field:UITextField) {
+        field.layer.borderColor = UIColor.clearColor().CGColor
+        field.layer.borderWidth = 0.0
+    }
+    
     public func validate(delegate:ValidationDelegate) {
         
         for field in validations.keys {
@@ -58,6 +63,9 @@ public class Validator {
                     errors.removeValueForKey(field)
                     if let errorLabel = currentRule.errorLabel {
                         errorLabel.text = nil
+                    }
+                    if shouldMarkTextFieldsInError {
+                        self.unmarkTextFieldAsInError(field)
                     }
                 }
             }
@@ -86,6 +94,9 @@ public class Validator {
                     errors.removeValueForKey(field)
                     if let errorLabel = currentRule.errorLabel {
                         errorLabel.text = nil
+                    }
+                    if shouldMarkTextFieldsInError {
+                        self.unmarkTextFieldAsInError(field)
                     }
                 }
             }

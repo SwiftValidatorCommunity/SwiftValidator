@@ -260,6 +260,12 @@ class ValidatorTests: XCTestCase {
         REGISTER_VALIDATOR.validate { (errors) -> Void in
             XCTAssert(errors.count == 1, "Should come back with errors")
             XCTAssert(CGColorEqualToColor(self.REGISTER_TXT_FIELD.layer.borderColor, UIColor.redColor().CGColor), "Color should be what it was set as")
+            
+            self.REGISTER_TXT_FIELD.text = self.VALID_EMAIL
+            self.REGISTER_VALIDATOR.validate { (errors) -> Void in
+                XCTAssert(errors.count == 0, "Should come back without errors")
+                XCTAssert(!CGColorEqualToColor(self.REGISTER_TXT_FIELD.layer.borderColor, UIColor.redColor().CGColor), "Color should be what it was set as")
+            }
         }
     }
     
