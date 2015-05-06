@@ -31,6 +31,8 @@ public class Validator {
     
     private func validateAllFields() {
         
+        self.clearErrors()
+        
         for field in validations.keys {
             if let currentRule: ValidationRule = validations[field] {
                 if var error: ValidationError = currentRule.validateField() {
@@ -72,8 +74,6 @@ public class Validator {
     }
     
     public func validate(delegate:ValidationDelegate) {
-        
-        self.clearErrors()
         
         self.validateAllFields()
         

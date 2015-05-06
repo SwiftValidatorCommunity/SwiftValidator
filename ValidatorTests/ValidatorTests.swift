@@ -217,57 +217,50 @@ class ValidatorTests: XCTestCase {
         REGISTER_TXT_FIELD.text = VALID_EMAIL
         REGISTER_VALIDATOR.validate { (errors) -> Void in
             XCTAssert(errors.count == 0, "Should not come back with errors")
-            XCTAssert(self.ERROR_LABEL.text == nil, "Shouldn't have an error message on the label")
         }
     }
     
     func testErrorMessageSet() {
         REGISTER_VALIDATOR.registerField(REGISTER_TXT_FIELD, errorLabel: ERROR_LABEL, rules: [EmailRule()])
+        var successCount = 0
+        var errorCount = 0
+        REGISTER_VALIDATOR.styleTransformers(success: { (validationRule) -> Void in
+            successCount++
+        }) { (validationError) -> Void in
+            errorCount++
+        }
         REGISTER_TXT_FIELD.text = INVALID_EMAIL
         REGISTER_VALIDATOR.validate { (errors) -> Void in
             XCTAssert(errors.count == 1, "Should come back with errors")
-            if let errorText = self.ERROR_LABEL.text {
-                XCTAssert(errorText == errors[self.REGISTER_TXT_FIELD]!.errorMessage, "Shouldn't have an error message on the label, got: \(self.ERROR_LABEL.text!), expected: \(errors[self.REGISTER_TXT_FIELD]!.errorMessage)")
-            }else{
-                XCTAssert(false, "Error label should have text, not nil")
-            }
+            XCTAssert(errorCount == 1, "Should have called the error style transform once")
+            XCTAssert(successCount == 0, "Should not have called the success style transform as there are no successful fields")
         }
     }
     
     func testErrorMessageSetAndThenUnset() {
         REGISTER_VALIDATOR.registerField(REGISTER_TXT_FIELD, errorLabel: ERROR_LABEL, rules: [EmailRule()])
+        
+        var successCount = 0
+        var errorCount = 0
+        REGISTER_VALIDATOR.styleTransformers(success: { (validationRule) -> Void in
+            successCount++
+            }) { (validationError) -> Void in
+                errorCount++
+        }
+        
         REGISTER_TXT_FIELD.text = INVALID_EMAIL
         REGISTER_VALIDATOR.validate { (errors) -> Void in
             XCTAssert(errors.count == 1, "Should come back with errors")
-            if let errorText = self.ERROR_LABEL.text {
-                XCTAssert(errorText == errors[self.REGISTER_TXT_FIELD]!.errorMessage, "Shouldn't have an error message on the label, got: \(self.ERROR_LABEL.text!), expected: \(errors[self.REGISTER_TXT_FIELD]!.errorMessage)")
-                
-                self.REGISTER_TXT_FIELD.text = self.VALID_EMAIL
-                self.REGISTER_VALIDATOR.validate { (errors) -> Void in
-                    XCTAssert(errors.count == 0, "Should not come back with errors")
-                    XCTAssert(self.ERROR_LABEL.text == nil, "Shouldn't have an error message on the label")
-                }
-            }else{
-                XCTAssert(false, "Error label should have text, not nil")
+            XCTAssert(errorCount == 1, "Should have called the error style transform once")
+            XCTAssert(successCount == 0, "Should not have called the success style transform as there are no successful fields")
+            self.REGISTER_TXT_FIELD.text = self.VALID_EMAIL
+            self.REGISTER_VALIDATOR.validate { (errors) -> Void in
+                XCTAssert(errors.count == 0, "Should not come back with errors: \(errors)")
+                XCTAssert(successCount == 1, "Should have called the success style transform once")
+                XCTAssert(errorCount == 1, "Should not have called the error style transform again")
             }
         }
     }
-    
-//    func testTextFieldBorderColorSet() {
-//        REGISTER_VALIDATOR.registerField(REGISTER_TXT_FIELD, errorLabel: ERROR_LABEL, rules: [EmailRule()])
-//        REGISTER_TXT_FIELD.text = INVALID_EMAIL
-//        REGISTER_VALIDATOR.shouldMarkTextFieldsInError = true
-//        REGISTER_VALIDATOR.validate { (errors) -> Void in
-//            XCTAssert(errors.count == 1, "Should come back with errors")
-//            XCTAssert(CGColorEqualToColor(self.REGISTER_TXT_FIELD.layer.borderColor, UIColor.redColor().CGColor), "Color should be what it was set as")
-//            
-//            self.REGISTER_TXT_FIELD.text = self.VALID_EMAIL
-//            self.REGISTER_VALIDATOR.validate { (errors) -> Void in
-//                XCTAssert(errors.count == 0, "Should come back without errors")
-//                XCTAssert(!CGColorEqualToColor(self.REGISTER_TXT_FIELD.layer.borderColor, UIColor.redColor().CGColor), "Color should be what it was set as")
-//            }
-//        }
-//    }
     
     func testTextFieldBorderColorNotSet() {
         REGISTER_VALIDATOR.registerField(REGISTER_TXT_FIELD, errorLabel: ERROR_LABEL, rules: [EmailRule()])
