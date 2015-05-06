@@ -26,6 +26,7 @@
 		62DC8D6E1AAA42CE0095DFA7 /* PasswordRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DC8D6B1AAA42CE0095DFA7 /* PasswordRule.swift */; };
 		62DC8D711AAA43110095DFA7 /* ZipCodeRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62DC8D701AAA43110095DFA7 /* ZipCodeRule.swift */; };
 		62E9E2AD1ACFB336000A939C /* RegexRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E9E2AC1ACFB336000A939C /* RegexRule.swift */; };
+		DC5A35EC1AF99BA60013FE6B /* FloatRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5A35EB1AF99BA60013FE6B /* FloatRule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		62DC8D6B1AAA42CE0095DFA7 /* PasswordRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordRule.swift; sourceTree = "<group>"; };
 		62DC8D701AAA43110095DFA7 /* ZipCodeRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipCodeRule.swift; sourceTree = "<group>"; };
 		62E9E2AC1ACFB336000A939C /* RegexRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegexRule.swift; sourceTree = "<group>"; };
+		DC5A35EB1AF99BA60013FE6B /* FloatRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatRule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 				62DC8D701AAA43110095DFA7 /* ZipCodeRule.swift */,
 				628637271AAA49E300BC8FCF /* ConfirmRule.swift */,
 				62E9E2AC1ACFB336000A939C /* RegexRule.swift */,
+				DC5A35EB1AF99BA60013FE6B /* FloatRule.swift */,
 			);
 			name = Rules;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				628637281AAA49E300BC8FCF /* ConfirmRule.swift in Sources */,
 				62DC8D651AAA42520095DFA7 /* Rule.swift in Sources */,
 				62D1AE1F1A1E6D4400E4DFF8 /* ViewController.swift in Sources */,
+				DC5A35EC1AF99BA60013FE6B /* FloatRule.swift in Sources */,
 				62DC8D6D1AAA42CE0095DFA7 /* RequiredRule.swift in Sources */,
 				62D1AE1D1A1E6D4400E4DFF8 /* AppDelegate.swift in Sources */,
 				62D1AE581A1E700200E4DFF8 /* Validator.swift in Sources */,

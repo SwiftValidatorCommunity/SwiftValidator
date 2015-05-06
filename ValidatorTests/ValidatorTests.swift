@@ -27,6 +27,9 @@ class ValidatorTests: XCTestCase {
     let VALID_PASSWORD = "Super$ecret"
     let INVALID_PASSWORD = "abc"
     
+    let VALID_FLOAT = "1234.444"
+    let INVALID_FLOAT = "1234.44.44"
+    
     let LEN_3 = "hey"
     let LEN_5 = "Howdy"
     let LEN_20 = "Paint the cat orange"
@@ -92,6 +95,17 @@ class ValidatorTests: XCTestCase {
     
     func testEmailInvalid() {
         XCTAssertFalse(EmailRule().validate(INVALID_EMAIL), "Email should be invalid")
+    }
+    
+    // MARK: Float
+    
+    func testFloat() {
+        XCTAssert(FloatRule().validate(VALID_FLOAT), "Float should be valid")
+    }
+    
+    func testFloatInvalid() {
+        XCTAssert(!FloatRule().validate(INVALID_FLOAT), "Float should be invalid")
+        XCTAssert(!FloatRule().validate(VALID_EMAIL), "Float should be invalid")
     }
     
     // MARK: Confirm against field
