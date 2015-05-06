@@ -44,8 +44,6 @@ class ValidatorTests: XCTestCase {
     
     let ERROR_LABEL = UILabel()
     
-    let GREEN_COLOR = UIColor.greenColor()
-    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
