@@ -253,21 +253,21 @@ class ValidatorTests: XCTestCase {
         }
     }
     
-    func testTextFieldBorderColorSet() {
-        REGISTER_VALIDATOR.registerField(REGISTER_TXT_FIELD, errorLabel: ERROR_LABEL, rules: [EmailRule()])
-        REGISTER_TXT_FIELD.text = INVALID_EMAIL
-        REGISTER_VALIDATOR.shouldMarkTextFieldsInError = true
-        REGISTER_VALIDATOR.validate { (errors) -> Void in
-            XCTAssert(errors.count == 1, "Should come back with errors")
-            XCTAssert(CGColorEqualToColor(self.REGISTER_TXT_FIELD.layer.borderColor, UIColor.redColor().CGColor), "Color should be what it was set as")
-            
-            self.REGISTER_TXT_FIELD.text = self.VALID_EMAIL
-            self.REGISTER_VALIDATOR.validate { (errors) -> Void in
-                XCTAssert(errors.count == 0, "Should come back without errors")
-                XCTAssert(!CGColorEqualToColor(self.REGISTER_TXT_FIELD.layer.borderColor, UIColor.redColor().CGColor), "Color should be what it was set as")
-            }
-        }
-    }
+//    func testTextFieldBorderColorSet() {
+//        REGISTER_VALIDATOR.registerField(REGISTER_TXT_FIELD, errorLabel: ERROR_LABEL, rules: [EmailRule()])
+//        REGISTER_TXT_FIELD.text = INVALID_EMAIL
+//        REGISTER_VALIDATOR.shouldMarkTextFieldsInError = true
+//        REGISTER_VALIDATOR.validate { (errors) -> Void in
+//            XCTAssert(errors.count == 1, "Should come back with errors")
+//            XCTAssert(CGColorEqualToColor(self.REGISTER_TXT_FIELD.layer.borderColor, UIColor.redColor().CGColor), "Color should be what it was set as")
+//            
+//            self.REGISTER_TXT_FIELD.text = self.VALID_EMAIL
+//            self.REGISTER_VALIDATOR.validate { (errors) -> Void in
+//                XCTAssert(errors.count == 0, "Should come back without errors")
+//                XCTAssert(!CGColorEqualToColor(self.REGISTER_TXT_FIELD.layer.borderColor, UIColor.redColor().CGColor), "Color should be what it was set as")
+//            }
+//        }
+//    }
     
     func testTextFieldBorderColorNotSet() {
         REGISTER_VALIDATOR.registerField(REGISTER_TXT_FIELD, errorLabel: ERROR_LABEL, rules: [EmailRule()])

@@ -18,4 +18,10 @@ public class ValidationError {
         self.textField = textField
         self.errorMessage = error
     }
+    
+    public init(textField:UITextField, errorLabel:UILabel?, error:String){
+        self.textField = textField
+        self.errorLabel = errorLabel
+        self.errorMessage = error
+    }
 }

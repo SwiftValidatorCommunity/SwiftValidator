@@ -33,6 +33,21 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "hideKeyboard"))
         
+        validator.styleTransformers(success:{ (validationRule) -> Void in
+            println("here")
+                // clear error label
+                validationRule.errorLabel?.hidden = true
+                validationRule.textField.layer.borderColor = UIColor.clearColor().CGColor
+                validationRule.textField.layer.borderWidth = 0.0
+            
+            }, error:{ (validationError) -> Void in
+                println("error")
+                validationError.errorLabel?.hidden = false
+                validationError.errorLabel?.text = validationError.errorMessage
+                validationError.textField.layer.borderColor = UIColor.redColor().CGColor
+                validationError.textField.layer.borderWidth = 1.0
+        })
+        
         validator.registerField(fullNameTextField, errorLabel: fullNameErrorLabel , rules: [RequiredRule(), FullNameRule()])
         validator.registerField(emailTextField, errorLabel: emailErrorLabel, rules: [RequiredRule(), EmailRule()])
         validator.registerField(emailConfirmTextField, errorLabel: emailConfirmErrorLabel, rules: [RequiredRule(), ConfirmationRule(confirmField: emailTextField)])
@@ -42,7 +57,7 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
 
     @IBAction func submitTapped(sender: AnyObject) {
         println("Validating...")
-        self.clearErrors()
+//        self.clearErrors()
         validator.validate(self)
     }
 
@@ -58,38 +73,38 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
     }
     func validationFailed(errors:[UITextField:ValidationError]) {
         println("Validation FAILED!")
-        self.setErrors()
+//        self.setErrors()
     }
     
     // MARK: Error Styling
     
-    func removeError(label:UILabel, textField:UITextField) {
-        label.hidden = true
-        textField.layer.borderWidth = 0.0
-    }
+//    func removeError(label:UILabel, textField:UITextField) {
+//        label.hidden = true
+//        textField.layer.borderWidth = 0.0
+//    }
     
-    func removeAllErrors(){
-        removeError(fullNameErrorLabel, textField: fullNameTextField)
-        removeError(emailErrorLabel, textField: emailTextField)
-        removeError(phoneNumberErrorLabel, textField: phoneNumberTextField)
-        removeError(zipcodeErrorLabel, textField: zipcodeTextField)
-    }
+//    func removeAllErrors(){
+//        removeError(fullNameErrorLabel, textField: fullNameTextField)
+//        removeError(emailErrorLabel, textField: emailTextField)
+//        removeError(phoneNumberErrorLabel, textField: phoneNumberTextField)
+//        removeError(zipcodeErrorLabel, textField: zipcodeTextField)
+//    }
     
-    private func setErrors(){
-        for (field, error) in validator.errors {
-            field.layer.borderColor = UIColor.redColor().CGColor
-            field.layer.borderWidth = 1.0
-            error.errorLabel?.text = error.errorMessage
-            error.errorLabel?.hidden = false
-        }
-    }
+//    private func setErrors(){
+//        for (field, error) in validator.errors {
+//            field.layer.borderColor = UIColor.redColor().CGColor
+//            field.layer.borderWidth = 1.0
+//            error.errorLabel?.text = error.errorMessage
+//            error.errorLabel?.hidden = false
+//        }
+//    }
     
-    private func clearErrors(){
-        for (field, error) in validator.errors {
-            field.layer.borderWidth = 0.0
-            error.errorLabel?.hidden = true
-        }
-    }
+//    private func clearErrors(){
+//        for (field, error) in validator.errors {
+//            field.layer.borderWidth = 0.0
+//            error.errorLabel?.hidden = true
+//        }
+//    }
     
     func hideKeyboard(){
         self.view.endEditing(true)

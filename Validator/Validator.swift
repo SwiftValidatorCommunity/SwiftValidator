@@ -18,11 +18,45 @@ public class Validator {
     // dictionary to handle complex view hierarchies like dynamic tableview cells
     public var errors:[UITextField:ValidationError] = [:]
     public var validations:[UITextField:ValidationRule] = [:]
-    public var shouldMarkTextFieldsInError:Bool = false
+    private var successStyleTransform:((validationRule:ValidationRule)->Void)?
+    private var errorStyleTransform:((validationError:ValidationError)->Void)?
     
     public init(){}
     
+    // MARK: Private functions
+    
+    private func clearErrors() {
+        self.errors = [:]
+    }
+    
+    private func validateAllFields() {
+        
+        for field in validations.keys {
+            if let currentRule: ValidationRule = validations[field] {
+                if var error: ValidationError = currentRule.validateField() {
+                    errors[field] = error
+                    
+                    // let the user transform the field if they want
+                    if let transform = self.errorStyleTransform {
+                        transform(validationError: error)
+                    }
+                } else {
+                    // No error
+                    // let the user transform the field if they want
+                    if let transform = self.successStyleTransform {
+                        transform(validationRule: currentRule)
+                    }
+                }
+            }
+        }
+    }
+    
     // MARK: Using Keys
+    
+    public func styleTransformers(#success:((validationRule:ValidationRule)->Void)?, #error:((validationError:ValidationError)->Void)?) {
+        self.successStyleTransform = success
+        self.errorStyleTransform = error
+    }
     
     public func registerField(textField:UITextField, rules:[Rule]) {
         validations[textField] = ValidationRule(textField: textField, rules: rules, errorLabel: nil)
@@ -37,39 +71,11 @@ public class Validator {
         errors.removeValueForKey(textField)
     }
     
-    private func markTextFieldAsInError(field:UITextField) {
-        field.layer.borderColor = UIColor.redColor().CGColor
-        field.layer.borderWidth = 1.0
-    }
-    
-    private func unmarkTextFieldAsInError(field:UITextField) {
-        field.layer.borderColor = UIColor.clearColor().CGColor
-        field.layer.borderWidth = 0.0
-    }
-    
     public func validate(delegate:ValidationDelegate) {
         
-        for field in validations.keys {
-            if let currentRule: ValidationRule = validations[field] {
-                if var error: ValidationError = currentRule.validateField() {
-                    if let errorLabel = currentRule.errorLabel {
-                        errorLabel.text = error.errorMessage
-                    }
-                    if shouldMarkTextFieldsInError {
-                        self.markTextFieldAsInError(field)
-                    }
-                    errors[field] = error
-                } else {
-                    errors.removeValueForKey(field)
-                    if let errorLabel = currentRule.errorLabel {
-                        errorLabel.text = nil
-                    }
-                    if shouldMarkTextFieldsInError {
-                        self.unmarkTextFieldAsInError(field)
-                    }
-                }
-            }
-        }
+        self.clearErrors()
+        
+        self.validateAllFields()
         
         if errors.isEmpty {
             delegate.validationSuccessful()
@@ -80,32 +86,8 @@ public class Validator {
     
     public func validate(callback:(errors:[UITextField:ValidationError])->Void) -> Void {
         
-        for field in validations.keys {
-            if let currentRule:ValidationRule = validations[field] {
-                if var error:ValidationError = currentRule.validateField() {
-                    if let errorLabel = currentRule.errorLabel {
-                        errorLabel.text = error.errorMessage
-                    }
-                    if shouldMarkTextFieldsInError {
-                        self.markTextFieldAsInError(field)
-                    }
-                    errors[field] = error
-                } else {
-                    errors.removeValueForKey(field)
-                    if let errorLabel = currentRule.errorLabel {
-                        errorLabel.text = nil
-                    }
-                    if shouldMarkTextFieldsInError {
-                        self.unmarkTextFieldAsInError(field)
-                    }
-                }
-            }
-        }
+        self.validateAllFields()
         
         callback(errors: errors)
-    }
-    
-    func clearErrors() {
-        self.errors = [:]
     }
 }
