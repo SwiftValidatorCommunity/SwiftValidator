@@ -18,7 +18,7 @@ public class Validator {
     // dictionary to handle complex view hierarchies like dynamic tableview cells
     public var errors:[UITextField:ValidationError] = [:]
     public var validations:[UITextField:ValidationRule] = [:]
-    public var markTextFieldsInError:Bool = false
+    public var shouldMarkTextFieldsInError:Bool = false
     public var textFieldErrorColor:UIColor = UIColor.redColor()
     
     public init(){}
@@ -51,7 +51,7 @@ public class Validator {
                     if let errorLabel = currentRule.errorLabel {
                         errorLabel.text = error.errorMessage
                     }
-                    if markTextFieldsInError {
+                    if shouldMarkTextFieldsInError {
                         self.markTextFieldAsInError(field)
                     }
                     errors[field] = error
@@ -79,7 +79,7 @@ public class Validator {
                     if let errorLabel = currentRule.errorLabel {
                         errorLabel.text = error.errorMessage
                     }
-                    if markTextFieldsInError {
+                    if shouldMarkTextFieldsInError {
                         self.markTextFieldAsInError(field)
                     }
                     errors[field] = error
