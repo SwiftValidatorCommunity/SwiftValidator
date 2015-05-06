@@ -240,15 +240,4 @@ class ValidatorTests: XCTestCase {
             }
         }
     }
-    
-    func testTextFieldBorderColorSet() {
-        REGISTER_VALIDATOR.registerField(REGISTER_TXT_FIELD, errorLabel: ERROR_LABEL, rules: [EmailRule()])
-        REGISTER_TXT_FIELD.text = INVALID_EMAIL
-        REGISTER_VALIDATOR.textFieldErrorColor = GREEN_COLOR
-        REGISTER_VALIDATOR.shouldMarkTextFieldsInError = true
-        REGISTER_VALIDATOR.validate { (errors) -> Void in
-            XCTAssert(errors.count == 1, "Should come back with errors")
-            XCTAssert(CGColorEqualToColor(self.REGISTER_TXT_FIELD.layer.borderColor, self.GREEN_COLOR.CGColor), "Color should be what it was set as")
-        }
-    }
 }

@@ -19,7 +19,6 @@ public class Validator {
     public var errors:[UITextField:ValidationError] = [:]
     public var validations:[UITextField:ValidationRule] = [:]
     public var shouldMarkTextFieldsInError:Bool = false
-    public var textFieldErrorColor:UIColor = UIColor.redColor()
     
     public init(){}
     
@@ -39,7 +38,7 @@ public class Validator {
     }
     
     private func markTextFieldAsInError(field:UITextField) {
-        field.layer.borderColor = self.textFieldErrorColor.CGColor
+        field.layer.borderColor = UIColor.redColor().CGColor
         field.layer.borderWidth = 1.0
     }
     
