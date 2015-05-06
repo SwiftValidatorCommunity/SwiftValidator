@@ -55,7 +55,7 @@ public class Validator {
     
     // MARK: Using Keys
     
-    public func styleTransformers(#success:((validationRule:ValidationRule)->Void)?, #error:((validationError:ValidationError)->Void)?) {
+    public func styleTransformers(#success:((validationRule:ValidationRule)->Void)?, error:((validationError:ValidationError)->Void)?) {
         self.successStyleTransform = success
         self.errorStyleTransform = error
     }
