@@ -18,6 +18,8 @@ public class Validator {
     // dictionary to handle complex view hierarchies like dynamic tableview cells
     public var errors:[UITextField:ValidationError] = [:]
     public var validations:[UITextField:ValidationRule] = [:]
+    public var markTextFieldsInError:Bool = false
+    public var textFieldErrorColor:UIColor = UIColor.redColor()
     
     public init(){}
     
@@ -36,17 +38,28 @@ public class Validator {
         errors.removeValueForKey(textField)
     }
     
+    private func markTextFieldAsInError(field:UITextField) {
+        field.layer.borderColor = self.textFieldErrorColor.CGColor
+        field.layer.borderWidth = 1.0
+    }
+    
     public func validate(delegate:ValidationDelegate) {
         
         for field in validations.keys {
             if let currentRule: ValidationRule = validations[field] {
                 if var error: ValidationError = currentRule.validateField() {
-                    if currentRule.errorLabel != nil {
-                        error.errorLabel = currentRule.errorLabel
+                    if let errorLabel = currentRule.errorLabel {
+                        errorLabel.text = error.errorMessage
+                    }
+                    if markTextFieldsInError {
+                        self.markTextFieldAsInError(field)
                     }
                     errors[field] = error
                 } else {
                     errors.removeValueForKey(field)
+                    if let errorLabel = currentRule.errorLabel {
+                        errorLabel.text = nil
+                    }
                 }
             }
         }
@@ -63,9 +76,18 @@ public class Validator {
         for field in validations.keys {
             if let currentRule:ValidationRule = validations[field] {
                 if var error:ValidationError = currentRule.validateField() {
+                    if let errorLabel = currentRule.errorLabel {
+                        errorLabel.text = error.errorMessage
+                    }
+                    if markTextFieldsInError {
+                        self.markTextFieldAsInError(field)
+                    }
                     errors[field] = error
                 } else {
                     errors.removeValueForKey(field)
+                    if let errorLabel = currentRule.errorLabel {
+                        errorLabel.text = nil
+                    }
                 }
             }
         }

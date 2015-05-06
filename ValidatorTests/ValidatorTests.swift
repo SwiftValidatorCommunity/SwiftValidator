@@ -42,6 +42,8 @@ class ValidatorTests: XCTestCase {
     let UNREGISTER_ERRORS_TXT_FIELD = UITextField()
     let UNREGISTER_ERRORS_VALIDATOR = Validator()
     
+    let ERROR_LABEL = UILabel()
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -191,6 +193,49 @@ class ValidatorTests: XCTestCase {
         REGISTER_TXT_FIELD.text = INVALID_EMAIL
         REGISTER_VALIDATOR.validate { (errors) -> Void in
             XCTAssert(errors.count == 1, "Should come back with 1 error")
+        }
+    }
+    
+    // MARK: Validate error field gets it's text set to the error, if supplied
+    
+    func testNoErrorMessageSet() {
+        REGISTER_VALIDATOR.registerField(REGISTER_TXT_FIELD, errorLabel: ERROR_LABEL, rules: [EmailRule()])
+        REGISTER_TXT_FIELD.text = VALID_EMAIL
+        REGISTER_VALIDATOR.validate { (errors) -> Void in
+            XCTAssert(errors.count == 0, "Should not come back with errors")
+            XCTAssert(self.ERROR_LABEL.text == nil, "Shouldn't have an error message on the label")
+        }
+    }
+    
+    func testErrorMessageSet() {
+        REGISTER_VALIDATOR.registerField(REGISTER_TXT_FIELD, errorLabel: ERROR_LABEL, rules: [EmailRule()])
+        REGISTER_TXT_FIELD.text = INVALID_EMAIL
+        REGISTER_VALIDATOR.validate { (errors) -> Void in
+            XCTAssert(errors.count == 1, "Should come back with errors")
+            if let errorText = self.ERROR_LABEL.text {
+                XCTAssert(errorText == errors[self.REGISTER_TXT_FIELD]!.errorMessage, "Shouldn't have an error message on the label, got: \(self.ERROR_LABEL.text!), expected: \(errors[self.REGISTER_TXT_FIELD]!.errorMessage)")
+            }else{
+                XCTAssert(false, "Error label should have text, not nil")
+            }
+        }
+    }
+    
+    func testErrorMessageSetAndThenUnset() {
+        REGISTER_VALIDATOR.registerField(REGISTER_TXT_FIELD, errorLabel: ERROR_LABEL, rules: [EmailRule()])
+        REGISTER_TXT_FIELD.text = INVALID_EMAIL
+        REGISTER_VALIDATOR.validate { (errors) -> Void in
+            XCTAssert(errors.count == 1, "Should come back with errors")
+            if let errorText = self.ERROR_LABEL.text {
+                XCTAssert(errorText == errors[self.REGISTER_TXT_FIELD]!.errorMessage, "Shouldn't have an error message on the label, got: \(self.ERROR_LABEL.text!), expected: \(errors[self.REGISTER_TXT_FIELD]!.errorMessage)")
+                
+                self.REGISTER_TXT_FIELD.text = self.VALID_EMAIL
+                self.REGISTER_VALIDATOR.validate { (errors) -> Void in
+                    XCTAssert(errors.count == 0, "Should not come back with errors")
+                    XCTAssert(self.ERROR_LABEL.text == nil, "Shouldn't have an error message on the label")
+                }
+            }else{
+                XCTAssert(false, "Error label should have text, not nil")
+            }
         }
     }
 }
