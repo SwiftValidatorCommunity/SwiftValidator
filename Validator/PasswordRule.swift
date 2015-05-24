@@ -13,21 +13,14 @@ public class PasswordRule : RegexRule {
     // Alternative Regexes
     
     // 8 characters. One uppercase. One Lowercase. One number.
-    // var PASSWORD_REGEX = "^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[a-z]).{8,}$"
+    // static let regex = "^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[a-z]).{8,}$"
     //
     // no length. One uppercase. One lowercae. One number.
-    // var PASSWORD_REGEX = "^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[a-z]).*?$"
+    // static let regex = "^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[a-z]).*?$"
+	
+    static let regex = "^(?=.*?[A-Z]).{8,}$"
     
-    public init(){
-        super.init(regex: "^(?=.*?[A-Z]).{8,}$")
+	public convenience init(message : String = "Must be 8 characters with 1 uppercase") {
+		self.init(regex: PasswordRule.regex, message : message)
     }
-    
-    override public init(regex: String) {
-        super.init(regex: regex)
-    }
-    
-    override public func errorMessage() -> String {
-        return "Must be 8 characters with 1 uppercase"
-    }
-    
 }

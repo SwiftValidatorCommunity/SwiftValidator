@@ -10,16 +10,7 @@ import Foundation
 
 public class ZipCodeRule: RegexRule {
     
-    public init(){
-        super.init(regex: "\\d{5}")
+	public convenience init(message : String = "Enter a valid 5 digit zipcode"){
+		self.init(regex: "\\d{5}", message : message)
     }
-    
-    override public init(regex: String) {
-        super.init(regex: regex)
-    }
-    
-    public override func errorMessage() -> String {
-        return "Enter a valid 5 digit zipcode"
-    }
-    
 }

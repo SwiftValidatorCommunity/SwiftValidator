@@ -11,9 +11,11 @@ import Foundation
 public class RegexRule : Rule {
     
     private var REGEX: String = "^(?=.*?[A-Z]).{8,}$"
-    
-    public init(regex: String){
+    private var message : String
+	
+    public init(regex: String, message: String = "Invalid Regular Expression"){
         self.REGEX = regex
+		self.message = message
     }
     
     public func validate(value: String) -> Bool {
@@ -22,6 +24,6 @@ public class RegexRule : Rule {
     }
     
     public func errorMessage() -> String {
-        return "Invalid Regular Expression"
+        return message
     }
 }
