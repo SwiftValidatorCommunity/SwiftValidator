@@ -53,7 +53,8 @@ override func viewDidLoad() {
 	validator.registerField(fullNameTextField, rules: [RequiredRule(), FullNameRule()])
 	
 	// You can pass in error labels with your rules
-	validator.registerField(emailTextField, errorLabel: emailErrorLabel, rules: [RequiredRule(), EmailRule()])
+	// You can pass in custom error messages to regex rules (such as ZipCodeRule and EmailRule)
+	validator.registerField(emailTextField, errorLabel: emailErrorLabel, rules: [RequiredRule(), EmailRule(message: "Invalid email")])
 	
 	// You can validate against other fields using ConfirmRule
 	validator.registerField(emailConfirmTextField, errorLabel: emailConfirmErrorLabel, rules: [ConfirmationRule(confirmField: emailTextField)])
@@ -101,31 +102,16 @@ func validationFailed(errors:[UITextField:ValidationError]) {
 
 We will create a ```SSNRule``` class to show how to create your own Validation. A United States Social Security Number (or SSN) is a field that consists of XXX-XX-XXXX. 
 
-Create a class that implements the Rule protocol
+Create a class that inherits from RegexRule
 
 ```swift
 
-class SSNVRule: Rule {
-    let REGEX = "^\\d{3}-\\d{2}-\\d{4}$"
-    
-    init(){}
-    
-    // allow for custom variables to be passed
-    init(regex:String){
-        self.REGEX = regex
-    }
-    
-    func validate(value: String) -> Bool {
-        if let ssnTest = NSPredicate(format: "SELF MATCHES %@", REGEX) {
-            if ssnTest.evaluateWithObject(value) {
-                return true
-            }
-            return false
-        }
-    }
-    
-    func errorMessage() -> String{
-        return "Not a valid SSN"
+class SSNVRule: RegexRule {
+
+    static let regex = "^\\d{3}-\\d{2}-\\d{4}$"
+	
+    convenience init(message : String = "Not a valid SSN"){
+	self.init(regex: SSNVRule.regex, message : message)
     }
 }
 ```
