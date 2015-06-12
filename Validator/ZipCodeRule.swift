@@ -10,12 +10,7 @@ import Foundation
 
 public class ZipCodeRule: RegexRule {
     
-<<<<<<< HEAD
     public convenience init(message : String = "Enter a valid 5 digit zipcode"){
         self.init(regex: "\\d{5}", message : message)
-=======
-	public convenience init(message : String = "Enter a valid 5 digit zipcode"){
-		self.init(regex: "\\d{5}", message : message)
->>>>>>> upstream/master
     }
 }
