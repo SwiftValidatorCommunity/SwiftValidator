@@ -9,6 +9,7 @@
 import Foundation
 
 public class EmailRule: RegexRule {
+
     
     static let regex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
     
