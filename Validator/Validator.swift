@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 
 @objc public protocol ValidationDelegate {
-    func validationSuccessful()
+	func validationSuccessful()
+	optional func singleValidationSuccessful(field: UITextField)
     func validationFailed(errors: [UITextField:ValidationError])
 }
 
@@ -28,6 +29,10 @@ public class Validator {
     private func clearErrors() {
         self.errors = [:]
     }
+	
+	private func clearFieldError(textField: UITextField) {
+		self.errors[textField] = nil
+	}
     
     private func validateAllFields() {
         
@@ -52,6 +57,28 @@ public class Validator {
             }
         }
     }
+	
+	private func validateField(textField: UITextField) {
+		
+		self.clearFieldError(textField)
+		
+		if let currentRule: ValidationRule = validations[textField] {
+			if var error: ValidationError = currentRule.validateField() {
+				errors[textField] = error
+				
+				// let the user transform the field if they want
+				if let transform = self.errorStyleTransform {
+					transform(validationError: error)
+				}
+			} else {
+				// No error
+				// let the user transform the field if they want
+				if let transform = self.successStyleTransform {
+					transform(validationRule: currentRule)
+				}
+			}
+		}
+	}
     
     // MARK: Using Keys
     
@@ -83,7 +110,18 @@ public class Validator {
             delegate.validationFailed(errors)
         }
     }
-    
+	
+	public func validate(delegate:ValidationDelegate, textField: UITextField) {
+		
+		self.validateField(textField)
+		
+		if errors[textField] == nil {
+			delegate.singleValidationSuccessful?(textField)
+		} else {
+			delegate.validationFailed(errors)
+		}
+	}
+	
     public func validate(callback:(errors:[UITextField:ValidationError])->Void) -> Void {
         
         self.validateAllFields()
