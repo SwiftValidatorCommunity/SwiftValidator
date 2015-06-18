@@ -98,6 +98,35 @@ func validationFailed(errors:[UITextField:ValidationError]) {
 
 ```
 
+## Single Field Validation
+
+If you would like to have a separate validation for individual registered fields (to, for example, validate only the currently edited field), you can use the overloaded validate method:
+
+```swift
+override func viewDidLoad() {
+	super.viewDidLoad()
+	validator.registerField(fullNameTextField, rules: [RequiredRule(), FullNameRule()])
+	validator.registerField(emailTextField, errorLabel: emailErrorLabel, rules: [RequiredRule(), EmailRule(message: "Invalid email")])
+	fullNameTextField.addTarget(self, action: "enteredText:", forControlEvents: UIControlEvents.EditingChanged)
+	emailTextField.addTarget(self, action: "enteredText:", forControlEvents: UIControlEvents.EditingChanged)
+}
+
+func enteredText(sender: UITextField) {
+	validator.validate(self, textField: sender)
+}
+```
+
+This validation will not call your delegate's ```validationSuccessful()``` method.  If you want a way to respond to successful validation on this single field, you must implement the optional ValidationDelegate method ```singleValidationSuccessful(field: UITextField)```.
+
+```swift
+func singleValidationSuccessful(field: UITextField) {
+    validator.errors[field].errorLabel?.hidden = true
+    validator.errors[field].errorLabel?.text = ""
+    field.layer.borderColor = UIColor.greenColor().CGColor
+    field.layer.borderWidth = 0.5
+}
+```
+
 ## Custom Validation 
 
 We will create a ```SSNRule``` class to show how to create your own Validation. A United States Social Security Number (or SSN) is a field that consists of XXX-XX-XXXX. 
