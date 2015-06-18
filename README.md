@@ -100,7 +100,7 @@ func validationFailed(errors:[UITextField:ValidationError]) {
 
 ## Single Field Validation
 
-If you would like to have a separate validation for individual registered fields (to, for example, validate only the currently edited field), you can use the overloaded validate method:
+If you would like to have a separate validation for individual registered fields, you can use the overloaded validate method. This can be used, for example, to validate a field after every character is entered:
 
 ```swift
 override func viewDidLoad() {
