@@ -47,24 +47,24 @@ Register the fields that you want to validate
 
 ```swift
 override func viewDidLoad() {
-	super.viewDidLoad()
+    super.viewDidLoad()
 
-	// Validation Rules are evaluated from left to right.
-	validator.registerField(fullNameTextField, rules: [RequiredRule(), FullNameRule()])
-	
-	// You can pass in error labels with your rules
-	// You can pass in custom error messages to regex rules (such as ZipCodeRule and EmailRule)
-	validator.registerField(emailTextField, errorLabel: emailErrorLabel, rules: [RequiredRule(), EmailRule(message: "Invalid email")])
-	
-	// You can validate against other fields using ConfirmRule
-	validator.registerField(emailConfirmTextField, errorLabel: emailConfirmErrorLabel, rules: [ConfirmationRule(confirmField: emailTextField)])
-	
-	// You can now pass in regex and length parameters through overloaded contructors
-	validator.registerField(phoneNumberTextField, errorLabel: phoneNumberErrorLabel, rules: [RequiredRule(), MinLengthRule(length: 9)])
-	validator.registerField(zipcodeTextField, errorLabel: zipcodeErrorLabel, rules: [RequiredRule(), ZipCodeRule(regex = "\\d{5}")])
+    // Validation Rules are evaluated from left to right.
+    validator.registerField(fullNameTextField, rules: [RequiredRule(), FullNameRule()])
+    
+    // You can pass in error labels with your rules
+    // You can pass in custom error messages to regex rules (such as ZipCodeRule and EmailRule)
+    validator.registerField(emailTextField, errorLabel: emailErrorLabel, rules: [RequiredRule(), EmailRule(message: "Invalid email")])
+    
+    // You can validate against other fields using ConfirmRule
+    validator.registerField(emailConfirmTextField, errorLabel: emailConfirmErrorLabel, rules: [ConfirmationRule(confirmField: emailTextField)])
+    
+    // You can now pass in regex and length parameters through overloaded contructors
+    validator.registerField(phoneNumberTextField, errorLabel: phoneNumberErrorLabel, rules: [RequiredRule(), MinLengthRule(length: 9)])
+    validator.registerField(zipcodeTextField, errorLabel: zipcodeErrorLabel, rules: [RequiredRule(), ZipCodeRule(regex = "\\d{5}")])
 
-	// You can unregister a text field if you no longer want to validate it
-	validator.unregisterField(fullNameTextField)
+    // You can unregister a text field if you no longer want to validate it
+    validator.unregisterField(fullNameTextField)
 }
 ```
 
@@ -73,7 +73,7 @@ Validate Fields on button tap or however you would like to trigger it.
 
 ```swift
 @IBAction func signupTapped(sender: AnyObject) {
-	validator.validate(delegate:self)
+    validator.validate(delegate:self)
 }
 ```
 
@@ -83,19 +83,44 @@ Implement the Validation Delegate in your View controller
 // ValidationDelegate methods
 
 func validationSuccessful() {
-	// submit the form
+    // submit the form
 }
 
 func validationFailed(errors:[UITextField:ValidationError]) {
-	// turn the fields to red
-	for (field, error) in validator.errors {
-		field.layer.borderColor = UIColor.redColor().CGColor
-		field.layer.borderWidth = 1.0
-		error.errorLabel?.text = error.errorMessage // works if you added labels
-		error.errorLabel?.hidden = false
-	}
+    // turn the fields to red
+    for (field, error) in validator.errors {
+        field.layer.borderColor = UIColor.redColor().CGColor
+        field.layer.borderWidth = 1.0
+        error.errorLabel?.text = error.errorMessage // works if you added labels
+        error.errorLabel?.hidden = false
+    }
 }
 
+```
+
+## Single Field Validation
+
+If you would like to have a separate validation for individual registered fields, you can use the overloaded validate method. This can be used, for example, to validate a field after every character is entered:
+
+```swift
+override func viewDidLoad() {
+    super.viewDidLoad()
+    validator.registerField(fullNameTextField, rules: [RequiredRule(), FullNameRule()])
+    validator.registerField(emailTextField, errorLabel: emailErrorLabel, rules: [RequiredRule(), EmailRule(message: "Invalid email")])
+    fullNameTextField.addTarget(self, action: "enteredText:", forControlEvents: UIControlEvents.EditingChanged)
+    emailTextField.addTarget(self, action: "enteredText:", forControlEvents: UIControlEvents.EditingChanged)
+}
+
+func enteredText(sender: UITextField) {
+    validator.validate(sender, callback: { (error) -> Void in
+        if error != nil {
+        error!.errorLabel?.hidden = false
+        error!.errorLabel?.text = error!.errorMessage
+        error!.textField.layer.borderColor = UIColor.redColor().CGColor
+        error!.textField.layer.borderWidth = 1.0
+        }
+    })
+}
 ```
 
 ## Custom Validation 
@@ -109,9 +134,9 @@ Create a class that inherits from RegexRule
 class SSNVRule: RegexRule {
 
     static let regex = "^\\d{3}-\\d{2}-\\d{4}$"
-	
+    
     convenience init(message : String = "Not a valid SSN"){
-	self.init(regex: SSNVRule.regex, message : message)
+    self.init(regex: SSNVRule.regex, message : message)
     }
 }
 ```
