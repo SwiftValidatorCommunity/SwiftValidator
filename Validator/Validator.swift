@@ -11,7 +11,6 @@ import UIKit
 
 @objc public protocol ValidationDelegate {
 	func validationSuccessful()
-	optional func singleValidationSuccessful(field: UITextField)
     func validationFailed(errors: [UITextField:ValidationError])
 }
 
@@ -111,14 +110,14 @@ public class Validator {
         }
     }
 	
-	public func validate(delegate:ValidationDelegate, textField: UITextField) {
+	public func validate(textField: UITextField, callback:(error:ValidationError?)->Void) {
 		
 		self.validateField(textField)
 		
 		if errors[textField] == nil {
-			delegate.singleValidationSuccessful?(textField)
+			callback(error: nil)
 		} else {
-			delegate.validationFailed(errors)
+			callback(error: errors[textField])
 		}
 	}
 	
