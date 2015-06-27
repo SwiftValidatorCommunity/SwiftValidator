@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     // TextFields
     @IBOutlet weak var fullNameTextField: UITextField!
@@ -58,21 +58,17 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
 
     @IBAction func submitTapped(sender: AnyObject) {
         println("Validating...")
-        validator.validate(self)
-    }
-
-    // MARK: ValidationDelegate Methods
-    
-    func validationSuccessful() {
-        println("Validation Success!")
-        var alert = UIAlertController(title: "Success", message: "You are validated!", preferredStyle: UIAlertControllerStyle.Alert)
-        var defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-        alert.addAction(defaultAction)
-        self.presentViewController(alert, animated: true, completion: nil)
-    
-    }
-    func validationFailed(errors:[UITextField:ValidationError]) {
-        println("Validation FAILED!")
+        validator.validationWithCallback { (errors) -> Void in
+            if errors.isEmpty {
+                println("Validation Success!")
+                var alert = UIAlertController(title: "Success", message: "You are validated!", preferredStyle: UIAlertControllerStyle.Alert)
+                var defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                alert.addAction(defaultAction)
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+            else {
+                println("Validation FAILED!")            }
+        }
     }
     
     func hideKeyboard(){
