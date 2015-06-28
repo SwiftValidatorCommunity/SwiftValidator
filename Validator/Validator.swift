@@ -16,8 +16,8 @@ import UIKit
 
 public class Validator {
     // dictionary to handle complex view hierarchies like dynamic tableview cells
-    public var errors:[UITextField:ValidationError] = [:]
-    public var validations:[UITextField:ValidationRule] = [:]
+    public var errors = [UITextField:ValidationError]()
+    public var validations = [UITextField:ValidationRule]()
     private var successStyleTransform:((validationRule:ValidationRule)->Void)?
     private var errorStyleTransform:((validationError:ValidationError)->Void)?
     
@@ -25,29 +25,23 @@ public class Validator {
     
     // MARK: Private functions
     
-    private func clearErrors() {
-        self.errors = [:]
-    }
-    
     private func validateAllFields() {
         
-        self.clearErrors()
+        errors = [:]
         
-        for field in validations.keys {
-            if let currentRule: ValidationRule = validations[field] {
-                if var error: ValidationError = currentRule.validateField() {
-                    errors[field] = error
-                    
-                    // let the user transform the field if they want
-                    if let transform = self.errorStyleTransform {
-                        transform(validationError: error)
-                    }
-                } else {
-                    // No error
-                    // let the user transform the field if they want
-                    if let transform = self.successStyleTransform {
-                        transform(validationRule: currentRule)
-                    }
+        for (textField, rule) in validations {
+            if var error = rule.validateField() {
+                errors[textField] = error
+                
+                // let the user transform the field if they want
+                if let transform = self.errorStyleTransform {
+                    transform(validationError: error)
+                }
+            } else {
+                // No error
+                // let the user transform the field if they want
+                if let transform = self.successStyleTransform {
+                    transform(validationRule: rule)
                 }
             }
         }
