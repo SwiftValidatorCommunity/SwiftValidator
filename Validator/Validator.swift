@@ -35,7 +35,7 @@ public class Validator {
         
         for field in validations.keys {
             if let currentRule: ValidationRule = validations[field] {
-                if var error: ValidationError = currentRule.validateField() {
+                if let error: ValidationError = currentRule.validateField() {
                     errors[field] = error
                     
                     // let the user transform the field if they want
@@ -55,7 +55,7 @@ public class Validator {
     
     // MARK: Using Keys
     
-    public func styleTransformers(#success:((validationRule:ValidationRule)->Void)?, error:((validationError:ValidationError)->Void)?) {
+    public func styleTransformers(success success:((validationRule:ValidationRule)->Void)?, error:((validationError:ValidationError)->Void)?) {
         self.successStyleTransform = success
         self.errorStyleTransform = error
     }
