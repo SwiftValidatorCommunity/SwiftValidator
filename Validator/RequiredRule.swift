@@ -10,10 +10,10 @@ import Foundation
 
 public class RequiredRule: Rule {
     
-    public init(){}
+    private var message : String 
     
-    var message: String {
-        return "This field is required"
+    public init(message : String = "This field is required"){
+        self.message = message
     }
     
     public func validate(value: String) -> Bool {

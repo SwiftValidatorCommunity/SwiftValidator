@@ -17,10 +17,11 @@ public class PasswordRule : RegexRule {
     //
     // no length. One uppercase. One lowercae. One number.
     // static let regex = "^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[a-z]).*?$"
-	
+    
     static let regex = "^(?=.*?[A-Z]).{8,}$"
     
-	public convenience init(message : String = "Must be 8 characters with 1 uppercase") {
-		self.init(regex: PasswordRule.regex, message : message)
+    public convenience init(message : String = "Must be 8 characters with 1 uppercase") {
+        self.init(regex: PasswordRule.regex, message : message)
+	
     }
 }

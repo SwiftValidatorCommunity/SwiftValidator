@@ -10,8 +10,10 @@ import Foundation
 
 public class FloatRule:Rule {
     
-    public init(){
-        
+    private var message : String
+
+    public init(message : String = "This must be a number with or without a decimal"){
+        self.message = message
     }
     
     public func validate(value: String) -> Bool {
@@ -24,6 +26,6 @@ public class FloatRule:Rule {
     }
     
     public func errorMessage() -> String {
-        return "This must be a number with or without a decimal"
+        return message
     }
 }

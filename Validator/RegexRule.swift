@@ -12,10 +12,10 @@ public class RegexRule : Rule {
     
     private var REGEX: String = "^(?=.*?[A-Z]).{8,}$"
     private var message : String
-	
+    
     public init(regex: String, message: String = "Invalid Regular Expression"){
         self.REGEX = regex
-		self.message = message
+        self.message = message
     }
     
     public func validate(value: String) -> Bool {
