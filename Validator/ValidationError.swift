@@ -10,16 +10,16 @@ import Foundation
 import UIKit
 
 public class ValidationError {
-    public let textField:UITextField
-    public var errorLabel:UILabel?
-    public let errorMessage:String
+    public let textField: UITextField
+    public var errorLabel: UILabel?
+    public let errorMessage: String
     
-    public init(textField:UITextField, error:String){
+    public init(textField: UITextField, error: String) {
         self.textField = textField
         self.errorMessage = error
     }
     
-    public init(textField:UITextField, errorLabel:UILabel?, error:String){
+    public init(textField: UITextField, errorLabel: UILabel?, error: String) {
         self.textField = textField
         self.errorLabel = errorLabel
         self.errorMessage = error

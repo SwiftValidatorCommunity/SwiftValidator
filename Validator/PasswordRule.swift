@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class PasswordRule : RegexRule {
+public class PasswordRule: RegexRule {
     
     // Alternative Regexes
     
@@ -20,8 +20,7 @@ public class PasswordRule : RegexRule {
     
     static let regex = "^(?=.*?[A-Z]).{8,}$"
     
-    public convenience init(message : String = "Must be 8 characters with 1 uppercase") {
-        self.init(regex: PasswordRule.regex, message : message)
-	
+    public convenience init(message: String = "Must be 8 characters with 1 uppercase") {
+        self.init(regex: PasswordRule.regex, message: message)
     }
 }

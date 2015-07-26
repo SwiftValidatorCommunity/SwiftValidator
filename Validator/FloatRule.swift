@@ -8,21 +8,23 @@
 
 import Foundation
 
-public class FloatRule:Rule {
+public class FloatRule: Rule {
     
-    private var message : String
+    private var message: String
 
-    public init(message : String = "This must be a number with or without a decimal"){
+    public init(message: String = "This must be a number with or without a decimal") {
         self.message = message
     }
     
     public func validate(value: String) -> Bool {
-        let regex = NSRegularExpression(pattern: "[-+]?(\\d*[.])?\\d+", options: nil, error: nil)
-        if let regex = regex {
-            let match = regex.numberOfMatchesInString(value, options: nil, range: NSRange(location: 0, length: count(value)))
+        do {
+            let regex = try NSRegularExpression(pattern: "[-+]?(\\d*[.])?\\d+", options: [])
+            let match = regex.numberOfMatchesInString(value, options: [], range: NSRange(location: 0, length: value.characters.count))
             return match == 1
+            
+        } catch _ {
+            return false
         }
-        return false
     }
     
     public func errorMessage() -> String {

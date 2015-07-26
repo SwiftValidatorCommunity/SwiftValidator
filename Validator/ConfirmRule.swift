@@ -12,9 +12,9 @@ import UIKit
 public class ConfirmationRule: Rule {
     
     private let confirmField: UITextField
-    private var message : String
+    private var message: String
     
-    public init(confirmField: UITextField, message : String = "This field does not match"){
+    public init(confirmField: UITextField, message: String = "This field does not match") {
         self.confirmField = confirmField
         self.message = message
     }

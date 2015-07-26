@@ -10,9 +10,9 @@ import Foundation
 
 public class RequiredRule: Rule {
     
-    private var message : String 
+    private var message: String
     
-    public init(message : String = "This field is required"){
+    public init(message: String = "This field is required") {
         self.message = message
     }
     

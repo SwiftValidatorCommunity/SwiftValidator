@@ -8,12 +8,12 @@
 
 import Foundation
 
-public class RegexRule : Rule {
+public class RegexRule: Rule {
     
     private var REGEX: String = "^(?=.*?[A-Z]).{8,}$"
-    private var message : String
+    private var message: String
     
-    public init(regex: String, message: String = "Invalid Regular Expression"){
+    public init(regex: String, message: String = "Invalid Regular Expression") {
         self.REGEX = regex
         self.message = message
     }
