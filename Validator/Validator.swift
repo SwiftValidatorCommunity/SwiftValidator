@@ -9,15 +9,18 @@
 import Foundation
 import UIKit
 
-@objc public protocol ValidationDelegate {
+public typealias ValidatorErrors = [(field: UITextField, error: ValidationError)]
+public typealias ValidatorRules = [(field: UITextField, rule: ValidationRule)]
+
+public protocol ValidationDelegate {
     func validationSuccessful()
-    func validationFailed(errors: [UITextField:ValidationError])
+    func validationFailed(errors: ValidatorErrors)
 }
 
 public class Validator {
     // dictionary to handle complex view hierarchies like dynamic tableview cells
-    public var errors = [UITextField:ValidationError]()
-    public var validations = [UITextField:ValidationRule]()
+    public var errors: ValidatorErrors = []
+    public var validations: ValidatorRules = []
     private var successStyleTransform:((validationRule:ValidationRule)->Void)?
     private var errorStyleTransform:((validationError:ValidationError)->Void)?
     
@@ -26,12 +29,11 @@ public class Validator {
     // MARK: Private functions
     
     private func validateAllFields() {
-        
-        errors = [:]
+        errors.removeAll()
         
         for (textField, rule) in validations {
-            if var error = rule.validateField() {
-                errors[textField] = error
+            if let error: ValidationError = rule.validateField() {
+                errors.append(field: textField, error: error)
                 
                 // let the user transform the field if they want
                 if let transform = self.errorStyleTransform {
@@ -55,20 +57,24 @@ public class Validator {
     }
     
     public func registerField(textField:UITextField, rules:[Rule]) {
-        validations[textField] = ValidationRule(textField: textField, rules: rules, errorLabel: nil)
+        validations.append(field: textField, rule: ValidationRule(textField: textField, rules: rules, errorLabel: nil))
     }
     
     public func registerField(textField:UITextField, errorLabel:UILabel, rules:[Rule]) {
-        validations[textField] = ValidationRule(textField: textField, rules:rules, errorLabel:errorLabel)
+        validations.append(field: textField, rule:ValidationRule(textField: textField, rules:rules, errorLabel:errorLabel))
     }
     
     public func unregisterField(textField:UITextField) {
-        validations.removeValueForKey(textField)
-        errors.removeValueForKey(textField)
+        if let validationIndex = validations.find({ $0.0 == textField}) {
+            validations.removeAtIndex(validationIndex)
+        }
+        
+        if let errorIndex = errors.find({ $0.0 == textField}) {
+            validations.removeAtIndex(errorIndex)
+        }
     }
     
     public func validate(delegate:ValidationDelegate) {
-        
         self.validateAllFields()
         
         if errors.isEmpty {
@@ -78,10 +84,20 @@ public class Validator {
         }
     }
     
-    public func validate(callback:(errors:[UITextField:ValidationError])->Void) -> Void {
-        
+    public func validate(callback:(errors:ValidatorErrors)->Void) -> Void {
         self.validateAllFields()
         
         callback(errors: errors)
+    }
+}
+
+private extension Array {
+    func find(includedElement: T -> Bool) -> Int? {
+        for (idx, element) in enumerate(self) {
+            if includedElement(element) {
+                return idx
+            }
+        }
+        return nil
     }
 }

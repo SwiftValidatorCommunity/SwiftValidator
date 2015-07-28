@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate {
+class ViewController: UIViewController, ValidationDelegate, UITextFieldDelegate {
 
     // TextFields
     @IBOutlet weak var fullNameTextField: UITextField!
@@ -71,7 +71,7 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
         self.presentViewController(alert, animated: true, completion: nil)
     
     }
-    func validationFailed(errors:[UITextField:ValidationError]) {
+    func validationFailed(errors:ValidatorErrors) {
         println("Validation FAILED!")
     }
     
