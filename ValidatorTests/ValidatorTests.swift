@@ -8,7 +8,8 @@
 
 import UIKit
 import XCTest
-import Validator
+import Validator // example app
+import SwiftValidator // framework
 
 class ValidatorTests: XCTestCase {
     
