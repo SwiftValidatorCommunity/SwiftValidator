@@ -35,15 +35,15 @@ class ValidatorTests: XCTestCase {
     let LEN_20 = "Paint the cat orange"
     
     let REGISTER_TXT_FIELD = UITextField()
-    let REGISTER_VALIDATOR = Validator()
+    let REGISTER_VALIDATOR = Validator
     let REGISTER_RULES = [Rule]()
     
     let UNREGISTER_TXT_FIELD = UITextField()
-    let UNREGISTER_VALIDATOR = Validator()
+    let UNREGISTER_VALIDATOR = Validator
     let UNREGISTER_RULES = [Rule]()
     
     let UNREGISTER_ERRORS_TXT_FIELD = UITextField()
-    let UNREGISTER_ERRORS_VALIDATOR = Validator()
+    let UNREGISTER_ERRORS_VALIDATOR = Validator
     
     let ERROR_LABEL = UILabel()
     
