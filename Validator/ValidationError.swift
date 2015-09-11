@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class ValidationError {
+public class ValidationError: NSObject {
     public let textField:UITextField
     public var errorLabel:UILabel?
     public let errorMessage:String

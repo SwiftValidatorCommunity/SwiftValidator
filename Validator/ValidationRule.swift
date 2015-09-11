@@ -21,7 +21,7 @@ public class ValidationRule {
     }
     
     public func validateField() -> ValidationError? {
-        return rules.filter{ !$0.validate(self.textField.text) }
+        return rules.filter{ !$0.validate(self.textField.text ?? "") }
                     .map{ rule -> ValidationError in return ValidationError(textField: self.textField, errorLabel:self.errorLabel, error: rule.errorMessage()) }.first
     }
 }

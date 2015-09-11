@@ -34,7 +34,7 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "hideKeyboard"))
         
         validator.styleTransformers(success:{ (validationRule) -> Void in
-            println("here")
+            print("here")
                 // clear error label
                 validationRule.errorLabel?.hidden = true
                 validationRule.errorLabel?.text = ""
@@ -42,7 +42,7 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
                 validationRule.textField.layer.borderWidth = 0.5
             
             }, error:{ (validationError) -> Void in
-                println("error")
+                print("error")
                 validationError.errorLabel?.hidden = false
                 validationError.errorLabel?.text = validationError.errorMessage
                 validationError.textField.layer.borderColor = UIColor.redColor().CGColor
@@ -57,22 +57,22 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
     }
 
     @IBAction func submitTapped(sender: AnyObject) {
-        println("Validating...")
+        print("Validating...")
         validator.validate(self)
     }
 
     // MARK: ValidationDelegate Methods
     
     func validationSuccessful() {
-        println("Validation Success!")
-        var alert = UIAlertController(title: "Success", message: "You are validated!", preferredStyle: UIAlertControllerStyle.Alert)
-        var defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        print("Validation Success!")
+        let alert = UIAlertController(title: "Success", message: "You are validated!", preferredStyle: UIAlertControllerStyle.Alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
         alert.addAction(defaultAction)
         self.presentViewController(alert, animated: true, completion: nil)
     
     }
     func validationFailed(errors:[UITextField:ValidationError]) {
-        println("Validation FAILED!")
+        print("Validation FAILED!")
     }
     
     func hideKeyboard(){

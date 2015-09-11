@@ -17,7 +17,7 @@ class PhoneNumberRule: Rule {
     }
     
     func validate(value: String) -> Bool {
-        var phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
+        let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
         return phoneTest.evaluateWithObject(value)
     }
     

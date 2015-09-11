@@ -21,7 +21,7 @@ public class MinLengthRule: Rule {
     }
     
     public func validate(value: String) -> Bool {
-        return count(value) >= DEFAULT_LENGTH
+        return value.characters.count >= DEFAULT_LENGTH
     }
     
     public func errorMessage() -> String {
