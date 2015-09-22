@@ -11,6 +11,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target	= '8.0'
   s.source       = { :git => "https://github.com/jpotts18/SwiftValidator.git", :tag => "3.0.0" }
   s.source_files  = "Validator/*.swift"
+  s.exclude_files = "Validator/AppDelegate.swift"
   s.frameworks   = ['Foundation', 'UIKit']
   s.requires_arc = true
 end
