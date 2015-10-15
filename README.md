@@ -1,6 +1,8 @@
 SwiftValidator
 ===============
 
+[![Build Status](https://travis-ci.org/jpotts18/SwiftValidator.svg?branch=travis-ci)](https://travis-ci.org/jpotts18/SwiftValidator)
+
 Swift Validator is a rule-based validation library for Swift.
 
 ![Swift Validator](/swift-validator-v2.gif)
@@ -11,7 +13,7 @@ Swift Validator is a rule-based validation library for Swift.
 * ``UITextField`` + ``ValidationError`` come out of ``Validator``
 * ``Validator`` evaluates ``[Rule]`` sequentially and stops evaluating when a ``Rule`` fails. 
 
-## Quick Start
+## Installation
 
 ```ruby
 # Podfile
@@ -19,20 +21,28 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, "8.1"
 
 use_frameworks!
-pod 'SwiftValidator', '3.0.0' 
+pod 'SwiftValidator', '3.0.1' 
 ```
 
 Install into your project:
 
-```
+```bash
 $ pod install
 ```
 
 Open your project in Xcode from the .xcworkspace file (not the usual project file):
 
-```
+```bash
 $ open MyProject.xcworkspace
 ```
+
+If you are using Carthage you will need to add this to your `Cartfile`
+
+```bash
+github “jpotts18/SwiftValidator”
+```
+
+## Usage 
 
 You can now import SwiftValidator framework into your files.
 
