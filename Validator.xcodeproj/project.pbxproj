@@ -11,7 +11,6 @@
 		62D1AE221A1E6D4400E4DFF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62D1AE201A1E6D4400E4DFF8 /* Main.storyboard */; };
 		62D1AE241A1E6D4400E4DFF8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62D1AE231A1E6D4400E4DFF8 /* Images.xcassets */; };
 		62D1AE271A1E6D4400E4DFF8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62D1AE251A1E6D4400E4DFF8 /* LaunchScreen.xib */; };
-		62D1AE331A1E6D4500E4DFF8 /* ValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D1AE321A1E6D4500E4DFF8 /* ValidatorTests.swift */; };
 		FB465CB81B9884F400398388 /* SwiftValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = FB465CB71B9884F400398388 /* SwiftValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FB465CBE1B9884F400398388 /* SwiftValidator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB465CB31B9884F400398388 /* SwiftValidator.framework */; };
 		FB465CC71B9884F400398388 /* SwiftValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB465CC61B9884F400398388 /* SwiftValidatorTests.swift */; };
@@ -90,7 +89,6 @@
 		62D1AE261A1E6D4400E4DFF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		62D1AE2C1A1E6D4500E4DFF8 /* ValidatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ValidatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		62D1AE311A1E6D4500E4DFF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		62D1AE321A1E6D4500E4DFF8 /* ValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorTests.swift; sourceTree = "<group>"; };
 		FB465CB31B9884F400398388 /* SwiftValidator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftValidator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB465CB61B9884F400398388 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB465CB71B9884F400398388 /* SwiftValidator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftValidator.h; sourceTree = "<group>"; };
@@ -194,7 +192,6 @@
 		62D1AE2F1A1E6D4500E4DFF8 /* ValidatorTests */ = {
 			isa = PBXGroup;
 			children = (
-				62D1AE321A1E6D4500E4DFF8 /* ValidatorTests.swift */,
 				62D1AE301A1E6D4500E4DFF8 /* Supporting Files */,
 			);
 			path = ValidatorTests;
@@ -368,6 +365,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = jpotts18;
 				TargetAttributes = {
@@ -456,7 +454,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62D1AE331A1E6D4500E4DFF8 /* ValidatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -681,6 +678,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.jeffpotter.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -704,6 +702,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.jeffpotter.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -728,6 +727,7 @@
 				INFOPLIST_FILE = SwiftValidatorTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.levous.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Validator.app/Validator";
 			};
@@ -746,6 +746,7 @@
 				INFOPLIST_FILE = SwiftValidatorTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.levous.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Validator.app/Validator";
 			};
