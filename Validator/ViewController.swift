@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import SwiftValidator
 
 class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate {
 
