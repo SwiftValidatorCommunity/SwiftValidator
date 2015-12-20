@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 @objc public protocol ValidationDelegate {
-    func validationSuccessful(validFields: [UITextField])
-    func validationFailed(errors: [UITextField:ValidationError])
+    func validationSuccessful()
+    func validationFailed(errors: [UITextField:ValidationError], validFields: [UITextField])
 }
 
 public class Validator {
@@ -76,9 +76,9 @@ public class Validator {
         self.validateAllFields()
         
         if errors.isEmpty {
-            delegate.validationSuccessful(validFields)
+            delegate.validationSuccessful()
         } else {
-            delegate.validationFailed(errors)
+            delegate.validationFailed(errors, validFields: validFields)
         }
     }
     

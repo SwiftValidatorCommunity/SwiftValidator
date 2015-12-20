@@ -63,7 +63,7 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
 
     // MARK: ValidationDelegate Methods
     
-    func validationSuccessful(validFields: [UITextField]) {
+    func validationSuccessful() {
         print("Validation Success!")
         let alert = UIAlertController(title: "Success", message: "You are validated!", preferredStyle: UIAlertControllerStyle.Alert)
         let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
@@ -71,7 +71,7 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
         self.presentViewController(alert, animated: true, completion: nil)
     
     }
-    func validationFailed(errors:[UITextField:ValidationError]) {
+    func validationFailed(errors:[UITextField:ValidationError], validFields: [UITextField]) {
         print("Validation FAILED!")
     }
     
