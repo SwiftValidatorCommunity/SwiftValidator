@@ -76,7 +76,7 @@ override func viewDidLoad() {
 	// You can unregister a text field if you no longer want to validate it
 	validator.unregisterField(fullNameTextField)
 	
-	// You can configure validationRule/validationError to display validation status
+	// You can configure validationRule/validationError to customize how each field’s validation status  will be displayed in errorLabel and textField
 	validator.styleTransformers(success:{ (validationRule) -> Void in
             print("here")
                 // clear error label
