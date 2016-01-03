@@ -108,6 +108,25 @@ func validationFailed(errors:[UITextField:ValidationError]) {
 
 ```
 
+Implement style transformers to display validation result
+```swift
+validator.styleTransformers(success:{ (validationRule) -> Void in
+            print("here")
+                // clear error label
+                validationRule.errorLabel?.hidden = true
+                validationRule.errorLabel?.text = ""
+                validationRule.textField.layer.borderColor = UIColor.greenColor().CGColor
+                validationRule.textField.layer.borderWidth = 0.5
+            
+            }, error:{ (validationError) -> Void in
+                print("error")
+                validationError.errorLabel?.hidden = false
+                validationError.errorLabel?.text = validationError.errorMessage
+                validationError.textField.layer.borderColor = UIColor.redColor().CGColor
+                validationError.textField.layer.borderWidth = 1.0
+})
+``` 
+
 ## Custom Validation 
 
 We will create a ```SSNRule``` class to show how to create your own Validation. A United States Social Security Number (or SSN) is a field that consists of XXX-XX-XXXX. 
