@@ -9,11 +9,6 @@
 import Foundation
 import UIKit
 
-@objc public protocol ValidationDelegate {
-    func validationSuccessful()
-    func validationFailed(errors: [UITextField:ValidationError])
-}
-
 public class Validator {
     // dictionary to handle complex view hierarchies like dynamic tableview cells
     public var errors = [UITextField:ValidationError]()
