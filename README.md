@@ -59,6 +59,9 @@ Register the fields that you want to validate
 override func viewDidLoad() {
 	super.viewDidLoad()
 
+    // Set validationDelegate of validator
+    validator.delegate = self
+
 	// Validation Rules are evaluated from left to right.
 	validator.registerField(fullNameTextField, rules: [RequiredRule(), FullNameRule()])
 	
