@@ -7,10 +7,17 @@ Swift Validator is a rule-based validation library for Swift.
 
 ![Swift Validator](/swift-validator-v2.gif)
 
+## Supported UIViews
+
+* `UITextField`
+* `UITextView`
+* `UISegmentedControl`
+* `UIStepper`
+
 ## Core Concepts
 
-* ``UITextField`` + ``[Rule]`` + (and optional error ``UILabel``) go into  ``Validator``
-* ``UITextField`` + ``ValidationError`` come out of ``Validator``
+* ``UIView`` + ``[Rule]`` + (and optional error ``UILabel``) go into  ``Validator``
+* ``UIView`` + ``ValidationError`` come out of ``Validator``
 * ``Validator`` evaluates ``[Rule]`` sequentially and stops evaluating when a ``Rule`` fails. 
 
 ## Installation
@@ -50,6 +57,8 @@ Initialize the ``Validator`` by setting a delegate to a View Controller or other
 
 ```swift
 // ViewController.swift
+import SwiftValidator
+
 let validator = Validator()
 ```
 
@@ -75,6 +84,13 @@ override func viewDidLoad() {
 
 	// You can unregister a text field if you no longer want to validate it
 	validator.unregisterField(fullNameTextField)
+
+	// Other UIViews
+	validator.registerField(genderSegmentedControl, errorLabel: genderErrorLabel, rules: [SegmentedControlRequiredRule()])
+        
+	validator.registerField(notesTextView, errorLabel: notesErrorLabel, rules: [RequiredRule(), MinLengthRule(length: 10)])
+        
+	validator.registerField(counterStepper, errorLabel: counterStepperErrorLabel, rules: [GreaterThanRule(value: 10)])
 }
 ```
 
@@ -96,9 +112,9 @@ func validationSuccessful() {
 	// submit the form
 }
 
-func validationFailed(errors:[UITextField:ValidationError]) {
+func validationFailed(textFieldErrors: [UITextField: ValidationError], textViewErrors: [UITextView: ValidationError], segmentedControlErrors: [UISegmentedControl: ValidationError], stepperErrors: [UIStepper: ValidationError]) {
 	// turn the fields to red
-	for (field, error) in validator.errors {
+	for (field, error) in validator.textFieldErrors {
 		field.layer.borderColor = UIColor.redColor().CGColor
 		field.layer.borderWidth = 1.0
 		error.errorLabel?.text = error.errorMessage // works if you added labels
