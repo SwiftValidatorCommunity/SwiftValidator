@@ -65,6 +65,34 @@ public class Validator {
                     }
                 } else {
                     textFieldErrors.removeValueForKey(field)
+                    
+                    // let the user transform the field if they want
+                    if let transform = self.successStyleTransform {
+                        transform(validationRule: currentRule)
+                    }
+                }
+            }
+        }
+        
+        for field in segmentedControlValidations.keys {
+            if let currentRule: SegmentedControlValidationRule = segmentedControlValidations[field] as? SegmentedControlValidationRule {
+                if let error: ValidationError = currentRule.validateField() {
+                    if currentRule.errorLabel != nil {
+                        error.errorLabel = currentRule.errorLabel
+                    }
+                    segmentedControlErrors[field] = error
+                    
+                    // let the user transform the field if they want
+                    if let transform = self.errorStyleTransform {
+                        transform(validationError: error)
+                    }
+                } else {
+                    segmentedControlErrors.removeValueForKey(field)
+                    
+                    // let the user transform the field if they want
+                    if let transform = self.successStyleTransform {
+                        transform(validationRule: currentRule)
+                    }
                 }
             }
         }
