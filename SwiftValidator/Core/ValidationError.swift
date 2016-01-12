@@ -13,6 +13,7 @@ public class ValidationError: NSObject {
     public let textField: UITextField?
     public let textView: UITextView?
   	public let segmentedControl: UISegmentedControl?
+  	public let stepper: UIStepper?
     public var errorLabel: UILabel?
     public let errorMessage: String
     
@@ -21,6 +22,7 @@ public class ValidationError: NSObject {
         self.errorMessage = error
    		self.segmentedControl = nil
         self.textView = nil
+        self.stepper = nil
     }
     
     public init(textField: UITextField, errorLabel:UILabel?, error:String){
@@ -29,6 +31,7 @@ public class ValidationError: NSObject {
         self.errorMessage = error
    		self.segmentedControl = nil
         self.textView = nil
+        self.stepper = nil
     }
     
     public init(textView: UITextView, error: String){
@@ -36,6 +39,7 @@ public class ValidationError: NSObject {
         self.errorMessage = error
         self.textField = nil
         self.segmentedControl = nil
+        self.stepper = nil
     }
     
     public init(segmentedControl: UISegmentedControl, error: String){
@@ -43,5 +47,14 @@ public class ValidationError: NSObject {
         self.errorMessage = error
         self.textField = nil
         self.textView = nil
+        self.stepper = nil
+    }
+    
+    public init(stepper: UIStepper, error: String){
+        self.stepper = stepper
+        self.errorMessage = error
+        self.textField = nil
+        self.textView = nil
+        self.segmentedControl = nil
     }
 }

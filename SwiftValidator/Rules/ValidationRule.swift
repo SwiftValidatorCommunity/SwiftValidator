@@ -74,3 +74,23 @@ public class SegmentedControlValidationRule: ValidationRule  {
         return nil
     }
 }
+
+public class StepperValidationRule: ValidationRule  {
+    public var stepper: UIStepper?
+    
+    public init(stepper: UIStepper, rules:[Rule], errorLabel: UILabel?){
+        super.init()
+        self.stepper = stepper
+        self.errorLabel = errorLabel
+        self.rules = rules
+    }
+    
+    public func validateField() -> ValidationError? {
+        for rule in rules {
+            if !rule.validate(stepper!.value.description) {
+                return ValidationError(stepper: self.stepper!, error: rule.errorMessage())
+            }
+        }
+        return nil
+    }
+}

@@ -11,7 +11,7 @@ import UIKit
 
 @objc public protocol ValidationDelegate {
     func validationSuccessful()
-    func validationFailed(textFieldErrors: [UITextField:ValidationError], textViewErrors:[UITextView:ValidationError], segmentedControlErrors: [UISegmentedControl:ValidationError])
+    func validationFailed(textFieldErrors: [UITextField:ValidationError], textViewErrors:[UITextView:ValidationError], segmentedControlErrors: [UISegmentedControl:ValidationError], stepperErrors:[UIStepper:ValidationError])
 }
 
 public class Validator {
@@ -22,10 +22,12 @@ public class Validator {
     public var textFieldErrors:[UITextField:ValidationError] = [:]
     public var textViewErrors:[UITextView:ValidationError] = [:]
     public var segmentedControlErrors:[UISegmentedControl:ValidationError] = [:]
+    public var stepperErrors:[UIStepper:ValidationError] = [:]
     
     public var textFieldValidations:[UITextField:ValidationRule] = [:]
   	public var textViewValidations:[UITextView:ValidationRule] = [:]
     public var segmentedControlValidations:[UISegmentedControl:ValidationRule] = [:]
+  	public var stepperValidations:[UIStepper:ValidationRule] = [:]
     
     public init(){}
     
@@ -36,6 +38,7 @@ public class Validator {
         textFieldErrors = [:]
         segmentedControlErrors = [:]
         textViewErrors = [:]
+        stepperErrors = [:]
                 
         for field in textFieldValidations.keys {
             if let currentRule: TextFieldValidationRule = textFieldValidations[field] as? TextFieldValidationRule {
@@ -105,6 +108,29 @@ public class Validator {
                 }
             }
         }
+        
+        for field in stepperValidations.keys {
+            if let currentRule: StepperValidationRule = stepperValidations[field] as? StepperValidationRule {
+                if let error: ValidationError = currentRule.validateField() {
+                    if currentRule.errorLabel != nil {
+                        error.errorLabel = currentRule.errorLabel
+                    }
+                    stepperErrors[field] = error
+                    
+                    // let the user transform the field if they want
+                    if let transform = self.errorStyleTransform {
+                        transform(validationError: error)
+                    }
+                } else {
+                    stepperErrors.removeValueForKey(field)
+                    
+                    // let the user transform the field if they want
+                    if let transform = self.successStyleTransform {
+                        transform(validationRule: currentRule)
+                    }
+                }
+            }
+        }
     }
     
     // MARK: Using Keys
@@ -130,6 +156,10 @@ public class Validator {
         segmentedControlValidations[segmented] = SegmentedControlValidationRule(segmented: segmented, rules:rules, errorLabel:errorLabel)
     }
     
+    public func registerField(stepper:UIStepper, errorLabel:UILabel, rules:[Rule]) {
+        stepperValidations[stepper] = StepperValidationRule(stepper: stepper, rules:rules, errorLabel:errorLabel)
+    }
+    
     public func unregisterField(textField:UITextField) {
         textFieldValidations.removeValueForKey(textField)
         textFieldErrors.removeValueForKey(textField)
@@ -145,21 +175,26 @@ public class Validator {
         segmentedControlErrors.removeValueForKey(segmented)
     }
     
+    public func unregisterField(stepper:UIStepper) {
+        stepperValidations.removeValueForKey(stepper)
+        stepperErrors.removeValueForKey(stepper)
+    }
+    
     public func validate(delegate:ValidationDelegate) {
         
         self.validateAllFields()
         
-        if textFieldErrors.isEmpty && textViewErrors.isEmpty && segmentedControlErrors.isEmpty {
+        if textFieldErrors.isEmpty && textViewErrors.isEmpty && segmentedControlErrors.isEmpty && stepperErrors.isEmpty {
             delegate.validationSuccessful()
         } else {
-            delegate.validationFailed(textFieldErrors, textViewErrors: textViewErrors, segmentedControlErrors: segmentedControlErrors)
+            delegate.validationFailed(textFieldErrors, textViewErrors: textViewErrors, segmentedControlErrors: segmentedControlErrors, stepperErrors: stepperErrors)
         }
     }
     
-    public func validate(callback:(textFieldErrors:[UITextField:ValidationError], textViewErrors: [UITextView:ValidationError], segmentedControlErrors:[UISegmentedControl:ValidationError])->Void) -> Void {
+    public func validate(callback:(textFieldErrors:[UITextField:ValidationError], textViewErrors: [UITextView:ValidationError], segmentedControlErrors:[UISegmentedControl:ValidationError], stepperErrors:[UIStepper:ValidationError])->Void) -> Void {
         
         self.validateAllFields()
         
-        callback(textFieldErrors: textFieldErrors, textViewErrors: textViewErrors, segmentedControlErrors: segmentedControlErrors)
+        callback(textFieldErrors: textFieldErrors, textViewErrors: textViewErrors, segmentedControlErrors: segmentedControlErrors, stepperErrors: stepperErrors)
     }
 }

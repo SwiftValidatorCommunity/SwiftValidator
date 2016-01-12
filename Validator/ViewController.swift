@@ -73,7 +73,7 @@ class ViewController: UIViewController, ValidationDelegate, UITextFieldDelegate 
         self.presentViewController(alert, animated: true, completion: nil)
     
     }
-    func validationFailed(textFieldErrors:[UITextField:ValidationError], textViewErrors:[UITextView:ValidationError], segmentedControlErrors:[UISegmentedControl:ValidationError]) {
+    func validationFailed(textFieldErrors:[UITextField:ValidationError], textViewErrors:[UITextView:ValidationError], segmentedControlErrors:[UISegmentedControl:ValidationError], stepperErrors:[UIStepper:ValidationError]) {
         print("Validation FAILED!")
     }
     
