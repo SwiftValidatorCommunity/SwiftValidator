@@ -33,24 +33,7 @@ public class Validator {
         
         textFieldErrors = [:]
         segmentedControlErrors = [:]
-        
-//        for (textField, rule) in validations {
-//            if let error = rule.validateField() {
-//                errors[textField] = error
-//                
-//                // let the user transform the field if they want
-//                if let transform = self.errorStyleTransform {
-//                    transform(validationError: error)
-//                }
-//            } else {
-//                // No error
-//                // let the user transform the field if they want
-//                if let transform = self.successStyleTransform {
-//                    transform(validationRule: rule)
-//                }
-//            }
-//        }
-        
+                
         for field in textFieldValidations.keys {
             if let currentRule: TextFieldValidationRule = textFieldValidations[field] as? TextFieldValidationRule {
                 if let error: ValidationError = currentRule.validateField() {
