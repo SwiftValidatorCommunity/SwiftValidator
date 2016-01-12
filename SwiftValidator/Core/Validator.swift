@@ -11,7 +11,7 @@ import UIKit
 
 @objc public protocol ValidationDelegate {
     func validationSuccessful()
-    func validationFailed(errors: [UITextField:ValidationError], segmentedControlErrors: [UISegmentedControl:ValidationError])
+    func validationFailed(textFieldErrors: [UITextField:ValidationError], textViewErrors:[UITextView:ValidationError], segmentedControlErrors: [UISegmentedControl:ValidationError])
 }
 
 public class Validator {
@@ -20,9 +20,11 @@ public class Validator {
     private var errorStyleTransform:((validationError:ValidationError)->Void)?
     
     public var textFieldErrors:[UITextField:ValidationError] = [:]
+    public var textViewErrors:[UITextView:ValidationError] = [:]
     public var segmentedControlErrors:[UISegmentedControl:ValidationError] = [:]
     
     public var textFieldValidations:[UITextField:ValidationRule] = [:]
+  	public var textViewValidations:[UITextView:ValidationRule] = [:]
     public var segmentedControlValidations:[UISegmentedControl:ValidationRule] = [:]
     
     public init(){}
@@ -33,6 +35,7 @@ public class Validator {
         
         textFieldErrors = [:]
         segmentedControlErrors = [:]
+        textViewErrors = [:]
                 
         for field in textFieldValidations.keys {
             if let currentRule: TextFieldValidationRule = textFieldValidations[field] as? TextFieldValidationRule {
@@ -48,6 +51,29 @@ public class Validator {
                     }
                 } else {
                     textFieldErrors.removeValueForKey(field)
+                    
+                    // let the user transform the field if they want
+                    if let transform = self.successStyleTransform {
+                        transform(validationRule: currentRule)
+                    }
+                }
+            }
+        }
+        
+        for field in textViewValidations.keys {
+            if let currentRule: TextViewValidationRule = textViewValidations[field] as? TextViewValidationRule {
+                if let error: ValidationError = currentRule.validateField() {
+                    if currentRule.errorLabel != nil {
+                        error.errorLabel = currentRule.errorLabel
+                    }
+                    textViewErrors[field] = error
+                    
+                    // let the user transform the field if they want
+                    if let transform = self.errorStyleTransform {
+                        transform(validationError: error)
+                    }
+                } else {
+                    textViewErrors.removeValueForKey(field)
                     
                     // let the user transform the field if they want
                     if let transform = self.successStyleTransform {
@@ -96,6 +122,10 @@ public class Validator {
         textFieldValidations[textField] = TextFieldValidationRule(textField: textField, rules:rules, errorLabel:errorLabel)
     }
     
+    public func registerField(textView:UITextView, errorLabel:UILabel, rules:[Rule]) {
+        textViewValidations[textView] = TextViewValidationRule(textView: textView, rules:rules, errorLabel:errorLabel)
+    }
+    
     public func registerField(segmented:UISegmentedControl, errorLabel:UILabel, rules:[Rule]) {
         segmentedControlValidations[segmented] = SegmentedControlValidationRule(segmented: segmented, rules:rules, errorLabel:errorLabel)
     }
@@ -103,6 +133,11 @@ public class Validator {
     public func unregisterField(textField:UITextField) {
         textFieldValidations.removeValueForKey(textField)
         textFieldErrors.removeValueForKey(textField)
+    }
+    
+    public func unregisterField(textView:UITextView) {
+        textViewValidations.removeValueForKey(textView)
+        textViewErrors.removeValueForKey(textView)
     }
     
     public func unregisterField(segmented:UISegmentedControl) {
@@ -114,17 +149,17 @@ public class Validator {
         
         self.validateAllFields()
         
-        if textFieldErrors.isEmpty && segmentedControlErrors.isEmpty {
+        if textFieldErrors.isEmpty && textViewErrors.isEmpty && segmentedControlErrors.isEmpty {
             delegate.validationSuccessful()
         } else {
-            delegate.validationFailed(textFieldErrors, segmentedControlErrors: segmentedControlErrors)
+            delegate.validationFailed(textFieldErrors, textViewErrors: textViewErrors, segmentedControlErrors: segmentedControlErrors)
         }
     }
     
-    public func validate(callback:(textFieldErrors:[UITextField:ValidationError], segmentedControlErrors:[UISegmentedControl:ValidationError])->Void) -> Void {
+    public func validate(callback:(textFieldErrors:[UITextField:ValidationError], textViewErrors: [UITextView:ValidationError], segmentedControlErrors:[UISegmentedControl:ValidationError])->Void) -> Void {
         
         self.validateAllFields()
         
-        callback(textFieldErrors: textFieldErrors, segmentedControlErrors: segmentedControlErrors)
+        callback(textFieldErrors: textFieldErrors, textViewErrors: textViewErrors, segmentedControlErrors: segmentedControlErrors)
     }
 }

@@ -11,6 +11,7 @@ import UIKit
 
 public class ValidationError: NSObject {
     public let textField: UITextField?
+    public let textView: UITextView?
   	public let segmentedControl: UISegmentedControl?
     public var errorLabel: UILabel?
     public let errorMessage: String
@@ -19,6 +20,7 @@ public class ValidationError: NSObject {
         self.textField = textField
         self.errorMessage = error
    		self.segmentedControl = nil
+        self.textView = nil
     }
     
     public init(textField: UITextField, errorLabel:UILabel?, error:String){
@@ -26,11 +28,20 @@ public class ValidationError: NSObject {
         self.errorLabel = errorLabel
         self.errorMessage = error
    		self.segmentedControl = nil
+        self.textView = nil
+    }
+    
+    public init(textView: UITextView, error: String){
+        self.textView = textView
+        self.errorMessage = error
+        self.textField = nil
+        self.segmentedControl = nil
     }
     
     public init(segmentedControl: UISegmentedControl, error: String){
         self.segmentedControl = segmentedControl
         self.errorMessage = error
         self.textField = nil
+        self.textView = nil
     }
 }

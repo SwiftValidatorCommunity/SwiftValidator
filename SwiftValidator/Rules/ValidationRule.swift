@@ -34,6 +34,27 @@ public class TextFieldValidationRule: ValidationRule  {
     }
 }
 
+public class TextViewValidationRule: ValidationRule {
+    public var textView:UITextView?
+    
+    public init(textView: UITextView, rules:[Rule], errorLabel:UILabel?){
+        super.init()
+        self.textView   = textView
+        self.errorLabel = errorLabel
+        self.rules = rules
+    }
+    
+    public func validateField() -> ValidationError? {
+        for rule in rules {
+            if !rule.validate(textView!.text) {
+                return ValidationError(textView: self.textView!, error: rule.errorMessage())
+            }
+        }
+        return nil
+    }
+}
+
+
 public class SegmentedControlValidationRule: ValidationRule  {
     public var segmented: UISegmentedControl?
     
