@@ -10,18 +10,46 @@ import Foundation
 import UIKit
 
 public class ValidationRule {
-    public var textField:UITextField
     public var errorLabel:UILabel?
     public var rules:[Rule] = []
+}
+
+public class TextFieldValidationRule: ValidationRule  {
+    public var textField: UITextField?
     
     public init(textField: UITextField, rules:[Rule], errorLabel:UILabel?){
+        super.init()
         self.textField = textField
         self.errorLabel = errorLabel
         self.rules = rules
     }
     
     public func validateField() -> ValidationError? {
-        return rules.filter{ !$0.validate(self.textField.text ?? "") }
-                    .map{ rule -> ValidationError in return ValidationError(textField: self.textField, errorLabel:self.errorLabel, error: rule.errorMessage()) }.first
+        for rule in rules {
+            if !rule.validate(textField!.text!) {
+                return ValidationError(textField: self.textField!, error: rule.errorMessage())
+            }
+        }
+        return nil
+    }
+}
+
+public class SegmentedControlValidationRule: ValidationRule  {
+    public var segmented: UISegmentedControl?
+    
+    public init(segmented: UISegmentedControl, rules:[Rule], errorLabel: UILabel?){
+        super.init()
+        self.segmented = segmented
+        self.errorLabel = errorLabel
+        self.rules = rules
+    }
+    
+    public func validateField() -> ValidationError? {
+        for rule in rules {
+            if !rule.validate(segmented!.selectedSegmentIndex.description) {
+                return ValidationError(segmentedControl: self.segmented!, error: rule.errorMessage())
+            }
+        }
+        return nil
     }
 }

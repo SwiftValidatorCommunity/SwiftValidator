@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SwiftValidator
 
-class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate {
+class ViewController: UIViewController, ValidationDelegate, UITextFieldDelegate {
 
     // TextFields
     @IBOutlet weak var fullNameTextField: UITextField!
@@ -35,18 +35,20 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
         
         validator.styleTransformers(success:{ (validationRule) -> Void in
             print("here")
+            if let validationRule = validationRule as? TextFieldValidationRule {
                 // clear error label
                 validationRule.errorLabel?.hidden = true
                 validationRule.errorLabel?.text = ""
-                validationRule.textField.layer.borderColor = UIColor.greenColor().CGColor
-                validationRule.textField.layer.borderWidth = 0.5
+                validationRule.textField!.layer.borderColor = UIColor.greenColor().CGColor
+                validationRule.textField!.layer.borderWidth = 0.5
+            }
             
             }, error:{ (validationError) -> Void in
                 print("error")
                 validationError.errorLabel?.hidden = false
                 validationError.errorLabel?.text = validationError.errorMessage
-                validationError.textField.layer.borderColor = UIColor.redColor().CGColor
-                validationError.textField.layer.borderWidth = 1.0
+                validationError.textField!.layer.borderColor = UIColor.redColor().CGColor
+                validationError.textField!.layer.borderWidth = 1.0
         })
         
         validator.registerField(fullNameTextField, errorLabel: fullNameErrorLabel , rules: [RequiredRule(), FullNameRule()])
@@ -71,7 +73,7 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
         self.presentViewController(alert, animated: true, completion: nil)
     
     }
-    func validationFailed(errors:[UITextField:ValidationError]) {
+    func validationFailed(textFieldErrors:[UITextField:ValidationError], segmentedControlErrors:[UISegmentedControl:ValidationError]) {
         print("Validation FAILED!")
     }
     
