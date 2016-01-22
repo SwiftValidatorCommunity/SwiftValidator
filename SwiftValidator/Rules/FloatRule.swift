@@ -17,7 +17,7 @@ public class FloatRule:Rule {
     }
     
     public func validate(value: String) -> Bool {
-        let regex = try? NSRegularExpression(pattern: "[-+]?(\\d*[.])?\\d+", options: [])
+        let regex = try? NSRegularExpression(pattern: "^[-+]?(\\d*[.])?\\d+$", options: [])
         if let regex = regex {
             let match = regex.numberOfMatchesInString(value, options: [], range: NSRange(location: 0, length: value.characters.count))
             return match == 1
