@@ -33,6 +33,9 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "hideKeyboard"))
         
+        // Set validationDelegate of validator
+        validator.delegate = self
+        
         validator.styleTransformers(success:{ (validationRule) -> Void in
             print("here")
                 // clear error label
@@ -58,7 +61,7 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
 
     @IBAction func submitTapped(sender: AnyObject) {
         print("Validating...")
-        validator.validate(self)
+        validator.validate()
     }
 
     // MARK: ValidationDelegate Methods

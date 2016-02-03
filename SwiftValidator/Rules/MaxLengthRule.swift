@@ -6,23 +6,35 @@
 //
 
 import Foundation
-
+/**
+ `MaxLengthRule` is a subclass of Rule that defines how maximum character length is validated.
+ */
 public class MaxLengthRule: Rule {
-    
+    /// Default maximum character length.
     private var DEFAULT_LENGTH: Int = 16
+    /// Error message to be displayed if validation fails.
     private var message : String = "Must be at most 16 characters long"
-    
+    /// - returns: An initialized object, or nil if an object could not be created for some reason that would not result in an exception.
     public init(){}
-    
+    /**
+     - parameter length: Maximum character length.
+     - parameter message: String of error message.
+     - returns: An initialized object, or nil if an object could not be created for some reason that would not result in an exception.
+     */
     public init(length: Int, message : String = "Must be at most %ld characters long"){
         self.DEFAULT_LENGTH = length
         self.message = NSString(format: message, self.DEFAULT_LENGTH) as String
     }
-        
+    /**
+     - parameter value: String to checked for validation.
+     - returns: A boolean value. True if validation is successful; False if validation fails.
+     */
     public func validate(value: String) -> Bool {
         return value.characters.count <= DEFAULT_LENGTH
     }
-    
+    /**
+     - returns: String of error message.
+     */
     public func errorMessage() -> String {
         return message
     }
