@@ -211,6 +211,18 @@ class SwiftValidatorTests: XCTestCase {
         }
     }
     
+    func testValidateSingleField() {
+        REGISTER_VALIDATOR.registerField(REGISTER_TXT_FIELD, rules: [EmailRule()])
+        REGISTER_TXT_FIELD.text = VALID_EMAIL
+        REGISTER_VALIDATOR.validateField(REGISTER_TXT_FIELD) { error in
+            XCTAssert(error == nil, "Should not present error")
+        }
+        REGISTER_TXT_FIELD.text = INVALID_EMAIL
+        REGISTER_VALIDATOR.validateField(REGISTER_TXT_FIELD) { error in
+            XCTAssert(error?.errorMessage.characters.count > 0, "Should state 'invalid email'")
+        }
+    }
+    
     // MARK: Validate error field gets it's text set to the error, if supplied
     
     func testNoErrorMessageSet() {

@@ -108,6 +108,26 @@ func validationFailed(errors:[UITextField:ValidationError]) {
 
 ```
 
+### Single Field Validation
+
+You may use single field validation in some cases. This could be useful in situations such as controlling responders:
+
+```swift
+// Don't forget to use UITextFieldDelegate
+// and delegate yourTextField to self in viewDidLoad()
+func textFieldShouldReturn(textField: UITextField) -> Bool {
+    validator.validateField(textField){ error in
+        if error == nil {
+            // Field validation was successful
+        } else {
+            // Validation error occurred
+        }
+    }
+    return true
+}
+```
+
+
 ## Custom Validation 
 
 We will create a ```SSNRule``` class to show how to create your own Validation. A United States Social Security Number (or SSN) is a field that consists of XXX-XX-XXXX. 

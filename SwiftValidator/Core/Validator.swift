@@ -47,6 +47,26 @@ public class Validator {
         }
     }
     
+    // MARK: Public functions
+    
+    public func validateField(textField: UITextField, callback: (error:ValidationError?) -> Void){
+        if let fieldRule = validations[textField] {
+            if let error = fieldRule.validateField() {
+                if let transform = self.errorStyleTransform {
+                    transform(validationError: error)
+                }
+                callback(error: error)
+            } else {
+                if let transform = self.successStyleTransform {
+                    transform(validationRule: fieldRule)
+                }
+                callback(error: nil)
+            }
+        } else {
+            callback(error: nil)
+        }
+    }
+    
     // MARK: Using Keys
     
     public func styleTransformers(success success:((validationRule:ValidationRule)->Void)?, error:((validationError:ValidationError)->Void)?) {
