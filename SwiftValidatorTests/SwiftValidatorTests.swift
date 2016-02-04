@@ -131,6 +131,14 @@ class SwiftValidatorTests: XCTestCase {
         XCTAssertFalse(EmailRule().validate(INVALID_PASSWORD), "Password is invalid")
     }
     
+    func testPhoneNumber() {
+        XCTAssertTrue(PhoneNumberRule().validate("1234567890"), "Phone number should valid")
+    }
+    
+    func testPhoneNumberInvalid() {
+        XCTAssertFalse(PhoneNumberRule().validate("12345678901"), "Phone number should be invalid")
+    }
+    
     // MARK: Max Length
     
     func testMaxLength(){
@@ -156,6 +164,18 @@ class SwiftValidatorTests: XCTestCase {
     
     func testMinLengthWithParameter(){
         XCTAssertTrue(MinLengthRule(length: 5).validate(LEN_5), "Min Len should be set to 5 and >= length")
+    }
+    
+    func testExactLength(){
+        XCTAssertTrue(ExactLengthRule(length: 5).validate(LEN_5), "Exact Len should be exactly 5")
+    }
+    
+    func testExactLengthInvalidGreaterThan(){
+        XCTAssertFalse(ExactLengthRule(length: 6).validate(LEN_5), "Exact Len should be Invalid")
+    }
+
+    func testExactLengthInvalidLessThan(){
+        XCTAssertFalse(ExactLengthRule(length: 4).validate(LEN_5), "Exact Len should be Invalid")
     }
     
     // MARK: Full Name

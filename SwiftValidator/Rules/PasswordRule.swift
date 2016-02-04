@@ -1,6 +1,5 @@
 //
 //  PasswordValidation.swift
-//  Pingo
 //
 //  Created by Jeff Potter on 11/13/14.
 //  Copyright (c) 2015 jpotts18. All rights reserved.
@@ -22,6 +21,5 @@ public class PasswordRule : RegexRule {
     
     public convenience init(message : String = "Must be 8 characters with 1 uppercase") {
         self.init(regex: PasswordRule.regex, message : message)
-	
     }
 }

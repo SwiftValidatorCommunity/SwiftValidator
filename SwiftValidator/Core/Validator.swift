@@ -1,6 +1,5 @@
 //
 //  Validator.swift
-//  Pingo
 //
 //  Created by Jeff Potter on 11/10/14.
 //  Copyright (c) 2015 jpotts18. All rights reserved.
@@ -10,8 +9,10 @@ import Foundation
 import UIKit
 
 @objc public protocol ValidationDelegate {
+//    func validationWillRun()
     func validationSuccessful()
     func validationFailed(errors: [UITextField:ValidationError])
+//    func validationDidRun()
 }
 
 public class Validator {
@@ -89,6 +90,8 @@ public class Validator {
     
     public func validate(delegate:ValidationDelegate) {
         
+//        delegate.validationWillRun()
+        
         self.validateAllFields()
         
         if errors.isEmpty {
@@ -96,6 +99,8 @@ public class Validator {
         } else {
             delegate.validationFailed(errors)
         }
+        
+//        delegate.validationDidRun()
     }
     
     public func validate(callback:(errors:[UITextField:ValidationError])->Void) -> Void {
