@@ -75,11 +75,23 @@ public class Validator {
     }
     
     public func registerField(textField:UITextField, rules:[Rule]) {
-        validations[textField] = ValidationRule(textField: textField, rules: rules, errorLabel: nil)
+        registerFieldInternally(textField, errorLabel: nil, preparators: nil, rules: rules)
     }
     
     public func registerField(textField:UITextField, errorLabel:UILabel, rules:[Rule]) {
-        validations[textField] = ValidationRule(textField: textField, rules:rules, errorLabel:errorLabel)
+        registerFieldInternally(textField, errorLabel: errorLabel, preparators: nil, rules: rules)
+    }
+    
+    public func registerField(textField:UITextField, preparators: [Preparator], rules:[Rule]) {
+        registerFieldInternally(textField, errorLabel: nil, preparators: preparators, rules: rules)
+    }
+    
+    public func registerField(textField:UITextField, errorLabel:UILabel, preparators: [Preparator], rules:[Rule]) {
+        registerFieldInternally(textField, errorLabel: errorLabel, preparators: preparators, rules: rules)
+    }
+    
+    private func registerFieldInternally(textField: UITextField, errorLabel: UILabel?, preparators: [Preparator]?, rules: [Rule]) {
+        validations[textField] = ValidationRule(textField: textField, preparators: preparators, rules: rules, errorLabel: errorLabel)
     }
     
     public func unregisterField(textField:UITextField) {

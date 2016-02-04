@@ -12,16 +12,26 @@ import UIKit
 public class ValidationRule {
     public var textField:UITextField
     public var errorLabel:UILabel?
+    public var preparators:[Preparator]?
     public var rules:[Rule] = []
     
-    public init(textField: UITextField, rules:[Rule], errorLabel:UILabel?){
+    public init(textField: UITextField, preparators: [Preparator]?, rules: [Rule], errorLabel: UILabel?) {
         self.textField = textField
         self.errorLabel = errorLabel
+        self.preparators = preparators
         self.rules = rules
     }
     
     public func validateField() -> ValidationError? {
+        
+        if let preparators = preparators {
+            
+            for preparator in preparators {
+                preparator.prepare(textField)
+            }
+        }
+        
         return rules.filter{ !$0.validate(self.textField.text ?? "") }
-                    .map{ rule -> ValidationError in return ValidationError(textField: self.textField, errorLabel:self.errorLabel, error: rule.errorMessage()) }.first
+            .map{ rule -> ValidationError in return ValidationError(textField: self.textField, errorLabel:self.errorLabel, error: rule.errorMessage()) }.first
     }
 }
