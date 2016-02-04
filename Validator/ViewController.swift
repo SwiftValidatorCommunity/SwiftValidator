@@ -71,7 +71,7 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
         self.presentViewController(alert, animated: true, completion: nil)
     
     }
-    func validationFailed(errors:[UITextField:ValidationError]) {
+    func validationFailed(errors:[UITextField:ValidationError], validFields: [UITextField]) {
         print("Validation FAILED!")
     }
     

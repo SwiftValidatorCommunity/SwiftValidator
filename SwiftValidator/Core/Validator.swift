@@ -11,12 +11,13 @@ import UIKit
 
 @objc public protocol ValidationDelegate {
     func validationSuccessful()
-    func validationFailed(errors: [UITextField:ValidationError])
+    func validationFailed(errors: [UITextField:ValidationError], validFields: [UITextField])
 }
 
 public class Validator {
     // dictionary to handle complex view hierarchies like dynamic tableview cells
     public var errors = [UITextField:ValidationError]()
+    public var validFields = [UITextField]()
     public var validations = [UITextField:ValidationRule]()
     private var successStyleTransform:((validationRule:ValidationRule)->Void)?
     private var errorStyleTransform:((validationError:ValidationError)->Void)?
@@ -28,6 +29,7 @@ public class Validator {
     private func validateAllFields() {
         
         errors = [:]
+        validFields = []
         
         for (textField, rule) in validations {
             if let error = rule.validateField() {
@@ -39,6 +41,8 @@ public class Validator {
                 }
             } else {
                 // No error
+                validFields.append(textField)
+                
                 // let the user transform the field if they want
                 if let transform = self.successStyleTransform {
                     transform(validationRule: rule)
@@ -94,7 +98,7 @@ public class Validator {
         if errors.isEmpty {
             delegate.validationSuccessful()
         } else {
-            delegate.validationFailed(errors)
+            delegate.validationFailed(errors, validFields: validFields)
         }
     }
     
