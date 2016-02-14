@@ -21,7 +21,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, "8.1"
 
 use_frameworks!
-pod 'SwiftValidator', '3.0.1' 
+pod 'SwiftValidator', '3.0.3' 
 ```
 
 Install into your project:
