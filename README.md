@@ -2,7 +2,7 @@ SwiftValidator
 ===============
 
 [![Build Status](https://travis-ci.org/jpotts18/SwiftValidator.svg?branch=travis-ci)](https://travis-ci.org/jpotts18/SwiftValidator) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Coverage Status](https://coveralls.io/repos/github/davepatterson/SwiftValidator/badge.svg?branch=master)](https://coveralls.io/github/davepatterson/SwiftValidator?branch=wip)
+[![Coverage Status](https://coveralls.io/repos/github/davepatterson/SwiftValidator/badge.svg?branch=master)](https://coveralls.io/github/davepatterson/SwiftValidator?branch=travis-edit)
 
 
 Swift Validator is a rule-based validation library for Swift.
