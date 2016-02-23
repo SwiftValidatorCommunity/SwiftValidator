@@ -18,6 +18,7 @@ public class Validator {
     /// Dictionary to hold fields (and accompanying errors) that were unsuccessfully validated.
     public var errors = [UITextField:ValidationError]()
      /// Variable that holds success closure to display positive status of field.
+    public var delegate: ValidationDelegate?
     private var successStyleTransform:((validationRule:ValidationRule)->Void)?
     /// Variable that holds error closure to display negative status of field.
     private var errorStyleTransform:((validationError:ValidationError)->Void)?
@@ -62,6 +63,8 @@ public class Validator {
     - returns: No return value.
     */
     public func validateField(textField: UITextField, callback: (error:ValidationError?) -> Void){
+        // perhaps delegate should be set on validator object instead of being passed as a parameter
+    
         if let fieldRule = validations[textField] {
             if let error = fieldRule.validateField() {
                 errors[textField] = error
@@ -111,10 +114,11 @@ public class Validator {
      - parameter textfield: field that is to be validated.
      - parameter errorLabel: A UILabel that holds error label data
      - parameter rules: A Rule array that holds different rules that apply to said textField.
+     - paramteter sanitizers: A Sanitizer array that allows for custom cleaning of textField text.
      - returns: No return value
      */
-    public func registerField(textField:UITextField, errorLabel:UILabel, rules:[Rule]) {
-        validations[textField] = ValidationRule(textField: textField, rules:rules, errorLabel:errorLabel)
+    public func registerField(textField:UITextField, errorLabel:UILabel, rules:[Rule], sanitizers: [Sanitizer]? = nil) {
+        validations[textField] = ValidationRule(textField: textField, rules:rules, errorLabel:errorLabel, sanitizers: sanitizers)
     }
     
     /**
@@ -133,18 +137,24 @@ public class Validator {
      
      - returns: No return value.
      */
-    public func validate(delegate:ValidationDelegate) {
+    public func validate() {        
+        // If preconditions are not met, then automatically fail validation
+        if delegate!.validationShouldRun() == false {
+            delegate!.validationFailedBeforeRun()
+            return
+        }
         
+        // We've made it this far, so preconditions must've been satisfied
         self.validateAllFields()
         
         if errors.isEmpty {
-            delegate.validationSuccessful()
+            delegate!.validationSuccessful()
         } else {
-            delegate.validationFailed(errors)
+            delegate!.validationFailed(errors)
         }
         
     }
-    
+
     /**
      This method validates all fields in validator and sets any errors to errors parameter of callback.
      

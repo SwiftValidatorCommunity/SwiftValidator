@@ -25,6 +25,7 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
     @IBOutlet weak var phoneNumberErrorLabel: UILabel!
     @IBOutlet weak var zipcodeErrorLabel: UILabel!
     @IBOutlet weak var emailConfirmErrorLabel: UILabel!
+    @IBOutlet weak var agreementStatus: UISwitch!
     
     let validator = Validator()
     
@@ -49,16 +50,18 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
                 validationError.textField.layer.borderWidth = 1.0
         })
         
-        validator.registerField(fullNameTextField, errorLabel: fullNameErrorLabel , rules: [RequiredRule(), FullNameRule()])
+        validator.registerField(fullNameTextField, errorLabel: fullNameErrorLabel , rules: [RequiredRule(), FullNameRule()], sanitizers: [TrimLeadingAndTrailingSpacesSanitizer()])
         validator.registerField(emailTextField, errorLabel: emailErrorLabel, rules: [RequiredRule(), EmailRule()])
         validator.registerField(emailConfirmTextField, errorLabel: emailConfirmErrorLabel, rules: [RequiredRule(), ConfirmationRule(confirmField: emailTextField)])
         validator.registerField(phoneNumberTextField, errorLabel: phoneNumberErrorLabel, rules: [RequiredRule(), MinLengthRule(length: 9)])
         validator.registerField(zipcodeTextField, errorLabel: zipcodeErrorLabel, rules: [RequiredRule(), ZipCodeRule()])
+        // Set validator delegate
+        validator.delegate = self
     }
 
     @IBAction func submitTapped(sender: AnyObject) {
         print("Validating...")
-        validator.validate(self)
+        validator.validate()
     }
 
     // MARK: ValidationDelegate Methods
@@ -73,6 +76,25 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
     }
     func validationFailed(errors:[UITextField:ValidationError]) {
         print("Validation FAILED!")
+    }
+    
+    func validationShouldRun() -> Bool {
+        // Allow user to check that any preconditions are met before validation
+        // Good place to validate things other than UITextField
+        if !agreementStatus.on {
+            return false
+        }
+        return true
+    }
+    
+    func validationFailedBeforeRun() {
+        // perform any style transformations
+        print("validation failed before running")
+    }
+    
+    func validationDidRun() {
+        // perform custom post validation
+        print("validationDidRun called")
     }
     
     func hideKeyboard(){
@@ -91,5 +113,4 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
             }
         return true
     }
-
 }
