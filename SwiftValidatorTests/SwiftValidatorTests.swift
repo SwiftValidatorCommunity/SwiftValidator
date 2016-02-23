@@ -68,6 +68,10 @@ class SwiftValidatorTests: XCTestCase {
         XCTAssertFalse(RequiredRule().validate(""), "Required should be invalid")
     }
     
+    func testRequiredMessage() {
+        XCTAssertNotNil(RequiredRule().errorMessage())
+    }
+    
     // MARK: Regex
     
     func testRegex(){
@@ -76,6 +80,10 @@ class SwiftValidatorTests: XCTestCase {
     
     func testRegexInvalid(){
         XCTAssertFalse(RegexRule(regex: USERNAME_REGEX).validate("DarthVader"), "RegexRule should be invalid")
+    }
+    
+    func testRegexMessage() {
+        XCTAssertNotNil(RegexRule(regex: USERNAME_REGEX).errorMessage())
     }
     
     // MARK: Zipcode
@@ -88,6 +96,10 @@ class SwiftValidatorTests: XCTestCase {
         XCTAssertFalse(ZipCodeRule().validate(INVALID_ZIP), "Zipcode should be invalid")
     }
     
+    func testZipCodeMessage() {
+        XCTAssertNotNil(ZipCodeRule().errorMessage())
+    }
+    
     // MARK: Email
     
     func testEmail() {
@@ -96,6 +108,10 @@ class SwiftValidatorTests: XCTestCase {
     
     func testEmailInvalid() {
         XCTAssertFalse(EmailRule().validate(INVALID_EMAIL), "Email should be invalid")
+    }
+    
+    func testEmailMessage() {
+        XCTAssertNotNil(EmailRule().errorMessage())
     }
     
     // MARK: Float
@@ -107,6 +123,10 @@ class SwiftValidatorTests: XCTestCase {
     func testFloatInvalid() {
         XCTAssert(!FloatRule().validate(INVALID_FLOAT), "Float should be invalid")
         XCTAssert(!FloatRule().validate(VALID_EMAIL), "Float should be invalid")
+    }
+    
+    func testFloatMessage() {
+        XCTAssertNotNil(FloatRule().errorMessage())
     }
     
     // MARK: Confirm against field
@@ -121,6 +141,11 @@ class SwiftValidatorTests: XCTestCase {
         XCTAssertFalse(ConfirmationRule(confirmField: CONFIRM_TXT_FIELD).validate(CONFIRM_TEXT_DIFF), "Should fail confirm")
     }
     
+    func testConfirmMessage() {
+        CONFIRM_TXT_FIELD.text = CONFIRM_TEXT
+        XCTAssertNotNil(ConfirmationRule(confirmField: CONFIRM_TXT_FIELD).errorMessage())
+    }
+    
     // MARK: Password
     
     func testPassword() {
@@ -128,7 +153,11 @@ class SwiftValidatorTests: XCTestCase {
     }
     
     func testPasswordInvalid(){
-        XCTAssertFalse(EmailRule().validate(INVALID_PASSWORD), "Password is invalid")
+        XCTAssertFalse(PasswordRule().validate(INVALID_PASSWORD), "Password is invalid")
+    }
+    
+    func testPasswordMessage() {
+        XCTAssertNotNil(PasswordRule().errorMessage())
     }
     
     func testPhoneNumber() {
@@ -137,6 +166,10 @@ class SwiftValidatorTests: XCTestCase {
     
     func testPhoneNumberInvalid() {
         XCTAssertFalse(PhoneNumberRule().validate("12345678901"), "Phone number should be invalid")
+    }
+    
+    func testPhoneNumberMessage() {
+        XCTAssertNotNil(PhoneNumberRule().errorMessage())
     }
     
     // MARK: Max Length
@@ -153,6 +186,10 @@ class SwiftValidatorTests: XCTestCase {
         XCTAssertTrue(MaxLengthRule(length: 20).validate(LEN_20), "Max Length should be 20 and <= length")
     }
     
+    func testMaxLengthMessage() {
+        XCTAssertNotNil(MaxLengthRule(length: 20).errorMessage())
+    }
+    
     // MARK: Min Length
     func testMinLength(){
         XCTAssertTrue(MinLengthRule().validate(LEN_3),"Min Length should be valid")
@@ -166,6 +203,10 @@ class SwiftValidatorTests: XCTestCase {
         XCTAssertTrue(MinLengthRule(length: 5).validate(LEN_5), "Min Len should be set to 5 and >= length")
     }
     
+    func testMinLengthMessage() {
+        XCTAssertNotNil(MinLengthRule(length: 5).errorMessage())
+    }
+    
     func testExactLength(){
         XCTAssertTrue(ExactLengthRule(length: 5).validate(LEN_5), "Exact Len should be exactly 5")
     }
@@ -176,6 +217,10 @@ class SwiftValidatorTests: XCTestCase {
 
     func testExactLengthInvalidLessThan(){
         XCTAssertFalse(ExactLengthRule(length: 4).validate(LEN_5), "Exact Len should be Invalid")
+    }
+    
+    func testExactLengthMessage() {
+        XCTAssertNotNil(ExactLengthRule(length: 4).errorMessage())
     }
     
     // MARK: Full Name
