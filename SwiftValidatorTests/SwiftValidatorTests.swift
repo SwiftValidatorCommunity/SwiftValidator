@@ -192,6 +192,88 @@ class SwiftValidatorTests: XCTestCase {
         XCTAssertFalse(FullNameRule().validate("Carl"), "Full Name should be invalid")
     }
     
+    // MARK: ISBN
+    
+    func testValidISBN10() {
+        let validISBN10 = ["3836221195", "3-8362-2119-5", "3 8362 2119 5" , "1617290858", "1-61729-085-8", "1 61729 085-8" , "0007269706", "0-00-726970-6", "0 00 726970 6" , "3423214120", "3-423-21412-0", "3 423 21412 0", "340101319X", "3-401-01319-X", "3 401 01319 X"]
+        
+        for ISBN10 in validISBN10 {
+            XCTAssertTrue(ISBNRule().validate(ISBN10), "\(ISBN10) should be valid")
+        }
+    }
+    
+    func testInvalidISBN10() {
+        let invalidISBN10 = ["3423214121", "3-423-21412-1", "3 423 21412 1"]
+        
+        for ISBN10 in invalidISBN10 {
+            XCTAssertFalse(ISBNRule().validate(ISBN10), "\(ISBN10) should be invalid")
+        }
+    }
+    
+    // MARK: HexColor
+    
+    func testValidHexColors() {
+        let validHexes = ["#ff0034", "#CCCCCC", "fff", "#f00"]
+        for hex in validHexes {
+            XCTAssertTrue(HexColorRule().validate(hex), "\(hex) should be a valid Hex")
+        }
+    }
+    
+    func testInvalidHexColors() {
+        let validHexes = ["#ff", "fff0", "#ff12FG", ""]
+        for hex in validHexes {
+            XCTAssertFalse(HexColorRule().validate(hex), "\(hex) should be invalid Hex")
+        }
+    }
+    
+    //MARK: IPV4
+
+    func testValidIPV4() {
+        let validIPV4 = ["127.0.0.1" , "0.0.0.0" , "255.255.255.255" , "1.2.3.4"]
+        for ipv4 in validIPV4 {
+            XCTAssertTrue(IPV4Rule().validate(ipv4), "\(ipv4) should be a valid IPV4 address")
+        }
+    }
+    
+    func testInvalidIPV4() {
+        let invalidIPV4 = ["::1" , "2001:db8:0000:1:1:1:1:1" , "::ffff:127.0.0.1"]
+        for ipv4 in invalidIPV4 {
+            XCTAssertFalse(IPV4Rule().validate(ipv4), "\(ipv4) should be invalid IPV4 address")
+        }
+    }
+    
+    //MARK: AlphaNumeric
+    
+    func testValidAlphaNumeric() {
+        let validAlphaNumeric = ["abc123", "A1B2C35555"]
+        for alphaNum in validAlphaNumeric {
+            XCTAssertTrue(AlphaNumericRule().validate(alphaNum), "\(alphaNum) should be a valid alpha numeric string")
+        }
+    }
+    
+    func testInvalidAlphaNumeric() {
+        let invalidAlphaNumeric = ["abc ", "!!!!!", "ABC@DAGQW%!^$@%"]
+        for alphaNum in invalidAlphaNumeric {
+            XCTAssertFalse(AlphaNumericRule().validate(alphaNum), "\(alphaNum) should be invalid alpha numeric string")
+        }
+    }
+    
+    //MARK: Alpha
+    
+    func testValidAlpha() {
+        let validAlphaStrings = ["abc", "ABCDEFG", "AabeVsDvaW"]
+        for alpha in validAlphaStrings {
+            XCTAssertTrue(AlphaRule().validate(alpha), "\(alpha) should be valid alpha string")
+        }
+    }
+    
+    func testInvalidAlpha() {
+        let invalidAlphaStrings = ["abc1", "  foo  "]
+        for alpha in invalidAlphaStrings {
+            XCTAssertFalse(AlphaRule().validate(alpha), "\(alpha) should be invalid alpha string")
+        }
+    }
+    
     // MARK: Register Field
     
     func testRegisterField(){

@@ -12,7 +12,13 @@
 		62D1AE221A1E6D4400E4DFF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62D1AE201A1E6D4400E4DFF8 /* Main.storyboard */; };
 		62D1AE241A1E6D4400E4DFF8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62D1AE231A1E6D4400E4DFF8 /* Images.xcassets */; };
 		62D1AE271A1E6D4400E4DFF8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62D1AE251A1E6D4400E4DFF8 /* LaunchScreen.xib */; };
-		C1AB099F1C712025003C7155 /* ValidationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AB099D1C712025003C7155 /* ValidationDelegate.swift */; };
+		62D9B2561C7C0B2A00BAFCE3 /* ValidationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D9B2551C7C0B2A00BAFCE3 /* ValidationDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		7CC1E4CF1C636B4500AF013C /* AlphaRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC1E4CE1C636B4500AF013C /* AlphaRule.swift */; };
+		7CC1E4D11C637A7700AF013C /* AlphaNumericRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC1E4D01C637A7700AF013C /* AlphaNumericRule.swift */; };
+		7CC1E4D31C637ABC00AF013C /* CharacterSetRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC1E4D21C637ABC00AF013C /* CharacterSetRule.swift */; };
+		7CC1E4D51C637C8500AF013C /* IPV4Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC1E4D41C637C8500AF013C /* IPV4Rule.swift */; };
+		7CC1E4D71C637F6E00AF013C /* ISBNRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC1E4D61C637F6E00AF013C /* ISBNRule.swift */; };
+		7CC1E4DB1C63BFA600AF013C /* HexColorRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC1E4DA1C63BFA600AF013C /* HexColorRule.swift */; };
 		FB465CB81B9884F400398388 /* SwiftValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = FB465CB71B9884F400398388 /* SwiftValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FB465CBE1B9884F400398388 /* SwiftValidator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB465CB31B9884F400398388 /* SwiftValidator.framework */; };
 		FB465CC71B9884F400398388 /* SwiftValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB465CC61B9884F400398388 /* SwiftValidatorTests.swift */; };
@@ -92,7 +98,13 @@
 		62D1AE261A1E6D4400E4DFF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		62D1AE2C1A1E6D4500E4DFF8 /* ValidatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ValidatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		62D1AE311A1E6D4500E4DFF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C1AB099D1C712025003C7155 /* ValidationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationDelegate.swift; sourceTree = "<group>"; };
+		62D9B2551C7C0B2A00BAFCE3 /* ValidationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationDelegate.swift; sourceTree = "<group>"; };
+		7CC1E4CE1C636B4500AF013C /* AlphaRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlphaRule.swift; sourceTree = "<group>"; };
+		7CC1E4D01C637A7700AF013C /* AlphaNumericRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlphaNumericRule.swift; sourceTree = "<group>"; };
+		7CC1E4D21C637ABC00AF013C /* CharacterSetRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterSetRule.swift; sourceTree = "<group>"; };
+		7CC1E4D41C637C8500AF013C /* IPV4Rule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPV4Rule.swift; sourceTree = "<group>"; };
+		7CC1E4D61C637F6E00AF013C /* ISBNRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISBNRule.swift; sourceTree = "<group>"; };
+		7CC1E4DA1C63BFA600AF013C /* HexColorRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexColorRule.swift; sourceTree = "<group>"; };
 		FB465CB31B9884F400398388 /* SwiftValidator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftValidator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB465CB61B9884F400398388 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB465CB71B9884F400398388 /* SwiftValidator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftValidator.h; sourceTree = "<group>"; };
@@ -248,6 +260,12 @@
 		FB465CE21B9889EA00398388 /* Rules */ = {
 			isa = PBXGroup;
 			children = (
+				7CC1E4CE1C636B4500AF013C /* AlphaRule.swift */,
+				7CC1E4D01C637A7700AF013C /* AlphaNumericRule.swift */,
+				7CC1E4D21C637ABC00AF013C /* CharacterSetRule.swift */,
+				7CC1E4D41C637C8500AF013C /* IPV4Rule.swift */,
+				7CC1E4D61C637F6E00AF013C /* ISBNRule.swift */,
+				7CC1E4DA1C63BFA600AF013C /* HexColorRule.swift */,
 				FB465CE31B9889EA00398388 /* ConfirmRule.swift */,
 				FB465CE41B9889EA00398388 /* EmailRule.swift */,
 				FB465CE51B9889EA00398388 /* FloatRule.swift */,
@@ -269,9 +287,9 @@
 		FB465CF01B9889EA00398388 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				62D9B2551C7C0B2A00BAFCE3 /* ValidationDelegate.swift */,
 				FB465CF11B9889EA00398388 /* ValidationError.swift */,
 				FB465CF21B9889EA00398388 /* Validator.swift */,
-				C1AB099D1C712025003C7155 /* ValidationDelegate.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -371,7 +389,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0700;
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = jpotts18;
 				TargetAttributes = {
@@ -471,17 +489,23 @@
 				FB465CF61B9889EA00398388 /* FullNameRule.swift in Sources */,
 				FB465CFF1B9889EA00398388 /* ZipCodeRule.swift in Sources */,
 				FB465CF91B9889EA00398388 /* PasswordRule.swift in Sources */,
+				7CC1E4D11C637A7700AF013C /* AlphaNumericRule.swift in Sources */,
+				7CC1E4D31C637ABC00AF013C /* CharacterSetRule.swift in Sources */,
 				FB465CFD1B9889EA00398388 /* Rule.swift in Sources */,
 				FB465CFA1B9889EA00398388 /* PhoneNumberRule.swift in Sources */,
 				FB465CF51B9889EA00398388 /* FloatRule.swift in Sources */,
+				7CC1E4DB1C63BFA600AF013C /* HexColorRule.swift in Sources */,
 				FB465D011B9889EA00398388 /* Validator.swift in Sources */,
 				FB465CFE1B9889EA00398388 /* ValidationRule.swift in Sources */,
 				FB465CF31B9889EA00398388 /* ConfirmRule.swift in Sources */,
+				7CC1E4D51C637C8500AF013C /* IPV4Rule.swift in Sources */,
+				7CC1E4D71C637F6E00AF013C /* ISBNRule.swift in Sources */,
 				FB465D001B9889EA00398388 /* ValidationError.swift in Sources */,
 				FB465CFC1B9889EA00398388 /* RequiredRule.swift in Sources */,
 				FB465CFB1B9889EA00398388 /* RegexRule.swift in Sources */,
+				7CC1E4CF1C636B4500AF013C /* AlphaRule.swift in Sources */,
+				62D9B2561C7C0B2A00BAFCE3 /* ValidationDelegate.swift in Sources */,
 				FB465CF81B9889EA00398388 /* MinLengthRule.swift in Sources */,
-				C1AB099F1C712025003C7155 /* ValidationDelegate.swift in Sources */,
 				FB465CF71B9889EA00398388 /* MaxLengthRule.swift in Sources */,
 				62C1821D1C6312F5003788E7 /* ExactLengthRule.swift in Sources */,
 			);
@@ -644,7 +668,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_MODULES = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -653,7 +676,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.jeffpotter.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Validator.app/Validator";
 			};
 			name = Debug;
@@ -662,7 +684,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = ValidatorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.jeffpotter.$(PRODUCT_NAME:rfc1034identifier)";
