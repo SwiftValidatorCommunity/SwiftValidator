@@ -1,0 +1,13 @@
+//
+//  Preparator.swift
+//  Validator
+//
+//  Created by David Patterson on 2/22/16.
+//  Copyright © 2016 jpotts18. All rights reserved.
+//
+
+import Foundation
+
+public protocol Sanitizer {
+    func sanitize(textField: UITextField)
+}

@@ -12,7 +12,9 @@
 		62D1AE221A1E6D4400E4DFF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62D1AE201A1E6D4400E4DFF8 /* Main.storyboard */; };
 		62D1AE241A1E6D4400E4DFF8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62D1AE231A1E6D4400E4DFF8 /* Images.xcassets */; };
 		62D1AE271A1E6D4400E4DFF8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62D1AE251A1E6D4400E4DFF8 /* LaunchScreen.xib */; };
+		C19BA8941C7B97CB004743FF /* Sanitizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19BA8931C7B97CA004743FF /* Sanitizer.swift */; };
 		C1AB099F1C712025003C7155 /* ValidationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AB099D1C712025003C7155 /* ValidationDelegate.swift */; };
+		C1B7C0FD1C7BF6A200BA7174 /* Sanitizers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B7C0FC1C7BF6A200BA7174 /* Sanitizers.swift */; };
 		FB465CB81B9884F400398388 /* SwiftValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = FB465CB71B9884F400398388 /* SwiftValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FB465CBE1B9884F400398388 /* SwiftValidator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB465CB31B9884F400398388 /* SwiftValidator.framework */; };
 		FB465CC71B9884F400398388 /* SwiftValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB465CC61B9884F400398388 /* SwiftValidatorTests.swift */; };
@@ -92,7 +94,9 @@
 		62D1AE261A1E6D4400E4DFF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		62D1AE2C1A1E6D4500E4DFF8 /* ValidatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ValidatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		62D1AE311A1E6D4500E4DFF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C19BA8931C7B97CA004743FF /* Sanitizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sanitizer.swift; sourceTree = "<group>"; };
 		C1AB099D1C712025003C7155 /* ValidationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationDelegate.swift; sourceTree = "<group>"; };
+		C1B7C0FC1C7BF6A200BA7174 /* Sanitizers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sanitizers.swift; sourceTree = "<group>"; };
 		FB465CB31B9884F400398388 /* SwiftValidator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftValidator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB465CB61B9884F400398388 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB465CB71B9884F400398388 /* SwiftValidator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftValidator.h; sourceTree = "<group>"; };
@@ -262,6 +266,8 @@
 				FB465CEE1B9889EA00398388 /* ValidationRule.swift */,
 				FB465CEF1B9889EA00398388 /* ZipCodeRule.swift */,
 				62C1821C1C6312F5003788E7 /* ExactLengthRule.swift */,
+				C19BA8931C7B97CA004743FF /* Sanitizer.swift */,
+				C1B7C0FC1C7BF6A200BA7174 /* Sanitizers.swift */,
 			);
 			path = Rules;
 			sourceTree = "<group>";
@@ -473,6 +479,7 @@
 				FB465CF91B9889EA00398388 /* PasswordRule.swift in Sources */,
 				FB465CFD1B9889EA00398388 /* Rule.swift in Sources */,
 				FB465CFA1B9889EA00398388 /* PhoneNumberRule.swift in Sources */,
+				C1B7C0FD1C7BF6A200BA7174 /* Sanitizers.swift in Sources */,
 				FB465CF51B9889EA00398388 /* FloatRule.swift in Sources */,
 				FB465D011B9889EA00398388 /* Validator.swift in Sources */,
 				FB465CFE1B9889EA00398388 /* ValidationRule.swift in Sources */,
@@ -481,6 +488,7 @@
 				FB465CFC1B9889EA00398388 /* RequiredRule.swift in Sources */,
 				FB465CFB1B9889EA00398388 /* RegexRule.swift in Sources */,
 				FB465CF81B9889EA00398388 /* MinLengthRule.swift in Sources */,
+				C19BA8941C7B97CB004743FF /* Sanitizer.swift in Sources */,
 				C1AB099F1C712025003C7155 /* ValidationDelegate.swift in Sources */,
 				FB465CF71B9889EA00398388 /* MaxLengthRule.swift in Sources */,
 				62C1821D1C6312F5003788E7 /* ExactLengthRule.swift in Sources */,
