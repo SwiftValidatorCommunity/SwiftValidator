@@ -16,12 +16,12 @@ import UIKit
      This method will be called on delegate object when validation is successful.
      - returns: No return value.
      */
-    func validationSuccessful()
+    optional func validationSuccessful()
     /**
      This method will be called on delegate object when validation fails.
      - returns: No return value.
      */
-    func validationFailed(errors: [UITextField:ValidationError])
+    optional func validationFailed(errors: [UITextField:ValidationError])
     /**
      This method will be called on each field to allow user to perform more validation of field
      - returns: No return value.

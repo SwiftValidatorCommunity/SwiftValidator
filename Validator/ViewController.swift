@@ -35,7 +35,6 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "hideKeyboard"))
         
         validator.styleTransformers(success:{ (validationRule) -> Void in
-            print("here")
                 // clear error label
                 validationRule.errorLabel?.hidden = true
                 validationRule.errorLabel?.text = ""
@@ -43,7 +42,6 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
                 validationRule.textField.layer.borderWidth = 0.5
             
             }, error:{ (validationError) -> Void in
-                print("error")
                 validationError.errorLabel?.hidden = false
                 validationError.errorLabel?.text = validationError.errorMessage
                 validationError.textField.layer.borderColor = UIColor.redColor().CGColor

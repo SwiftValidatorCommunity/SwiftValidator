@@ -64,7 +64,6 @@ public class Validator {
     */
     public func validateField(textField: UITextField, callback: (error:ValidationError?) -> Void){
         // perhaps delegate should be set on validator object instead of being passed as a parameter
-    
         if let fieldRule = validations[textField] {
             if let error = fieldRule.validateField() {
                 errors[textField] = error
@@ -148,11 +147,14 @@ public class Validator {
         self.validateAllFields()
         
         if errors.isEmpty {
-            delegate!.validationSuccessful()
+            // call success method if it's implemented
+            if delegate!.validationSuccessful?() != nil {}
         } else {
-            delegate!.validationFailed(errors)
+            // call failure method if it's implemented
+            if delegate!.validationFailed?(errors) != nil {}
         }
-        
+        // validation did run
+        delegate!.validationDidRun()
     }
 
     /**
