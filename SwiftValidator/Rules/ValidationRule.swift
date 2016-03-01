@@ -18,7 +18,9 @@ public class ValidationRule {
     public var errorLabel:UILabel?
     /// the rules of the field
     public var rules:[Rule] = []
-    public var remoteURLString: String?
+    /// tuple that holds remote validatin info
+    public var remoteInfo: (urlString: String, error: String)?
+    //public var remoteURLString: String?
     
     /**
      Initializes `ValidationRule` instance with text field, rules, and errorLabel.
@@ -32,7 +34,14 @@ public class ValidationRule {
         self.textField = textField
         self.errorLabel = errorLabel
         self.rules = rules
-        self.remoteURLString = remoteURLString
+        //self.remoteURLString = remoteURLString
+    }
+    
+    public init(textField: UITextField, rules:[Rule], errorLabel:UILabel?, remoteInfo: (String, String)? = nil){
+        self.textField = textField
+        self.errorLabel = errorLabel
+        self.rules = rules
+        self.remoteInfo = remoteInfo
     }
     
     /**
