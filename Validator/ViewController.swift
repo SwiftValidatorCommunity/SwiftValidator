@@ -78,4 +78,18 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
     func hideKeyboard(){
         self.view.endEditing(true)
     }
+    
+    // MARK: Validate single field
+    // Don't forget to use UITextFieldDelegate
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+            validator.validateField(textField){ error in
+                if error == nil {
+                    // Field validation was successful
+                } else {
+                    // Validation error occurred
+                }
+            }
+        return true
+    }
+
 }
