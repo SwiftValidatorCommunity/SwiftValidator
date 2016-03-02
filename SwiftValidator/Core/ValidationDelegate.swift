@@ -13,15 +13,21 @@ import UIKit
  */
 @objc public protocol ValidationDelegate {
     /**
-     This method will be called on delegate object when validation is successful.
+     This delegate method will be called on delegate object when validation is successful.
      - returns: No return value.
      */
     func validationSuccessful()
     /**
-     This method will be called on delegate object when validation fails.
+     This delegae method will be called on delegate object when validation fails.
      - returns: No return value.
      */
     func validationFailed(errors: [UITextField:ValidationError])
-    
-    optional func remoteRequest(text: String, urlString: String, completion:(result: Bool) -> Void)
+    /**
+     This delegate method is called on fields that require remote validation.
+     - parameter text: String to is sent to server to be validated.
+     - parameter urlString: String of url endpoint that will be used to validate text.
+     - parameter completion: closure that holds the result of the server validation request. Should be set to true if server validation was a success. Should return false if server validation failed.
+     - returns: No return value.
+     */
+    optional func remoteValidationRequest(text: String, urlString: String, completion:(result: Bool) -> Void)
 }

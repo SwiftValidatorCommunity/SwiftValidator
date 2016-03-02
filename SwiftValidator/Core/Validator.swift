@@ -11,7 +11,7 @@ import UIKit
 /**
  Class that makes `Validator` objects. Should be added as a parameter to ViewController that will display
  validation fields.
- */
+*/
 public class Validator {
     /// Dictionary to hold all fields (and accompanying rules) that will undergo validation.
     public var validations = [UITextField:ValidationRule]()
@@ -54,12 +54,19 @@ public class Validator {
             }
         }
     }
-    /// Validate all fields with completion handler
+    
+    /**
+     This method is used to validate all fields registered to Validator. If validation is unsuccessful,
+     field gets added to errors dictionary. Completion closure is used to validator know when all fields
+     have undergone validation attempt.
+     - parameter completion: Bool that is set to true when all fields have experienced validation attempt.
+     - returns: No return value.
+    */
     private func validateAllFields(completion: (finished: Bool) -> Void) {
         errors = [:]
         
         for (textField, rule) in validations {
-            if rule.remoteURLString != nil {
+            if rule.remoteInfo != nil {
                 validateRemoteField(textField, completion: { status -> Void in
                     self.completedValidationsCount = self.completedValidationsCount + 1
                     if self.completedValidationsCount == self.validations.count {
@@ -77,40 +84,67 @@ public class Validator {
             }
         }
     }
-    /// Validate remote field
+    
+    /**
+     This method is used to validate a field that will need to also be validated via remote request.
+     - parameter textField: TextField of field that is being validated.
+     - parameter completion: Closure that holds the status of textField's validation. Is set to true
+     after remote validation has ended, regardless of whether the validation was a success or failure.
+     - returns: No return value.
+    */
     private func validateRemoteField(textField: UITextField, completion: (status: Bool) -> Void) {
         if let fieldRule = validations[textField] {
-            delegate!.remoteRequest!(textField.text!, urlString: fieldRule.remoteURLString!, completion: { result -> Void in
-                if result {
-                    // Carry on with validation as remote validation passed
-                    self.validateRegularField(fieldRule.textField)
-                } else {
-                    // Stop validation because remote validation failed
-                    // Validation Failed on remote call
-                    let error = ValidationError(textField: fieldRule.textField, errorLabel: UILabel(), error: "Field already taken")
-                    self.errors[fieldRule.textField] = error
-                    if let transform = self.errorStyleTransform {
-                        transform(validationError: error)
+            // Carry on with validation as regular validation passed
+            if self.validateRegularField(fieldRule.textField) {
+                delegate!.remoteValidationRequest!(textField.text!, urlString: fieldRule.remoteInfo!.urlString, completion: { result -> Void in
+                    if result {
+                        if let transform = self.successStyleTransform {
+                            transform(validationRule: fieldRule)
+                        }
+                    } else {
+                        // Stop validation because remote validation failed
+                        // Validation Failed on remote call
+                        let error = ValidationError(textField: fieldRule.textField, errorLabel: fieldRule.errorLabel, error: fieldRule.remoteInfo!.error)
+                        self.errors[fieldRule.textField] = error
+                        if let transform = self.errorStyleTransform {
+                            transform(validationError: error)
+                        }
                     }
-                }
+                    // Validation is over, so let validateAllFields(completion: (status: Bool)) know
+                    completion(status: true)
+                })
+            } else {
+                // Validation is over, so let validateAllFields(completion: (status: Bool)) know
                 completion(status: true)
-            })
+            }
+            
         }
     }
-    /// Validate regular field (non-remote)
-    private func validateRegularField(textField: UITextField) {
+    
+    /**
+     Method used to validate a regular field (non-remote).
+     - parameter: TextField of field that is undergoing validation
+     - returns: A Bool that represents whether the validation was a success or failure, returns true for the
+      former and false for the latter.
+    */
+    private func validateRegularField(textField: UITextField) -> Bool {
         if let fieldRule = validations[textField] {
             if let error = fieldRule.validateField() {
                 errors[textField] = error
                 if let transform = self.errorStyleTransform {
                     transform(validationError: error)
+                    return false
                 }
             } else {
                 if let transform = self.successStyleTransform {
-                    transform(validationRule: fieldRule)
+                    if fieldRule.remoteInfo == nil {
+                        transform(validationRule: fieldRule)
+                    }
+                    return true
                 }
             }
         }
+        return false
     }
     
     // MARK: Public functions
@@ -160,9 +194,9 @@ public class Validator {
      - parameter textField: field that is to be validated.
      - parameter Rule: An array which holds different rules to validate against textField.
      - returns: No return value
-     */
-    public func registerField(textField:UITextField, rules:[Rule], remoteURLString: String? = nil) {
-        validations[textField] = ValidationRule(textField: textField, rules: rules, errorLabel: nil, remoteURLString: remoteURLString)
+    */
+    public func registerField(textField:UITextField, rules:[Rule], remoteInfo: (String, String)? = nil) {
+        validations[textField] = ValidationRule(textField: textField, rules: rules, errorLabel: nil, remoteInfo: remoteInfo)
     }
     
     /**
@@ -172,9 +206,9 @@ public class Validator {
      - parameter errorLabel: A UILabel that holds error label data
      - parameter rules: A Rule array that holds different rules that apply to said textField.
      - returns: No return value
-     */
-    public func registerField(textField:UITextField, errorLabel:UILabel, rules:[Rule]) {
-        validations[textField] = ValidationRule(textField: textField, rules:rules, errorLabel:errorLabel)
+    */
+    public func registerField(textField:UITextField, errorLabel:UILabel, rules:[Rule], remoteInfo: (String, String)? = nil) {
+        validations[textField] = ValidationRule(textField: textField, rules:rules, errorLabel:errorLabel, remoteInfo: remoteInfo)
     }
     
     /**
@@ -182,7 +216,7 @@ public class Validator {
      
      - parameter textField: field used to locate and remove textField from validator.
      - returns: No return value
-     */
+    */
     public func unregisterField(textField:UITextField) {
         validations.removeValueForKey(textField)
         errors.removeValueForKey(textField)
@@ -192,7 +226,7 @@ public class Validator {
      This method checks to see if all fields in validator are valid.
      
      - returns: No return value.
-     */
+    */
     public func validate(delegate:ValidationDelegate) {
         
         self.validateAllFields()
@@ -206,12 +240,30 @@ public class Validator {
     }
     
     /**
-     This method validates all fields in validator and sets any errors to errors parameter of callback.
+     This method attempts to validate all fields registered to Validator().
+      - returns: No return value.
+    */
+    public func validate() {
+        self.validateAllFields { finished -> Void in
+            if self.errors.isEmpty {
+                // call success method if it's implemented
+                self.delegate!.validationSuccessful()
+            } else {
+                // call failure method if it's implemented
+                self.delegate!.validationFailed(self.errors)
+            }
+            // set number of completed validations back to 0
+            self.completedValidationsCount = 0
+        }
+    }
+    
+    /**
+     This method validates all fields in validator and sets any errors to errors parameter of closure.
      
      - parameter callback: A closure which is called with errors, a dictionary of type UITextField:ValidationError.
      
      - returns: No return value.
-     */
+    */
     public func validate(callback:(errors:[UITextField:ValidationError])->Void) -> Void {
         
         self.validateAllFields()
