@@ -50,8 +50,7 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
         })
         
         validator.registerField(fullNameTextField, errorLabel: fullNameErrorLabel , rules: [RequiredRule(), FullNameRule()])
-        //validator.registerField(emailTextField, errorLabel: emailErrorLabel, rules: [RequiredRule(), EmailRule()], remoteURLString: "www.yourdomain.com/path/to/emails/")
-        validator.registerField(emailTextField, errorLabel: emailErrorLabel, rules: [RequiredRule(), EmailRule()], remoteInfo: (urlString: "http://localhost:8000/", error: "Email already taken"))
+        validator.registerField(emailTextField, errorLabel: emailErrorLabel, rules: [RequiredRule(), EmailRule()], remoteInfo: (urlString: "http://localhost:8000/emails/", error: "Email already in use"))
         validator.registerField(emailConfirmTextField, errorLabel: emailConfirmErrorLabel, rules: [RequiredRule(), ConfirmationRule(confirmField: emailTextField)])
         validator.registerField(phoneNumberTextField, errorLabel: phoneNumberErrorLabel, rules: [RequiredRule(), MinLengthRule(length: 9)])
         validator.registerField(zipcodeTextField, errorLabel: zipcodeErrorLabel, rules: [RequiredRule(), ZipCodeRule()])
@@ -64,6 +63,7 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
     }
     
     func simulateRemoteRequest(seconds: Int64, completion: (result: Bool) -> Void) {
+        print("Simulating \(seconds) second server request...")
         // Set number of seconds before "request" is finished
         let triggerTime = (Int64(NSEC_PER_SEC) * seconds)
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_queue(), { () -> Void in
@@ -76,6 +76,10 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
             }
         })
     }
+    
+    func hideKeyboard(){
+        self.view.endEditing(true)
+    }
 
     // MARK: ValidationDelegate Methods
     
@@ -87,20 +91,17 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
         self.presentViewController(alert, animated: true, completion: nil)
     
     }
+    
     func validationFailed(errors:[UITextField:ValidationError]) {
         print("Validation FAILED!")
     }
     
     func remoteValidationRequest(text: String, urlString: String, completion: (result: Bool) -> Void) {
-        simulateRemoteRequest(5) { result -> Void in
+        simulateRemoteRequest(2) { result -> Void in
             // Set result to true if field was validated server-side
             // Set to false if field was not validated server-side
             completion(result: result)
         }
-    }
-    
-    func hideKeyboard(){
-        self.view.endEditing(true)
     }
     
     // MARK: Validate single field
