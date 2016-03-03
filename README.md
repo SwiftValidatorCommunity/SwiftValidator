@@ -1,6 +1,5 @@
 SwiftValidator
-===============
-
+=======
 [![Build Status](https://travis-ci.org/jpotts18/SwiftValidator.svg?branch=travis-ci)](https://travis-ci.org/jpotts18/SwiftValidator) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![codecov.io](https://codecov.io/github/jpotts18/SwiftValidator/coverage.svg?branch=master)](https://codecov.io/github/jpotts18/SwiftValidator?branch=master)
 
 Swift Validator is a rule-based validation library for Swift.
@@ -143,6 +142,33 @@ class SSNVRule: RegexRule {
     convenience init(message : String = "Not a valid SSN"){
 	self.init(regex: SSNVRule.regex, message : message)
     }
+}
+```
+
+## Remote Validation
+
+Register field to `validator` with `remoteInfo` parameter set
+
+`validator.registerField(emailTextField, errorLabel: emailErrorLabel, rules: [RequiredRule(), EmailRule()], remoteInfo: (urlString: "http://localhost:8000/emails/", error: "Email already in use"))`
+
+Implement `ValidationDelegate`'s `remoteValidationRequest` method
+```swift
+func remoteValidationRequest(text: String, urlString: String, completion: (result: Bool) -> Void) {
+    // Add email to urlString
+    let newUrlString = "\(urlString)?email=\(text)" 
+    YourNetworkingLibrary.request(.GET, newUrlString) { data -> Void in
+     
+        if data.httpResponse.statusCode == 404 {
+        	// resource was not found, therefore the text (username, email, etc) is available
+        	completion(result: true)
+        }
+        	
+        if data.httpResponse.statusCode == 200 {
+        	// resource was found, therefore the text (username, email, etc) is unavailable
+        	completion(result: false)
+        }
+    }
+// end of remoteValidationRequest method
 }
 ```
 
