@@ -145,6 +145,33 @@ class SSNVRule: RegexRule {
 }
 ```
 
+## Remote Validation
+
+Register field to `validator` with `remoteInfo` parameter set
+
+`validator.registerField(emailTextField, errorLabel: emailErrorLabel, rules: [RequiredRule(), EmailRule()], remoteInfo: (urlString: "http://localhost:8000/emails/", error: "Email already in use"))`
+
+Implement `ValidationDelegate`'s `remoteValidationRequest` method
+```swift
+func remoteValidationRequest(text: String, urlString: String, completion: (result: Bool) -> Void) {
+    // Add email to urlString
+    let newUrlString = "\(urlString)?email=\(text)" 
+    YourNetworkingLibrary.request(.GET, newUrlString) { data -> Void in
+     
+        if data.httpResponse.statusCode == 404 {
+        	// resource was not found, therefore the text (username, email, etc) is available
+        	completion(result: true)
+        }
+        	
+        if data.httpResponse.statusCode == 200 {
+        	// resource was found, therefore the text (username, email, etc) is unavailable
+        	completion(result: false)
+        }
+    }
+// end of remoteValidationRequest method
+}
+```
+
 Credits
 -------
 
