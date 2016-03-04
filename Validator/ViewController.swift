@@ -59,10 +59,6 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
 
     @IBAction func submitTapped(sender: AnyObject) {
         print("Validating...")
-        validator.validateField(UITextField()) { error -> Void in
-            
-        }
-        
         validator.validate()
     }
     

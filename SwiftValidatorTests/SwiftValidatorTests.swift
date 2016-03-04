@@ -37,7 +37,6 @@ class SwiftValidatorTests: XCTestCase {
     
     let REGISTER_TXT_FIELD = UITextField()
     let REGISTER_VALIDATOR = Validator()
-    let REGISTER_VALIDATOR2 = Validator()
     let REGISTER_RULES = [Rule]()
     
     let UNREGISTER_TXT_FIELD = UITextField()
