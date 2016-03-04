@@ -405,7 +405,7 @@ class SwiftValidatorTests: XCTestCase {
         }
     }
     
-    /// Used to test validation on a single field that has remote validation
+    /// Used to test validation success on a single field that has remote validation
     func testValidateSuccessSingleRemoteField() {
         REGISTER_TXT_FIELD.text = VALID_EMAIL
         REGISTER_VALIDATOR.registerField(REGISTER_TXT_FIELD, errorLabel: ERROR_LABEL, rules: [EmailRule()], remoteInfo: (urlString: URL_STRING, error: EMAIL_TAKEN_MESSAGE))
@@ -415,6 +415,7 @@ class SwiftValidatorTests: XCTestCase {
         }
     }
     
+    /// Used to test validation failure on a single field that has remote validation
     func testValidateFailureSingleRemoteField() {
         REGISTER_TXT_FIELD.text = VALID_EMAIL
         REGISTER_VALIDATOR.registerField(REGISTER_TXT_FIELD, errorLabel: ERROR_LABEL, rules: [EmailRule()], remoteInfo: (urlString: URL_STRING, error: EMAIL_TAKEN_MESSAGE))
