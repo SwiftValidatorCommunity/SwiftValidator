@@ -61,13 +61,13 @@ public class Validator {
      have undergone validation attempt.
      - parameter completion: Bool that is set to true when all fields have experienced validation attempt.
      - returns: No return value.
-    */
+     */
     private func validateAllFields(completion: (finished: Bool) -> Void) {
         errors = [:]
         
         for (textField, rule) in validations {
             if rule.remoteInfo != nil {
-                validateRemoteField(textField, completion: { status -> Void in
+                validateRemoteField(textField, callback: { error -> Void in
                     self.completedValidationsCount = self.completedValidationsCount + 1
                     if self.completedValidationsCount == self.validations.count {
                         // Sends validation back to validate()
@@ -91,16 +91,17 @@ public class Validator {
      - parameter completion: Closure that holds the status of textField's validation. Is set to true
      after remote validation has ended, regardless of whether the validation was a success or failure.
      - returns: No return value.
-    */
-    private func validateRemoteField(textField: UITextField, completion: (status: Bool) -> Void) {
+     */
+    public func validateRemoteField(textField: UITextField, callback: (error: ValidationError?) -> Void) {
         if let fieldRule = validations[textField] {
-            // Carry on with validation as regular validation passed
+            // Carry on with validation only if regular validation passed
             if self.validateRegularField(fieldRule.textField) {
-                delegate!.remoteValidationRequest!(textField.text!, urlString: fieldRule.remoteInfo!.urlString, completion: { result -> Void in
+                delegate!.remoteValidationRequest?(textField.text!, urlString: fieldRule.remoteInfo!.urlString, completion: { result -> Void in
                     if result {
                         if let transform = self.successStyleTransform {
                             transform(validationRule: fieldRule)
                         }
+                        callback(error: nil)
                     } else {
                         // Stop validation because remote validation failed
                         // Validation Failed on remote call
@@ -109,15 +110,10 @@ public class Validator {
                         if let transform = self.errorStyleTransform {
                             transform(validationError: error)
                         }
+                        callback(error: error)
                     }
-                    // Validation is over, so let validateAllFields(completion: (status: Bool)) know
-                    completion(status: true)
                 })
-            } else {
-                // Validation is over, so let validateAllFields(completion: (status: Bool)) know
-                completion(status: true)
             }
-            
         }
     }
     
@@ -133,15 +129,15 @@ public class Validator {
                 errors[textField] = error
                 if let transform = self.errorStyleTransform {
                     transform(validationError: error)
-                    return false
                 }
+                return false
             } else {
                 if let transform = self.successStyleTransform {
                     if fieldRule.remoteInfo == nil {
                         transform(validationRule: fieldRule)
                     }
-                    return true
                 }
+                return true
             }
         }
         return false

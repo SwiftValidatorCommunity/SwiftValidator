@@ -59,6 +59,10 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
 
     @IBAction func submitTapped(sender: AnyObject) {
         print("Validating...")
+        validator.validateField(UITextField()) { error -> Void in
+            
+        }
+        
         validator.validate()
     }
     
@@ -93,7 +97,7 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
     }
     
     func validationFailed(errors:[UITextField:ValidationError]) {
-        print("Validation FAILED!")
+        print("Validation FAILED!", validator.errors.count)
     }
     
     func remoteValidationRequest(text: String, urlString: String, completion: (result: Bool) -> Void) {

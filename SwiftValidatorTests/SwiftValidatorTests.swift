@@ -37,6 +37,7 @@ class SwiftValidatorTests: XCTestCase {
     
     let REGISTER_TXT_FIELD = UITextField()
     let REGISTER_VALIDATOR = Validator()
+    let REGISTER_VALIDATOR2 = Validator()
     let REGISTER_RULES = [Rule]()
     
     let UNREGISTER_TXT_FIELD = UITextField()
@@ -47,6 +48,40 @@ class SwiftValidatorTests: XCTestCase {
     let UNREGISTER_ERRORS_VALIDATOR = Validator()
     
     let ERROR_LABEL = UILabel()
+    
+    let URL_STRING = "http://localhost:8000/emails/"
+    let EMAIL_TAKEN_MESSAGE = "Email already taken"
+    
+    class FailureRemoteValidationViewController: UIViewController, ValidationDelegate {
+        func validationSuccessful() {
+            
+        }
+        
+        func validationFailed(errors: [UITextField : ValidationError]) {
+            
+        }
+        
+        func remoteValidationRequest(text: String, urlString: String, completion: (result: Bool) -> Void) {
+            completion(result: false)
+        }
+    }
+    
+    class SuccessRemoteValidationViewController: UIViewController, ValidationDelegate {
+        func validationSuccessful() {
+            
+        }
+        
+        func validationFailed(errors: [UITextField : ValidationError]) {
+            
+        }
+        
+        func remoteValidationRequest(text: String, urlString: String, completion: (result: Bool) -> Void) {
+            completion(result: true)
+        }
+    }
+    
+    let REGISTER_FAILURE_REMOTE_VALIDATION_DELEGATE = FailureRemoteValidationViewController()
+    let REGISTER_SUCCESS_REMOTE_VALIDATION_DELEGATE = SuccessRemoteValidationViewController()
     
     override func setUp() {
         super.setUp()
@@ -368,6 +403,43 @@ class SwiftValidatorTests: XCTestCase {
         REGISTER_VALIDATOR.validateField(REGISTER_TXT_FIELD) { error in
             XCTAssert(error?.errorMessage.characters.count > 0, "Should state 'invalid email'")
         }
+    }
+    
+    /// Used to test validation on a single field that has remote validation
+    func testValidateSuccessSingleRemoteField() {
+        REGISTER_TXT_FIELD.text = VALID_EMAIL
+        REGISTER_VALIDATOR.registerField(REGISTER_TXT_FIELD, errorLabel: ERROR_LABEL, rules: [EmailRule()], remoteInfo: (urlString: URL_STRING, error: EMAIL_TAKEN_MESSAGE))
+        REGISTER_VALIDATOR.delegate = REGISTER_SUCCESS_REMOTE_VALIDATION_DELEGATE
+        REGISTER_VALIDATOR.validateRemoteField(REGISTER_TXT_FIELD) { error -> Void in
+            XCTAssertNil(error)
+        }
+    }
+    
+    func testValidateFailureSingleRemoteField() {
+        REGISTER_TXT_FIELD.text = VALID_EMAIL
+        REGISTER_VALIDATOR.registerField(REGISTER_TXT_FIELD, errorLabel: ERROR_LABEL, rules: [EmailRule()], remoteInfo: (urlString: URL_STRING, error: EMAIL_TAKEN_MESSAGE))
+        REGISTER_VALIDATOR.delegate = REGISTER_FAILURE_REMOTE_VALIDATION_DELEGATE
+        REGISTER_VALIDATOR.validateRemoteField(REGISTER_TXT_FIELD) { error -> Void in
+            XCTAssertNotNil(error)
+        }
+    }
+    
+    /// Used to test remote validation success
+    func testValidationSuccessOnRemoteSuccess() {
+        REGISTER_TXT_FIELD.text = VALID_EMAIL
+        REGISTER_VALIDATOR.registerField(REGISTER_TXT_FIELD, errorLabel: ERROR_LABEL, rules: [EmailRule()], remoteInfo: (urlString: URL_STRING, error: EMAIL_TAKEN_MESSAGE))
+        REGISTER_VALIDATOR.delegate = REGISTER_SUCCESS_REMOTE_VALIDATION_DELEGATE
+        REGISTER_VALIDATOR.validate()
+        XCTAssert(REGISTER_VALIDATOR.errors.count == 0)
+    }
+    
+    /// Used to test remote validation failure
+    func testValidationFailOnRemoteFailure() {
+        REGISTER_TXT_FIELD.text = VALID_EMAIL
+        REGISTER_VALIDATOR.registerField(REGISTER_TXT_FIELD, errorLabel: ERROR_LABEL, rules: [EmailRule()], remoteInfo: (urlString: URL_STRING, error: EMAIL_TAKEN_MESSAGE))
+        REGISTER_VALIDATOR.delegate = REGISTER_FAILURE_REMOTE_VALIDATION_DELEGATE
+        REGISTER_VALIDATOR.validate()
+        XCTAssert(REGISTER_VALIDATOR.errors.count == 1, "There is at least one error")
     }
     
     // MARK: Validate error field gets it's text set to the error, if supplied
