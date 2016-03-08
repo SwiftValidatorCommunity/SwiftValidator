@@ -22,15 +22,13 @@ import UIKit
      - returns: No return value.
      */
     optional func validationFailed(errors: [UITextField:ValidationError])
-    /**
-     This method will be called on each field to allow user to perform more validation of field
-     - returns: No return value.
-    **/
+    /// This method is called as soon a validation starts. Should be used to do things like disable buttons, textfields once validation is started.
+    func willValidate()
     /// This method is called just before validator's fields are validated. Should return true if validation is to be continued. Should return
     /// false if validation should not run.
-    func validationShouldRun() -> Bool
+    func shouldValidate() -> Bool
     /// This method is called after validator's fields have been validated.
-    func validationDidRun()
+    func didValidate()
     /// This method is called after when validation does not run because preconditions have not been met.
-    func validationFailedBeforeRun()
+    func failedBeforeValidation()
 }

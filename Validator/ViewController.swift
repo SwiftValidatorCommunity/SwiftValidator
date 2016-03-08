@@ -64,6 +64,10 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
 
     // MARK: ValidationDelegate Methods
     
+    func willValidate() {
+        print("Prepare validator for validation")
+    }
+    
     func validationSuccessful() {
         print("Validation Success!")
         let alert = UIAlertController(title: "Success", message: "You are validated!", preferredStyle: UIAlertControllerStyle.Alert)
@@ -72,11 +76,12 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
         self.presentViewController(alert, animated: true, completion: nil)
     
     }
+    
     func validationFailed(errors:[UITextField:ValidationError]) {
         print("Validation FAILED!")
     }
     
-    func validationShouldRun() -> Bool {
+    func shouldValidate() -> Bool {
         // Allow user to check that any preconditions are met before validation
         // Good place to validate things other than UITextField
         if !agreementStatus.on {
@@ -85,12 +90,12 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
         return true
     }
     
-    func validationFailedBeforeRun() {
+    func failedBeforeValidation() {
         // perform any style transformations
         print("validation failed before running")
     }
     
-    func validationDidRun() {
+    func didValidate() {
         // perform custom post validation
         print("validationDidRun called")
     }
