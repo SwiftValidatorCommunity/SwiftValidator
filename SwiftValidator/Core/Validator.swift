@@ -138,10 +138,13 @@ public class Validator {
      */
     public func validate() {        
         // If preconditions are not met, then automatically fail validation
-        if delegate!.validationShouldRun() == false {
-            delegate!.validationFailedBeforeRun()
+        if delegate!.shouldValidate() == false {
+            delegate!.failedBeforeValidation()
             return
         }
+        
+        // Validation is a go so modify view controller accordingly (disable subviews)
+        delegate!.willValidate()
         
         // We've made it this far, so preconditions must've been satisfied
         self.validateAllFields()
@@ -153,8 +156,8 @@ public class Validator {
             // call failure method if it's implemented
             if delegate!.validationFailed?(errors) != nil {}
         }
-        // validation did run
-        delegate!.validationDidRun()
+        // validation did run so update view controller (re-enable buttons and such)
+        delegate!.didValidate()
     }
 
     /**
