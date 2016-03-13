@@ -127,9 +127,6 @@ func textFieldShouldReturn(textField: UITextField) -> Bool {
 }
 ```
 
-## Documentation
-Checkout the docs <a href="http://jpotts18.github.io/SwiftValidator/">here</a>.
-
 ## Custom Validation 
 
 We will create a ```SSNRule``` class to show how to create your own Validation. A United States Social Security Number (or SSN) is a field that consists of XXX-XX-XXXX. 
@@ -148,6 +145,8 @@ class SSNVRule: RegexRule {
 }
 ```
 
+## Documentation
+Checkout the docs <a href="http://jpotts18.github.io/SwiftValidator/">here</a>.
 
 
 Credits
