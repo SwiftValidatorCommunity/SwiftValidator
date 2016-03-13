@@ -108,7 +108,7 @@ func validationFailed(errors:[UITextField:ValidationError]) {
 
 ```
 
-### Single Field Validation
+## Single Field Validation
 
 You may use single field validation in some cases. This could be useful in situations such as controlling responders:
 
@@ -127,6 +127,8 @@ func textFieldShouldReturn(textField: UITextField) -> Bool {
 }
 ```
 
+## Documentation
+Checkout the docs <a href="http://jpotts18.github.io/SwiftValidator/">here</a>.
 
 ## Custom Validation 
 
@@ -145,6 +147,8 @@ class SSNVRule: RegexRule {
     }
 }
 ```
+
+
 
 Credits
 -------
