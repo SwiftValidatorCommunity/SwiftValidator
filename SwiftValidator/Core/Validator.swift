@@ -8,11 +8,6 @@
 import Foundation
 import UIKit
 
-//@objc public protocol ValidationDelegate {
-//	func validationSuccessful()
-//	func validationFailed(textFieldErrors: [UITextField:ValidationError], textViewErrors:[UITextView:ValidationError], segmentedControlErrors: [UISegmentedControl:ValidationError], stepperErrors:[UIStepper:ValidationError])
-//}
-
 /**
  Class that makes `Validator` objects. Should be added as a parameter to ViewController that will display
  validation fields.
