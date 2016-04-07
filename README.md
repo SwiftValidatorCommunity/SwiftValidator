@@ -1,7 +1,7 @@
 SwiftValidator
 ===============
 
-[![Build Status](https://travis-ci.org/jpotts18/SwiftValidator.svg?branch=travis-ci)](https://travis-ci.org/jpotts18/SwiftValidator) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Build Status](https://travis-ci.org/jpotts18/SwiftValidator.svg?branch=travis-ci)](https://travis-ci.org/jpotts18/SwiftValidator) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![codecov.io](https://codecov.io/github/jpotts18/SwiftValidator/coverage.svg?branch=master)](https://codecov.io/github/jpotts18/SwiftValidator?branch=master)
 
 Swift Validator is a rule-based validation library for Swift.
 
@@ -28,7 +28,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, "8.1"
 
 use_frameworks!
-pod 'SwiftValidator', '3.0.1' 
+pod 'SwiftValidator', '3.0.3' 
 ```
 
 Install into your project:
@@ -124,6 +124,25 @@ func validationFailed(textFieldErrors: [UITextField: ValidationError], textViewE
 
 ```
 
+## Single Field Validation
+
+You may use single field validation in some cases. This could be useful in situations such as controlling responders:
+
+```swift
+// Don't forget to use UITextFieldDelegate
+// and delegate yourTextField to self in viewDidLoad()
+func textFieldShouldReturn(textField: UITextField) -> Bool {
+    validator.validateField(textField){ error in
+        if error == nil {
+            // Field validation was successful
+        } else {
+            // Validation error occurred
+        }
+    }
+    return true
+}
+```
+
 ## Custom Validation 
 
 We will create a ```SSNRule``` class to show how to create your own Validation. A United States Social Security Number (or SSN) is a field that consists of XXX-XX-XXXX. 
@@ -141,6 +160,10 @@ class SSNVRule: RegexRule {
     }
 }
 ```
+
+## Documentation
+Checkout the docs <a href="http://jpotts18.github.io/SwiftValidator/">here</a> via [@jazzydocs](https://twitter.com/jazzydocs).
+
 
 Credits
 -------
