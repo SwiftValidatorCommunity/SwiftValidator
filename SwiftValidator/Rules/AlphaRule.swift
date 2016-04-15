@@ -18,7 +18,7 @@ public class AlphaRule: CharacterSetRule {
      Initializes an `AlphaRule` object to verify that a field has valid set of alpha characters.
      
      - parameter message: String of error message.
-     - returns: An initialized object, or nil if an object could not be created for some reason that would not result in an exception.
+     - returns: An initialized object, or nil if an object could not be created for some reason.
      */
     public init(message: String = "Enter valid alphabetic characters") {
         super.init(characterSet: NSCharacterSet.letterCharacterSet(), message: message)
