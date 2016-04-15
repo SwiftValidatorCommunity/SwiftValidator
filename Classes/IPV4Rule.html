@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Rule Protocol Reference</title>
+    <title>IPV4Rule Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Protocol/Rule" class="dashAnchor"></a>
-    <a title="Rule Protocol Reference"></a>
+    <a name="//apple_ref/swift/Class/IPV4Rule" class="dashAnchor"></a>
+    <a title="IPV4Rule Class Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">SwiftValidator Docs</a> (100% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">SwiftValidator Reference</a>
         <img id="carat" src="../img/carat.png" />
-        Rule Protocol Reference
+        IPV4Rule Class Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -111,14 +111,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Rule</h1>
+            <h1>IPV4Rule</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Rule</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">IPV4Rule</span><span class="p">:</span> <span class="kt">RegexRule</span></code></pre>
 
                 </div>
               </div>
-            <p>The <code>Rule</code> protocol declares the required methods for all objects that subscribe to it.</p>
+            <p><code>IPV4Rule</code> is a subclass of RegexRule that defines how a IPV4 address validated.</p>
 
           </section>
           <section class="section task-group-section">
@@ -127,9 +127,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP14SwiftValidator4Rule8validateuRq_S0__Fq_FSSSb"></a>
-                    <a name="//apple_ref/swift/Method/validate(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP14SwiftValidator4Rule8validateuRq_S0__Fq_FSSSb">validate(_:)</a>
+                    <a name="/s:FC14SwiftValidator8IPV4RulecFMS0_FT7messageSS_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(message:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC14SwiftValidator8IPV4RulecFMS0_FT7messageSS_S0_">init(message:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -137,14 +137,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Validates text of a text field.</p>
+                        <p>Initializes a <code><a href="../Classes/IPV4Rule.html">IPV4Rule</a></code> object to verify that field has text is an IPV4Rule address.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">validate</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">message</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"Must be a valid IPV4 address"</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -155,12 +155,12 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>value</em>
+                                <em>message</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>String of text to be validated.</p>
+                                  <p>String of error message.</p>
 
                                 </div>
                               </td>
@@ -170,39 +170,7 @@
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>Boolean value. True if validation is successful; False if validation fails.</p>
-
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:FP14SwiftValidator4Rule12errorMessageuRq_S0__Fq_FT_SS"></a>
-                    <a name="//apple_ref/swift/Method/errorMessage()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP14SwiftValidator4Rule12errorMessageuRq_S0__Fq_FT_SS">errorMessage()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Displays error message of a text field that has failed validation.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">errorMessage</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>String of error message.</p>
+                        <p>An initialized object, or nil if an object could not be created for some reason that would not result in an exception.</p>
 
                       </div>
                     </section>
