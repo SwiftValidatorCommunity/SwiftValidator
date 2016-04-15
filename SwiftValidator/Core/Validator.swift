@@ -29,6 +29,7 @@ public class Validator {
     /**
     This method is used to validate all fields registered to Validator. If validation is unsuccessful,
     field gets added to errors dictionary.
+    
     - returns: No return value.
     */
     private func validateAllFields() {
@@ -58,6 +59,7 @@ public class Validator {
     /**
     This method is used to validate a single field registered to Validator. If validation is unsuccessful,
     field gets added to errors dictionary.
+    
     - parameter textField: Holds validator field data.
     - returns: No return value.
     */
@@ -149,7 +151,6 @@ public class Validator {
      This method validates all fields in validator and sets any errors to errors parameter of callback.
      
      - parameter callback: A closure which is called with errors, a dictionary of type UITextField:ValidationError.
-     
      - returns: No return value.
      */
     public func validate(callback:(errors:[UITextField:ValidationError])->Void) -> Void {
