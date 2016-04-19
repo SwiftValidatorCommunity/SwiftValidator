@@ -152,7 +152,7 @@ Checkout the docs <a href="http://jpotts18.github.io/SwiftValidator/">here</a> v
 Credits
 -------
 
-Swift Validator is written and maintained by Jeff Potter [@jpotts18](http://twitter.com/jpotts18).
+Swift Validator is written and maintained by Jeff Potter [@jpotts18](http://twitter.com/jpotts18). David Patterson [@dave_tw12](http://twitter.com/dave_tw12) actively works as a collaborator.
 
 ## Contributing
 
