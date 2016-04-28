@@ -33,7 +33,7 @@ class ViewController: UIViewController, ValidationDelegate, UITextFieldDelegate 
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "hideKeyboard"))
         
-        validator.styleTransformers(success:{ (validationRule) -> Void in
+		validator.styleTransformers(success:{ (validationRule) -> Void in
             print("here")
             if let validationRule = validationRule as? TextFieldValidationRule {
                 // clear error label

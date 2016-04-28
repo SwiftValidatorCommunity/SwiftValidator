@@ -39,6 +39,7 @@ public class Validator {
     /**
     This method is used to validate all fields registered to Validator. If validation is unsuccessful,
     field gets added to errors dictionary.
+    
     - returns: No return value.
     */
     private func validateAllFields() {
@@ -113,48 +114,78 @@ public class Validator {
                     if let transform = self.successStyleTransform {
                         transform(validationRule: currentRule)
                     }
-                }
-            }
-        }
-        
-        for field in stepperValidations.keys {
-            if let currentRule: StepperValidationRule = stepperValidations[field] as? StepperValidationRule {
-                if let error: ValidationError = currentRule.validateField() {
-                    if currentRule.errorLabel != nil {
-                        error.errorLabel = currentRule.errorLabel
-                    }
-                    stepperErrors[field] = error
-                    
-                    // let the user transform the field if they want
-                    if let transform = self.errorStyleTransform {
-                        transform(validationError: error)
-                    }
-                } else {
-                    stepperErrors.removeValueForKey(field)
-                    
-                    // let the user transform the field if they want
-                    if let transform = self.successStyleTransform {
-                        transform(validationRule: currentRule)
-                    }
-                }
-            }
-        }
+				}
+			}
+		}
+		
+		for field in stepperValidations.keys {
+			if let currentRule: StepperValidationRule = stepperValidations[field] as? StepperValidationRule {
+				if let error: ValidationError = currentRule.validateField() {
+					if currentRule.errorLabel != nil {
+						error.errorLabel = currentRule.errorLabel
+					}
+					stepperErrors[field] = error
+					
+					// let the user transform the field if they want
+					if let transform = self.errorStyleTransform {
+						transform(validationError: error)
+					}
+				} else {
+					stepperErrors.removeValueForKey(field)
+					
+					// let the user transform the field if they want
+					if let transform = self.successStyleTransform {
+						transform(validationRule: currentRule)
+					}
+				}
+			}
+		}
+
     }
-    
+	
+    // MARK: Public functions
+	
+	/**
+	This method is used to validate a single field registered to Validator. If validation is unsuccessful,
+	field gets added to errors dictionary.
+	
+	- parameter textField: Holds validator field data.
+	- returns: No return value.
+	*/
+	public func validateField(textField: UITextField, callback: (error:ValidationError?) -> Void){
+		if let fieldRule = textFieldValidations[textField] as? TextFieldValidationRule {
+			if let error = fieldRule.validateField() {
+				textFieldErrors[textField] = error
+				if let transform = self.errorStyleTransform {
+					transform(validationError: error)
+				}
+				callback(error: error)
+			} else {
+				if let transform = self.successStyleTransform {
+					transform(validationRule: fieldRule)
+				}
+				callback(error: nil)
+			}
+		} else {
+			callback(error: nil)
+		}
+	}
+	
+	
     // MARK: Using Keys
-    
-    /**
-    This method is used to style fields that have undergone validation checks. Success callback should be used to show common success styling and error callback should be used to show common error styling.
-    
-    - parameter success: A closure which is called with validationRule, an object that holds validation data
-    - parameter error: A closure which is called with validationError, an object that holds validation error data
-    - returns: No return value
-    */
-    public func styleTransformers(success success:((validationRule:ValidationRule)->Void)?, error:((validationError:ValidationError)->Void)?) {
-        self.successStyleTransform = success
-        self.errorStyleTransform = error
-    }
-    
+	
+	/**
+	This method is used to style fields that have undergone validation checks. Success callback should be used to show common success styling and error callback should be used to show common error styling.
+	
+	- parameter success: A closure which is called with validationRule, an object that holds validation data
+	- parameter error: A closure which is called with validationError, an object that holds validation error data
+	- returns: No return value
+	*/
+	public func styleTransformers(success success:((validationRule:ValidationRule)->Void)?, error:((validationError:ValidationError)->Void)?) {
+		self.successStyleTransform = success
+		self.errorStyleTransform = error
+	}
+		
     /**
      This method is used to add a field to validator.
      
@@ -232,7 +263,13 @@ public class Validator {
         }
         
     }
-	
+
+    /**
+     This method validates all fields in validator and sets any errors to errors parameter of callback.
+     
+     - parameter callback: A closure which is called with errors, a dictionary of type UITextField:ValidationError.
+     - returns: No return value.
+     */
     public func validate(callback:(textFieldErrors:[UITextField:ValidationError], textViewErrors: [UITextView:ValidationError], segmentedControlErrors:[UISegmentedControl:ValidationError], stepperErrors:[UIStepper:ValidationError])->Void) -> Void {
         
         self.validateAllFields()

@@ -14,6 +14,7 @@ import UIKit
 @objc public protocol ValidationDelegate {
     /**
      This method will be called on delegate object when validation is successful.
+     
      - returns: No return value.
      */
 	func validationSuccessful()

@@ -21,7 +21,8 @@ public class MinLengthRule: Rule {
     public init(){}
     
     /**
-     Initializes a `MaxLengthRule` object that is to validate the length of the text of a text field
+     Initializes a `MaxLengthRule` object that is to validate the length of the text of a text field.
+     
      - parameter length: Minimum character length.
      - parameter message: String of error message.
      - returns: An initialized `MinLengthRule` object, or nil if an object could not be created for some reason that would not result in an exception.

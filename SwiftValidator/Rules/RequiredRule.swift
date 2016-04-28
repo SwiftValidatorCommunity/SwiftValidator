@@ -16,6 +16,8 @@ public class RequiredRule: Rule {
     private var message : String 
     
     /**
+     Initializes `RequiredRule` object with error message. Used to validate a field that requires text.
+     
      - parameter message: String of error message.
      - returns: An initialized `RequiredRule` object, or nil if an object could not be created for some reason that would not result in an exception.
      */
