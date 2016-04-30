@@ -161,3 +161,4 @@ Swift Validator is written and maintained by Jeff Potter [@jpotts18](http://twit
 3. Commit your changes `git commit -am 'Add some feature'`
 4. Push to the branch `git push origin my-new-feature`
 5. Create a new Pull Request
+6. Make sure code coverage is above 70%
