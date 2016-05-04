@@ -14,11 +14,11 @@ import UIKit
  */
 public class Validator {
     /// Dictionary to hold all fields (and accompanying rules) that will undergo validation.
-    public var validations = [ObjectIdentifier:ValidationRule]()
+    public var validations = ValidatorDictionary<ValidationRule>()
     /// Dictionary to hold fields (and accompanying errors) that were unsuccessfully validated.
-    public var errors = [ObjectIdentifier:ValidationError]()
+    public var errors = ValidatorDictionary<ValidationError>()
     /// Dictionary to hold fields by their object identifiers
-    private var fields = [ObjectIdentifier:Validatable]()
+    private var fields = ValidatorDictionary<Validatable>()
     /// Variable that holds success closure to display positive status of field.
     private var successStyleTransform:((validationRule:ValidationRule)->Void)?
     /// Variable that holds error closure to display negative status of field.
@@ -36,11 +36,11 @@ public class Validator {
     */
     private func validateAllFields() {
         
-        errors = [:]
+        errors = ValidatorDictionary<ValidationError>()
         
-        for (field, rule) in validations {
+        for (_, rule) in validations {
             if let error = rule.validateField() {
-                errors[field] = error
+                errors[rule.field] = error
                 
                 // let the user transform the field if they want
                 if let transform = self.errorStyleTransform {
@@ -66,10 +66,9 @@ public class Validator {
     - returns: No return value.
     */
     public func validateField(field: ValidatableField, callback: (error:ValidationError?) -> Void){
-        let oid = ObjectIdentifier(field)
-        if let fieldRule = validations[oid] {
+        if let fieldRule = validations[field] {
             if let error = fieldRule.validateField() {
-                errors[oid] = error
+                errors[field] = error
                 if let transform = self.errorStyleTransform {
                     transform(validationError: error)
                 }
@@ -107,9 +106,8 @@ public class Validator {
      - returns: No return value
      */
     public func registerField(field:ValidatableField, rules:[Rule]) {
-        let oid = ObjectIdentifier(field)
-        validations[oid] = ValidationRule(field: field, rules: rules, errorLabel: nil)
-        fields[oid] = field
+        validations[field] = ValidationRule(field: field, rules: rules, errorLabel: nil)
+        fields[field] = field
     }
     
     /**
@@ -121,9 +119,8 @@ public class Validator {
      - returns: No return value
      */
     public func registerField(field: ValidatableField, errorLabel:UILabel, rules:[Rule]) {
-        let oid = ObjectIdentifier(field)
-        validations[oid] = ValidationRule(field: field, rules:rules, errorLabel:errorLabel)
-        fields[oid] = field
+        validations[field] = ValidationRule(field: field, rules:rules, errorLabel:errorLabel)
+        fields[field] = field
     }
     
     /**
@@ -133,9 +130,8 @@ public class Validator {
      - returns: No return value
      */
     public func unregisterField(field:ValidatableField) {
-        let oid = ObjectIdentifier(field)
-        validations.removeValueForKey(oid)
-        errors.removeValueForKey(oid)
+        validations.removeValueForKey(field)
+        errors.removeValueForKey(field)
     }
     
     /**
@@ -150,7 +146,7 @@ public class Validator {
         if errors.isEmpty {
             delegate.validationSuccessful()
         } else {
-            delegate.validationFailed(errors.map { (fields[$0]!, $1) })
+            delegate.validationFailed(errors.map { (fields[$1.field]!, $1) })
         }
         
     }
@@ -165,6 +161,6 @@ public class Validator {
         
         self.validateAllFields()
         
-        callback(errors: errors.map { (fields[$0]!, $1) } )
+        callback(errors: errors.map { (fields[$1.field]!, $1) } )
     }
 }

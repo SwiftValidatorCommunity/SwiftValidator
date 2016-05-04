@@ -41,6 +41,7 @@
 		FB465D001B9889EA00398388 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB465CF11B9889EA00398388 /* ValidationError.swift */; };
 		FB465D011B9889EA00398388 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB465CF21B9889EA00398388 /* Validator.swift */; };
 		FB51E5B01CD208B8004DE696 /* Validatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB51E5AF1CD208B8004DE696 /* Validatable.swift */; };
+		FBA963631CDA10130071F03E /* ValidatorDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA963621CDA10130071F03E /* ValidatorDictionary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +129,7 @@
 		FB465CF11B9889EA00398388 /* ValidationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
 		FB465CF21B9889EA00398388 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		FB51E5AF1CD208B8004DE696 /* Validatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validatable.swift; sourceTree = "<group>"; };
+		FBA963621CDA10130071F03E /* ValidatorDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatorDictionary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +295,7 @@
 				FB465CF11B9889EA00398388 /* ValidationError.swift */,
 				FB465CF21B9889EA00398388 /* Validator.swift */,
 				FB51E5AF1CD208B8004DE696 /* Validatable.swift */,
+				FBA963621CDA10130071F03E /* ValidatorDictionary.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 			files = (
 				FB465CF41B9889EA00398388 /* EmailRule.swift in Sources */,
 				FB465CF61B9889EA00398388 /* FullNameRule.swift in Sources */,
+				FBA963631CDA10130071F03E /* ValidatorDictionary.swift in Sources */,
 				FB465CFF1B9889EA00398388 /* ZipCodeRule.swift in Sources */,
 				FB465CF91B9889EA00398388 /* PasswordRule.swift in Sources */,
 				7CC1E4D11C637A7700AF013C /* AlphaNumericRule.swift in Sources */,
