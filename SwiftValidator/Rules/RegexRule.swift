@@ -30,7 +30,7 @@ public class RegexRule : Rule {
     }
     
     /**
-     Method used to validate text field.
+     Method used to validate field.
      
      - parameter value: String to checked for validation.
      - returns: Boolean value. True if validation is successful; False if validation fails.
@@ -41,7 +41,7 @@ public class RegexRule : Rule {
     }
     
     /**
-     Method used to dispaly error message when text field fails validation.
+     Method used to dispaly error message when field fails validation.
      
      - returns: String of error message.
      */

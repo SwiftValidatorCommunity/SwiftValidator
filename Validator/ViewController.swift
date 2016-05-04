@@ -35,18 +35,22 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
         
         validator.styleTransformers(success:{ (validationRule) -> Void in
             print("here")
-                // clear error label
-                validationRule.errorLabel?.hidden = true
-                validationRule.errorLabel?.text = ""
-                validationRule.textField.layer.borderColor = UIColor.greenColor().CGColor
-                validationRule.textField.layer.borderWidth = 0.5
-            
-            }, error:{ (validationError) -> Void in
-                print("error")
-                validationError.errorLabel?.hidden = false
-                validationError.errorLabel?.text = validationError.errorMessage
-                validationError.textField.layer.borderColor = UIColor.redColor().CGColor
-                validationError.textField.layer.borderWidth = 1.0
+            // clear error label
+            validationRule.errorLabel?.hidden = true
+            validationRule.errorLabel?.text = ""
+            if let textField = validationRule.field as? UITextField {
+                textField.layer.borderColor = UIColor.greenColor().CGColor
+                textField.layer.borderWidth = 0.5
+                
+            }
+        }, error:{ (validationError) -> Void in
+            print("error")
+            validationError.errorLabel?.hidden = false
+            validationError.errorLabel?.text = validationError.errorMessage
+            if let textField = validationError.field as? UITextField {
+                textField.layer.borderColor = UIColor.redColor().CGColor
+                textField.layer.borderWidth = 1.0
+            }
         })
         
         validator.registerField(fullNameTextField, errorLabel: fullNameErrorLabel , rules: [RequiredRule(), FullNameRule()])
@@ -71,7 +75,7 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
         self.presentViewController(alert, animated: true, completion: nil)
     
     }
-    func validationFailed(errors:[UITextField:ValidationError]) {
+    func validationFailed(errors:[(Validatable, ValidationError)]) {
         print("Validation FAILED!")
     }
     

@@ -45,7 +45,7 @@ public class CharacterSetRule: Rule {
     }
     
     /**
-     Displays error message when text field fails validation.
+     Displays error message when field fails validation.
      
      - returns: String of error message.
      */

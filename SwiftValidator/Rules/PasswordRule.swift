@@ -24,7 +24,7 @@ public class PasswordRule : RegexRule {
     static let regex = "^(?=.*?[A-Z]).{8,}$"
     
     /**
-     Initializes a `PasswordRule` object that will validate a text field is a valid password.
+     Initializes a `PasswordRule` object that will validate a field is a valid password.
      
      - parameter message: String of error message.
      - returns: An initialized `PasswordRule` object, or nil if an object could not be created for some reason that would not result in an exception.

@@ -323,13 +323,13 @@ class SwiftValidatorTests: XCTestCase {
     
     func testRegisterField(){
         REGISTER_VALIDATOR.registerField(REGISTER_TXT_FIELD, rules: REGISTER_RULES)
-        XCTAssert(REGISTER_VALIDATOR.validations[REGISTER_TXT_FIELD] != nil, "Textfield should register")
+        XCTAssert(REGISTER_VALIDATOR.validations[ObjectIdentifier(REGISTER_TXT_FIELD)] != nil, "Textfield should register")
     }
     
     func testUnregisterField(){
         UNREGISTER_VALIDATOR.registerField(UNREGISTER_TXT_FIELD, rules: UNREGISTER_RULES)
         UNREGISTER_VALIDATOR.unregisterField(UNREGISTER_TXT_FIELD)
-        XCTAssert(UNREGISTER_VALIDATOR.validations[UNREGISTER_TXT_FIELD] == nil, "Textfield should unregister")
+        XCTAssert(UNREGISTER_VALIDATOR.validations[ObjectIdentifier(UNREGISTER_TXT_FIELD)] == nil, "Textfield should unregister")
     }
     
     func testUnregisterError(){

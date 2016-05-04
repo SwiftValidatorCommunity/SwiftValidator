@@ -21,7 +21,7 @@ public class MinLengthRule: Rule {
     public init(){}
     
     /**
-     Initializes a `MaxLengthRule` object that is to validate the length of the text of a text field.
+     Initializes a `MaxLengthRule` object that is to validate the length of the text of a field.
      
      - parameter length: Minimum character length.
      - parameter message: String of error message.
@@ -33,7 +33,7 @@ public class MinLengthRule: Rule {
     }
     
     /**
-     Validates a text field.
+     Validates a field.
      - parameter value: String to checked for validation.
      - returns: A boolean value. True if validation is successful; False if validation fails.
      */
@@ -42,7 +42,7 @@ public class MinLengthRule: Rule {
     }
     
     /**
-     Displays error message when text field has failed validation.
+     Displays error message when field has failed validation.
      
      - returns: String of error message.
      */
