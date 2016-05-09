@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SwiftValidator
 
-class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate {
+class ViewController: UIViewController, ValidationDelegate, UITextFieldDelegate {
 
     // TextFields
     @IBOutlet weak var fullNameTextField: UITextField!
@@ -33,20 +33,22 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "hideKeyboard"))
         
-        validator.styleTransformers(success:{ (validationRule) -> Void in
+		validator.styleTransformers(success:{ (validationRule) -> Void in
             print("here")
+            if let validationRule = validationRule as? TextFieldValidationRule {
                 // clear error label
                 validationRule.errorLabel?.hidden = true
                 validationRule.errorLabel?.text = ""
-                validationRule.textField.layer.borderColor = UIColor.greenColor().CGColor
-                validationRule.textField.layer.borderWidth = 0.5
+                validationRule.textField!.layer.borderColor = UIColor.greenColor().CGColor
+                validationRule.textField!.layer.borderWidth = 0.5
+            }
             
             }, error:{ (validationError) -> Void in
                 print("error")
                 validationError.errorLabel?.hidden = false
                 validationError.errorLabel?.text = validationError.errorMessage
-                validationError.textField.layer.borderColor = UIColor.redColor().CGColor
-                validationError.textField.layer.borderWidth = 1.0
+                validationError.textField!.layer.borderColor = UIColor.redColor().CGColor
+                validationError.textField!.layer.borderWidth = 1.0
         })
         
         validator.registerField(fullNameTextField, errorLabel: fullNameErrorLabel , rules: [RequiredRule(), FullNameRule()])
@@ -71,7 +73,7 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
         self.presentViewController(alert, animated: true, completion: nil)
     
     }
-    func validationFailed(errors:[UITextField:ValidationError]) {
+    func validationFailed(textFieldErrors:[UITextField:ValidationError], textViewErrors:[UITextView:ValidationError], segmentedControlErrors:[UISegmentedControl:ValidationError], stepperErrors:[UIStepper:ValidationError]) {
         print("Validation FAILED!")
     }
     
@@ -81,15 +83,15 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
     
     // MARK: Validate single field
     // Don't forget to use UITextFieldDelegate
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-            validator.validateField(textField){ error in
-                if error == nil {
-                    // Field validation was successful
-                } else {
-                    // Validation error occurred
-                }
-            }
-        return true
-    }
+//    func textFieldShouldReturn(textField: UITextField) -> Bool {
+//            validator.validateField(textField){ error in
+//                if error == nil {
+//                    // Field validation was successful
+//                } else {
+//                    // Validation error occurred
+//                }
+//            }
+//        return true
+//    }
 
 }

@@ -10,13 +10,13 @@ import UIKit
  The `ValidationError` class is used for representing errors of a failed validation. It contains the text field, error label, and error message of a failed validation.
  */
 public class ValidationError: NSObject {
-    /// the textField of the field
-    public let textField:UITextField
-    /// the error label of the field
-    public var errorLabel:UILabel?
-    /// the error message of the field
-    public let errorMessage:String
-    
+    public let textField: UITextField?
+    public let textView: UITextView?
+  	public let segmentedControl: UISegmentedControl?
+  	public let stepper: UIStepper?
+    public var errorLabel: UILabel?
+    public let errorMessage: String
+	
     /**
      Initializes `ValidationError` object with a textField and error.
      
@@ -27,8 +27,11 @@ public class ValidationError: NSObject {
     public init(textField:UITextField, error:String){
         self.textField = textField
         self.errorMessage = error
+   		self.segmentedControl = nil
+        self.textView = nil
+        self.stepper = nil
     }
-    
+	
     /**
      Initializes `ValidationError` object with a textField, errorLabel, and errorMessage.
      
@@ -41,5 +44,32 @@ public class ValidationError: NSObject {
         self.textField = textField
         self.errorLabel = errorLabel
         self.errorMessage = error
+   		self.segmentedControl = nil
+        self.textView = nil
+        self.stepper = nil
+    }
+    
+    public init(textView: UITextView, error: String){
+        self.textView = textView
+        self.errorMessage = error
+        self.textField = nil
+        self.segmentedControl = nil
+        self.stepper = nil
+    }
+    
+    public init(segmentedControl: UISegmentedControl, error: String){
+        self.segmentedControl = segmentedControl
+        self.errorMessage = error
+        self.textField = nil
+        self.textView = nil
+        self.stepper = nil
+    }
+    
+    public init(stepper: UIStepper, error: String){
+        self.stepper = stepper
+        self.errorMessage = error
+        self.textField = nil
+        self.textView = nil
+        self.segmentedControl = nil
     }
 }

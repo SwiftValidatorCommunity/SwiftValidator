@@ -21,7 +21,17 @@ public class Validator {
     private var successStyleTransform:((validationRule:ValidationRule)->Void)?
     /// Variable that holds error closure to display negative status of field.
     private var errorStyleTransform:((validationError:ValidationError)->Void)?
-    /// - returns: An initialized object, or nil if an object could not be created for some reason that would not result in an exception.
+    
+    public var textFieldErrors:[UITextField:ValidationError] = [:]
+    public var textViewErrors:[UITextView:ValidationError] = [:]
+    public var segmentedControlErrors:[UISegmentedControl:ValidationError] = [:]
+    public var stepperErrors:[UIStepper:ValidationError] = [:]
+    
+    public var textFieldValidations:[UITextField:ValidationRule] = [:]
+  	public var textViewValidations:[UITextView:ValidationRule] = [:]
+    public var segmentedControlValidations:[UISegmentedControl:ValidationRule] = [:]
+  	public var stepperValidations:[UIStepper:ValidationRule] = [:]
+	
     public init(){}
     
     // MARK: Private functions
@@ -34,68 +44,148 @@ public class Validator {
     */
     private func validateAllFields() {
         
-        errors = [:]
-        
-        for (textField, rule) in validations {
-            if let error = rule.validateField() {
-                errors[textField] = error
+        textFieldErrors = [:]
+        segmentedControlErrors = [:]
+        textViewErrors = [:]
+        stepperErrors = [:]
                 
-                // let the user transform the field if they want
-                if let transform = self.errorStyleTransform {
-                    transform(validationError: error)
-                }
-            } else {
-                // No error
-                // let the user transform the field if they want
-                if let transform = self.successStyleTransform {
-                    transform(validationRule: rule)
+        for field in textFieldValidations.keys {
+            if let currentRule: TextFieldValidationRule = textFieldValidations[field] as? TextFieldValidationRule {
+                if let error: ValidationError = currentRule.validateField() {
+                    if currentRule.errorLabel != nil {
+                        error.errorLabel = currentRule.errorLabel
+                    }
+                    textFieldErrors[field] = error
+                    
+                    // let the user transform the field if they want
+                    if let transform = self.errorStyleTransform {
+                        transform(validationError: error)
+                    }
+                } else {
+                    textFieldErrors.removeValueForKey(field)
+                    
+                    // let the user transform the field if they want
+                    if let transform = self.successStyleTransform {
+                        transform(validationRule: currentRule)
+                    }
                 }
             }
         }
+        
+        for field in textViewValidations.keys {
+            if let currentRule: TextViewValidationRule = textViewValidations[field] as? TextViewValidationRule {
+                if let error: ValidationError = currentRule.validateField() {
+                    if currentRule.errorLabel != nil {
+                        error.errorLabel = currentRule.errorLabel
+                    }
+                    textViewErrors[field] = error
+                    
+                    // let the user transform the field if they want
+                    if let transform = self.errorStyleTransform {
+                        transform(validationError: error)
+                    }
+                } else {
+                    textViewErrors.removeValueForKey(field)
+                    
+                    // let the user transform the field if they want
+                    if let transform = self.successStyleTransform {
+                        transform(validationRule: currentRule)
+                    }
+                }
+            }
+        }
+        
+        for field in segmentedControlValidations.keys {
+            if let currentRule: SegmentedControlValidationRule = segmentedControlValidations[field] as? SegmentedControlValidationRule {
+                if let error: ValidationError = currentRule.validateField() {
+                    if currentRule.errorLabel != nil {
+                        error.errorLabel = currentRule.errorLabel
+                    }
+                    segmentedControlErrors[field] = error
+                    
+                    // let the user transform the field if they want
+                    if let transform = self.errorStyleTransform {
+                        transform(validationError: error)
+                    }
+                } else {
+                    segmentedControlErrors.removeValueForKey(field)
+                    
+                    // let the user transform the field if they want
+                    if let transform = self.successStyleTransform {
+                        transform(validationRule: currentRule)
+                    }
+				}
+			}
+		}
+		
+		for field in stepperValidations.keys {
+			if let currentRule: StepperValidationRule = stepperValidations[field] as? StepperValidationRule {
+				if let error: ValidationError = currentRule.validateField() {
+					if currentRule.errorLabel != nil {
+						error.errorLabel = currentRule.errorLabel
+					}
+					stepperErrors[field] = error
+					
+					// let the user transform the field if they want
+					if let transform = self.errorStyleTransform {
+						transform(validationError: error)
+					}
+				} else {
+					stepperErrors.removeValueForKey(field)
+					
+					// let the user transform the field if they want
+					if let transform = self.successStyleTransform {
+						transform(validationRule: currentRule)
+					}
+				}
+			}
+		}
+
     }
-    
+	
     // MARK: Public functions
-    
-    /**
-    This method is used to validate a single field registered to Validator. If validation is unsuccessful,
-    field gets added to errors dictionary.
-    
-    - parameter textField: Holds validator field data.
-    - returns: No return value.
-    */
-    public func validateField(textField: UITextField, callback: (error:ValidationError?) -> Void){
-        if let fieldRule = validations[textField] {
-            if let error = fieldRule.validateField() {
-                errors[textField] = error
-                if let transform = self.errorStyleTransform {
-                    transform(validationError: error)
-                }
-                callback(error: error)
-            } else {
-                if let transform = self.successStyleTransform {
-                    transform(validationRule: fieldRule)
-                }
-                callback(error: nil)
-            }
-        } else {
-            callback(error: nil)
-        }
-    }
-    
+	
+	/**
+	This method is used to validate a single field registered to Validator. If validation is unsuccessful,
+	field gets added to errors dictionary.
+	
+	- parameter textField: Holds validator field data.
+	- returns: No return value.
+	*/
+	public func validateField(textField: UITextField, callback: (error:ValidationError?) -> Void){
+		if let fieldRule = textFieldValidations[textField] as? TextFieldValidationRule {
+			if let error = fieldRule.validateField() {
+				textFieldErrors[textField] = error
+				if let transform = self.errorStyleTransform {
+					transform(validationError: error)
+				}
+				callback(error: error)
+			} else {
+				if let transform = self.successStyleTransform {
+					transform(validationRule: fieldRule)
+				}
+				callback(error: nil)
+			}
+		} else {
+			callback(error: nil)
+		}
+	}
+	
+	
     // MARK: Using Keys
-    
-    /**
-    This method is used to style fields that have undergone validation checks. Success callback should be used to show common success styling and error callback should be used to show common error styling.
-    
-    - parameter success: A closure which is called with validationRule, an object that holds validation data
-    - parameter error: A closure which is called with validationError, an object that holds validation error data
-    - returns: No return value
-    */
-    public func styleTransformers(success success:((validationRule:ValidationRule)->Void)?, error:((validationError:ValidationError)->Void)?) {
-        self.successStyleTransform = success
-        self.errorStyleTransform = error
-    }
-    
+	
+	/**
+	This method is used to style fields that have undergone validation checks. Success callback should be used to show common success styling and error callback should be used to show common error styling.
+	
+	- parameter success: A closure which is called with validationRule, an object that holds validation data
+	- parameter error: A closure which is called with validationError, an object that holds validation error data
+	- returns: No return value
+	*/
+	public func styleTransformers(success success:((validationRule:ValidationRule)->Void)?, error:((validationError:ValidationError)->Void)?) {
+		self.successStyleTransform = success
+		self.errorStyleTransform = error
+	}
+		
     /**
      This method is used to add a field to validator.
      
@@ -104,7 +194,7 @@ public class Validator {
      - returns: No return value
      */
     public func registerField(textField:UITextField, rules:[Rule]) {
-        validations[textField] = ValidationRule(textField: textField, rules: rules, errorLabel: nil)
+        textFieldValidations[textField] = TextFieldValidationRule(textField: textField, rules: rules, errorLabel: nil)
     }
     
     /**
@@ -116,7 +206,19 @@ public class Validator {
      - returns: No return value
      */
     public func registerField(textField:UITextField, errorLabel:UILabel, rules:[Rule]) {
-        validations[textField] = ValidationRule(textField: textField, rules:rules, errorLabel:errorLabel)
+        textFieldValidations[textField] = TextFieldValidationRule(textField: textField, rules:rules, errorLabel:errorLabel)
+    }
+    
+    public func registerField(textView:UITextView, errorLabel:UILabel, rules:[Rule]) {
+        textViewValidations[textView] = TextViewValidationRule(textView: textView, rules:rules, errorLabel:errorLabel)
+    }
+    
+    public func registerField(segmented:UISegmentedControl, errorLabel:UILabel, rules:[Rule]) {
+        segmentedControlValidations[segmented] = SegmentedControlValidationRule(segmented: segmented, rules:rules, errorLabel:errorLabel)
+    }
+    
+    public func registerField(stepper:UIStepper, errorLabel:UILabel, rules:[Rule]) {
+        stepperValidations[stepper] = StepperValidationRule(stepper: stepper, rules:rules, errorLabel:errorLabel)
     }
     
     /**
@@ -126,8 +228,23 @@ public class Validator {
      - returns: No return value
      */
     public func unregisterField(textField:UITextField) {
-        validations.removeValueForKey(textField)
-        errors.removeValueForKey(textField)
+        textFieldValidations.removeValueForKey(textField)
+        textFieldErrors.removeValueForKey(textField)
+    }
+    
+    public func unregisterField(textView:UITextView) {
+        textViewValidations.removeValueForKey(textView)
+        textViewErrors.removeValueForKey(textView)
+    }
+    
+    public func unregisterField(segmented:UISegmentedControl) {
+        segmentedControlValidations.removeValueForKey(segmented)
+        segmentedControlErrors.removeValueForKey(segmented)
+    }
+    
+    public func unregisterField(stepper:UIStepper) {
+        stepperValidations.removeValueForKey(stepper)
+        stepperErrors.removeValueForKey(stepper)
     }
     
     /**
@@ -139,24 +256,24 @@ public class Validator {
         
         self.validateAllFields()
         
-        if errors.isEmpty {
+        if textFieldErrors.isEmpty && textViewErrors.isEmpty && segmentedControlErrors.isEmpty && stepperErrors.isEmpty {
             delegate.validationSuccessful()
         } else {
-            delegate.validationFailed(errors)
+            delegate.validationFailed(textFieldErrors, textViewErrors: textViewErrors, segmentedControlErrors: segmentedControlErrors, stepperErrors: stepperErrors)
         }
         
     }
-    
+
     /**
      This method validates all fields in validator and sets any errors to errors parameter of callback.
      
      - parameter callback: A closure which is called with errors, a dictionary of type UITextField:ValidationError.
      - returns: No return value.
      */
-    public func validate(callback:(errors:[UITextField:ValidationError])->Void) -> Void {
+    public func validate(callback:(textFieldErrors:[UITextField:ValidationError], textViewErrors: [UITextView:ValidationError], segmentedControlErrors:[UISegmentedControl:ValidationError], stepperErrors:[UIStepper:ValidationError])->Void) -> Void {
         
         self.validateAllFields()
         
-        callback(errors: errors)
+        callback(textFieldErrors: textFieldErrors, textViewErrors: textViewErrors, segmentedControlErrors: segmentedControlErrors, stepperErrors: stepperErrors)
     }
 }

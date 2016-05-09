@@ -17,11 +17,11 @@ import UIKit
      
      - returns: No return value.
      */
-    func validationSuccessful()
-    /**
-     This method will be called on delegate object when validation fails.
-     
-     - returns: No return value.
-     */
-    func validationFailed(errors: [UITextField:ValidationError])
+	func validationSuccessful()
+	
+	/**
+	This method will be called on delegate object when validation fails.
+	- returns: No return value.
+	*/
+	func validationFailed(textFieldErrors: [UITextField:ValidationError], textViewErrors:[UITextView:ValidationError], segmentedControlErrors: [UISegmentedControl:ValidationError], stepperErrors:[UIStepper:ValidationError])
 }

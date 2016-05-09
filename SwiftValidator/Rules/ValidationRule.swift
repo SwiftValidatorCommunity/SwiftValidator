@@ -12,12 +12,14 @@ import UIKit
  `ValidationRule` is a class that creates an object which holds validation info of a text field.
  */
 public class ValidationRule {
-    /// the text field of the field
-    public var textField:UITextField
     /// the errorLabel of the field
     public var errorLabel:UILabel?
     /// the rules of the field
     public var rules:[Rule] = []
+}
+
+public class TextFieldValidationRule: ValidationRule  {
+    public var textField: UITextField?
     
     /**
      Initializes `ValidationRule` instance with text field, rules, and errorLabel.
@@ -28,6 +30,7 @@ public class ValidationRule {
      - returns: An initialized `ValidationRule` object, or nil if an object could not be created for some reason that would not result in an exception.
      */
     public init(textField: UITextField, rules:[Rule], errorLabel:UILabel?){
+        super.init()
         self.textField = textField
         self.errorLabel = errorLabel
         self.rules = rules
@@ -38,7 +41,72 @@ public class ValidationRule {
      - returns: `ValidationError` object if at least one error is found. Nil is returned if there are no validation errors.
      */
     public func validateField() -> ValidationError? {
-        return rules.filter{ !$0.validate(self.textField.text ?? "") }
-                    .map{ rule -> ValidationError in return ValidationError(textField: self.textField, errorLabel:self.errorLabel, error: rule.errorMessage()) }.first
+        for rule in rules {
+            if !rule.validate(textField!.text!) {
+                return ValidationError(textField: self.textField!, error: rule.errorMessage())
+            }
+        }
+        return nil
+    }
+}
+
+public class TextViewValidationRule: ValidationRule {
+    public var textView:UITextView?
+    
+    public init(textView: UITextView, rules:[Rule], errorLabel:UILabel?){
+        super.init()
+        self.textView   = textView
+        self.errorLabel = errorLabel
+        self.rules = rules
+    }
+    
+    public func validateField() -> ValidationError? {
+        for rule in rules {
+            if !rule.validate(textView!.text) {
+                return ValidationError(textView: self.textView!, error: rule.errorMessage())
+            }
+        }
+        return nil
+    }
+}
+
+
+public class SegmentedControlValidationRule: ValidationRule  {
+    public var segmented: UISegmentedControl?
+    
+    public init(segmented: UISegmentedControl, rules:[Rule], errorLabel: UILabel?){
+        super.init()
+        self.segmented = segmented
+        self.errorLabel = errorLabel
+        self.rules = rules
+    }
+    
+    public func validateField() -> ValidationError? {
+        for rule in rules {
+            if !rule.validate(segmented!.selectedSegmentIndex.description) {
+                return ValidationError(segmentedControl: self.segmented!, error: rule.errorMessage())
+            }
+        }
+        return nil
+    }
+}
+
+public class StepperValidationRule: ValidationRule  {
+    public var stepper: UIStepper?
+    
+    public init(stepper: UIStepper, rules:[Rule], errorLabel: UILabel?){
+        super.init()
+        self.stepper = stepper
+        self.errorLabel = errorLabel
+        self.rules = rules
+    }
+    
+    public func validateField() -> ValidationError? {
+        for rule in rules {
+            if !rule.validate(stepper!.value.description) {
+                return ValidationError(stepper: self.stepper!, error: rule.errorMessage())
+            }
+        }
+        return nil
     }
 }

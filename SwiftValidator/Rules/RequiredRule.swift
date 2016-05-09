@@ -44,3 +44,9 @@ public class RequiredRule: Rule {
         return message
     }
 }
+
+public class SegmentedControlRequiredRule: RequiredRule {
+    override public func validate(value: String) -> Bool {
+        return !(value == "-1")
+    }
+}
