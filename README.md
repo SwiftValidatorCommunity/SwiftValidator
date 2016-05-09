@@ -21,7 +21,10 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, "8.1"
 
 use_frameworks!
-pod 'SwiftValidator', '3.0.3' 
+# For SwiftValidator tag 3.0.3
+pod 'SwiftValidator', '3.0.3'
+# Recommended: For the most recent version of SwiftValidator (master branch)
+pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :branch => 'master'
 ```
 
 Install into your project:
