@@ -99,23 +99,12 @@ public class Validator {
     /**
      This method is used to add a field to validator.
      
-     - parameter textField: field that is to be validated.
-     - parameter Rule: An array which holds different rules to validate against textField.
-     - returns: No return value
-     */
-    public func registerField(textField:UITextField, rules:[Rule]) {
-        validations[textField] = ValidationRule(textField: textField, rules: rules, errorLabel: nil)
-    }
-    
-    /**
-     This method is used to add a field to validator.
-     
      - parameter textfield: field that is to be validated.
      - parameter errorLabel: A UILabel that holds error label data
      - parameter rules: A Rule array that holds different rules that apply to said textField.
      - returns: No return value
      */
-    public func registerField(textField:UITextField, errorLabel:UILabel, rules:[Rule]) {
+    public func registerField(textField:UITextField, errorLabel:UILabel? = nil, rules:[Rule]) {
         validations[textField] = ValidationRule(textField: textField, rules:rules, errorLabel:errorLabel)
     }
     
