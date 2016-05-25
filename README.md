@@ -21,7 +21,10 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, "8.1"
 
 use_frameworks!
-pod 'SwiftValidator', '3.0.3' 
+# For SwiftValidator tag 3.0.3
+pod 'SwiftValidator', '3.0.3'
+# Recommended: For the most recent version of SwiftValidator (master branch)
+pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :branch => 'master'
 ```
 
 Install into your project:
@@ -161,3 +164,4 @@ Swift Validator is written and maintained by Jeff Potter [@jpotts18](http://twit
 3. Commit your changes `git commit -am 'Add some feature'`
 4. Push to the branch `git push origin my-new-feature`
 5. Create a new Pull Request
+6. Make sure code coverage is at least 70%

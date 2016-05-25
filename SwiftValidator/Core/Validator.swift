@@ -97,19 +97,7 @@ public class Validator {
         self.successStyleTransform = success
         self.errorStyleTransform = error
     }
-    
-    /**
-     This method is used to add a field to validator.
-     
-     - parameter field: field that is to be validated.
-     - parameter Rule: An array which holds different rules to validate against field.
-     - returns: No return value
-     */
-    public func registerField(field:ValidatableField, rules:[Rule]) {
-        validations[field] = ValidationRule(field: field, rules: rules, errorLabel: nil)
-        fields[field] = field
-    }
-    
+
     /**
      This method is used to add a field to validator.
      
@@ -118,7 +106,7 @@ public class Validator {
      - parameter rules: A Rule array that holds different rules that apply to said field.
      - returns: No return value
      */
-    public func registerField(field: ValidatableField, errorLabel:UILabel, rules:[Rule]) {
+    public func registerField(field: ValidatableField, errorLabel:UILabel? = nil, rules:[Rule]) {
         validations[field] = ValidationRule(field: field, rules:rules, errorLabel:errorLabel)
         fields[field] = field
     }
