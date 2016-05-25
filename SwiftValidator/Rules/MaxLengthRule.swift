@@ -19,7 +19,7 @@ public class MaxLengthRule: Rule {
     public init(){}
     
     /**
-     Initializes a `MaxLengthRule` object that is to validate the length of the text of a text field.
+     Initializes a `MaxLengthRule` object that is to validate the length of the text of a field.
      
      - parameter length: Maximum character length.
      - parameter message: String of error message.
@@ -31,7 +31,7 @@ public class MaxLengthRule: Rule {
     }
     
     /**
-     Used to validate a text field.
+     Used to validate a field.
      
      - parameter value: String to checked for validation.
      - returns: A boolean value. True if validation is successful; False if validation fails.
@@ -41,7 +41,7 @@ public class MaxLengthRule: Rule {
     }
     
     /**
-     Displays an error message if a text field fails validation.
+     Displays an error message if a field fails validation.
      
      - returns: String of error message.
      */

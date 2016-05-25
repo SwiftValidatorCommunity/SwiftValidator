@@ -15,7 +15,7 @@ public class FullNameRule : Rule {
     private var message : String
     
     /**
-     Initializes a `FullNameRule` object that is used to verify that text in text field is a full name.
+     Initializes a `FullNameRule` object that is used to verify that text in field is a full name.
      
      - parameter message: String of error message.
      - returns: An initialized `FullNameRule` object, or nil if an object could not be created for some reason that would not result in an exception.
@@ -25,7 +25,7 @@ public class FullNameRule : Rule {
     }
     
     /**
-     Used to validate a text field.
+     Used to validate a field.
      
      - parameter value: String to checked for validation.
      - returns: A boolean value. True if validation is successful; False if validation fails.
@@ -36,7 +36,7 @@ public class FullNameRule : Rule {
     }
     
     /**
-     Used to display error message of a text field that has failed validation.
+     Used to display error message of a field that has failed validation.
      
      - returns: String of error message.
      */

@@ -9,7 +9,7 @@
 import Foundation
 
 /**
- `RequiredRule` is a subclass of Rule that defines how a required text field is validated.
+ `RequiredRule` is a subclass of Rule that defines how a required field is validated.
  */
 public class RequiredRule: Rule {
     /// String that holds error message.
@@ -26,7 +26,7 @@ public class RequiredRule: Rule {
     }
     
     /**
-     Validates a text field.
+     Validates a field.
      
      - parameter value: String to checked for validation.
      - returns: Boolean value. True if validation is successful; False if validation fails.
