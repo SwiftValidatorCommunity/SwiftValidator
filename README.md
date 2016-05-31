@@ -23,7 +23,7 @@ platform :ios, "8.1"
 use_frameworks!
 
 # As of 4.0.0, SwiftValidator has been extended beyond UITextField
-# Note: Installing 4.0.0 will break code from 3.x.x
+# Note: Installing 4.x.x will break code from 3.x.x
 pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :tag => '4.0.0'
 
 # For older versions
