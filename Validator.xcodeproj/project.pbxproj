@@ -13,6 +13,7 @@
 		62D1AE241A1E6D4400E4DFF8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62D1AE231A1E6D4400E4DFF8 /* Images.xcassets */; };
 		62D1AE271A1E6D4400E4DFF8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62D1AE251A1E6D4400E4DFF8 /* LaunchScreen.xib */; };
 		62D9B2561C7C0B2A00BAFCE3 /* ValidationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D9B2551C7C0B2A00BAFCE3 /* ValidationDelegate.swift */; };
+		79D361631D1ACFA7008109B0 /* DynamicRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C65093A5738F094701A911 /* DynamicRule.swift */; };
 		7CC1E4CF1C636B4500AF013C /* AlphaRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC1E4CE1C636B4500AF013C /* AlphaRule.swift */; };
 		7CC1E4D11C637A7700AF013C /* AlphaNumericRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC1E4D01C637A7700AF013C /* AlphaNumericRule.swift */; };
 		7CC1E4D31C637ABC00AF013C /* CharacterSetRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC1E4D21C637ABC00AF013C /* CharacterSetRule.swift */; };
@@ -90,6 +91,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		37C65093A5738F094701A911 /* DynamicRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicRule.swift; sourceTree = "<group>"; };
 		62C1821C1C6312F5003788E7 /* ExactLengthRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExactLengthRule.swift; sourceTree = "<group>"; };
 		62D1AE171A1E6D4400E4DFF8 /* Validator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Validator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62D1AE1B1A1E6D4400E4DFF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 				FB465CEE1B9889EA00398388 /* ValidationRule.swift */,
 				FB465CEF1B9889EA00398388 /* ZipCodeRule.swift */,
 				62C1821C1C6312F5003788E7 /* ExactLengthRule.swift */,
+				37C65093A5738F094701A911 /* DynamicRule.swift */,
 			);
 			path = Rules;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				FBA963631CDA10130071F03E /* ValidatorDictionary.swift in Sources */,
 				FB465CFF1B9889EA00398388 /* ZipCodeRule.swift in Sources */,
 				FB465CF91B9889EA00398388 /* PasswordRule.swift in Sources */,
+				79D361631D1ACFA7008109B0 /* DynamicRule.swift in Sources */,
 				7CC1E4D11C637A7700AF013C /* AlphaNumericRule.swift in Sources */,
 				7CC1E4D31C637ABC00AF013C /* CharacterSetRule.swift in Sources */,
 				FB465CFD1B9889EA00398388 /* Rule.swift in Sources */,
