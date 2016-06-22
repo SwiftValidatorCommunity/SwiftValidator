@@ -319,6 +319,20 @@ class SwiftValidatorTests: XCTestCase {
         }
     }
     
+    // MARK: Dynamic
+
+    func testInvalidDynamic() {
+        let invalidDynamicRule = DynamicRule { _ in return false }
+
+        XCTAssertFalse(invalidDynamicRule.validate(""), "validate should return false")
+    }
+
+    func testValidDynamic() {
+        let invalidDynamicRule = DynamicRule { _ in return true }
+
+        XCTAssertTrue(invalidDynamicRule.validate(""), "validate should return true")
+    }
+    
     // MARK: Register Field
     
     func testRegisterField(){
