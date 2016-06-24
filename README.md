@@ -105,7 +105,7 @@ func validationSuccessful() {
 func validationFailed(errors:[(Validatable ,ValidationError]) {
 	// turn the fields to red
 	for (field, error) in validator.errors {
-		if let field = field as? UITextField {
+		if let field = error.field as? UITextField {
 			field.layer.borderColor = UIColor.redColor().CGColor
 			field.layer.borderWidth = 1.0		
 		}
