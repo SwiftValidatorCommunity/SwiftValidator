@@ -89,7 +89,7 @@ Validate Fields on button tap or however you would like to trigger it.
 
 ```swift
 @IBAction func signupTapped(sender: AnyObject) {
-	validator.validate(delegate:self)
+	validator.validate(self)
 }
 ```
 
@@ -102,7 +102,7 @@ func validationSuccessful() {
 	// submit the form
 }
 
-func validationFailed(errors:[(Validatable ,ValidationError]) {
+func validationFailed(errors:[(Validatable ,ValidationError)]) {
 	// turn the fields to red
 	for (field, error) in errors {
 		if let field = field as? UITextField {
