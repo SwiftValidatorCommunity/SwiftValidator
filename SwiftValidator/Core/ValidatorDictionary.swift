@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct ValidatorDictionary<T> : SequenceType {
+public struct ValidatorDictionary<T> : Sequence {
     
     private var innerDictionary: [ObjectIdentifier: T] = [:];
     
@@ -31,15 +31,15 @@ public struct ValidatorDictionary<T> : SequenceType {
         innerDictionary.removeAll()        
     }
     
-    public mutating func removeValueForKey(key: ValidatableField) {
-        innerDictionary.removeValueForKey(ObjectIdentifier(key))
+    public mutating func removeValueForKey(_ key: ValidatableField) {
+        innerDictionary.removeValue(forKey: ObjectIdentifier(key))
     }
     
     public var isEmpty: Bool {
         return innerDictionary.isEmpty
     }
     
-    public func generate() -> DictionaryGenerator<ObjectIdentifier ,T> {
-        return innerDictionary.generate()
+    public func makeIterator() -> DictionaryIterator<ObjectIdentifier ,T> {
+        return innerDictionary.makeIterator()
     }
 }

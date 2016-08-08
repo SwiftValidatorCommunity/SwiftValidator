@@ -31,24 +31,24 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "hideKeyboard"))
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.hideKeyboard)))
         
         validator.styleTransformers(success:{ (validationRule) -> Void in
             print("here")
             // clear error label
-            validationRule.errorLabel?.hidden = true
+            validationRule.errorLabel?.isHidden = true
             validationRule.errorLabel?.text = ""
             if let textField = validationRule.field as? UITextField {
-                textField.layer.borderColor = UIColor.greenColor().CGColor
+                textField.layer.borderColor = UIColor.green.cgColor
                 textField.layer.borderWidth = 0.5
                 
             }
         }, error:{ (validationError) -> Void in
             print("error")
-            validationError.errorLabel?.hidden = false
+            validationError.errorLabel?.isHidden = false
             validationError.errorLabel?.text = validationError.errorMessage
             if let textField = validationError.field as? UITextField {
-                textField.layer.borderColor = UIColor.redColor().CGColor
+                textField.layer.borderColor = UIColor.red.cgColor
                 textField.layer.borderWidth = 1.0
             }
         })
@@ -60,7 +60,7 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
         validator.registerField(zipcodeTextField, errorLabel: zipcodeErrorLabel, rules: [RequiredRule(), ZipCodeRule()])
     }
 
-    @IBAction func submitTapped(sender: AnyObject) {
+    @IBAction func submitTapped(_ sender: AnyObject) {
         print("Validating...")
         validator.validate(self)
     }
@@ -69,13 +69,13 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
     
     func validationSuccessful() {
         print("Validation Success!")
-        let alert = UIAlertController(title: "Success", message: "You are validated!", preferredStyle: UIAlertControllerStyle.Alert)
-        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        let alert = UIAlertController(title: "Success", message: "You are validated!", preferredStyle: UIAlertControllerStyle.alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(defaultAction)
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     
     }
-    func validationFailed(errors:[(Validatable, ValidationError)]) {
+    func validationFailed(_ errors:[(Validatable, ValidationError)]) {
         print("Validation FAILED!")
     }
     
@@ -85,7 +85,7 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
     
     // MARK: Validate single field
     // Don't forget to use UITextFieldDelegate
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
             validator.validateField(textField){ error in
                 if error == nil {
                     // Field validation was successful

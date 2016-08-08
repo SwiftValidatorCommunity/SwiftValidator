@@ -17,7 +17,7 @@ public protocol Rule {
      - parameter value: String of text to be validated.
      - returns: Boolean value. True if validation is successful; False if validation fails.
      */
-    func validate(value: String) -> Bool
+    func validate(_ value: String) -> Bool
     /**
      Displays error message of a field that has failed validation.
      

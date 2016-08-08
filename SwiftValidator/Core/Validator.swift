@@ -65,7 +65,7 @@ public class Validator {
     - parameter field: Holds validator field data.
     - returns: No return value.
     */
-    public func validateField(field: ValidatableField, callback: (error:ValidationError?) -> Void){
+    public func validateField(_ field: ValidatableField, callback: (error:ValidationError?) -> Void){
         if let fieldRule = validations[field] {
             if let error = fieldRule.validateField() {
                 errors[field] = error
@@ -93,7 +93,7 @@ public class Validator {
     - parameter error: A closure which is called with validationError, an object that holds validation error data
     - returns: No return value
     */
-    public func styleTransformers(success success:((validationRule:ValidationRule)->Void)?, error:((validationError:ValidationError)->Void)?) {
+    public func styleTransformers(success:((validationRule:ValidationRule)->Void)?, error:((validationError:ValidationError)->Void)?) {
         self.successStyleTransform = success
         self.errorStyleTransform = error
     }
@@ -106,7 +106,7 @@ public class Validator {
      - parameter rules: A Rule array that holds different rules that apply to said field.
      - returns: No return value
      */
-    public func registerField(field: ValidatableField, errorLabel:UILabel? = nil, rules:[Rule]) {
+    public func registerField(_ field: ValidatableField, errorLabel:UILabel? = nil, rules:[Rule]) {
         validations[field] = ValidationRule(field: field, rules:rules, errorLabel:errorLabel)
         fields[field] = field
     }
@@ -117,7 +117,7 @@ public class Validator {
      - parameter field: field used to locate and remove field from validator.
      - returns: No return value
      */
-    public func unregisterField(field:ValidatableField) {
+    public func unregisterField(_ field:ValidatableField) {
         validations.removeValueForKey(field)
         errors.removeValueForKey(field)
     }
@@ -127,7 +127,7 @@ public class Validator {
      
      - returns: No return value.
      */
-    public func validate(delegate:ValidationDelegate) {
+    public func validate(_ delegate:ValidationDelegate) {
         
         self.validateAllFields()
         
@@ -145,7 +145,7 @@ public class Validator {
      - parameter callback: A closure which is called with errors, a dictionary of type Validatable:ValidationError.
      - returns: No return value.
      */
-    public func validate(callback:(errors:[(Validatable, ValidationError)])->Void) -> Void {
+    public func validate(_ callback:(errors:[(Validatable, ValidationError)])->Void) -> Void {
         
         self.validateAllFields()
         
