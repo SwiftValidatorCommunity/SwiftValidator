@@ -37,7 +37,7 @@ public class CharacterSetRule: Rule {
      */
     public func validate(_ value: String) -> Bool {
         for uni in value.unicodeScalars {
-            if !characterSet.contains(UnicodeScalar(uni.value)) {
+            guard let uniVal = UnicodeScalar(uni.value), characterSet.contains(uniVal) else {
                 return false
             }
         }

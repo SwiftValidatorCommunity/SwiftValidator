@@ -136,7 +136,7 @@ private struct ISBN10Validator: ISBNValidator {
      - parameter input: String that is checked for ISBN10 validation.
      - returns: `true` if string is a valid ISBN10 and `false` if it is not.
     */
-    private func verifyChecksum(_ input: String) -> Bool {
+    fileprivate func verifyChecksum(_ input: String) -> Bool {
         var checksum = 0
         
         for i in 0..<9 {
@@ -171,7 +171,7 @@ private struct ISBN13Validator: ISBNValidator {
      - parameter input: String that is checked for ISBN13 validation.
      - returns: `true` if string is a valid ISBN13 and `false` if it is not.
      */
-    private func verifyChecksum(_ input: String) -> Bool {
+    fileprivate func verifyChecksum(_ input: String) -> Bool {
         let factor = [1, 3]
         var checksum = 0
         

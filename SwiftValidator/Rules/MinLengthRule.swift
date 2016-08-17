@@ -29,7 +29,7 @@ public class MinLengthRule: Rule {
      */
     public init(length: Int, message : String = "Must be at least %ld characters long"){
         self.DEFAULT_LENGTH = length
-        self.message = NSString(format: message, self.DEFAULT_LENGTH) as String
+        self.message = String(format: message, self.DEFAULT_LENGTH)
     }
     
     /**
