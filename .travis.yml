@@ -1,15 +1,16 @@
 language: objective-c
 osx_image: xcode8
+xcode_sdk: iphonesimulator10.0
+xcode_project: Validator.xcodeproj
+xcode_scheme: Validator
 
 before_install:
 
   - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
 
 script:
-
+  - xcodebuild clean build test -project Validator.xcodeproj -scheme Validator -sdk iphonesimulator -enableCodeCoverage YES | xcpretty
   - pod lib lint
-  - xcodebuild clean build test -project Validator.xcodeproj -scheme Validator -sdk iphonesimulator10.0 -destination "OS=10.0,name=iPhone 6" -enableCodeCoverage YES | xcpretty
-
 after_success:
 
   - bash <(curl -s https://codecov.io/bash)
