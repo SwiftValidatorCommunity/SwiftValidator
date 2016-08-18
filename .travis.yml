@@ -8,6 +8,12 @@ before_install:
 
   - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
 
+install:
+- bundle install ... 
+- pod repo remove master
+- pod setup
+- bundle exec pod install
+
 script:
   - pod lib lint --no-clean
   - xcodebuild clean build test -project Validator.xcodeproj -scheme Validator -sdk iphonesimulator -destination "platform=iOS Simulator,OS=10.0,name=iPhone 6" -enableCodeCoverage YES CODE_SIGNING_REQUIRED=NO | xcpretty
