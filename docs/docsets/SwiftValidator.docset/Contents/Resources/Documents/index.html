@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SwiftValidator  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="SwiftValidator  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">SwiftValidator Docs</a> (100% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">SwiftValidator Reference</a>
+        <img id="carat" src="img/carat.png" />
+        SwiftValidator  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/AlphaNumericRule.html">AlphaNumericRule</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/AlphaRule.html">AlphaRule</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/CharacterSetRule.html">CharacterSetRule</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ConfirmationRule.html">ConfirmationRule</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/EmailRule.html">EmailRule</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ExactLengthRule.html">ExactLengthRule</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/FloatRule.html">FloatRule</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/FullNameRule.html">FullNameRule</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/HexColorRule.html">HexColorRule</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/IPV4Rule.html">IPV4Rule</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ISBNRule.html">ISBNRule</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MaxLengthRule.html">MaxLengthRule</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MinLengthRule.html">MinLengthRule</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/PasswordRule.html">PasswordRule</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/PhoneNumberRule.html">PhoneNumberRule</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/RegexRule.html">RegexRule</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/RequiredRule.html">RequiredRule</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ValidationError.html">ValidationError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ValidationRule.html">ValidationRule</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Validator.html">Validator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ZipCodeRule.html">ZipCodeRule</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/Rule.html">Rule</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ValidationDelegate.html">ValidationDelegate</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <a href='#swiftvalidator' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='swiftvalidator'>SwiftValidator</h1>
+
+<p><a href="https://travis-ci.org/jpotts18/SwiftValidator"><img src="https://travis-ci.org/jpotts18/SwiftValidator.svg?branch=travis-ci" alt="Build Status"></a> <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible"></a> <a href="https://codecov.io/github/jpotts18/SwiftValidator?branch=master"><img src="https://codecov.io/github/jpotts18/SwiftValidator/coverage.svg?branch=master" alt="codecov.io"></a></p>
+
+<p>Swift Validator is a rule-based validation library for Swift.</p>
+
+<p><img src="/swift-validator-v2.gif" alt="Swift Validator"></p>
+<a href='#core_concepts' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='core_concepts'>Core Concepts</h2>
+
+<ul>
+<li><code>UITextField</code> + <code>[Rule]</code> + (and optional error <code>UILabel</code>) go into  <code>Validator</code></li>
+<li><code>UITextField</code> + <code>ValidationError</code> come out of <code>Validator</code></li>
+<li><code>Validator</code> evaluates <code>[Rule]</code> sequentially and stops evaluating when a <code>Rule</code> fails.</li>
+</ul>
+<a href='#installation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='installation'>Installation</h2>
+<pre class="highlight ruby"><code><span class="c1"># Podfile</span>
+<span class="n">source</span> <span class="s1">'https://github.com/CocoaPods/Specs.git'</span>
+<span class="n">platform</span> <span class="ss">:ios</span><span class="p">,</span> <span class="s2">"8.1"</span>
+
+<span class="n">use_frameworks!</span>
+<span class="n">pod</span> <span class="s1">'SwiftValidator'</span><span class="p">,</span> <span class="s1">'3.0.3'</span> 
+</code></pre>
+
+<p>Install into your project:</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>pod install
+</code></pre>
+
+<p>Open your project in Xcode from the .xcworkspace file (not the usual project file):</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>open MyProject.xcworkspace
+</code></pre>
+
+<p>If you are using Carthage you will need to add this to your <code>Cartfile</code></p>
+<pre class="highlight shell"><code>github <span class="s2">"jpotts18/SwiftValidator"</span>
+</code></pre>
+<a href='#usage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='usage'>Usage</h2>
+
+<p>You can now import SwiftValidator framework into your files.</p>
+
+<p>Initialize the <code>Validator</code> by setting a delegate to a View Controller or other object.</p>
+<pre class="highlight swift"><code><span class="c1">// ViewController.swift</span>
+<span class="k">let</span> <span class="nv">validator</span> <span class="o">=</span> <span class="kt">Validator</span><span class="p">()</span>
+</code></pre>
+
+<p>Register the fields that you want to validate</p>
+<pre class="highlight swift"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
+
+    <span class="c1">// Validation Rules are evaluated from left to right.</span>
+    <span class="n">validator</span><span class="o">.</span><span class="nf">registerField</span><span class="p">(</span><span class="n">fullNameTextField</span><span class="p">,</span> <span class="nv">rules</span><span class="p">:</span> <span class="p">[</span><span class="kt">RequiredRule</span><span class="p">(),</span> <span class="kt">FullNameRule</span><span class="p">()])</span>
+
+    <span class="c1">// You can pass in error labels with your rules</span>
+    <span class="c1">// You can pass in custom error messages to regex rules (such as ZipCodeRule and EmailRule)</span>
+    <span class="n">validator</span><span class="o">.</span><span class="nf">registerField</span><span class="p">(</span><span class="n">emailTextField</span><span class="p">,</span> <span class="nv">errorLabel</span><span class="p">:</span> <span class="n">emailErrorLabel</span><span class="p">,</span> <span class="nv">rules</span><span class="p">:</span> <span class="p">[</span><span class="kt">RequiredRule</span><span class="p">(),</span> <span class="kt">EmailRule</span><span class="p">(</span><span class="nv">message</span><span class="p">:</span> <span class="s">"Invalid email"</span><span class="p">)])</span>
+
+    <span class="c1">// You can validate against other fields using ConfirmRule</span>
+    <span class="n">validator</span><span class="o">.</span><span class="nf">registerField</span><span class="p">(</span><span class="n">emailConfirmTextField</span><span class="p">,</span> <span class="nv">errorLabel</span><span class="p">:</span> <span class="n">emailConfirmErrorLabel</span><span class="p">,</span> <span class="nv">rules</span><span class="p">:</span> <span class="p">[</span><span class="kt">ConfirmationRule</span><span class="p">(</span><span class="nv">confirmField</span><span class="p">:</span> <span class="n">emailTextField</span><span class="p">)])</span>
+
+    <span class="c1">// You can now pass in regex and length parameters through overloaded contructors</span>
+    <span class="n">validator</span><span class="o">.</span><span class="nf">registerField</span><span class="p">(</span><span class="n">phoneNumberTextField</span><span class="p">,</span> <span class="nv">errorLabel</span><span class="p">:</span> <span class="n">phoneNumberErrorLabel</span><span class="p">,</span> <span class="nv">rules</span><span class="p">:</span> <span class="p">[</span><span class="kt">RequiredRule</span><span class="p">(),</span> <span class="kt">MinLengthRule</span><span class="p">(</span><span class="nv">length</span><span class="p">:</span> <span class="mi">9</span><span class="p">)])</span>
+    <span class="n">validator</span><span class="o">.</span><span class="nf">registerField</span><span class="p">(</span><span class="n">zipcodeTextField</span><span class="p">,</span> <span class="nv">errorLabel</span><span class="p">:</span> <span class="n">zipcodeErrorLabel</span><span class="p">,</span> <span class="nv">rules</span><span class="p">:</span> <span class="p">[</span><span class="kt">RequiredRule</span><span class="p">(),</span> <span class="kt">ZipCodeRule</span><span class="p">(</span><span class="n">regex</span> <span class="o">=</span> <span class="s">"</span><span class="se">\\</span><span class="s">d{5}"</span><span class="p">)])</span>
+
+    <span class="c1">// You can unregister a text field if you no longer want to validate it</span>
+    <span class="n">validator</span><span class="o">.</span><span class="nf">unregisterField</span><span class="p">(</span><span class="n">fullNameTextField</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>Validate Fields on button tap or however you would like to trigger it. </p>
+<pre class="highlight swift"><code><span class="kd">@IBAction</span> <span class="kd">func</span> <span class="nf">signupTapped</span><span class="p">(</span><span class="nv">sender</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">validator</span><span class="o">.</span><span class="nf">validate</span><span class="p">(</span><span class="nv">delegate</span><span class="p">:</span><span class="k">self</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>Implement the Validation Delegate in your View controller</p>
+<pre class="highlight swift"><code><span class="c1">// ValidationDelegate methods</span>
+
+<span class="kd">func</span> <span class="nf">validationSuccessful</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// submit the form</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">validationFailed</span><span class="p">(</span><span class="nv">errors</span><span class="p">:[</span><span class="kt">UITextField</span><span class="p">:</span><span class="kt">ValidationError</span><span class="p">])</span> <span class="p">{</span>
+    <span class="c1">// turn the fields to red</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span> <span class="n">validator</span><span class="o">.</span><span class="n">errors</span> <span class="p">{</span>
+        <span class="n">field</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="nf">redColor</span><span class="p">()</span><span class="o">.</span><span class="kt">CGColor</span>
+        <span class="n">field</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="n">error</span><span class="o">.</span><span class="n">errorLabel</span><span class="p">?</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">error</span><span class="o">.</span><span class="n">errorMessage</span> <span class="c1">// works if you added labels</span>
+        <span class="n">error</span><span class="o">.</span><span class="n">errorLabel</span><span class="p">?</span><span class="o">.</span><span class="n">hidden</span> <span class="o">=</span> <span class="kc">false</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre>
+<a href='#single_field_validation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='single_field_validation'>Single Field Validation</h2>
+
+<p>You may use single field validation in some cases. This could be useful in situations such as controlling responders:</p>
+<pre class="highlight swift"><code><span class="c1">// Don't forget to use UITextFieldDelegate</span>
+<span class="c1">// and delegate yourTextField to self in viewDidLoad()</span>
+<span class="kd">func</span> <span class="nf">textFieldShouldReturn</span><span class="p">(</span><span class="nv">textField</span><span class="p">:</span> <span class="kt">UITextField</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+    <span class="n">validator</span><span class="o">.</span><span class="nf">validateField</span><span class="p">(</span><span class="n">textField</span><span class="p">){</span> <span class="n">error</span> <span class="k">in</span>
+        <span class="k">if</span> <span class="n">error</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="c1">// Field validation was successful</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// Validation error occurred</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+</code></pre>
+<a href='#custom_validation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='custom_validation'>Custom Validation</h2>
+
+<p>We will create a <code>SSNRule</code> class to show how to create your own Validation. A United States Social Security Number (or SSN) is a field that consists of XXX-XX-XXXX. </p>
+
+<p>Create a class that inherits from RegexRule</p>
+<pre class="highlight swift"><code>
+<span class="kd">class</span> <span class="kt">SSNVRule</span><span class="p">:</span> <span class="kt">RegexRule</span> <span class="p">{</span>
+
+    <span class="kd">static</span> <span class="k">let</span> <span class="nv">regex</span> <span class="o">=</span> <span class="s">"^</span><span class="se">\\</span><span class="s">d{3}-</span><span class="se">\\</span><span class="s">d{2}-</span><span class="se">\\</span><span class="s">d{4}$"</span>
+
+    <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">message</span> <span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"Not a valid SSN"</span><span class="p">){</span>
+    <span class="k">self</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">regex</span><span class="p">:</span> <span class="kt">SSNVRule</span><span class="o">.</span><span class="n">regex</span><span class="p">,</span> <span class="nv">message</span> <span class="p">:</span> <span class="n">message</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<a href='#documentation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='documentation'>Documentation</h2>
+
+<p>Checkout the docs <a href="http://jpotts18.github.io/SwiftValidator/">here</a> via <a href="https://twitter.com/jazzydocs">@jazzydocs</a>.</p>
+<a href='#credits' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='credits'>Credits</h2>
+
+<p>Swift Validator is written and maintained by Jeff Potter <a href="http://twitter.com/jpotts18">@jpotts18</a>.</p>
+<a href='#contributing' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='contributing'>Contributing</h2>
+
+<ol>
+<li><a href="https://github.com/jpotts18/SwiftValidator/fork">Fork it</a></li>
+<li>Create your feature branch <code>git checkout -b my-new-feature</code></li>
+<li>Commit your changes <code>git commit -am &#39;Add some feature&#39;</code></li>
+<li>Push to the branch <code>git push origin my-new-feature</code></li>
+<li>Create a new Pull Request</li>
+</ol>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="https://github.com/jpotts18/SwiftValidator" target="_blank" rel="external">Jeff Potter</a>. All rights reserved. (Last updated: 2016-04-15)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.5.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

@@ -1,0 +1,15 @@
+language: objective-c
+osx_image: xcode7.1
+
+before_install:
+
+  - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
+
+script:
+
+  - pod lib lint
+  - xcodebuild clean build test -project Validator.xcodeproj -scheme Validator -sdk iphonesimulator9.1 -destination "OS=9.1,name=iPhone 6" -enableCodeCoverage YES | xcpretty
+
+after_success:
+
+  - bash <(curl -s https://codecov.io/bash)
