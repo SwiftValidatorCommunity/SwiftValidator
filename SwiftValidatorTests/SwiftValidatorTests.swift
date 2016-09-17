@@ -447,7 +447,7 @@ class SwiftValidatorTests: XCTestCase {
         REGISTER_TXT_FIELD.text = INVALID_EMAIL
         REGISTER_VALIDATOR.validate { (errors) -> Void in
             XCTAssert(errors.count == 1, "Should come back with errors")
-            XCTAssert(self.REGISTER_TXT_FIELD.layer.borderColor == UIColor.red.cgColor, "Color shouldn't get set at all")
+            XCTAssert(!(self.REGISTER_TXT_FIELD.layer.borderColor! == UIColor.red.cgColor), "Color shouldn't get set at all")
         }
     }
 }
