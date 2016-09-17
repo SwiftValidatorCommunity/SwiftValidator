@@ -56,15 +56,15 @@ class SwiftValidatorTests: XCTestCase {
     let LEN_20 = "Paint the cat orange"
     
     let REGISTER_TXT_FIELD = UITextField()
-    let REGISTER_VALIDATOR = Validator
+    let REGISTER_VALIDATOR = Validator()
     let REGISTER_RULES = [Rule]()
     
     let UNREGISTER_TXT_FIELD = UITextField()
-    let UNREGISTER_VALIDATOR = Validator
+    let UNREGISTER_VALIDATOR = Validator()
     let UNREGISTER_RULES = [Rule]()
     
     let UNREGISTER_ERRORS_TXT_FIELD = UITextField()
-    let UNREGISTER_ERRORS_VALIDATOR = Validator
+    let UNREGISTER_ERRORS_VALIDATOR = Validator()
     
     let ERROR_LABEL = UILabel()
     
@@ -81,11 +81,11 @@ class SwiftValidatorTests: XCTestCase {
     // MARK: Required
     
     func testRequired() {
-        XCTAssertTrue(RequiredRule().validate("Something"), "Required should be valid")
+        XCTAssertTrue(RequiredRule().validate(value: "Something"), "Required should be valid")
     }
     
     func testRequiredInvalid() {
-        XCTAssertFalse(RequiredRule().validate(""), "Required should be invalid")
+        XCTAssertFalse(RequiredRule().validate(value: ""), "Required should be invalid")
     }
     
     func testRequiredMessage() {
@@ -95,11 +95,11 @@ class SwiftValidatorTests: XCTestCase {
     // MARK: Regex
     
     func testRegex(){
-        XCTAssertTrue(RegexRule(regex: USERNAME_REGEX).validate("darth_vader8"), "RegexRule should be valid")
+        XCTAssertTrue(RegexRule(regex: USERNAME_REGEX).validate(value: "darth_vader8"), "RegexRule should be valid")
     }
     
     func testRegexInvalid(){
-        XCTAssertFalse(RegexRule(regex: USERNAME_REGEX).validate("DarthVader"), "RegexRule should be invalid")
+        XCTAssertFalse(RegexRule(regex: USERNAME_REGEX).validate(value: "DarthVader"), "RegexRule should be invalid")
     }
     
     func testRegexMessage() {
@@ -109,11 +109,11 @@ class SwiftValidatorTests: XCTestCase {
     // MARK: Zipcode
     
     func testZipCode() {
-        XCTAssertTrue(ZipCodeRule().validate(VALID_ZIP), "Zipcode should be valid")
+        XCTAssertTrue(ZipCodeRule().validate(value: VALID_ZIP), "Zipcode should be valid")
     }
     
     func testZipCodeInvalid() {
-        XCTAssertFalse(ZipCodeRule().validate(INVALID_ZIP), "Zipcode should be invalid")
+        XCTAssertFalse(ZipCodeRule().validate(value: INVALID_ZIP), "Zipcode should be invalid")
     }
     
     func testZipCodeMessage() {
@@ -123,11 +123,11 @@ class SwiftValidatorTests: XCTestCase {
     // MARK: Email
     
     func testEmail() {
-        XCTAssertTrue(EmailRule().validate(VALID_EMAIL), "Email should be valid")
+        XCTAssertTrue(EmailRule().validate(value: VALID_EMAIL), "Email should be valid")
     }
     
     func testEmailInvalid() {
-        XCTAssertFalse(EmailRule().validate(INVALID_EMAIL), "Email should be invalid")
+        XCTAssertFalse(EmailRule().validate(value: INVALID_EMAIL), "Email should be invalid")
     }
     
     func testEmailMessage() {
@@ -137,12 +137,12 @@ class SwiftValidatorTests: XCTestCase {
     // MARK: Float
     
     func testFloat() {
-        XCTAssert(FloatRule().validate(VALID_FLOAT), "Float should be valid")
+        XCTAssert(FloatRule().validate(value: VALID_FLOAT), "Float should be valid")
     }
     
     func testFloatInvalid() {
-        XCTAssert(!FloatRule().validate(INVALID_FLOAT), "Float should be invalid")
-        XCTAssert(!FloatRule().validate(VALID_EMAIL), "Float should be invalid")
+        XCTAssert(!FloatRule().validate(value: INVALID_FLOAT), "Float should be invalid")
+        XCTAssert(!FloatRule().validate(value: VALID_EMAIL), "Float should be invalid")
     }
     
     func testFloatMessage() {
@@ -153,12 +153,12 @@ class SwiftValidatorTests: XCTestCase {
     
     func testConfirmSame(){
         CONFIRM_TXT_FIELD.text = CONFIRM_TEXT
-        XCTAssertTrue(ConfirmationRule(confirmField: CONFIRM_TXT_FIELD).validate(CONFIRM_TEXT), "Should confirm successfully")
+        XCTAssertTrue(ConfirmationRule(confirmField: CONFIRM_TXT_FIELD).validate(value: CONFIRM_TEXT), "Should confirm successfully")
     }
     
     func testConfirmDifferent() {
         CONFIRM_TXT_FIELD.text = CONFIRM_TEXT
-        XCTAssertFalse(ConfirmationRule(confirmField: CONFIRM_TXT_FIELD).validate(CONFIRM_TEXT_DIFF), "Should fail confirm")
+        XCTAssertFalse(ConfirmationRule(confirmField: CONFIRM_TXT_FIELD).validate(value: CONFIRM_TEXT_DIFF), "Should fail confirm")
     }
     
     func testConfirmMessage() {
@@ -169,11 +169,11 @@ class SwiftValidatorTests: XCTestCase {
     // MARK: Password
     
     func testPassword() {
-        XCTAssertTrue(PasswordRule().validate(VALID_PASSWORD), "Password should be valid")
+        XCTAssertTrue(PasswordRule().validate(value: VALID_PASSWORD), "Password should be valid")
     }
     
     func testPasswordInvalid(){
-        XCTAssertFalse(PasswordRule().validate(INVALID_PASSWORD), "Password is invalid")
+        XCTAssertFalse(PasswordRule().validate(value: INVALID_PASSWORD), "Password is invalid")
     }
     
     func testPasswordMessage() {
@@ -181,11 +181,11 @@ class SwiftValidatorTests: XCTestCase {
     }
     
     func testPhoneNumber() {
-        XCTAssertTrue(PhoneNumberRule().validate("1234567890"), "Phone number should valid")
+        XCTAssertTrue(PhoneNumberRule().validate(value: "1234567890"), "Phone number should valid")
     }
     
     func testPhoneNumberInvalid() {
-        XCTAssertFalse(PhoneNumberRule().validate("12345678901"), "Phone number should be invalid")
+        XCTAssertFalse(PhoneNumberRule().validate(value: "12345678901"), "Phone number should be invalid")
     }
     
     func testPhoneNumberMessage() {
@@ -195,15 +195,15 @@ class SwiftValidatorTests: XCTestCase {
     // MARK: Max Length
     
     func testMaxLength(){
-        XCTAssertTrue(MaxLengthRule().validate(LEN_3),"Max Length should be valid")
+        XCTAssertTrue(MaxLengthRule().validate(value: LEN_3),"Max Length should be valid")
     }
     
     func testMaxLengthInvalid(){
-        XCTAssertFalse(MaxLengthRule().validate(LEN_20),"Max Length should be invalid")
+        XCTAssertFalse(MaxLengthRule().validate(value: LEN_20),"Max Length should be invalid")
     }
     
     func testMaxLengthParameterAndGreaterThan(){
-        XCTAssertTrue(MaxLengthRule(length: 20).validate(LEN_20), "Max Length should be 20 and <= length")
+        XCTAssertTrue(MaxLengthRule(length: 20).validate(value: LEN_20), "Max Length should be 20 and <= length")
     }
     
     func testMaxLengthMessage() {
@@ -212,15 +212,15 @@ class SwiftValidatorTests: XCTestCase {
     
     // MARK: Min Length
     func testMinLength(){
-        XCTAssertTrue(MinLengthRule().validate(LEN_3),"Min Length should be valid")
+        XCTAssertTrue(MinLengthRule().validate(value: LEN_3),"Min Length should be valid")
     }
     
     func testMinLengthInvalid(){
-        XCTAssertFalse(MinLengthRule().validate("no"),"Min Length should be Invalid")
+        XCTAssertFalse(MinLengthRule().validate(value: "no"),"Min Length should be Invalid")
     }
     
     func testMinLengthWithParameter(){
-        XCTAssertTrue(MinLengthRule(length: 5).validate(LEN_5), "Min Len should be set to 5 and >= length")
+        XCTAssertTrue(MinLengthRule(length: 5).validate(value: LEN_5), "Min Len should be set to 5 and >= length")
     }
     
     func testMinLengthMessage() {
@@ -228,15 +228,15 @@ class SwiftValidatorTests: XCTestCase {
     }
     
     func testExactLength(){
-        XCTAssertTrue(ExactLengthRule(length: 5).validate(LEN_5), "Exact Len should be exactly 5")
+        XCTAssertTrue(ExactLengthRule(length: 5).validate(value: LEN_5), "Exact Len should be exactly 5")
     }
     
     func testExactLengthInvalidGreaterThan(){
-        XCTAssertFalse(ExactLengthRule(length: 6).validate(LEN_5), "Exact Len should be Invalid")
+        XCTAssertFalse(ExactLengthRule(length: 6).validate(value: LEN_5), "Exact Len should be Invalid")
     }
 
     func testExactLengthInvalidLessThan(){
-        XCTAssertFalse(ExactLengthRule(length: 4).validate(LEN_5), "Exact Len should be Invalid")
+        XCTAssertFalse(ExactLengthRule(length: 4).validate(value: LEN_5), "Exact Len should be Invalid")
     }
     
     func testExactLengthMessage() {
@@ -246,15 +246,15 @@ class SwiftValidatorTests: XCTestCase {
     // MARK: Full Name
     
     func testFullName(){
-        XCTAssertTrue(FullNameRule().validate("Jeff Potter"), "Full Name should be valid")
+        XCTAssertTrue(FullNameRule().validate(value: "Jeff Potter"), "Full Name should be valid")
     }
     
     func testFullNameWith3Names(){
-        XCTAssertTrue(FullNameRule().validate("Jeff Van Buren"), "Full Name should be valid")
+        XCTAssertTrue(FullNameRule().validate(value: "Jeff Van Buren"), "Full Name should be valid")
     }
     
     func testFullNameInvalid(){
-        XCTAssertFalse(FullNameRule().validate("Carl"), "Full Name should be invalid")
+        XCTAssertFalse(FullNameRule().validate(value: "Carl"), "Full Name should be invalid")
     }
     
     // MARK: ISBN
@@ -263,7 +263,7 @@ class SwiftValidatorTests: XCTestCase {
         let validISBN10 = ["3836221195", "3-8362-2119-5", "3 8362 2119 5" , "1617290858", "1-61729-085-8", "1 61729 085-8" , "0007269706", "0-00-726970-6", "0 00 726970 6" , "3423214120", "3-423-21412-0", "3 423 21412 0", "340101319X", "3-401-01319-X", "3 401 01319 X"]
         
         for ISBN10 in validISBN10 {
-            XCTAssertTrue(ISBNRule().validate(ISBN10), "\(ISBN10) should be valid")
+            XCTAssertTrue(ISBNRule().validate(value: ISBN10), "\(ISBN10) should be valid")
         }
     }
     
@@ -271,7 +271,7 @@ class SwiftValidatorTests: XCTestCase {
         let invalidISBN10 = ["3423214121", "3-423-21412-1", "3 423 21412 1"]
         
         for ISBN10 in invalidISBN10 {
-            XCTAssertFalse(ISBNRule().validate(ISBN10), "\(ISBN10) should be invalid")
+            XCTAssertFalse(ISBNRule().validate(value: ISBN10), "\(ISBN10) should be invalid")
         }
     }
     
@@ -280,14 +280,14 @@ class SwiftValidatorTests: XCTestCase {
     func testValidHexColors() {
         let validHexes = ["#ff0034", "#CCCCCC", "fff", "#f00"]
         for hex in validHexes {
-            XCTAssertTrue(HexColorRule().validate(hex), "\(hex) should be a valid Hex")
+            XCTAssertTrue(HexColorRule().validate(value: hex), "\(hex) should be a valid Hex")
         }
     }
     
     func testInvalidHexColors() {
         let validHexes = ["#ff", "fff0", "#ff12FG", ""]
         for hex in validHexes {
-            XCTAssertFalse(HexColorRule().validate(hex), "\(hex) should be invalid Hex")
+            XCTAssertFalse(HexColorRule().validate(value: hex), "\(hex) should be invalid Hex")
         }
     }
     
@@ -296,14 +296,14 @@ class SwiftValidatorTests: XCTestCase {
     func testValidIPV4() {
         let validIPV4 = ["127.0.0.1" , "0.0.0.0" , "255.255.255.255" , "1.2.3.4"]
         for ipv4 in validIPV4 {
-            XCTAssertTrue(IPV4Rule().validate(ipv4), "\(ipv4) should be a valid IPV4 address")
+            XCTAssertTrue(IPV4Rule().validate(value: ipv4), "\(ipv4) should be a valid IPV4 address")
         }
     }
     
     func testInvalidIPV4() {
         let invalidIPV4 = ["::1" , "2001:db8:0000:1:1:1:1:1" , "::ffff:127.0.0.1"]
         for ipv4 in invalidIPV4 {
-            XCTAssertFalse(IPV4Rule().validate(ipv4), "\(ipv4) should be invalid IPV4 address")
+            XCTAssertFalse(IPV4Rule().validate(value: ipv4), "\(ipv4) should be invalid IPV4 address")
         }
     }
     
@@ -312,14 +312,14 @@ class SwiftValidatorTests: XCTestCase {
     func testValidAlphaNumeric() {
         let validAlphaNumeric = ["abc123", "A1B2C35555"]
         for alphaNum in validAlphaNumeric {
-            XCTAssertTrue(AlphaNumericRule().validate(alphaNum), "\(alphaNum) should be a valid alpha numeric string")
+            XCTAssertTrue(AlphaNumericRule().validate(value: alphaNum), "\(alphaNum) should be a valid alpha numeric string")
         }
     }
     
     func testInvalidAlphaNumeric() {
         let invalidAlphaNumeric = ["abc ", "!!!!!", "ABC@DAGQW%!^$@%"]
         for alphaNum in invalidAlphaNumeric {
-            XCTAssertFalse(AlphaNumericRule().validate(alphaNum), "\(alphaNum) should be invalid alpha numeric string")
+            XCTAssertFalse(AlphaNumericRule().validate(value: alphaNum), "\(alphaNum) should be invalid alpha numeric string")
         }
     }
     
@@ -328,14 +328,14 @@ class SwiftValidatorTests: XCTestCase {
     func testValidAlpha() {
         let validAlphaStrings = ["abc", "ABCDEFG", "AabeVsDvaW"]
         for alpha in validAlphaStrings {
-            XCTAssertTrue(AlphaRule().validate(alpha), "\(alpha) should be valid alpha string")
+            XCTAssertTrue(AlphaRule().validate(value: alpha), "\(alpha) should be valid alpha string")
         }
     }
     
     func testInvalidAlpha() {
         let invalidAlphaStrings = ["abc1", "  foo  "]
         for alpha in invalidAlphaStrings {
-            XCTAssertFalse(AlphaRule().validate(alpha), "\(alpha) should be invalid alpha string")
+            XCTAssertFalse(AlphaRule().validate(value: alpha), "\(alpha) should be invalid alpha string")
         }
     }
     
@@ -405,9 +405,9 @@ class SwiftValidatorTests: XCTestCase {
         var successCount = 0
         var errorCount = 0
         REGISTER_VALIDATOR.styleTransformers(success: { (validationRule) -> Void in
-            successCount++
+            successCount+=1
             }) { (validationError) -> Void in
-                errorCount++
+                errorCount+=1
         }
         REGISTER_TXT_FIELD.text = INVALID_EMAIL
         REGISTER_VALIDATOR.validate { (errors) -> Void in
@@ -423,9 +423,9 @@ class SwiftValidatorTests: XCTestCase {
         var successCount = 0
         var errorCount = 0
         REGISTER_VALIDATOR.styleTransformers(success: { (validationRule) -> Void in
-            successCount++
+            successCount+=1
             }) { (validationError) -> Void in
-                errorCount++
+                errorCount+=1
         }
         
         REGISTER_TXT_FIELD.text = INVALID_EMAIL
@@ -447,7 +447,7 @@ class SwiftValidatorTests: XCTestCase {
         REGISTER_TXT_FIELD.text = INVALID_EMAIL
         REGISTER_VALIDATOR.validate { (errors) -> Void in
             XCTAssert(errors.count == 1, "Should come back with errors")
-            XCTAssert(!CGColorEqualToColor(self.REGISTER_TXT_FIELD.layer.borderColor, UIColor.red.cgColor), "Color shouldn't get set at all")
+            XCTAssert(self.REGISTER_TXT_FIELD.layer.borderColor == UIColor.red.cgColor, "Color shouldn't get set at all")
         }
     }
 }
