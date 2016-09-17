@@ -14,7 +14,7 @@ import Foundation
 public class HexColorRule: RegexRule {
     /// Regular expression string that is used to verify hexadecimal
     static let regex = "^#?([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$"
-
+    
     /**
      Initializes a `HexaColorRule` object to verify that field has text in hexadecimal color format.
      

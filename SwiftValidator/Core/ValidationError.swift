@@ -19,7 +19,7 @@ public class ValidationError: NSObject {
     
     /**
      Initializes `ValidationError` object with a field, errorLabel, and errorMessage.
-
+     
      - parameter field: Validatable field that holds field.
      - parameter errorLabel: UILabel that holds error label.
      - parameter errorMessage: String that holds error message.

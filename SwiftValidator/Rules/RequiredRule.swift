@@ -13,7 +13,7 @@ import Foundation
  */
 public class RequiredRule: Rule {
     /// String that holds error message.
-    private var message : String 
+    private var message : String
     
     /**
      Initializes `RequiredRule` object with error message. Used to validate a field that requires text.

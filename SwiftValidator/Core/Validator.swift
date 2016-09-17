@@ -20,20 +20,20 @@ public class Validator {
     /// Dictionary to hold fields by their object identifiers
     private var fields = ValidatorDictionary<Validatable>()
     /// Variable that holds success closure to display positive status of field.
-    private var successStyleTransform:((validationRule:ValidationRule)->Void)?
+    private var successStyleTransform:((_ validationRule:ValidationRule)->Void)?
     /// Variable that holds error closure to display negative status of field.
-    private var errorStyleTransform:((validationError:ValidationError)->Void)?
+    private var errorStyleTransform:((_ validationError:ValidationError)->Void)?
     /// - returns: An initialized object, or nil if an object could not be created for some reason that would not result in an exception.
     public init(){}
     
     // MARK: Private functions
     
     /**
-    This method is used to validate all fields registered to Validator. If validation is unsuccessful,
-    field gets added to errors dictionary.
-    
-    - returns: No return value.
-    */
+     This method is used to validate all fields registered to Validator. If validation is unsuccessful,
+     field gets added to errors dictionary.
+     
+     - returns: No return value.
+     */
     private func validateAllFields() {
         
         errors = ValidatorDictionary<ValidationError>()
@@ -44,13 +44,13 @@ public class Validator {
                 
                 // let the user transform the field if they want
                 if let transform = self.errorStyleTransform {
-                    transform(validationError: error)
+                    transform(error)
                 }
             } else {
                 // No error
                 // let the user transform the field if they want
                 if let transform = self.successStyleTransform {
-                    transform(validationRule: rule)
+                    transform(rule)
                 }
             }
         }
@@ -59,45 +59,45 @@ public class Validator {
     // MARK: Public functions
     
     /**
-    This method is used to validate a single field registered to Validator. If validation is unsuccessful,
-    field gets added to errors dictionary.
-    
-    - parameter field: Holds validator field data.
-    - returns: No return value.
-    */
-    public func validateField(field: ValidatableField, callback: (error:ValidationError?) -> Void){
+     This method is used to validate a single field registered to Validator. If validation is unsuccessful,
+     field gets added to errors dictionary.
+     
+     - parameter field: Holds validator field data.
+     - returns: No return value.
+     */
+    public func validateField(_ field: ValidatableField, callback: (_ error:ValidationError?) -> Void){
         if let fieldRule = validations[field] {
             if let error = fieldRule.validateField() {
                 errors[field] = error
                 if let transform = self.errorStyleTransform {
-                    transform(validationError: error)
+                    transform(error)
                 }
-                callback(error: error)
+                callback(error)
             } else {
                 if let transform = self.successStyleTransform {
-                    transform(validationRule: fieldRule)
+                    transform(fieldRule)
                 }
-                callback(error: nil)
+                callback(nil)
             }
         } else {
-            callback(error: nil)
+            callback(nil)
         }
     }
     
     // MARK: Using Keys
     
     /**
-    This method is used to style fields that have undergone validation checks. Success callback should be used to show common success styling and error callback should be used to show common error styling.
-    
-    - parameter success: A closure which is called with validationRule, an object that holds validation data
-    - parameter error: A closure which is called with validationError, an object that holds validation error data
-    - returns: No return value
-    */
-    public func styleTransformers(success success:((validationRule:ValidationRule)->Void)?, error:((validationError:ValidationError)->Void)?) {
+     This method is used to style fields that have undergone validation checks. Success callback should be used to show common success styling and error callback should be used to show common error styling.
+     
+     - parameter success: A closure which is called with validationRule, an object that holds validation data
+     - parameter error: A closure which is called with validationError, an object that holds validation error data
+     - returns: No return value
+     */
+    public func styleTransformers(success:((_ validationRule:ValidationRule)->Void)?, error:((_ validationError:ValidationError)->Void)?) {
         self.successStyleTransform = success
         self.errorStyleTransform = error
     }
-
+    
     /**
      This method is used to add a field to validator.
      
@@ -106,7 +106,7 @@ public class Validator {
      - parameter rules: A Rule array that holds different rules that apply to said field.
      - returns: No return value
      */
-    public func registerField(field: ValidatableField, errorLabel:UILabel? = nil, rules:[Rule]) {
+    public func registerField(_ field: ValidatableField, errorLabel:UILabel? = nil, rules:[Rule]) {
         validations[field] = ValidationRule(field: field, rules:rules, errorLabel:errorLabel)
         fields[field] = field
     }
@@ -117,7 +117,7 @@ public class Validator {
      - parameter field: field used to locate and remove field from validator.
      - returns: No return value
      */
-    public func unregisterField(field:ValidatableField) {
+    public func unregisterField(_ field:ValidatableField) {
         validations.removeValueForKey(field)
         errors.removeValueForKey(field)
     }
@@ -127,16 +127,14 @@ public class Validator {
      
      - returns: No return value.
      */
-    public func validate(delegate:ValidationDelegate) {
-        
+    public func validate(_ delegate:ValidationDelegate) {
         self.validateAllFields()
         
         if errors.isEmpty {
             delegate.validationSuccessful()
         } else {
-            delegate.validationFailed(errors.map { (fields[$1.field]!, $1) })
+            delegate.validationFailed(errors: errors.map { (fields[$1.field]!, $1) })
         }
-        
     }
     
     /**
@@ -145,10 +143,9 @@ public class Validator {
      - parameter callback: A closure which is called with errors, a dictionary of type Validatable:ValidationError.
      - returns: No return value.
      */
-    public func validate(callback:(errors:[(Validatable, ValidationError)])->Void) -> Void {
-        
+    public func validate(_ callback:(_ errors:[(Validatable, ValidationError)])->Void) -> Void {
         self.validateAllFields()
         
-        callback(errors: errors.map { (fields[$1.field]!, $1) } )
+        callback(errors.map { (fields[$1.field]!, $1) } )
     }
 }

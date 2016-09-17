@@ -27,7 +27,7 @@ public class MaxLengthRule: Rule {
      */
     public init(length: Int, message : String = "Must be at most %ld characters long"){
         self.DEFAULT_LENGTH = length
-        self.message = NSString(format: message, self.DEFAULT_LENGTH) as String
+        self.message = NSString(format: message as NSString, self.DEFAULT_LENGTH) as String
     }
     
     /**

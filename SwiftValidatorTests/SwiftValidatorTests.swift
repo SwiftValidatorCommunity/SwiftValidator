@@ -9,7 +9,27 @@
 import UIKit
 import XCTest
 import Validator // example app
-import SwiftValidator // framework
+import SwiftValidator
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+ // framework
 
 class SwiftValidatorTests: XCTestCase {
     
@@ -36,15 +56,15 @@ class SwiftValidatorTests: XCTestCase {
     let LEN_20 = "Paint the cat orange"
     
     let REGISTER_TXT_FIELD = UITextField()
-    let REGISTER_VALIDATOR = Validator()
+    let REGISTER_VALIDATOR = Validator
     let REGISTER_RULES = [Rule]()
     
     let UNREGISTER_TXT_FIELD = UITextField()
-    let UNREGISTER_VALIDATOR = Validator()
+    let UNREGISTER_VALIDATOR = Validator
     let UNREGISTER_RULES = [Rule]()
     
     let UNREGISTER_ERRORS_TXT_FIELD = UITextField()
-    let UNREGISTER_ERRORS_VALIDATOR = Validator()
+    let UNREGISTER_ERRORS_VALIDATOR = Validator
     
     let ERROR_LABEL = UILabel()
     
@@ -427,7 +447,7 @@ class SwiftValidatorTests: XCTestCase {
         REGISTER_TXT_FIELD.text = INVALID_EMAIL
         REGISTER_VALIDATOR.validate { (errors) -> Void in
             XCTAssert(errors.count == 1, "Should come back with errors")
-            XCTAssert(!CGColorEqualToColor(self.REGISTER_TXT_FIELD.layer.borderColor, UIColor.redColor().CGColor), "Color shouldn't get set at all")
+            XCTAssert(!CGColorEqualToColor(self.REGISTER_TXT_FIELD.layer.borderColor, UIColor.red.cgColor), "Color shouldn't get set at all")
         }
     }
 }

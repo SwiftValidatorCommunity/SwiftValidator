@@ -26,7 +26,7 @@ public class ExactLengthRule : Rule {
      */
     public init(length: Int, message : String = "Must be exactly %ld characters long"){
         self.length = length
-        self.message = NSString(format: message, self.length) as String
+        self.message = NSString(format: message as NSString, self.length) as String
     }
     
     /**
