@@ -31,7 +31,7 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "hideKeyboard"))
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.hideKeyboard)))
         
         validator.styleTransformers(success:{ (validationRule) -> Void in
             print("here")
