@@ -8,7 +8,7 @@ before_install:
 script:
 
   - pod lib lint
-  - xcodebuild clean build test -project Validator.xcodeproj -scheme Validator -sdk iphonesimulator9.1 -destination "OS=9.1,name=iPhone 6" -enableCodeCoverage YES | xcpretty
+  - xcodebuild clean build test -project Validator.xcodeproj -scheme Validator -sdk iphonesimulator10.0 -destination "OS=10.0,name=iPhone 6" -enableCodeCoverage YES | xcpretty
 
 after_success:
 
