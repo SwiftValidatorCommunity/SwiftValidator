@@ -11,7 +11,7 @@ import Foundation
 /**
  `RegexRule` is a subclass of Rule that defines how a regular expression is validated.
  */
-public class RegexRule : Rule {
+open class RegexRule : Rule {
     /// Regular express string to be used in validation.
     private var REGEX: String = "^(?=.*?[A-Z]).{8,}$"
     /// String that holds error message.
