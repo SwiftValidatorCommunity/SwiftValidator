@@ -21,6 +21,6 @@ public class AlphaNumericRule: CharacterSetRule {
      - returns: An initialized object, or nil if an object could not be created for some reason that would not result in an exception.
      */
     public init(message: String = "Enter valid numeric characters") {
-        super.init(characterSet: NSCharacterSet.alphanumericCharacterSet(), message: message)
+        super.init(characterSet: CharacterSet.alphanumerics, message: message)
     }
 }
