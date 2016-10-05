@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode7.1
+osx_image: xcode8
 
 before_install:
   - gem install cocoapods -v '0.32.1'
@@ -8,7 +8,7 @@ before_install:
 script:
 
   - pod lib lint
-  - xcodebuild clean build test -project Validator.xcodeproj -scheme Validator -sdk iphonesimulator9.1 -destination "OS=9.1,name=iPhone 6" -enableCodeCoverage YES | xcpretty
+  - xcodebuild clean build test -project Validator.xcodeproj -scheme Validator -sdk iphonesimulator10.0 -destination "OS=10.0,name=iPhone 6" -enableCodeCoverage YES | xcpretty
 
 after_success:
 
