@@ -5,7 +5,7 @@ xcode_project: Validator.xcodeproj
 xcode_scheme: Validator
 
 before_install:
-
+  - gem install cocoapods -v '0.32.1'
   - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
 
 script:
