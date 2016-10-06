@@ -32,13 +32,13 @@ public class ISBNRule: Rule {
      - parameter value: String to checked for validation.
      - returns: Boolean value. True if validation is successful; False if validation fails.
      */
-    public func validate(value: String) -> Bool {
+    public func validate(_ value: String) -> Bool {
         
         guard let regex = try? NSRegularExpression(pattern: "[\\s-]", options: []) else {
             fatalError("Invalid ISBN sanitizing regex")
         }
         
-        let sanitized = regex.stringByReplacingMatchesInString(value, options: [], range: NSMakeRange(0, value.characters.count), withTemplate: "")
+        let sanitized = regex.stringByReplacingMatches(in: value, options: [], range: NSMakeRange(0, value.characters.count), withTemplate: "")
         
         return ISBN10Validator().verify(sanitized) || ISBN13Validator().verify(sanitized)
     }
@@ -67,7 +67,7 @@ private protocol ISBNValidator {
      - returns: A `Bool` that represents what happened during verification. `false` is returned if
      it fails, `true` is returned if it was a success.
     */
-    func verify(input: String) -> Bool
+    func verify(_ input: String) -> Bool
     /**
      Method that verifies regular expression is valid.
      
@@ -75,7 +75,7 @@ private protocol ISBNValidator {
      - returns: A `Bool` that represents the status of the ISBN number. `false` if ISBN number
      was not valid, `true` if it was valid.
      */
-    func checkRegex(input: String) -> Bool
+    func checkRegex(_ input: String) -> Bool
     
     /**
      Method that verifies `ISBN` being validated is itself valid. It has to be either ISBN10
@@ -85,7 +85,7 @@ private protocol ISBNValidator {
      - returns: A `Bool` that represents the status of the ISBN number. `false` if ISBN number
      was not valid, `true` if it was valid.
      */
-    func verifyChecksum(input: String) -> Bool
+    func verifyChecksum(_ input: String) -> Bool
 }
 
 /**
@@ -100,7 +100,7 @@ extension ISBNValidator {
      - returns: A `Bool` that represents what happened during verification. `false` is returned if
      it fails, `true` is returned if it was a success.
      */
-    func verify(input: String) -> Bool {
+    func verify(_ input: String) -> Bool {
         return checkRegex(input) && verifyChecksum(input)
     }
     
@@ -112,8 +112,8 @@ extension ISBNValidator {
      - returns: A `Bool` that represents the status of the ISBN number. `false` if ISBN number
      was not valid, `true` if it was valid.
      */
-    func checkRegex(input: String) -> Bool {
-        guard let _ = input.rangeOfString(regex, options: [.RegularExpressionSearch, .AnchoredSearch]) else  {
+    func checkRegex(_ input: String) -> Bool {
+        guard let _ = input.range(of: regex, options: [.regularExpression, .anchored]) else  {
             return false
         }
         
@@ -136,19 +136,19 @@ private struct ISBN10Validator: ISBNValidator {
      - parameter input: String that is checked for ISBN10 validation.
      - returns: `true` if string is a valid ISBN10 and `false` if it is not.
     */
-    private func verifyChecksum(input: String) -> Bool {
+    fileprivate func verifyChecksum(_ input: String) -> Bool {
         var checksum = 0
         
         for i in 0..<9 {
-            if let intCharacter = Int(String(input[input.startIndex.advancedBy(i)])) {
+            if let intCharacter = Int(String(input[input.characters.index(input.startIndex, offsetBy: i)])) {
                 checksum += (i + 1) * intCharacter
             }
         }
         
-        if (input[input.startIndex.advancedBy(9)] == "X") {
+        if (input[input.characters.index(input.startIndex, offsetBy: 9)] == "X") {
             checksum += 10 * 10
         } else {
-            if let intCharacter = Int(String(input[input.startIndex.advancedBy(9)])) {
+            if let intCharacter = Int(String(input[input.characters.index(input.startIndex, offsetBy: 9)])) {
                 checksum += 10 * intCharacter
             }
         }
@@ -171,18 +171,18 @@ private struct ISBN13Validator: ISBNValidator {
      - parameter input: String that is checked for ISBN13 validation.
      - returns: `true` if string is a valid ISBN13 and `false` if it is not.
      */
-    private func verifyChecksum(input: String) -> Bool {
+    fileprivate func verifyChecksum(_ input: String) -> Bool {
         let factor = [1, 3]
         var checksum = 0
         
         for i in 0..<12 {
-            if let intCharacter = Int(String(input[input.startIndex.advancedBy(i)])) {
+            if let intCharacter = Int(String(input[input.characters.index(input.startIndex, offsetBy: i)])) {
                 print("\(factor[i%2]) * \(intCharacter)")
                 checksum += factor[i % 2] * intCharacter
             }
         }
         
-        if let lastInt = Int(String(input[input.startIndex.advancedBy(12)])) {
+        if let lastInt = Int(String(input[input.characters.index(input.startIndex, offsetBy: 12)])) {
             return (lastInt - ((10 - (checksum % 10)) % 10) == 0)
         }
         
