@@ -4,6 +4,7 @@ osx_image: xcode8
 before_install:
 
   - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
+  - gem install cocoapods -v '0.32.1'
 
 script:
 
