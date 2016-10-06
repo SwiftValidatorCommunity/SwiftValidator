@@ -26,7 +26,7 @@ public class ExactLengthRule : Rule {
      */
     public init(length: Int, message : String = "Must be exactly %ld characters long"){
         self.length = length
-        self.message = NSString(format: message, self.length) as String
+        self.message = String(format: message, self.length)
     }
     
     /**
@@ -35,7 +35,7 @@ public class ExactLengthRule : Rule {
      - parameter value: String to checked for validation.
      - returns: A boolean value. True if validation is successful; False if validation fails.
      */
-    public func validate(value: String) -> Bool {
+    public func validate(_ value: String) -> Bool {
         return value.characters.count == length
     }
     

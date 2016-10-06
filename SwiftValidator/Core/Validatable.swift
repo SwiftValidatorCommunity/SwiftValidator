@@ -8,7 +8,7 @@
 
 import Foundation
 
-public typealias ValidatableField = protocol<AnyObject, Validatable>
+public typealias ValidatableField = AnyObject & Validatable
 
 public protocol Validatable {
     

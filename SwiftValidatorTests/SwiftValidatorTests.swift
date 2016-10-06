@@ -366,7 +366,7 @@ class SwiftValidatorTests: XCTestCase {
         }
         REGISTER_TXT_FIELD.text = INVALID_EMAIL
         REGISTER_VALIDATOR.validateField(REGISTER_TXT_FIELD) { error in
-            XCTAssert(error?.errorMessage.characters.count > 0, "Should state 'invalid email'")
+            XCTAssert(error?.errorMessage.characters.count ?? 0 > 0, "Should state 'invalid email'")
         }
     }
     
@@ -385,9 +385,9 @@ class SwiftValidatorTests: XCTestCase {
         var successCount = 0
         var errorCount = 0
         REGISTER_VALIDATOR.styleTransformers(success: { (validationRule) -> Void in
-            successCount++
+            successCount+=1
             }) { (validationError) -> Void in
-                errorCount++
+                errorCount+=1
         }
         REGISTER_TXT_FIELD.text = INVALID_EMAIL
         REGISTER_VALIDATOR.validate { (errors) -> Void in
@@ -403,9 +403,9 @@ class SwiftValidatorTests: XCTestCase {
         var successCount = 0
         var errorCount = 0
         REGISTER_VALIDATOR.styleTransformers(success: { (validationRule) -> Void in
-            successCount++
+            successCount+=1
             }) { (validationError) -> Void in
-                errorCount++
+                errorCount+=1
         }
         
         REGISTER_TXT_FIELD.text = INVALID_EMAIL
@@ -427,7 +427,7 @@ class SwiftValidatorTests: XCTestCase {
         REGISTER_TXT_FIELD.text = INVALID_EMAIL
         REGISTER_VALIDATOR.validate { (errors) -> Void in
             XCTAssert(errors.count == 1, "Should come back with errors")
-            XCTAssert(!CGColorEqualToColor(self.REGISTER_TXT_FIELD.layer.borderColor, UIColor.redColor().CGColor), "Color shouldn't get set at all")
+            XCTAssert(!(self.REGISTER_TXT_FIELD.layer.borderColor! == UIColor.red.cgColor), "Color shouldn't get set at all")
         }
     }
 }

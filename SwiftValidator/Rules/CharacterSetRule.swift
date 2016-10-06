@@ -13,7 +13,7 @@ import Foundation
  */
 public class CharacterSetRule: Rule {
     /// NSCharacter that hold set of valid characters to hold
-    private let characterSet: NSCharacterSet
+    private let characterSet: CharacterSet
     /// String that holds error message
     private var message: String
     
@@ -24,7 +24,7 @@ public class CharacterSetRule: Rule {
      - parameter message: String of error message.
      - returns: An initialized object, or nil if an object could not be created for some reason that would not result in an exception.
      */
-    public init(characterSet: NSCharacterSet, message: String = "Enter valid alpha") {
+    public init(characterSet: CharacterSet, message: String = "Enter valid alpha") {
         self.characterSet = characterSet
         self.message = message
     }
@@ -35,9 +35,9 @@ public class CharacterSetRule: Rule {
      - parameter value: String to checked for validation.
      - returns: Boolean value. True if validation is successful; False if validation fails.
      */
-    public func validate(value: String) -> Bool {
+    public func validate(_ value: String) -> Bool {
         for uni in value.unicodeScalars {
-            if !characterSet.longCharacterIsMember(uni.value) {
+            guard let uniVal = UnicodeScalar(uni.value), characterSet.contains(uniVal) else {
                 return false
             }
         }
