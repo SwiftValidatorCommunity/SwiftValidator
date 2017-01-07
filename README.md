@@ -106,19 +106,6 @@ Implement the Validation Delegate in your View controller
 func validationSuccessful() {
 	// submit the form
 }
-
-func validationFailed(errors:[(Validatable ,ValidationError)]) {
-	// turn the fields to red
-	for (field, error) in errors {
-		if let field = field as? UITextField {
-			field.layer.borderColor = UIColor.redColor().CGColor
-			field.layer.borderWidth = 1.0		
-		}
-		error.errorLabel?.text = error.errorMessage // works if you added labels
-		error.errorLabel?.hidden = false
-	}
-}
-
 ```
 
 ## Single Field Validation
