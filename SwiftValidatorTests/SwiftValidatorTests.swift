@@ -31,6 +31,12 @@ class SwiftValidatorTests: XCTestCase {
     let VALID_FLOAT = "1234.444"
     let INVALID_FLOAT = "1234.44.44"
     
+    let VALID_CARD_EXPIRY_MONTH = "10"
+    let INVALID_CARD_EXPIRY_MONTH = "13"
+    
+    let VALID_CARD_EXPIRY_YEAR = "2018"
+    let INVALID_CARD_EXPIRY_YEAR = "2016"
+    
     let LEN_3 = "hey"
     let LEN_5 = "Howdy"
     let LEN_20 = "Paint the cat orange"
@@ -57,6 +63,36 @@ class SwiftValidatorTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
+    
+    
+    // MARK: Expiry Month
+    
+    func testCardExpiryMonthValid() {
+        XCTAssertTrue(CardExpiryMonthRule().validate(VALID_CARD_EXPIRY_MONTH), "Expiry month Should be valid")
+    }
+    
+    func testCardExpiryMonthInvalid() {
+        XCTAssertFalse(CardExpiryMonthRule().validate(INVALID_CARD_EXPIRY_MONTH), "Expiry month Should be invalid")
+    }
+    
+    func testCardExpiryMonthmessage() {
+            XCTAssertNotNil(CardExpiryMonthRule().errorMessage())
+    }
+    
+    // MARK: Expiry Year
+    
+    func testCardExpiryYearValid() {
+        XCTAssertTrue(CardExpiryYearRule().validate(VALID_CARD_EXPIRY_YEAR), "Expiry year Should be valid")
+    }
+    
+    func testCardExpiryYearInvalid() {
+        XCTAssertFalse(CardExpiryYearRule().validate(INVALID_CARD_EXPIRY_YEAR), "Expiry year Should be invalid")
+    }
+    
+    func testCardExpiryYearmessage() {
+        XCTAssertNotNil(CardExpiryYearRule().errorMessage())
+    }
+    
     
     // MARK: Required
     
