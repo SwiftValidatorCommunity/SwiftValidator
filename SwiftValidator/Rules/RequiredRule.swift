@@ -28,7 +28,7 @@ public class RequiredRule: Rule {
     /**
      Validates a field.
      
-     - parameter value: String to checked for validation.
+     - parameter value: String to check for validation.
      - returns: Boolean value. True if validation is successful; False if validation fails.
      */
     public func validate(_ value: String) -> Bool {
