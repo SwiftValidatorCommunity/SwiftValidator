@@ -11,7 +11,7 @@ import UIKit
  */
 public class ValidationError: NSObject {
     /// the Validatable field of the field
-    public let field:ValidatableField
+    public let field:Validatable
     /// the error label of the field
     public var errorLabel:UILabel?
     /// the error message of the field
@@ -25,7 +25,7 @@ public class ValidationError: NSObject {
      - parameter errorMessage: String that holds error message.
      - returns: An initialized object, or nil if an object could not be created for some reason that would not result in an exception.
      */
-    public init(field:ValidatableField, errorLabel:UILabel?, error:String){
+    public init(field:Validatable, errorLabel:UILabel?, error:String){
         self.field = field
         self.errorLabel = errorLabel
         self.errorMessage = error

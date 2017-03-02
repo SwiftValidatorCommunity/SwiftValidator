@@ -13,7 +13,7 @@ import UIKit
  */
 public class ValidationRule {
     /// the field of the field
-    public var field:ValidatableField
+    public var field:Validatable
     /// the errorLabel of the field
     public var errorLabel:UILabel?
     /// the rules of the field
@@ -27,7 +27,7 @@ public class ValidationRule {
      - parameter rules: array of Rule objects, which field will be validated against.
      - returns: An initialized `ValidationRule` object, or nil if an object could not be created for some reason that would not result in an exception.
      */
-    public init(field: ValidatableField, rules:[Rule], errorLabel:UILabel?){
+    public init(field: Validatable, rules:[Rule], errorLabel:UILabel?){
         self.field = field
         self.errorLabel = errorLabel
         self.rules = rules

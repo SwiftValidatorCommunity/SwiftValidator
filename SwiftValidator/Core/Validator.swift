@@ -63,7 +63,7 @@ public class Validator {
     - parameter field: Holds validator field data.
     - returns: No return value.
     */
-    public func validateField(_ field: ValidatableField, callback: (_ error:ValidationError?) -> Void){
+    public func validateField(_ field: Validatable, callback: (_ error:ValidationError?) -> Void){
         if let fieldRule = validations[field] {
             if let error = fieldRule.validateField() {
                 errors[field] = error
@@ -104,7 +104,7 @@ public class Validator {
      - parameter rules: A Rule array that holds different rules that apply to said field.
      - returns: No return value
      */
-    public func registerField(_ field: ValidatableField, errorLabel:UILabel? = nil, rules:[Rule]) {
+    public func registerField(_ field: Validatable, errorLabel:UILabel? = nil, rules:[Rule]) {
         validations[field] = ValidationRule(field: field, rules:rules, errorLabel:errorLabel)
     }
     
@@ -114,7 +114,7 @@ public class Validator {
      - parameter field: field used to locate and remove field from validator.
      - returns: No return value
      */
-    public func unregisterField(_ field:ValidatableField) {
+    public func unregisterField(_ field:Validatable) {
         validations.removeValueForKey(field)
         errors.removeValueForKey(field)
     }
