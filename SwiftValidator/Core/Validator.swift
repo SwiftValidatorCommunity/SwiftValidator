@@ -17,8 +17,6 @@ public class Validator {
     public var validations = ValidatorDictionary<ValidationRule>()
     /// Dictionary to hold fields (and accompanying errors) that were unsuccessfully validated.
     public var errors = ValidatorDictionary<ValidationError>()
-    /// Dictionary to hold fields by their object identifiers
-    private var fields = ValidatorDictionary<Validatable>()
     /// Variable that holds success closure to display positive status of field.
     private var successStyleTransform:((_ validationRule:ValidationRule)->Void)?
     /// Variable that holds error closure to display negative status of field.
@@ -108,7 +106,6 @@ public class Validator {
      */
     public func registerField(_ field: ValidatableField, errorLabel:UILabel? = nil, rules:[Rule]) {
         validations[field] = ValidationRule(field: field, rules:rules, errorLabel:errorLabel)
-        fields[field] = field
     }
     
     /**
@@ -134,7 +131,7 @@ public class Validator {
         if errors.isEmpty {
             delegate.validationSuccessful()
         } else {
-            delegate.validationFailed(errors.map { (fields[$1.field]!, $1) })
+            delegate.validationFailed(errors.map { ($1.field, $1) })
         }
         
     }
@@ -149,6 +146,6 @@ public class Validator {
         
         self.validateAllFields()
         
-        callback(errors.map { (fields[$1.field]!, $1) } )
+        callback(errors.map { ($1.field, $1) } )
     }
 }
