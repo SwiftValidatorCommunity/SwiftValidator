@@ -31,6 +31,9 @@ class SwiftValidatorTests: XCTestCase {
     let VALID_FLOAT = "1234.444"
     let INVALID_FLOAT = "1234.44.44"
     
+    let VALID_INTEGER = "12345"
+    let INVALID_INTEGER = "abcd1234"
+    
     let LEN_3 = "hey"
     let LEN_5 = "Howdy"
     let LEN_20 = "Paint the cat orange"
@@ -127,6 +130,21 @@ class SwiftValidatorTests: XCTestCase {
     
     func testFloatMessage() {
         XCTAssertNotNil(FloatRule().errorMessage())
+    }
+    
+    // MARK: Integer
+    
+    func testInteger() {
+        XCTAssert(IntegerRule().validate(VALID_INTEGER), "Integer should be valid")
+    }
+    
+    func testFloatInvalid() {
+        XCTAssert(!IntegerRule().validate(INVALID_INTEGER), "Integer should be invalid")
+        XCTAssert(!IntegerRule().validate(VALID_EMAIL), "Integer should be invalid")
+    }
+    
+    func testFloatMessage() {
+        XCTAssertNotNil(IntegerRule().errorMessage())
     }
     
     // MARK: Confirm against field
