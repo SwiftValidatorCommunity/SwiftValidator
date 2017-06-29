@@ -14,7 +14,7 @@
     <a title="CharacterSetRule Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">SwiftValidator Docs</a> (100% documented)</p>
+        <p><a href="../index.html">SwiftValidator Docs</a> (92% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -64,6 +64,9 @@
                 <a href="../Classes/ISBNRule.html">ISBNRule</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Classes/IntegerRule.html">IntegerRule</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/MaxLengthRule.html">MaxLengthRule</a>
               </li>
               <li class="nav-group-task">
@@ -96,13 +99,32 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/UITextField.html">UITextField</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Protocols/Rule.html">Rule</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Protocols/Validatable.html">Validatable</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Protocols/ValidationDelegate.html">ValidationDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/ValidatorDictionary.html">ValidatorDictionary</a>
               </li>
             </ul>
           </li>
@@ -114,7 +136,7 @@
             <h1>CharacterSetRule</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">CharacterSetRule</span><span class="p">:</span> <span class="kt">Rule</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">CharacterSetRule</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Rule.html">Rule</a></span></code></pre>
 
                 </div>
               </div>
@@ -127,9 +149,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC14SwiftValidator16CharacterSetRulecFMS0_FT12characterSetCSo14NSCharacterSet7messageSS_S0_"></a>
+                    <a name="/s:FC14SwiftValidator16CharacterSetRulecFT12characterSetV10Foundation12CharacterSet7messageSS_S0_"></a>
                     <a name="//apple_ref/swift/Method/init(characterSet:message:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC14SwiftValidator16CharacterSetRulecFMS0_FT12characterSetCSo14NSCharacterSet7messageSS_S0_">init(characterSet:message:)</a>
+                    <a class="token" href="#/s:FC14SwiftValidator16CharacterSetRulecFT12characterSetV10Foundation12CharacterSet7messageSS_S0_">init(characterSet:message:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -137,14 +159,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Initializes a <code><a href="../Classes/CharacterSetRule.html">CharacterSetRule</a></code> object to verify that field has valid set of characters.</p>
+                        <p>Initializes a <code>CharacterSetRule</code> object to verify that field has valid set of characters.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">characterSet</span><span class="p">:</span> <span class="kt">NSCharacterSet</span><span class="p">,</span> <span class="nv">message</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"Enter valid alpha"</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">characterSet</span><span class="p">:</span> <span class="kt">CharacterSet</span><span class="p">,</span> <span class="nv">message</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"Enter valid alpha"</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -161,7 +183,6 @@
                               <td>
                                 <div>
                                   <p>NSCharacterSet that holds group of valid characters.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -174,7 +195,6 @@
                               <td>
                                 <div>
                                   <p>String of error message.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -184,7 +204,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>An initialized object, or nil if an object could not be created for some reason that would not result in an exception.</p>
-
                       </div>
                     </section>
                   </div>
@@ -192,9 +211,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC14SwiftValidator16CharacterSetRule8validateFS0_FSSSb"></a>
+                    <a name="/s:FC14SwiftValidator16CharacterSetRule8validateFSSSb"></a>
                     <a name="//apple_ref/swift/Method/validate(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC14SwiftValidator16CharacterSetRule8validateFS0_FSSSb">validate(_:)</a>
+                    <a class="token" href="#/s:FC14SwiftValidator16CharacterSetRule8validateFSSSb">validate(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -209,7 +228,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">validate</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">validate</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -226,7 +245,6 @@
                               <td>
                                 <div>
                                   <p>String to checked for validation.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -236,7 +254,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>Boolean value. True if validation is successful; False if validation fails.</p>
-
                       </div>
                     </section>
                   </div>
@@ -244,9 +261,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC14SwiftValidator16CharacterSetRule12errorMessageFS0_FT_SS"></a>
+                    <a name="/s:FC14SwiftValidator16CharacterSetRule12errorMessageFT_SS"></a>
                     <a name="//apple_ref/swift/Method/errorMessage()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC14SwiftValidator16CharacterSetRule12errorMessageFS0_FT_SS">errorMessage()</a>
+                    <a class="token" href="#/s:FC14SwiftValidator16CharacterSetRule12errorMessageFT_SS">errorMessage()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -254,7 +271,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Displays error message when text field fails validation.</p>
+                        <p>Displays error message when field fails validation.</p>
 
                       </div>
                       <div class="declaration">
@@ -268,7 +285,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>String of error message.</p>
-
                       </div>
                     </section>
                   </div>
@@ -278,8 +294,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="https://github.com/jpotts18/SwiftValidator" target="_blank" rel="external">Jeff Potter</a>. All rights reserved. (Last updated: 2016-04-15)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.5.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/jpotts18/SwiftValidator" target="_blank" rel="external">Jeff Potter</a>. All rights reserved. (Last updated: 2017-06-29)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
