@@ -14,7 +14,7 @@
     <a title="Validator Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">SwiftValidator Docs</a> (100% documented)</p>
+        <p><a href="../index.html">SwiftValidator Docs</a> (92% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -64,6 +64,9 @@
                 <a href="../Classes/ISBNRule.html">ISBNRule</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Classes/IntegerRule.html">IntegerRule</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/MaxLengthRule.html">MaxLengthRule</a>
               </li>
               <li class="nav-group-task">
@@ -96,13 +99,32 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/UITextField.html">UITextField</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Protocols/Rule.html">Rule</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Protocols/Validatable.html">Validatable</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Protocols/ValidationDelegate.html">ValidationDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/ValidatorDictionary.html">ValidatorDictionary</a>
               </li>
             </ul>
           </li>
@@ -128,9 +150,9 @@ validation fields.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC14SwiftValidator9Validator11validationsGVSs10DictionaryCSo11UITextFieldCS_14ValidationRule_"></a>
+                    <a name="/s:vC14SwiftValidator9Validator11validationsGVS_19ValidatorDictionaryCS_14ValidationRule_"></a>
                     <a name="//apple_ref/swift/Property/validations" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC14SwiftValidator9Validator11validationsGVSs10DictionaryCSo11UITextFieldCS_14ValidationRule_">validations</a>
+                    <a class="token" href="#/s:vC14SwiftValidator9Validator11validationsGVS_19ValidatorDictionaryCS_14ValidationRule_">validations</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -145,7 +167,7 @@ validation fields.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">validations</span> <span class="o">=</span> <span class="p">[</span><span class="kt">UITextField</span><span class="p">:</span><span class="kt">ValidationRule</span><span class="p">]()</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">validations</span> <span class="o">=</span> <span class="kt"><a href="../Structs/ValidatorDictionary.html">ValidatorDictionary</a></span><span class="o">&lt;</span><span class="kt"><a href="../Classes/ValidationRule.html">ValidationRule</a></span><span class="o">&gt;</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -155,9 +177,9 @@ validation fields.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC14SwiftValidator9Validator6errorsGVSs10DictionaryCSo11UITextFieldCS_15ValidationError_"></a>
+                    <a name="/s:vC14SwiftValidator9Validator6errorsGVS_19ValidatorDictionaryCS_15ValidationError_"></a>
                     <a name="//apple_ref/swift/Property/errors" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC14SwiftValidator9Validator6errorsGVSs10DictionaryCSo11UITextFieldCS_15ValidationError_">errors</a>
+                    <a class="token" href="#/s:vC14SwiftValidator9Validator6errorsGVS_19ValidatorDictionaryCS_15ValidationError_">errors</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -172,7 +194,7 @@ validation fields.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">errors</span> <span class="o">=</span> <span class="p">[</span><span class="kt">UITextField</span><span class="p">:</span><span class="kt">ValidationError</span><span class="p">]()</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">errors</span> <span class="o">=</span> <span class="kt"><a href="../Structs/ValidatorDictionary.html">ValidatorDictionary</a></span><span class="o">&lt;</span><span class="kt"><a href="../Classes/ValidationError.html">ValidationError</a></span><span class="o">&gt;</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -182,9 +204,9 @@ validation fields.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC14SwiftValidator9ValidatorcFMS0_FT_S0_"></a>
+                    <a name="/s:FC14SwiftValidator9ValidatorcFT_S0_"></a>
                     <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC14SwiftValidator9ValidatorcFMS0_FT_S0_">init()</a>
+                    <a class="token" href="#/s:FC14SwiftValidator9ValidatorcFT_S0_">init()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -198,14 +220,13 @@ validation fields.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(){}</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
                       <div>
                         <h4>Return Value</h4>
                         <p>An initialized object, or nil if an object could not be created for some reason that would not result in an exception.</p>
-
                       </div>
                     </section>
                   </div>
@@ -224,9 +245,9 @@ validation fields.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC14SwiftValidator9Validator13validateFieldFS0_FTCSo11UITextField8callbackFT5errorGSqCS_15ValidationError__T__T_"></a>
+                    <a name="/s:FC14SwiftValidator9Validator13validateFieldFTPs9AnyObjectS_11Validatable_8callbackFGSqCS_15ValidationError_T__T_"></a>
                     <a name="//apple_ref/swift/Method/validateField(_:callback:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC14SwiftValidator9Validator13validateFieldFS0_FTCSo11UITextField8callbackFT5errorGSqCS_15ValidationError__T__T_">validateField(_:callback:)</a>
+                    <a class="token" href="#/s:FC14SwiftValidator9Validator13validateFieldFTPs9AnyObjectS_11Validatable_8callbackFGSqCS_15ValidationError_T__T_">validateField(_:callback:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -242,7 +263,7 @@ field gets added to errors dictionary.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">validateField</span><span class="p">(</span><span class="nv">textField</span><span class="p">:</span> <span class="kt">UITextField</span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="p">(</span><span class="nv">error</span><span class="p">:</span><span class="kt">ValidationError</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">validateField</span><span class="p">(</span><span class="n">_</span> <span class="nv">field</span><span class="p">:</span> <span class="kt">ValidatableField</span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="p">(</span><span class="n">_</span> <span class="nv">error</span><span class="p">:</span><span class="kt"><a href="../Classes/ValidationError.html">ValidationError</a></span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -253,13 +274,12 @@ field gets added to errors dictionary.</p>
                             <tr>
                               <td>
                                 <code>
-                                <em>textField</em>
+                                <em>field</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
                                   <p>Holds validator field data.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -269,7 +289,6 @@ field gets added to errors dictionary.</p>
                       <div>
                         <h4>Return Value</h4>
                         <p>No return value.</p>
-
                       </div>
                     </section>
                   </div>
@@ -288,9 +307,9 @@ field gets added to errors dictionary.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC14SwiftValidator9Validator17styleTransformersFS0_FT7successGSqFT14validationRuleCS_14ValidationRule_T__5errorGSqFT15validationErrorCS_15ValidationError_T___T_"></a>
+                    <a name="/s:FC14SwiftValidator9Validator17styleTransformersFT7successGSqFCS_14ValidationRuleT__5errorGSqFCS_15ValidationErrorT___T_"></a>
                     <a name="//apple_ref/swift/Method/styleTransformers(success:error:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC14SwiftValidator9Validator17styleTransformersFS0_FT7successGSqFT14validationRuleCS_14ValidationRule_T__5errorGSqFT15validationErrorCS_15ValidationError_T___T_">styleTransformers(success:error:)</a>
+                    <a class="token" href="#/s:FC14SwiftValidator9Validator17styleTransformersFT7successGSqFCS_14ValidationRuleT__5errorGSqFCS_15ValidationErrorT___T_">styleTransformers(success:error:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -305,7 +324,7 @@ field gets added to errors dictionary.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">styleTransformers</span><span class="p">(</span><span class="n">success</span> <span class="nv">success</span><span class="p">:((</span><span class="nv">validationRule</span><span class="p">:</span><span class="kt">ValidationRule</span><span class="p">)</span><span class="o">-&gt;</span><span class="kt">Void</span><span class="p">)?,</span> <span class="nv">error</span><span class="p">:((</span><span class="nv">validationError</span><span class="p">:</span><span class="kt">ValidationError</span><span class="p">)</span><span class="o">-&gt;</span><span class="kt">Void</span><span class="p">)?)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">styleTransformers</span><span class="p">(</span><span class="nv">success</span><span class="p">:((</span><span class="n">_</span> <span class="nv">validationRule</span><span class="p">:</span><span class="kt"><a href="../Classes/ValidationRule.html">ValidationRule</a></span><span class="p">)</span><span class="o">-&gt;</span><span class="kt">Void</span><span class="p">)?,</span> <span class="nv">error</span><span class="p">:((</span><span class="n">_</span> <span class="nv">validationError</span><span class="p">:</span><span class="kt"><a href="../Classes/ValidationError.html">ValidationError</a></span><span class="p">)</span><span class="o">-&gt;</span><span class="kt">Void</span><span class="p">)?)</span></code></pre>
 
                         </div>
                       </div>
@@ -322,7 +341,6 @@ field gets added to errors dictionary.</p>
                               <td>
                                 <div>
                                   <p>A closure which is called with validationRule, an object that holds validation data</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -335,7 +353,6 @@ field gets added to errors dictionary.</p>
                               <td>
                                 <div>
                                   <p>A closure which is called with validationError, an object that holds validation error data</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -345,7 +362,6 @@ field gets added to errors dictionary.</p>
                       <div>
                         <h4>Return Value</h4>
                         <p>No return value</p>
-
                       </div>
                     </section>
                   </div>
@@ -353,74 +369,9 @@ field gets added to errors dictionary.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC14SwiftValidator9Validator13registerFieldFS0_FTCSo11UITextField5rulesGSaPS_4Rule___T_"></a>
-                    <a name="//apple_ref/swift/Method/registerField(_:rules:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC14SwiftValidator9Validator13registerFieldFS0_FTCSo11UITextField5rulesGSaPS_4Rule___T_">registerField(_:rules:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>This method is used to add a field to validator.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">registerField</span><span class="p">(</span><span class="nv">textField</span><span class="p">:</span><span class="kt">UITextField</span><span class="p">,</span> <span class="nv">rules</span><span class="p">:[</span><span class="kt">Rule</span><span class="p">])</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>textField</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>field that is to be validated.</p>
-
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>Rule</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>An array which holds different rules to validate against textField.</p>
-
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>No return value</p>
-
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:FC14SwiftValidator9Validator13registerFieldFS0_FTCSo11UITextField10errorLabelCSo7UILabel5rulesGSaPS_4Rule___T_"></a>
+                    <a name="/s:FC14SwiftValidator9Validator13registerFieldFTPs9AnyObjectS_11Validatable_10errorLabelGSqCSo7UILabel_5rulesGSaPS_4Rule___T_"></a>
                     <a name="//apple_ref/swift/Method/registerField(_:errorLabel:rules:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC14SwiftValidator9Validator13registerFieldFS0_FTCSo11UITextField10errorLabelCSo7UILabel5rulesGSaPS_4Rule___T_">registerField(_:errorLabel:rules:)</a>
+                    <a class="token" href="#/s:FC14SwiftValidator9Validator13registerFieldFTPs9AnyObjectS_11Validatable_10errorLabelGSqCSo7UILabel_5rulesGSaPS_4Rule___T_">registerField(_:errorLabel:rules:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -435,7 +386,7 @@ field gets added to errors dictionary.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">registerField</span><span class="p">(</span><span class="nv">textField</span><span class="p">:</span><span class="kt">UITextField</span><span class="p">,</span> <span class="nv">errorLabel</span><span class="p">:</span><span class="kt">UILabel</span><span class="p">,</span> <span class="nv">rules</span><span class="p">:[</span><span class="kt">Rule</span><span class="p">])</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">registerField</span><span class="p">(</span><span class="n">_</span> <span class="nv">field</span><span class="p">:</span> <span class="kt">ValidatableField</span><span class="p">,</span> <span class="nv">errorLabel</span><span class="p">:</span><span class="kt">UILabel</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">rules</span><span class="p">:[</span><span class="kt"><a href="../Protocols/Rule.html">Rule</a></span><span class="p">])</span></code></pre>
 
                         </div>
                       </div>
@@ -446,13 +397,12 @@ field gets added to errors dictionary.</p>
                             <tr>
                               <td>
                                 <code>
-                                <em>textfield</em>
+                                <em>field</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
                                   <p>field that is to be validated.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -465,7 +415,6 @@ field gets added to errors dictionary.</p>
                               <td>
                                 <div>
                                   <p>A UILabel that holds error label data</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -477,8 +426,7 @@ field gets added to errors dictionary.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>A Rule array that holds different rules that apply to said textField.</p>
-
+                                  <p>A Rule array that holds different rules that apply to said field.</p>
                                 </div>
                               </td>
                             </tr>
@@ -488,7 +436,6 @@ field gets added to errors dictionary.</p>
                       <div>
                         <h4>Return Value</h4>
                         <p>No return value</p>
-
                       </div>
                     </section>
                   </div>
@@ -496,9 +443,9 @@ field gets added to errors dictionary.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC14SwiftValidator9Validator15unregisterFieldFS0_FCSo11UITextFieldT_"></a>
+                    <a name="/s:FC14SwiftValidator9Validator15unregisterFieldFPs9AnyObjectS_11Validatable_T_"></a>
                     <a name="//apple_ref/swift/Method/unregisterField(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC14SwiftValidator9Validator15unregisterFieldFS0_FCSo11UITextFieldT_">unregisterField(_:)</a>
+                    <a class="token" href="#/s:FC14SwiftValidator9Validator15unregisterFieldFPs9AnyObjectS_11Validatable_T_">unregisterField(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -513,7 +460,7 @@ field gets added to errors dictionary.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">unregisterField</span><span class="p">(</span><span class="nv">textField</span><span class="p">:</span><span class="kt">UITextField</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">unregisterField</span><span class="p">(</span><span class="n">_</span> <span class="nv">field</span><span class="p">:</span><span class="kt">ValidatableField</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -524,13 +471,12 @@ field gets added to errors dictionary.</p>
                             <tr>
                               <td>
                                 <code>
-                                <em>textField</em>
+                                <em>field</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>field used to locate and remove textField from validator.</p>
-
+                                  <p>field used to locate and remove field from validator.</p>
                                 </div>
                               </td>
                             </tr>
@@ -540,7 +486,6 @@ field gets added to errors dictionary.</p>
                       <div>
                         <h4>Return Value</h4>
                         <p>No return value</p>
-
                       </div>
                     </section>
                   </div>
@@ -548,9 +493,9 @@ field gets added to errors dictionary.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC14SwiftValidator9Validator8validateFS0_FPS_18ValidationDelegate_T_"></a>
+                    <a name="/s:FC14SwiftValidator9Validator8validateFPS_18ValidationDelegate_T_"></a>
                     <a name="//apple_ref/swift/Method/validate(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC14SwiftValidator9Validator8validateFS0_FPS_18ValidationDelegate_T_">validate(_:)</a>
+                    <a class="token" href="#/s:FC14SwiftValidator9Validator8validateFPS_18ValidationDelegate_T_">validate(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -565,14 +510,13 @@ field gets added to errors dictionary.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">validate</span><span class="p">(</span><span class="nv">delegate</span><span class="p">:</span><span class="kt">ValidationDelegate</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">validate</span><span class="p">(</span><span class="n">_</span> <span class="nv">delegate</span><span class="p">:</span><span class="kt"><a href="../Protocols/ValidationDelegate.html">ValidationDelegate</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
                       <div>
                         <h4>Return Value</h4>
                         <p>No return value.</p>
-
                       </div>
                     </section>
                   </div>
@@ -580,9 +524,9 @@ field gets added to errors dictionary.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC14SwiftValidator9Validator8validateFS0_FFT6errorsGVSs10DictionaryCSo11UITextFieldCS_15ValidationError__T_T_"></a>
+                    <a name="/s:FC14SwiftValidator9Validator8validateFFGSaTPS_11Validatable_CS_15ValidationError__T_T_"></a>
                     <a name="//apple_ref/swift/Method/validate(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC14SwiftValidator9Validator8validateFS0_FFT6errorsGVSs10DictionaryCSo11UITextFieldCS_15ValidationError__T_T_">validate(_:)</a>
+                    <a class="token" href="#/s:FC14SwiftValidator9Validator8validateFFGSaTPS_11Validatable_CS_15ValidationError__T_T_">validate(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -597,7 +541,7 @@ field gets added to errors dictionary.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">validate</span><span class="p">(</span><span class="nv">callback</span><span class="p">:(</span><span class="nv">errors</span><span class="p">:[</span><span class="kt">UITextField</span><span class="p">:</span><span class="kt">ValidationError</span><span class="p">])</span><span class="o">-&gt;</span><span class="kt">Void</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">validate</span><span class="p">(</span><span class="n">_</span> <span class="nv">callback</span><span class="p">:(</span><span class="n">_</span> <span class="nv">errors</span><span class="p">:[(</span><span class="kt"><a href="../Protocols/Validatable.html">Validatable</a></span><span class="p">,</span> <span class="kt"><a href="../Classes/ValidationError.html">ValidationError</a></span><span class="p">)])</span><span class="o">-&gt;</span><span class="kt">Void</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span></code></pre>
 
                         </div>
                       </div>
@@ -613,8 +557,7 @@ field gets added to errors dictionary.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>A closure which is called with errors, a dictionary of type UITextField:ValidationError.</p>
-
+                                  <p>A closure which is called with errors, a dictionary of type Validatable:ValidationError.</p>
                                 </div>
                               </td>
                             </tr>
@@ -624,7 +567,6 @@ field gets added to errors dictionary.</p>
                       <div>
                         <h4>Return Value</h4>
                         <p>No return value.</p>
-
                       </div>
                     </section>
                   </div>
@@ -634,8 +576,8 @@ field gets added to errors dictionary.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="https://github.com/jpotts18/SwiftValidator" target="_blank" rel="external">Jeff Potter</a>. All rights reserved. (Last updated: 2016-04-15)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.5.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/jpotts18/SwiftValidator" target="_blank" rel="external">Jeff Potter</a>. All rights reserved. (Last updated: 2017-06-29)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

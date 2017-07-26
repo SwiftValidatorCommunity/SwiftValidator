@@ -14,7 +14,7 @@
     <a title="RequiredRule Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">SwiftValidator Docs</a> (100% documented)</p>
+        <p><a href="../index.html">SwiftValidator Docs</a> (92% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -64,6 +64,9 @@
                 <a href="../Classes/ISBNRule.html">ISBNRule</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Classes/IntegerRule.html">IntegerRule</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/MaxLengthRule.html">MaxLengthRule</a>
               </li>
               <li class="nav-group-task">
@@ -96,13 +99,32 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/UITextField.html">UITextField</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Protocols/Rule.html">Rule</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Protocols/Validatable.html">Validatable</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Protocols/ValidationDelegate.html">ValidationDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/ValidatorDictionary.html">ValidatorDictionary</a>
               </li>
             </ul>
           </li>
@@ -114,11 +136,11 @@
             <h1>RequiredRule</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">RequiredRule</span><span class="p">:</span> <span class="kt">Rule</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">RequiredRule</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Rule.html">Rule</a></span></code></pre>
 
                 </div>
               </div>
-            <p><code>RequiredRule</code> is a subclass of Rule that defines how a required text field is validated.</p>
+            <p><code>RequiredRule</code> is a subclass of Rule that defines how a required field is validated.</p>
 
           </section>
           <section class="section task-group-section">
@@ -127,9 +149,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC14SwiftValidator12RequiredRulecFMS0_FT7messageSS_S0_"></a>
+                    <a name="/s:FC14SwiftValidator12RequiredRulecFT7messageSS_S0_"></a>
                     <a name="//apple_ref/swift/Method/init(message:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC14SwiftValidator12RequiredRulecFMS0_FT7messageSS_S0_">init(message:)</a>
+                    <a class="token" href="#/s:FC14SwiftValidator12RequiredRulecFT7messageSS_S0_">init(message:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -137,7 +159,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Initializes <code><a href="../Classes/RequiredRule.html">RequiredRule</a></code> object with error message. Used to validate a field that requires text.</p>
+                        <p>Initializes <code>RequiredRule</code> object with error message. Used to validate a field that requires text.</p>
 
                       </div>
                       <div class="declaration">
@@ -161,7 +183,6 @@
                               <td>
                                 <div>
                                   <p>String of error message.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -170,8 +191,7 @@
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>An initialized <code><a href="../Classes/RequiredRule.html">RequiredRule</a></code> object, or nil if an object could not be created for some reason that would not result in an exception.</p>
-
+                        <p>An initialized <code>RequiredRule</code> object, or nil if an object could not be created for some reason that would not result in an exception.</p>
                       </div>
                     </section>
                   </div>
@@ -179,9 +199,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC14SwiftValidator12RequiredRule8validateFS0_FSSSb"></a>
+                    <a name="/s:FC14SwiftValidator12RequiredRule8validateFSSSb"></a>
                     <a name="//apple_ref/swift/Method/validate(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC14SwiftValidator12RequiredRule8validateFS0_FSSSb">validate(_:)</a>
+                    <a class="token" href="#/s:FC14SwiftValidator12RequiredRule8validateFSSSb">validate(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -189,14 +209,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Validates a text field.</p>
+                        <p>Validates a field.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">validate</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">validate</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -213,7 +233,6 @@
                               <td>
                                 <div>
                                   <p>String to checked for validation.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -223,7 +242,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>Boolean value. True if validation is successful; False if validation fails.</p>
-
                       </div>
                     </section>
                   </div>
@@ -231,9 +249,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC14SwiftValidator12RequiredRule12errorMessageFS0_FT_SS"></a>
+                    <a name="/s:FC14SwiftValidator12RequiredRule12errorMessageFT_SS"></a>
                     <a name="//apple_ref/swift/Method/errorMessage()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC14SwiftValidator12RequiredRule12errorMessageFS0_FT_SS">errorMessage()</a>
+                    <a class="token" href="#/s:FC14SwiftValidator12RequiredRule12errorMessageFT_SS">errorMessage()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -255,7 +273,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>String of error message.</p>
-
                       </div>
                     </section>
                   </div>
@@ -265,8 +282,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="https://github.com/jpotts18/SwiftValidator" target="_blank" rel="external">Jeff Potter</a>. All rights reserved. (Last updated: 2016-04-15)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.5.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/jpotts18/SwiftValidator" target="_blank" rel="external">Jeff Potter</a>. All rights reserved. (Last updated: 2017-06-29)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
