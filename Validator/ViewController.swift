@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import SwiftValidator
 
+@objcMembers
 class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate {
 
     // TextFields
