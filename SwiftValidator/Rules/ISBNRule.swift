@@ -38,7 +38,7 @@ public class ISBNRule: Rule {
             fatalError("Invalid ISBN sanitizing regex")
         }
         
-        let sanitized = regex.stringByReplacingMatches(in: value, options: [], range: NSMakeRange(0, value.characters.count), withTemplate: "")
+        let sanitized = regex.stringByReplacingMatches(in: value, options: [], range: NSMakeRange(0, value.count), withTemplate: "")
         
         return ISBN10Validator().verify(sanitized) || ISBN13Validator().verify(sanitized)
     }
@@ -140,15 +140,15 @@ private struct ISBN10Validator: ISBNValidator {
         var checksum = 0
         
         for i in 0..<9 {
-            if let intCharacter = Int(String(input[input.characters.index(input.startIndex, offsetBy: i)])) {
+            if let intCharacter = Int(String(input[input.index(input.startIndex, offsetBy: i)])) {
                 checksum += (i + 1) * intCharacter
             }
         }
         
-        if (input[input.characters.index(input.startIndex, offsetBy: 9)] == "X") {
+        if (input[input.index(input.startIndex, offsetBy: 9)] == "X") {
             checksum += 10 * 10
         } else {
-            if let intCharacter = Int(String(input[input.characters.index(input.startIndex, offsetBy: 9)])) {
+            if let intCharacter = Int(String(input[input.index(input.startIndex, offsetBy: 9)])) {
                 checksum += 10 * intCharacter
             }
         }
@@ -176,13 +176,13 @@ private struct ISBN13Validator: ISBNValidator {
         var checksum = 0
         
         for i in 0..<12 {
-            if let intCharacter = Int(String(input[input.characters.index(input.startIndex, offsetBy: i)])) {
+            if let intCharacter = Int(String(input[input.index(input.startIndex, offsetBy: i)])) {
                 print("\(factor[i%2]) * \(intCharacter)")
                 checksum += factor[i % 2] * intCharacter
             }
         }
         
-        if let lastInt = Int(String(input[input.characters.index(input.startIndex, offsetBy: 12)])) {
+        if let lastInt = Int(String(input[input.index(input.startIndex, offsetBy: 12)])) {
             return (lastInt - ((10 - (checksum % 10)) % 10) == 0)
         }
         
