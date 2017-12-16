@@ -366,7 +366,7 @@ class SwiftValidatorTests: XCTestCase {
         }
         REGISTER_TXT_FIELD.text = INVALID_EMAIL
         REGISTER_VALIDATOR.validateField(REGISTER_TXT_FIELD) { error in
-            XCTAssert(error?.errorMessage.characters.count ?? 0 > 0, "Should state 'invalid email'")
+            XCTAssert(error?.errorMessage.count ?? 0 > 0, "Should state 'invalid email'")
         }
     }
     
