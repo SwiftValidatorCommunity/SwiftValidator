@@ -79,7 +79,7 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
         print("Validation FAILED!")
     }
     
-    func hideKeyboard(){
+    @objc func hideKeyboard(){
         self.view.endEditing(true)
     }
     
