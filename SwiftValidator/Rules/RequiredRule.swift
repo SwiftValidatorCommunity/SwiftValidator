@@ -31,7 +31,7 @@ open class RequiredRule: Rule {
      - parameter value: String to checked for validation.
      - returns: Boolean value. True if validation is successful; False if validation fails.
      */
-    public func validate(_ value: String) -> Bool {
+    open func validate(_ value: String) -> Bool {
         return !value.isEmpty
     }
     

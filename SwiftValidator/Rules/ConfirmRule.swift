@@ -37,7 +37,7 @@ open class ConfirmationRule: Rule {
      - parameter value: String to checked for validation.
      - returns: A boolean value. True if validation is successful; False if validation fails.
      */
-    public func validate(_ value: String) -> Bool {
+    open func validate(_ value: String) -> Bool {
         return confirmField.validationText == value
     }
     
