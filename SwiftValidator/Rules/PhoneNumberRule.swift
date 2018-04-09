@@ -10,7 +10,7 @@ import Foundation
 /**
  `PhoneNumberRule` is a subclass of Rule that defines how a phone number is validated.
  */
-public class PhoneNumberRule: RegexRule {
+open class PhoneNumberRule: RegexRule {
 //    let PHONE_REGEX = "^\\d{3}-\\d{3}-\\d{4}$"
     
     /// Phone number regular express string to be used in validation.

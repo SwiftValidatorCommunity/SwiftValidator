@@ -11,7 +11,7 @@ import Foundation
 /**
  `RequiredRule` is a subclass of Rule that defines how a required field is validated.
  */
-public class RequiredRule: Rule {
+open class RequiredRule: Rule {
     /// String that holds error message.
     private var message : String 
     

@@ -11,7 +11,7 @@ import Foundation
 /**
  `ISBNRule` is a subclass of `Rule`. It is used to verify whether a field is a valid ISBN number.
  */
-public class ISBNRule: Rule {
+open class ISBNRule: Rule {
     
     /// String that holds error message
     private let message: String

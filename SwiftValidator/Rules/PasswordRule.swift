@@ -10,7 +10,7 @@ import Foundation
 /**
  `PasswordRule` is a subclass of RegexRule that defines how a password is validated.
  */
-public class PasswordRule : RegexRule {
+open class PasswordRule : RegexRule {
     
     // Alternative Regexes
     

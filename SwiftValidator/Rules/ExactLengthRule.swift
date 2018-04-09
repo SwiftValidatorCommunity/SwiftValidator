@@ -11,7 +11,7 @@ import Foundation
 /**
  `ExactLengthRule` is a subclass of Rule that is used to make sure a the text of a field is an exact length.
  */
-public class ExactLengthRule : Rule {
+open class ExactLengthRule : Rule {
     /// parameter message: String of error message.
     private var message : String = "Must be at most 16 characters long"
     /// parameter length: Integer value string length

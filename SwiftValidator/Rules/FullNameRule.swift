@@ -10,7 +10,7 @@ import Foundation
 /**
  `FullNameRule` is a subclass of Rule that defines how a full name is validated.
  */
-public class FullNameRule : Rule {
+open class FullNameRule : Rule {
     /// Error message to be displayed if validation fails.
     private var message : String
     

@@ -11,7 +11,7 @@ import Foundation
 /**
  `FloatRule` is a subclass of Rule that defines how check if a value is a floating point value.
  */
-public class FloatRule:Rule {
+open class FloatRule:Rule {
     /// Error message to be displayed if validation fails.
     private var message : String
     

@@ -12,7 +12,7 @@ import Foundation
  `AlphaNumericRule` is a subclass of `CharacterSetRule`. It is used to verify that a field has a
  valid list of alphanumeric characters.
  */
-public class AlphaNumericRule: CharacterSetRule {
+open class AlphaNumericRule: CharacterSetRule {
     
     /**
      Initializes a `AlphaNumericRule` object to verify that field has valid set of alphanumeric characters.

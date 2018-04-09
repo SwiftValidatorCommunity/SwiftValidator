@@ -12,7 +12,7 @@ import Foundation
  `AlphaRule` is a subclass of `CharacterSetRule`. It is used to verify that a field has a
  valid list of alpha characters.
  */
-public class AlphaRule: CharacterSetRule {
+open class AlphaRule: CharacterSetRule {
     
     /**
      Initializes an `AlphaRule` object to verify that a field has valid set of alpha characters.
