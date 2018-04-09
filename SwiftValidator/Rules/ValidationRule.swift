@@ -11,7 +11,7 @@ import UIKit
 /**
  `ValidationRule` is a class that creates an object which holds validation info of a field.
  */
-public class ValidationRule {
+open class ValidationRule {
     /// the field of the field
     public var field:ValidatableField
     /// the errorLabel of the field

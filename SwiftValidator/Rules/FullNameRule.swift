@@ -10,7 +10,7 @@ import Foundation
 /**
  `FullNameRule` is a subclass of Rule that defines how a full name is validated.
  */
-public class FullNameRule : Rule {
+open class FullNameRule : Rule {
     /// Error message to be displayed if validation fails.
     private var message : String
     
@@ -30,7 +30,7 @@ public class FullNameRule : Rule {
      - parameter value: String to checked for validation.
      - returns: A boolean value. True if validation is successful; False if validation fails.
      */
-    public func validate(_ value: String) -> Bool {
+    open func validate(_ value: String) -> Bool {
         let nameArray: [String] = value.characters.split { $0 == " " }.map { String($0) }
         return nameArray.count >= 2
     }

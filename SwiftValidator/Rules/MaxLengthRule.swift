@@ -10,7 +10,7 @@ import Foundation
 /**
  `MaxLengthRule` is a subclass of `Rule` that defines how maximum character length is validated.
  */
-public class MaxLengthRule: Rule {
+open class MaxLengthRule: Rule {
     /// Default maximum character length.
     private var DEFAULT_LENGTH: Int = 16
     /// Error message to be displayed if validation fails.
@@ -36,7 +36,7 @@ public class MaxLengthRule: Rule {
      - parameter value: String to checked for validation.
      - returns: A boolean value. True if validation is successful; False if validation fails.
      */
-    public func validate(_ value: String) -> Bool {
+    open func validate(_ value: String) -> Bool {
         return value.characters.count <= DEFAULT_LENGTH
     }
     

@@ -11,7 +11,7 @@ import Foundation
 /**
  `FloatRule` is a subclass of Rule that defines how check if a value is a floating point value.
  */
-public class FloatRule:Rule {
+open class FloatRule:Rule {
     /// Error message to be displayed if validation fails.
     private var message : String
     
@@ -31,7 +31,7 @@ public class FloatRule:Rule {
      - parameter value: String to checked for validation.
      - returns: Boolean value. True if validation is successful; False if validation fails.
      */
-    public func validate(_ value: String) -> Bool {
+    open func validate(_ value: String) -> Bool {
         let regex = try? NSRegularExpression(pattern: "^[-+]?(\\d*[.])?\\d+$", options: [])
         if let regex = regex {
             let match = regex.numberOfMatches(in: value, options: [], range: NSRange(location: 0, length: value.characters.count))

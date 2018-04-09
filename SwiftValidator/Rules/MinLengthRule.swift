@@ -11,7 +11,7 @@ import Foundation
 /**
  `MinLengthRule` is a subclass of Rule that defines how minimum character length is validated.
  */
-public class MinLengthRule: Rule {
+open class MinLengthRule: Rule {
     /// Default minimum character length.
     private var DEFAULT_LENGTH: Int = 3
     /// Default error message to be displayed if validation fails.
@@ -37,7 +37,7 @@ public class MinLengthRule: Rule {
      - parameter value: String to checked for validation.
      - returns: A boolean value. True if validation is successful; False if validation fails.
      */
-    public func validate(_ value: String) -> Bool {
+    open func validate(_ value: String) -> Bool {
         return value.characters.count >= DEFAULT_LENGTH
     }
     

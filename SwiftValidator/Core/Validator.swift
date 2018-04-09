@@ -12,7 +12,7 @@ import UIKit
  Class that makes `Validator` objects. Should be added as a parameter to ViewController that will display
  validation fields.
  */
-public class Validator {
+open class Validator {
     /// Dictionary to hold all fields (and accompanying rules) that will undergo validation.
     public var validations = ValidatorDictionary<ValidationRule>()
     /// Dictionary to hold fields (and accompanying errors) that were unsuccessfully validated.

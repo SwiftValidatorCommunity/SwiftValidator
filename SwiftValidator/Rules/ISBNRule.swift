@@ -11,7 +11,7 @@ import Foundation
 /**
  `ISBNRule` is a subclass of `Rule`. It is used to verify whether a field is a valid ISBN number.
  */
-public class ISBNRule: Rule {
+open class ISBNRule: Rule {
     
     /// String that holds error message
     private let message: String
@@ -32,7 +32,7 @@ public class ISBNRule: Rule {
      - parameter value: String to checked for validation.
      - returns: Boolean value. True if validation is successful; False if validation fails.
      */
-    public func validate(_ value: String) -> Bool {
+    open func validate(_ value: String) -> Bool {
         
         guard let regex = try? NSRegularExpression(pattern: "[\\s-]", options: []) else {
             fatalError("Invalid ISBN sanitizing regex")

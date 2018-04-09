@@ -9,7 +9,7 @@ import UIKit
 /**
  The `ValidationError` class is used for representing errors of a failed validation. It contains the field, error label, and error message of a failed validation.
  */
-public class ValidationError: NSObject {
+open class ValidationError: NSObject {
     /// the Validatable field of the field
     public let field:ValidatableField
     /// the error label of the field

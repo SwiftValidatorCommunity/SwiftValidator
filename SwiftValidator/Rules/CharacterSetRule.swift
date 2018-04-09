@@ -11,7 +11,7 @@ import Foundation
 /**
  `CharacterSetRule` is a subclass of `Rule`. It is used to validate IPV4 address fields.
  */
-public class CharacterSetRule: Rule {
+open class CharacterSetRule: Rule {
     /// NSCharacter that hold set of valid characters to hold
     private let characterSet: CharacterSet
     /// String that holds error message
@@ -35,7 +35,7 @@ public class CharacterSetRule: Rule {
      - parameter value: String to checked for validation.
      - returns: Boolean value. True if validation is successful; False if validation fails.
      */
-    public func validate(_ value: String) -> Bool {
+    open func validate(_ value: String) -> Bool {
         for uni in value.unicodeScalars {
             guard let uniVal = UnicodeScalar(uni.value), characterSet.contains(uniVal) else {
                 return false

@@ -11,7 +11,7 @@ import Foundation
 /**
  `ZipCodeRule` is a subclass of `RegexRule` that represents how zip codes are to be validated.
  */
-public class ZipCodeRule: RegexRule {
+open class ZipCodeRule: RegexRule {
     /**
      Initializes a `ZipCodeRule` object.
      
