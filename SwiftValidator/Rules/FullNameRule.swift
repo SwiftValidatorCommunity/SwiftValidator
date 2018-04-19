@@ -31,7 +31,7 @@ public class FullNameRule : Rule {
      - returns: A boolean value. True if validation is successful; False if validation fails.
      */
     public func validate(_ value: String) -> Bool {
-        let nameArray: [String] = value.characters.split { $0 == " " }.map { String($0) }
+        let nameArray: [String] = value.split { $0 == " " }.map { String($0) }
         return nameArray.count >= 2
     }
     
