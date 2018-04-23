@@ -159,7 +159,7 @@ class SSNVRule: RegexRule {
 ```
 
 ## Documentation
-Checkout the docs <a href="http://jpotts18.github.io/SwiftValidator/">here</a> via [@jazzydocs](https://twitter.com/jazzydocs).
+Checkout the docs <a href="http://swiftvalidatorcommunity.github.io/SwiftValidator/">here</a> via [@jazzydocs](https://twitter.com/jazzydocs).
 
 
 Credits
