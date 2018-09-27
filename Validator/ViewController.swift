@@ -69,7 +69,7 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
     
     func validationSuccessful() {
         print("Validation Success!")
-        let alert = UIAlertController(title: "Success", message: "You are validated!", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Success", message: "You are validated!", preferredStyle: UIAlertController.Style.alert)
         let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(defaultAction)
         self.present(alert, animated: true, completion: nil)
