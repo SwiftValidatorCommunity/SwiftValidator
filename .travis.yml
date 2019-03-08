@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode8
+osx_image: xcode10.1
 xcode_sdk: iphonesimulator10.0
 xcode_project: Validator.xcodeproj
 xcode_scheme: Validator
