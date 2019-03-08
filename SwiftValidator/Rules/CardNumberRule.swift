@@ -8,16 +8,16 @@
 import Foundation
 
 /**
- `CardNumberRule` is a subclass of `Rule` that defines how a credit/debit's card expiry month field is validated
+ `CardNumberRule` is a subclass of `Rule` that defines how a credit/debit's card number field is validated
  */
 public class CardNumberRule: Rule {
     /// Error message to be displayed if validation fails.
     private var message: String
     /**
-     Initializes `CardExpiryMonthRule` object with error message. Used to validate a card's expiry month.
+     Initializes `CardNumberRule` object with error message. Used to validate a card's expiry month.
      
      - parameter message: String of error message.
-     - returns: An initialized `CardExpiryMonthRule` object, or nil if an object could not be created for some reason that would not result in an exception.
+     - returns: An initialized `CardNumberRule` object, or nil if an object could not be created for some reason that would not result in an exception.
      */
     public init(message : String = "Card is Invalid"){
         self.message = message

@@ -587,6 +587,4 @@ class SwiftValidatorTests: XCTestCase {
             XCTAssert(!(self.REGISTER_TXT_FIELD.layer.borderColor! == UIColor.red.cgColor), "Color shouldn't get set at all")
         }
     }
-
-    func test
 }
