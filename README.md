@@ -57,11 +57,9 @@ github "jpotts18/SwiftValidator"
 ```
 ## Dependencies
 
-CardNumberRule requires CardParser.
+CardNumberRule uses CardParser from => https://github.com/Raizlabs/CardParser.git
+Cards can be validated to ensure they conform to LUHN algorigthm. 
 
-download CardParser.swift from => https://github.com/Raizlabs/CardParser.git
-
-Add CardParser.swift to your project before build.
 
 ## Usage 
 
