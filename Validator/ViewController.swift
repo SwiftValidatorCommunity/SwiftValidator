@@ -18,6 +18,7 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var zipcodeTextField: UITextField!
     @IBOutlet weak var emailConfirmTextField: UITextField!
+    @IBOutlet weak var notesTextView: UITextView!
     
     // Error Labels
     @IBOutlet weak var fullNameErrorLabel: UILabel!
@@ -25,6 +26,7 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
     @IBOutlet weak var phoneNumberErrorLabel: UILabel!
     @IBOutlet weak var zipcodeErrorLabel: UILabel!
     @IBOutlet weak var emailConfirmErrorLabel: UILabel!
+    @IBOutlet weak var notesErrorLabel: UILabel!
     
     let validator = Validator()
     
@@ -38,16 +40,22 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
             // clear error label
             validationRule.errorLabel?.isHidden = true
             validationRule.errorLabel?.text = ""
+            
             if let textField = validationRule.field as? UITextField {
                 textField.layer.borderColor = UIColor.green.cgColor
                 textField.layer.borderWidth = 0.5
-                
+            } else if let textField = validationRule.field as? UITextView {
+                textField.layer.borderColor = UIColor.green.cgColor
+                textField.layer.borderWidth = 0.5
             }
         }, error:{ (validationError) -> Void in
             print("error")
             validationError.errorLabel?.isHidden = false
             validationError.errorLabel?.text = validationError.errorMessage
             if let textField = validationError.field as? UITextField {
+                textField.layer.borderColor = UIColor.red.cgColor
+                textField.layer.borderWidth = 1.0
+            } else if let textField = validationError.field as? UITextView {
                 textField.layer.borderColor = UIColor.red.cgColor
                 textField.layer.borderWidth = 1.0
             }
@@ -58,6 +66,7 @@ class ViewController: UIViewController , ValidationDelegate, UITextFieldDelegate
         validator.registerField(emailConfirmTextField, errorLabel: emailConfirmErrorLabel, rules: [RequiredRule(), ConfirmationRule(confirmField: emailTextField)])
         validator.registerField(phoneNumberTextField, errorLabel: phoneNumberErrorLabel, rules: [RequiredRule(), MinLengthRule(length: 9)])
         validator.registerField(zipcodeTextField, errorLabel: zipcodeErrorLabel, rules: [RequiredRule(), ZipCodeRule()])
+        validator.registerField(notesTextView, errorLabel: notesErrorLabel, rules: [RequiredRule()])
     }
 
     @IBAction func submitTapped(_ sender: AnyObject) {

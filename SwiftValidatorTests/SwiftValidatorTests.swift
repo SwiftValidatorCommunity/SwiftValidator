@@ -41,6 +41,7 @@ class SwiftValidatorTests: XCTestCase {
     let LEN_5 = "Howdy"
     let LEN_20 = "Paint the cat orange"
     
+    let REGISTER_TXT_VIEW = UITextView()
     let REGISTER_TXT_FIELD = UITextField()
     let REGISTER_VALIDATOR = Validator()
     let REGISTER_RULES = [Rule]()
@@ -356,13 +357,17 @@ class SwiftValidatorTests: XCTestCase {
     }
     
     // MARK: Register Field
-    
-    func testRegisterField(){
+    func testRegisterTextView(){
+        REGISTER_VALIDATOR.registerField(REGISTER_TXT_VIEW, rules: REGISTER_RULES)
+        XCTAssert(REGISTER_VALIDATOR.validations[REGISTER_TXT_VIEW] != nil, "Textfield should register")
+    }
+ 
+    func testRegisterTextField(){
         REGISTER_VALIDATOR.registerField(REGISTER_TXT_FIELD, rules: REGISTER_RULES)
         XCTAssert(REGISTER_VALIDATOR.validations[REGISTER_TXT_FIELD] != nil, "Textfield should register")
     }
     
-    func testUnregisterField(){
+    func testUnregisterTextField(){
         UNREGISTER_VALIDATOR.registerField(UNREGISTER_TXT_FIELD, rules: UNREGISTER_RULES)
         UNREGISTER_VALIDATOR.unregisterField(UNREGISTER_TXT_FIELD)
         XCTAssert(UNREGISTER_VALIDATOR.validations[UNREGISTER_TXT_FIELD] == nil, "Textfield should unregister")
@@ -403,6 +408,18 @@ class SwiftValidatorTests: XCTestCase {
         REGISTER_TXT_FIELD.text = INVALID_EMAIL
         REGISTER_VALIDATOR.validateField(REGISTER_TXT_FIELD) { error in
             XCTAssert(error?.errorMessage.characters.count ?? 0 > 0, "Should state 'invalid email'")
+        }
+    }
+    
+    func testValidateTextViewField() {
+        REGISTER_VALIDATOR.registerField(REGISTER_TXT_VIEW, rules: [RequiredRule()])
+        REGISTER_TXT_VIEW.text = "Some notes"
+        REGISTER_VALIDATOR.validateField(REGISTER_TXT_VIEW) { error in
+            XCTAssert(error == nil, "Should not present error")
+        }
+        REGISTER_TXT_VIEW.text = nil
+        REGISTER_VALIDATOR.validateField(REGISTER_TXT_VIEW) { error in
+            XCTAssert(error!.errorMessage == "This field is required")
         }
     }
     
