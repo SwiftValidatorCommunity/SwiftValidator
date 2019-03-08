@@ -22,6 +22,9 @@ platform :ios, "8.1"
 
 use_frameworks!
 
+# Swift 4.2
+pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :tag => '4.2.0'
+
 # Swift 3
 # Extended beyond UITextField
 pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :branch => 'master'
