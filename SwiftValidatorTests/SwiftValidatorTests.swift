@@ -52,7 +52,40 @@ class SwiftValidatorTests: XCTestCase {
     
     let UNREGISTER_ERRORS_TXT_FIELD = UITextField()
     let UNREGISTER_ERRORS_VALIDATOR = Validator()
-    
+
+    /*
+        Card number Validation Tests
+    */
+
+    //VISA
+    let VALID_VISA_CARD = "4000056655665556"
+    let INVALID_VISA_CARD = "4960092245196342"
+
+    //MASTERCARD
+    let VALID_MASTERCARD = "5399838383838381"
+    let INVALID_MASTERCARD = "53998383838623381"
+
+    //VERVE(NIGERIA)
+    let VALID_VERVE_CARD = "5061460410120223210"
+    let INVALID_VERVE_CARD = "5061460622120223210"
+
+    //AMEX
+    let VALID_AMEX = "344173993556638"
+    let INVALID_AMEX = "3441739936546638"
+
+    //DISCOVER
+    let VALID_DISCOVER = "6011111111111117"
+    let INVALID_DISCOVER = "6011116641111117"
+
+    //UnionPay
+    let VALID_UNIONPAY = "6200000000000005"
+    let INVALID_UNIONPAY = "62000065850000005"
+
+    //JCB
+    let VALID_JCB = "3566002020360505"
+    let INVALID_JCB = "3566002650360505"
+
+
     let ERROR_LABEL = UILabel()
     
     override func setUp() {
@@ -65,7 +98,78 @@ class SwiftValidatorTests: XCTestCase {
         super.tearDown()
     }
     
+    //MARK: CARD NUMBER VALIDATION
+
+    //VISA
+    func testVisaValid(){
+        XCTAssertTrue(CardNumberRule().validate(VALID_VISA_CARD), "Valid Visa Card Should Return True")
+    }
+
+    func testVisaInvalid(){
+        XCTAssertFalse(CardNumberRule().validate(INVALID_VISA_CARD), "Invalid Visa Card should return false")
+    }
+
+
+    //AMEX
+    func testValidAmex(){
+        XCTAssertTrue(CardNumberRule().validate(VALID_AMEX), "Valid amex card should return true")
+    }
     
+    func testInvalidAmex(){
+        XCTAssertFalse(CardNumberRule().validate(INVALID_AMEX), "Invalid Amex should return false")
+    }
+
+    //MASTERCARD
+    func testValidMasterCard(){
+        XCTAssertTrue(CardNumberRule().validate(VALID_MASTERCARD), "Valid Mastercard should return true")
+    }
+
+    func testInvalidMasterCard(){
+        XCTAssertFalse(CardNumberRule().validate(INVALID_MASTERCARD), "Invalid mastercard should return false")
+    }
+
+    //Discover
+    func testValidDiscover(){
+        XCTAssertTrue(CardNumberRule().validate(VALID_DISCOVER), "Valid Discover card should return true")
+    }
+
+    func testInvalidDiscover(){
+        XCTAssertFalse(CardNumberRule().validate(INVALID_DISCOVER), "Invalid Discover card should return false")
+    }
+
+    //UNIONPAY
+    func testValidUnionPay(){
+        XCTAssertTrue(CardNumberRule().validate(VALID_UNIONPAY), "Invalid UnionPay card should return false")
+    }
+
+    //UNIONPAY
+    func testInvalidUnionPay(){
+        XCTAssertFalse(CardNumberRule().validate(INVALID_UNIONPAY), "Valid UnionPay card should return true")
+    }
+
+    //JCB
+    func testValidJCB(){
+        XCTAssertTrue(CardNumberRule().validate(VALID_JCB), "Valid JCB card should return true")
+    }
+
+    func testInvalidJCB(){
+        XCTAssertFalse(CardNumberRule().validate(INVALID_JCB), "Invalid JCB card should return false")
+    }
+
+
+    //Verve
+    func testValidVerve(){
+        XCTAssertTrue(CardNumberRule().validate(VALID_VERVE_CARD), "Valid Verve Card should return true")
+    }
+
+    func testInvalidVerve(){
+        XCTAssertFalse(CardNumberRule().validate(INVALID_VERVE_CARD), "Invalid Verve Card should return false")
+    }
+
+
+
+
+
     // MARK: Expiry Month
     
     func testCardExpiryMonthValid() {
@@ -483,4 +587,6 @@ class SwiftValidatorTests: XCTestCase {
             XCTAssert(!(self.REGISTER_TXT_FIELD.layer.borderColor! == UIColor.red.cgColor), "Color shouldn't get set at all")
         }
     }
+
+    func test
 }

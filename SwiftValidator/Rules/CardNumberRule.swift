@@ -31,6 +31,7 @@ public class CardNumberRule: Rule {
      */
     public func validate(_ value: String) -> Bool {
       let cardNoFull = value.replacingOccurrences(of: " ", with: "")
+      
       guard CardState(fromNumber: cardNoFull) != .invalid else {
           return false
       }
