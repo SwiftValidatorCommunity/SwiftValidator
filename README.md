@@ -55,6 +55,10 @@ If you are using Carthage you will need to add this to your `Cartfile`
 ```bash
 github "jpotts18/SwiftValidator"
 ```
+## Dependencies
+CardNumberRule requires CardParser 
+download CardParser.swift from => https://github.com/Raizlabs/CardParser.git
+Add CardParser.swift to your project before build
 
 ## Usage 
 
