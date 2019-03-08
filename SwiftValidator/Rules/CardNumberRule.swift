@@ -30,7 +30,7 @@ public class CardNumberRule: Rule {
      - returns: Boolean value. True on successful validation, otherwise False on failed Validation.
      */
     public func validate(_ value: String) -> Bool {
-        
+      value = value.replacingOccurrences(of: " ", with: "")
       guard CardState(fromNumber: value) != .invalid else {
           return false
       }
