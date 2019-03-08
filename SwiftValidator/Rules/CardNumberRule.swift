@@ -34,6 +34,8 @@ public class CardNumberRule: Rule {
       guard CardState(fromNumber: value) != .invalid else {
           return false
       }
+
+      return true
     }
     
     /**
