@@ -12,7 +12,7 @@ import Foundation
  */
 public class CardNumberRule: Rule {
     /// Error message to be displayed if validation fails.
-    private var message: String
+    private var message : String
     /**
      Initializes `CardNumberRule` object with error message. Used to validate a card's expiry month.
      
