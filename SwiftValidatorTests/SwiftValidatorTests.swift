@@ -62,28 +62,26 @@ class SwiftValidatorTests: XCTestCase {
     let INVALID_VISA_CARD = "4960092245196342"
 
     //MASTERCARD
-    let VALID_MASTERCARD = "5399838383838381"
+    let VALID_MASTERCARD = "5105105105105100"
     let INVALID_MASTERCARD = "53998383838623381"
 
     //VERVE(NIGERIA)
     let VALID_VERVE_CARD = "5061460410120223210"
-    let INVALID_VERVE_CARD = "5061460622120223210"
+    let INVALID_VERVE_CARD = "5061435662036050587"
 
     //AMEX
     let VALID_AMEX = "344173993556638"
     let INVALID_AMEX = "3441739936546638"
 
     //DISCOVER
-    let VALID_DISCOVER = "6011111111111117"
+    let VALID_DISCOVER = "6011000990139424"
     let INVALID_DISCOVER = "6011116641111117"
 
-    //UnionPay
-    let VALID_UNIONPAY = "6200000000000005"
-    let INVALID_UNIONPAY = "62000065850000005"
+    
 
     //JCB
-    let VALID_JCB = "3566002020360505"
-    let INVALID_JCB = "3566002650360505"
+    let VALID_JCB = "3566111111111113"
+    let INVALID_JCB = "3566754297360505"
 
 
     let ERROR_LABEL = UILabel()
@@ -137,15 +135,7 @@ class SwiftValidatorTests: XCTestCase {
         XCTAssertFalse(CardNumberRule().validate(INVALID_DISCOVER), "Invalid Discover card should return false")
     }
 
-    //UNIONPAY
-    func testValidUnionPay(){
-        XCTAssertTrue(CardNumberRule().validate(VALID_UNIONPAY), "Invalid UnionPay card should return false")
-    }
-
-    //UNIONPAY
-    func testInvalidUnionPay(){
-        XCTAssertFalse(CardNumberRule().validate(INVALID_UNIONPAY), "Valid UnionPay card should return true")
-    }
+    
 
     //JCB
     func testValidJCB(){
