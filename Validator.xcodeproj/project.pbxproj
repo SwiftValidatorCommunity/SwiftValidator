@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		256576A72232DFD900C8369F /* CardNumberRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256576A62232DFD900C8369F /* CardNumberRule.swift */; };
+		256576AA2232E01500C8369F /* CardParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256576A92232E01500C8369F /* CardParser.swift */; };
 		62C1821D1C6312F5003788E7 /* ExactLengthRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C1821C1C6312F5003788E7 /* ExactLengthRule.swift */; };
 		62D1AE1D1A1E6D4400E4DFF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D1AE1C1A1E6D4400E4DFF8 /* AppDelegate.swift */; };
 		62D1AE221A1E6D4400E4DFF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62D1AE201A1E6D4400E4DFF8 /* Main.storyboard */; };
@@ -92,6 +94,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		256576A62232DFD900C8369F /* CardNumberRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardNumberRule.swift; sourceTree = "<group>"; };
+		256576A92232E01500C8369F /* CardParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardParser.swift; sourceTree = "<group>"; };
 		62C1821C1C6312F5003788E7 /* ExactLengthRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExactLengthRule.swift; sourceTree = "<group>"; };
 		62D1AE171A1E6D4400E4DFF8 /* Validator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Validator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62D1AE1B1A1E6D4400E4DFF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -170,6 +174,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		256576A82232E01500C8369F /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				256576A92232E01500C8369F /* CardParser.swift */,
+			);
+			name = Parsers;
+			path = SwiftValidator/Parsers;
+			sourceTree = SOURCE_ROOT;
+		};
 		62D1AE0E1A1E6D4400E4DFF8 = {
 			isa = PBXGroup;
 			children = (
@@ -290,6 +303,8 @@
 				FB465CEE1B9889EA00398388 /* ValidationRule.swift */,
 				FB465CEF1B9889EA00398388 /* ZipCodeRule.swift */,
 				62C1821C1C6312F5003788E7 /* ExactLengthRule.swift */,
+				256576A62232DFD900C8369F /* CardNumberRule.swift */,
+				256576A82232E01500C8369F /* Parsers */,
 			);
 			path = Rules;
 			sourceTree = "<group>";
@@ -512,6 +527,7 @@
 				FB465CFA1B9889EA00398388 /* PhoneNumberRule.swift in Sources */,
 				FB465CF51B9889EA00398388 /* FloatRule.swift in Sources */,
 				C87F606C1E2B68C900EB8429 /* CardExpiryYearRule.swift in Sources */,
+				256576AA2232E01500C8369F /* CardParser.swift in Sources */,
 				7CC1E4DB1C63BFA600AF013C /* HexColorRule.swift in Sources */,
 				FB465D011B9889EA00398388 /* Validator.swift in Sources */,
 				FB465CFE1B9889EA00398388 /* ValidationRule.swift in Sources */,
@@ -519,6 +535,7 @@
 				FB465CF31B9889EA00398388 /* ConfirmRule.swift in Sources */,
 				FB51E5B01CD208B8004DE696 /* Validatable.swift in Sources */,
 				7CC1E4D51C637C8500AF013C /* IPV4Rule.swift in Sources */,
+				256576A72232DFD900C8369F /* CardNumberRule.swift in Sources */,
 				7CC1E4D71C637F6E00AF013C /* ISBNRule.swift in Sources */,
 				FB465D001B9889EA00398388 /* ValidationError.swift in Sources */,
 				FB465CFC1B9889EA00398388 /* RequiredRule.swift in Sources */,

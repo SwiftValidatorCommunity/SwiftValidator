@@ -12,7 +12,7 @@ import Foundation
  */
 public class CardNumberRule: Rule {
     /// Error message to be displayed if validation fails.
-    private var message: String
+    private var message : String
     /**
      Initializes `CardNumberRule` object with error message. Used to validate a card's expiry month.
      
@@ -30,13 +30,22 @@ public class CardNumberRule: Rule {
      - returns: Boolean value. True on successful validation, otherwise False on failed Validation.
      */
     public func validate(_ value: String) -> Bool {
-      let cardNoFull = value.replacingOccurrences(of: " ", with: "")
-      
-      guard CardState(fromNumber: cardNoFull) != .invalid else {
-          return false
-      }
-
-      return true
+        let cardNoFull = value.replacingOccurrences(of: " ", with: "")
+        guard CardState(fromNumber: cardNoFull) != .invalid else {
+            return false
+        }
+//        let cardState = CardState(fromNumber: cardNoFull)
+//        switch cardState {
+//            case .identified(let cardType):
+//                print(cardType)
+//            case .indeterminate:
+//                print("undefined")
+//            case .invalid:
+//                print("invalid")
+//        }
+        
+        return true
+        
     }
     
     /**

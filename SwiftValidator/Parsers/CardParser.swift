@@ -11,11 +11,11 @@ enum CardType {
     case diners
     case discover
     case jcb
-    case masterCard
+    case mastercard
     case visa
     case verve
     
-    static let allValues: [CardType] = [.visa, .masterCard, .amex, .diners, .discover, .jcb, .verve]
+    static let allValues: [CardType] = [.visa, .mastercard, .amex, .diners, .discover, .jcb, .verve]
     
     private var validationRequirements: ValidationRequirement {
         
@@ -27,30 +27,37 @@ enum CardType {
             case .amex:
                 prefix = ["34", "37"]
                 length = [15]
+                break
             
             case .diners:
                 prefix = ["300"..."305", "309", "36", "38"..."39"]
                 length = [14]
+                break
             
             case .discover:
                 prefix = ["6011", "65", "644"..."649", "622126"..."622925"]
                 length = [16]
+                break
             
             case .jcb:
                 prefix = ["3528"..."3589"]
                 length = [16]
+                break
             
-            case .masterCard:
+            case .mastercard:
                 prefix = ["51"..."55", "2221"..."2720"]
                 length = [16]
+                break
             
             case .visa:
                 prefix = ["4"]
                 length = [13, 16, 19]
+                break
             
             case .verve:
                 prefix = ["5060", "5061", "5078", "5079", "6500"]
                 length = [16, 19]
+                break
             
         }
         
@@ -78,8 +85,10 @@ enum CardType {
     
     var cvvLength: Int {
         switch self {
-        case .amex: return 4
-        default: return 3
+        case .amex:
+            return 4
+        default:
+            return 3
         }
     }
     
@@ -107,6 +116,7 @@ fileprivate extension CardType {
         }
         
         func isPrefixValid(_ accountNumber: String) -> Bool {
+            
             guard prefixes.count > 0 else { return true }
             return prefixes.contains { $0.hasCommonPrefix(with: accountNumber) }
         }
@@ -119,17 +129,27 @@ fileprivate extension CardType {
     
     // from: https://gist.github.com/cwagdev/635ce973e8e86da0403a
     static func luhnCheck(_ cardNumber: String) -> Bool {
-        var sum = 0
-        let reversedCharacters = cardNumber.characters.reversed().map { String($0) }
-        for (idx, element) in reversedCharacters.enumerated() {
-            guard let digit = Int(element) else { return false }
-            switch ((idx % 2 == 1), digit) {
-            case (true, 9): sum += 9
-            case (true, 0...8): sum += (digit * 2) % 9
-            default: sum += digit
-            }
+
+        guard let _ = Int64(cardNumber) else {
+            //if string is not convertible to int, return false
+            return false
         }
-        return sum % 10 == 0
+        let numberOfChars = cardNumber.count
+        let numberToCheck = numberOfChars % 2 == 0 ? cardNumber : "0" + cardNumber
+        
+        let digits = numberToCheck.map { Int(String($0)) }
+        
+        let sum = digits.enumerated().reduce(0) { (sum, val: (offset: Int, element: Int?)) in
+            if (val.offset + 1) % 2 == 1 {
+                let element = val.element!
+                return sum + (element == 9 ? 9 : (element * 2) % 9)
+            }
+            // else
+            return sum + val.element!
+        }
+        let validates = sum % 10 == 0
+        print("card valid")
+        return validates
     }
     
 }
@@ -158,6 +178,7 @@ extension CardState {
     
     init(fromNumber number: String) {
         if let card = CardType.allValues.first(where: { $0.isValid(number) }) {
+            print("card found \(card)")
             self = .identified(card)
         }
         else {
