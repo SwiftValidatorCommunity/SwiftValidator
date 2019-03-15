@@ -34,7 +34,7 @@ class SwiftValidatorTests: XCTestCase {
     let VALID_CARD_EXPIRY_MONTH = "10"
     let INVALID_CARD_EXPIRY_MONTH = "13"
     
-    let VALID_CARD_EXPIRY_YEAR = "2018"
+    let VALID_CARD_EXPIRY_YEAR = "2020"
     let INVALID_CARD_EXPIRY_YEAR = "2016"
     
     let LEN_3 = "hey"
@@ -95,6 +95,10 @@ class SwiftValidatorTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
+    
+    //CARD EXPIRY VALIDATION VALUES
+    let VALID_DATE = "10/29"
+    let INVALID_DATE = "10/12"
     
     //MARK: CARD NUMBER VALIDATION
 
@@ -185,6 +189,19 @@ class SwiftValidatorTests: XCTestCase {
     }
     
     func testCardExpiryYearmessage() {
+        XCTAssertNotNil(CardExpiryYearRule().errorMessage())
+    }
+    
+    // MARK: CARD EXPIRY DATE
+    func testValidCardExpiryDateFull(){
+        XCTAssertTrue(CardExpiryRule().validate(VALID_DATE), "Valid card expiry date should retun true")
+    }
+    
+    func testInvalidCardExpiryDateFull(){
+        XCTAssertFalse(CardExpiryRule().validate(INVALID_DATE), "Invalid card expiry date should return false")
+    }
+    
+    func testInvalidCardExpiryDateFullMessage(){
         XCTAssertNotNil(CardExpiryYearRule().errorMessage())
     }
     
