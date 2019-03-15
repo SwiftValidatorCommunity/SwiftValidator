@@ -2,7 +2,7 @@
 //  CardExpiryRule.swift
 //  SwiftValidator
 //
-//  Created by Sprinthub on 13/03/2019.
+//  Created by Mark Boleigha on 13/03/2019.
 //  Copyright © 2019 jpotts18. All rights reserved.
 //
 
@@ -17,10 +17,10 @@ public class CardExpiryRule: Rule {
     /// Error message to be displayed if validation fails.
     private var message : String
     /**
-     Initializes `CardNumberRule` object with error message. Used to validate a card's expiry month.
+     Initializes `CardExpiryRule` object with error message. Used to validate a card's expiry year.
      
      - parameter message: String of error message.
-     - returns: An initialized `CardNumberRule` object, or nil if an object could not be created for some reason that would not result in an exception.
+     - returns: An initialized `CardExpiryRule` object, or nil if an object could not be created for some reason that would not result in an exception.
      */
     public init(message : String = "Card expiry date is invalid"){
         self.message = message
@@ -29,7 +29,7 @@ public class CardExpiryRule: Rule {
     /**
      Validates a field.
      
-     - parameter value: String to check for validation.
+     - parameter value: String to check for validation. must be a card expiry date in MM/YY format
      - returns: Boolean value. True on successful validation, otherwise False on failed Validation.
      */
     public func validate(_ value: String) -> Bool {

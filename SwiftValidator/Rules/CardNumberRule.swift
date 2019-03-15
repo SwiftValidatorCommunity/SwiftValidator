@@ -34,15 +34,6 @@ public class CardNumberRule: Rule {
         guard CardState(fromNumber: cardNoFull) != .invalid else {
             return false
         }
-//        let cardState = CardState(fromNumber: cardNoFull)
-//        switch cardState {
-//            case .identified(let cardType):
-//                print(cardType)
-//            case .indeterminate:
-//                print("undefined")
-//            case .invalid:
-//                print("invalid")
-//        }
         
         return true
         
