@@ -37,9 +37,11 @@ public class CardExpiryRule: Rule {
             return false
         }
         let date = value.replacingOccurrences(of: "/", with: "")
-        let Index = date.index(date.startIndex, offsetBy: 2)
-        let Month = Int(date[..<Index])
-        let Year = Int(date[Index...])
+        let monthIndex = date.index(date.startIndex, offsetBy: 2)
+        let Month = Int(date[..<monthIndex])
+        
+        let yearIndex = date.index(date.endIndex, offsetBy: -2)
+        let Year = Int(date[yearIndex...])
         
         ///Holds the current year
         let thisYear = String(NSCalendar.current.component(Calendar.Component.year, from: Date()))

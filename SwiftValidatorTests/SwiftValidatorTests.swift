@@ -193,6 +193,9 @@ class SwiftValidatorTests: XCTestCase {
     }
     
     // MARK: CARD EXPIRY DATE
+    func testBlankDate(){
+        XCTAssertFalse(CardExpiryRule().validate("12/1"), "Blank or incomplete date should return false")
+    }
     func testValidCardExpiryDateFull(){
         XCTAssertTrue(CardExpiryRule().validate(VALID_DATE), "Valid card expiry date should retun true")
     }
