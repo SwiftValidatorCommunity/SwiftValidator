@@ -35,7 +35,6 @@ public class CardExpiryRule: Rule {
     public func validate(_ value: String) -> Bool {
         let date = value.replacingOccurrences(of: "/", with: "")
         let Index = date.index(date.startIndex, offsetBy: 2)
-        //let yearIndex = date.index(date.endIndex, offsetBy: -2)
         let Month = Int(date[..<Index])
         let Year = Int(date[Index...])
         
