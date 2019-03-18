@@ -33,6 +33,9 @@ public class CardExpiryRule: Rule {
      - returns: Boolean value. True on successful validation, otherwise False on failed Validation.
      */
     public func validate(_ value: String) -> Bool {
+        guard value.count > 4 else{
+            return false
+        }
         let date = value.replacingOccurrences(of: "/", with: "")
         let Index = date.index(date.startIndex, offsetBy: 2)
         let Month = Int(date[..<Index])
