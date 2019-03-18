@@ -44,7 +44,7 @@ public class CardExpiryRule: Rule {
         let thisYearTwoDigits = Int(thisYear[thisYearLast2...])!
         
         
-        return Month! < 12 && Year! >= thisYearTwoDigits
+        return Month! <= 12 && Year! >= thisYearTwoDigits
         
     }
     
