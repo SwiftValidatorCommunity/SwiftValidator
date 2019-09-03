@@ -34,7 +34,7 @@ class SwiftValidatorTests: XCTestCase {
     let VALID_CARD_EXPIRY_MONTH = "10"
     let INVALID_CARD_EXPIRY_MONTH = "13"
     
-    let VALID_CARD_EXPIRY_YEAR = "2018"
+    let VALID_CARD_EXPIRY_YEAR = "2020"
     let INVALID_CARD_EXPIRY_YEAR = "2016"
     
     let LEN_3 = "hey"
@@ -52,7 +52,38 @@ class SwiftValidatorTests: XCTestCase {
     
     let UNREGISTER_ERRORS_TXT_FIELD = UITextField()
     let UNREGISTER_ERRORS_VALIDATOR = Validator()
+
+    /*
+        Card number Validation Tests
+    */
+
+    //VISA
+    let VALID_VISA_CARD = "4000056655665556"
+    let INVALID_VISA_CARD = "4960092245196342"
+
+    //MASTERCARD
+    let VALID_MASTERCARD = "5105105105105100"
+    let INVALID_MASTERCARD = "53998383838623381"
+
+    //VERVE(NIGERIA)
+    let VALID_VERVE_CARD = "5061460410120223210"
+    let INVALID_VERVE_CARD = "5061435662036050587"
+
+    //AMEX
+    let VALID_AMEX = "344173993556638"
+    let INVALID_AMEX = "3441739936546638"
+
+    //DISCOVER
+    let VALID_DISCOVER = "6011000990139424"
+    let INVALID_DISCOVER = "6011116641111117"
+
     
+
+    //JCB
+    let VALID_JCB = "3566111111111113"
+    let INVALID_JCB = "3566754297360505"
+
+
     let ERROR_LABEL = UILabel()
     
     override func setUp() {
@@ -65,7 +96,74 @@ class SwiftValidatorTests: XCTestCase {
         super.tearDown()
     }
     
+    //CARD EXPIRY VALIDATION VALUES
+    let VALID_DATE = "10/29"
+    let INVALID_DATE = "10/12"
     
+    //MARK: CARD NUMBER VALIDATION
+
+    //VISA
+    func testVisaValid(){
+        XCTAssertTrue(CardNumberRule().validate(VALID_VISA_CARD), "Valid Visa Card Should Return True")
+    }
+
+    func testVisaInvalid(){
+        XCTAssertFalse(CardNumberRule().validate(INVALID_VISA_CARD), "Invalid Visa Card should return false")
+    }
+
+
+    //AMEX
+    func testValidAmex(){
+        XCTAssertTrue(CardNumberRule().validate(VALID_AMEX), "Valid amex card should return true")
+    }
+    
+    func testInvalidAmex(){
+        XCTAssertFalse(CardNumberRule().validate(INVALID_AMEX), "Invalid Amex should return false")
+    }
+
+    //MASTERCARD
+    func testValidMasterCard(){
+        XCTAssertTrue(CardNumberRule().validate(VALID_MASTERCARD), "Valid Mastercard should return true")
+    }
+
+    func testInvalidMasterCard(){
+        XCTAssertFalse(CardNumberRule().validate(INVALID_MASTERCARD), "Invalid mastercard should return false")
+    }
+
+    //Discover
+    func testValidDiscover(){
+        XCTAssertTrue(CardNumberRule().validate(VALID_DISCOVER), "Valid Discover card should return true")
+    }
+
+    func testInvalidDiscover(){
+        XCTAssertFalse(CardNumberRule().validate(INVALID_DISCOVER), "Invalid Discover card should return false")
+    }
+
+    
+
+    //JCB
+    func testValidJCB(){
+        XCTAssertTrue(CardNumberRule().validate(VALID_JCB), "Valid JCB card should return true")
+    }
+
+    func testInvalidJCB(){
+        XCTAssertFalse(CardNumberRule().validate(INVALID_JCB), "Invalid JCB card should return false")
+    }
+
+
+    //Verve
+    func testValidVerve(){
+        XCTAssertTrue(CardNumberRule().validate(VALID_VERVE_CARD), "Valid Verve Card should return true")
+    }
+
+    func testInvalidVerve(){
+        XCTAssertFalse(CardNumberRule().validate(INVALID_VERVE_CARD), "Invalid Verve Card should return false")
+    }
+
+
+
+
+
     // MARK: Expiry Month
     
     func testCardExpiryMonthValid() {
@@ -91,6 +189,22 @@ class SwiftValidatorTests: XCTestCase {
     }
     
     func testCardExpiryYearmessage() {
+        XCTAssertNotNil(CardExpiryYearRule().errorMessage())
+    }
+    
+    // MARK: CARD EXPIRY DATE
+    func testBlankDate(){
+        XCTAssertFalse(CardExpiryRule().validate("12/1"), "Blank or incomplete date should return false")
+    }
+    func testValidCardExpiryDateFull(){
+        XCTAssertTrue(CardExpiryRule().validate(VALID_DATE), "Valid card expiry date should retun true")
+    }
+    
+    func testInvalidCardExpiryDateFull(){
+        XCTAssertFalse(CardExpiryRule().validate(INVALID_DATE), "Invalid card expiry date should return false")
+    }
+    
+    func testInvalidCardExpiryDateFullMessage(){
         XCTAssertNotNil(CardExpiryYearRule().errorMessage())
     }
     

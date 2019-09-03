@@ -55,6 +55,11 @@ If you are using Carthage you will need to add this to your `Cartfile`
 ```bash
 github "jpotts18/SwiftValidator"
 ```
+## Dependencies
+
+CardNumberRule uses CardParser from => https://github.com/Raizlabs/CardParser.git
+Cards can be validated to ensure they conform to LUHN algorigthm. 
+
 
 ## Usage 
 
