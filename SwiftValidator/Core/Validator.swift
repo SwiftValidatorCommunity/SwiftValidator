@@ -120,6 +120,7 @@ public class Validator {
     public func unregisterField(_ field:ValidatableField) {
         validations.removeValueForKey(field)
         errors.removeValueForKey(field)
+        fields.removeValueForKey(field)
     }
     
     /**
