@@ -12,13 +12,11 @@ import UIKit
  Class that makes `Validator` objects. Should be added as a parameter to ViewController that will display
  validation fields.
  */
-public class Validator {
+open class Validator {
     /// Dictionary to hold all fields (and accompanying rules) that will undergo validation.
     public var validations = ValidatorDictionary<ValidationRule>()
     /// Dictionary to hold fields (and accompanying errors) that were unsuccessfully validated.
     public var errors = ValidatorDictionary<ValidationError>()
-    /// Dictionary to hold fields by their object identifiers
-    private var fields = ValidatorDictionary<Validatable>()
     /// Variable that holds success closure to display positive status of field.
     private var successStyleTransform:((_ validationRule:ValidationRule)->Void)?
     /// Variable that holds error closure to display negative status of field.
@@ -65,7 +63,7 @@ public class Validator {
     - parameter field: Holds validator field data.
     - returns: No return value.
     */
-    public func validateField(_ field: ValidatableField, callback: (_ error:ValidationError?) -> Void){
+    public func validateField(_ field: Validatable, callback: (_ error:ValidationError?) -> Void){
         if let fieldRule = validations[field] {
             if let error = fieldRule.validateField() {
                 errors[field] = error
@@ -106,9 +104,8 @@ public class Validator {
      - parameter rules: A Rule array that holds different rules that apply to said field.
      - returns: No return value
      */
-    public func registerField(_ field: ValidatableField, errorLabel:UILabel? = nil, rules:[Rule]) {
+    public func registerField(_ field: Validatable, errorLabel:UILabel? = nil, rules:[Rule]) {
         validations[field] = ValidationRule(field: field, rules:rules, errorLabel:errorLabel)
-        fields[field] = field
     }
     
     /**
@@ -117,7 +114,7 @@ public class Validator {
      - parameter field: field used to locate and remove field from validator.
      - returns: No return value
      */
-    public func unregisterField(_ field:ValidatableField) {
+    public func unregisterField(_ field:Validatable) {
         validations.removeValueForKey(field)
         errors.removeValueForKey(field)
     }
@@ -134,7 +131,7 @@ public class Validator {
         if errors.isEmpty {
             delegate.validationSuccessful()
         } else {
-            delegate.validationFailed(errors.map { (fields[$1.field]!, $1) })
+            delegate.validationFailed(errors.map { ($1.field, $1) })
         }
         
     }
@@ -149,6 +146,6 @@ public class Validator {
         
         self.validateAllFields()
         
-        callback(errors.map { (fields[$1.field]!, $1) } )
+        callback(errors.map { ($1.field, $1) } )
     }
 }

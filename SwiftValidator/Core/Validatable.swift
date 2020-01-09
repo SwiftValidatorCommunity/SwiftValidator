@@ -8,9 +8,7 @@
 
 import Foundation
 
-public typealias ValidatableField = AnyObject & Validatable
-
-public protocol Validatable {
+public protocol Validatable: class {
     
     var validationText: String {
         get

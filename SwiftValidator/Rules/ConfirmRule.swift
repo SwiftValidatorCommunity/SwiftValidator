@@ -15,7 +15,7 @@ import UIKit
  */
 public class ConfirmationRule: Rule {
     /// parameter confirmField: field to which original text field will be compared to.
-    private let confirmField: ValidatableField
+    private let confirmField: Validatable
     /// parameter message: String of error message.
     private var message : String
     
@@ -26,7 +26,7 @@ public class ConfirmationRule: Rule {
      - parameter message: String of error message.
      - returns: An initialized object, or nil if an object could not be created for some reason that would not result in an exception.
      */
-    public init(confirmField: ValidatableField, message : String = "This field does not match"){
+    public init(confirmField: Validatable, message : String = "This field does not match"){
         self.confirmField = confirmField
         self.message = message
     }

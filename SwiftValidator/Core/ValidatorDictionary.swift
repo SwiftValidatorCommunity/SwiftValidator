@@ -12,7 +12,7 @@ public struct ValidatorDictionary<T> : Sequence {
     
     private var innerDictionary: [ObjectIdentifier: T] = [:];
     
-    public subscript(key: ValidatableField?) -> T? {
+    public subscript(key: Validatable?) -> T? {
         get {
             if let key = key {
                 return innerDictionary[ObjectIdentifier(key)];
@@ -31,7 +31,7 @@ public struct ValidatorDictionary<T> : Sequence {
         innerDictionary.removeAll()        
     }
     
-    public mutating func removeValueForKey(_ key: ValidatableField) {
+    public mutating func removeValueForKey(_ key: Validatable) {
         innerDictionary.removeValue(forKey: ObjectIdentifier(key))
     }
     
