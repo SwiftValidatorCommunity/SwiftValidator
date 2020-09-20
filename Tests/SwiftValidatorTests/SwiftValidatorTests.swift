@@ -8,8 +8,6 @@
 
 import UIKit
 import XCTest
-import Validator // example app
-import SwiftValidator // framework
 
 class SwiftValidatorTests: XCTestCase {
     
@@ -34,7 +32,7 @@ class SwiftValidatorTests: XCTestCase {
     let VALID_CARD_EXPIRY_MONTH = "10"
     let INVALID_CARD_EXPIRY_MONTH = "13"
     
-    let VALID_CARD_EXPIRY_YEAR = "2018"
+    let VALID_CARD_EXPIRY_YEAR = "2021"
     let INVALID_CARD_EXPIRY_YEAR = "2016"
     
     let LEN_3 = "hey"
@@ -407,7 +405,7 @@ class SwiftValidatorTests: XCTestCase {
         }
         REGISTER_TXT_FIELD.text = INVALID_EMAIL
         REGISTER_VALIDATOR.validateField(REGISTER_TXT_FIELD) { error in
-            XCTAssert(error?.errorMessage.characters.count ?? 0 > 0, "Should state 'invalid email'")
+            XCTAssert(error?.errorMessage.count ?? 0 > 0, "Should state 'invalid email'")
         }
     }
     
