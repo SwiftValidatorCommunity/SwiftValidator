@@ -1,3 +1,1 @@
-struct SwiftValidator {
-    var text = "Hello, World!"
-}
+let version = "5.1.0"

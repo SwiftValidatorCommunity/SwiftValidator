@@ -167,11 +167,11 @@
 		288B8B5B25170FED00114B96 /* SwiftValidator */ = {
 			isa = PBXGroup;
 			children = (
+				288B8B1E25170F4C00114B96 /* Rules */,
 				288B8B882517104400114B96 /* Core */,
 				288B8B1D25170F4800114B96 /* Info.plist */,
 				288B8B802517102F00114B96 /* SwiftValidator.swift */,
 				288B8B7B2517102600114B96 /* SwiftValidator.h */,
-				288B8B1E25170F4C00114B96 /* Rules */,
 			);
 			path = SwiftValidator;
 			sourceTree = "<group>";
