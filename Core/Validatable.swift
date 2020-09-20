@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public typealias ValidatableField = AnyObject & Validatable
 
