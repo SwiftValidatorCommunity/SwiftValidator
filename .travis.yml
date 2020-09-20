@@ -1,15 +1,15 @@
 language: objective-c
-osx_image: xcode10.1
-xcode_sdk: iphonesimulator10.0
+osx_image: xcode11
+xcode_sdk: iphonesimulator11.0.1
 xcode_project: Validator.xcodeproj
 xcode_scheme: Validator
 
 before_install:
   - gem install cocoapods -v '0.32.1'
-  - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
+  - gem install xcpretty --no-document --quiet
 
 script:
-  - xcodebuild clean build test -project Validator.xcodeproj -scheme Validator -sdk iphonesimulator -destination "platform=iOS Simulator,OS=10.0,name=iPhone 6" -enableCodeCoverage YES CODE_SIGNING_REQUIRED=NO | xcpretty
+  - xcodebuild clean build test -project Validator.xcodeproj -scheme Validator -sdk iphonesimulator -destination "platform=iOS Simulator,OS=11.0.1,name=iPhone 6" -enableCodeCoverage YES CODE_SIGNING_REQUIRED=NO | xcpretty
   - pod lib lint
 after_success:
 

@@ -7,36 +7,65 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		62C1821D1C6312F5003788E7 /* ExactLengthRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C1821C1C6312F5003788E7 /* ExactLengthRule.swift */; };
-		62D9B2561C7C0B2A00BAFCE3 /* ValidationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D9B2551C7C0B2A00BAFCE3 /* ValidationDelegate.swift */; };
-		7CC1E4CF1C636B4500AF013C /* AlphaRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC1E4CE1C636B4500AF013C /* AlphaRule.swift */; };
-		7CC1E4D11C637A7700AF013C /* AlphaNumericRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC1E4D01C637A7700AF013C /* AlphaNumericRule.swift */; };
-		7CC1E4D31C637ABC00AF013C /* CharacterSetRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC1E4D21C637ABC00AF013C /* CharacterSetRule.swift */; };
-		7CC1E4D51C637C8500AF013C /* IPV4Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC1E4D41C637C8500AF013C /* IPV4Rule.swift */; };
-		7CC1E4D71C637F6E00AF013C /* ISBNRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC1E4D61C637F6E00AF013C /* ISBNRule.swift */; };
-		7CC1E4DB1C63BFA600AF013C /* HexColorRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC1E4DA1C63BFA600AF013C /* HexColorRule.swift */; };
-		C87F606A1E2B678B00EB8429 /* CardExpiryMonthRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87F60691E2B678B00EB8429 /* CardExpiryMonthRule.swift */; };
-		C87F606C1E2B68C900EB8429 /* CardExpiryYearRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87F606B1E2B68C900EB8429 /* CardExpiryYearRule.swift */; };
-		FB465CB81B9884F400398388 /* SwiftValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = FB465CB71B9884F400398388 /* SwiftValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2858C0CE2517C07D0087C315 /* ValidatorDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B8B2517107100114B96 /* ValidatorDictionary.swift */; };
+		2858C0CF2517C07D0087C315 /* Validatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B8C2517107100114B96 /* Validatable.swift */; };
+		2858C0D02517C07D0087C315 /* ValidationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B892517107100114B96 /* ValidationDelegate.swift */; };
+		2858C0D12517C07D0087C315 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B8D2517107100114B96 /* Validator.swift */; };
+		2858C0D22517C07D0087C315 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B8A2517107100114B96 /* ValidationError.swift */; };
+		2858C0D52517C0880087C315 /* ZipCodeRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2A25170F4C00114B96 /* ZipCodeRule.swift */; };
+		2858C0D62517C0880087C315 /* AlphaNumericRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2D25170F4C00114B96 /* AlphaNumericRule.swift */; };
+		2858C0D72517C0880087C315 /* EmailRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2C25170F4C00114B96 /* EmailRule.swift */; };
+		2858C0D82517C0880087C315 /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2F25170F4C00114B96 /* Rule.swift */; };
+		2858C0D92517C0880087C315 /* CharacterSetRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2125170F4C00114B96 /* CharacterSetRule.swift */; };
+		2858C0DA2517C0880087C315 /* CardExpiryMonthRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2825170F4C00114B96 /* CardExpiryMonthRule.swift */; };
+		2858C0DB2517C0880087C315 /* RegexRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2925170F4C00114B96 /* RegexRule.swift */; };
+		2858C0DC2517C0880087C315 /* RequiredRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B3025170F4C00114B96 /* RequiredRule.swift */; };
+		2858C0DD2517C0880087C315 /* IPV4Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B3125170F4C00114B96 /* IPV4Rule.swift */; };
+		2858C0DE2517C0880087C315 /* AlphaRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B3325170F4C00114B96 /* AlphaRule.swift */; };
+		2858C0DF2517C0880087C315 /* CardExpiryYearRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2025170F4C00114B96 /* CardExpiryYearRule.swift */; };
+		2858C0E02517C0880087C315 /* HexColorRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2B25170F4C00114B96 /* HexColorRule.swift */; };
+		2858C0E12517C0880087C315 /* MinLengthRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2525170F4C00114B96 /* MinLengthRule.swift */; };
+		2858C0E22517C0880087C315 /* ISBNRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B3425170F4C00114B96 /* ISBNRule.swift */; };
+		2858C0E32517C0880087C315 /* PasswordRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2225170F4C00114B96 /* PasswordRule.swift */; };
+		2858C0E42517C0880087C315 /* ExactLengthRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2325170F4C00114B96 /* ExactLengthRule.swift */; };
+		2858C0E52517C0880087C315 /* FloatRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2625170F4C00114B96 /* FloatRule.swift */; };
+		2858C0E62517C0880087C315 /* PhoneNumberRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2E25170F4C00114B96 /* PhoneNumberRule.swift */; };
+		2858C0E72517C0880087C315 /* ValidationRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B3225170F4C00114B96 /* ValidationRule.swift */; };
+		2858C0E82517C0880087C315 /* FullNameRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B1F25170F4C00114B96 /* FullNameRule.swift */; };
+		2858C0E92517C0880087C315 /* MaxLengthRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2725170F4C00114B96 /* MaxLengthRule.swift */; };
+		2858C0EA2517C0880087C315 /* ConfirmRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2425170F4C00114B96 /* ConfirmRule.swift */; };
+		288B8B5C2517100100114B96 /* FullNameRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B1F25170F4C00114B96 /* FullNameRule.swift */; };
+		288B8B602517100400114B96 /* CardExpiryYearRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2025170F4C00114B96 /* CardExpiryYearRule.swift */; };
+		288B8B642517100B00114B96 /* ExactLengthRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2325170F4C00114B96 /* ExactLengthRule.swift */; };
+		288B8B652517100B00114B96 /* FloatRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2625170F4C00114B96 /* FloatRule.swift */; };
+		288B8B662517100B00114B96 /* ValidationRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B3225170F4C00114B96 /* ValidationRule.swift */; };
+		288B8B672517100B00114B96 /* EmailRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2C25170F4C00114B96 /* EmailRule.swift */; };
+		288B8B682517100B00114B96 /* RegexRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2925170F4C00114B96 /* RegexRule.swift */; };
+		288B8B692517100B00114B96 /* PasswordRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2225170F4C00114B96 /* PasswordRule.swift */; };
+		288B8B6A2517100B00114B96 /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2F25170F4C00114B96 /* Rule.swift */; };
+		288B8B6B2517100B00114B96 /* MaxLengthRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2725170F4C00114B96 /* MaxLengthRule.swift */; };
+		288B8B6C2517100B00114B96 /* ZipCodeRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2A25170F4C00114B96 /* ZipCodeRule.swift */; };
+		288B8B6D2517100B00114B96 /* AlphaNumericRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2D25170F4C00114B96 /* AlphaNumericRule.swift */; };
+		288B8B6E2517100B00114B96 /* HexColorRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2B25170F4C00114B96 /* HexColorRule.swift */; };
+		288B8B6F2517100B00114B96 /* ISBNRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B3425170F4C00114B96 /* ISBNRule.swift */; };
+		288B8B702517100B00114B96 /* MinLengthRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2525170F4C00114B96 /* MinLengthRule.swift */; };
+		288B8B712517100B00114B96 /* CharacterSetRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2125170F4C00114B96 /* CharacterSetRule.swift */; };
+		288B8B722517100B00114B96 /* IPV4Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B3125170F4C00114B96 /* IPV4Rule.swift */; };
+		288B8B732517100B00114B96 /* ConfirmRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2425170F4C00114B96 /* ConfirmRule.swift */; };
+		288B8B742517100B00114B96 /* AlphaRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B3325170F4C00114B96 /* AlphaRule.swift */; };
+		288B8B752517100B00114B96 /* CardExpiryMonthRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2825170F4C00114B96 /* CardExpiryMonthRule.swift */; };
+		288B8B762517100B00114B96 /* PhoneNumberRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B2E25170F4C00114B96 /* PhoneNumberRule.swift */; };
+		288B8B772517100B00114B96 /* RequiredRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B3025170F4C00114B96 /* RequiredRule.swift */; };
+		288B8B7C2517102900114B96 /* SwiftValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 288B8B7B2517102600114B96 /* SwiftValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		288B8B812517102F00114B96 /* SwiftValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B802517102F00114B96 /* SwiftValidator.swift */; };
+		288B8B8E2517107100114B96 /* ValidationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B892517107100114B96 /* ValidationDelegate.swift */; };
+		288B8B8F2517107100114B96 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B8A2517107100114B96 /* ValidationError.swift */; };
+		288B8B902517107100114B96 /* ValidatorDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B8B2517107100114B96 /* ValidatorDictionary.swift */; };
+		288B8B912517107100114B96 /* Validatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B8C2517107100114B96 /* Validatable.swift */; };
+		288B8B922517107100114B96 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8B8D2517107100114B96 /* Validator.swift */; };
+		288B8BA42517112300114B96 /* SwiftValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8BA12517112200114B96 /* SwiftValidatorTests.swift */; };
+		288B8BA62517112300114B96 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B8BA32517112300114B96 /* XCTestManifests.swift */; };
 		FB465CBE1B9884F400398388 /* SwiftValidator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB465CB31B9884F400398388 /* SwiftValidator.framework */; };
-		FB465CC71B9884F400398388 /* SwiftValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB465CC61B9884F400398388 /* SwiftValidatorTests.swift */; };
-		FB465CF31B9889EA00398388 /* ConfirmRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB465CE31B9889EA00398388 /* ConfirmRule.swift */; };
-		FB465CF41B9889EA00398388 /* EmailRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB465CE41B9889EA00398388 /* EmailRule.swift */; };
-		FB465CF51B9889EA00398388 /* FloatRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB465CE51B9889EA00398388 /* FloatRule.swift */; };
-		FB465CF61B9889EA00398388 /* FullNameRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB465CE61B9889EA00398388 /* FullNameRule.swift */; };
-		FB465CF71B9889EA00398388 /* MaxLengthRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB465CE71B9889EA00398388 /* MaxLengthRule.swift */; };
-		FB465CF81B9889EA00398388 /* MinLengthRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB465CE81B9889EA00398388 /* MinLengthRule.swift */; };
-		FB465CF91B9889EA00398388 /* PasswordRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB465CE91B9889EA00398388 /* PasswordRule.swift */; };
-		FB465CFA1B9889EA00398388 /* PhoneNumberRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB465CEA1B9889EA00398388 /* PhoneNumberRule.swift */; };
-		FB465CFB1B9889EA00398388 /* RegexRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB465CEB1B9889EA00398388 /* RegexRule.swift */; };
-		FB465CFC1B9889EA00398388 /* RequiredRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB465CEC1B9889EA00398388 /* RequiredRule.swift */; };
-		FB465CFD1B9889EA00398388 /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB465CED1B9889EA00398388 /* Rule.swift */; };
-		FB465CFE1B9889EA00398388 /* ValidationRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB465CEE1B9889EA00398388 /* ValidationRule.swift */; };
-		FB465CFF1B9889EA00398388 /* ZipCodeRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB465CEF1B9889EA00398388 /* ZipCodeRule.swift */; };
-		FB465D001B9889EA00398388 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB465CF11B9889EA00398388 /* ValidationError.swift */; };
-		FB465D011B9889EA00398388 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB465CF21B9889EA00398388 /* Validator.swift */; };
-		FB51E5B01CD208B8004DE696 /* Validatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB51E5AF1CD208B8004DE696 /* Validatable.swift */; };
-		FBA963631CDA10130071F03E /* ValidatorDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA963621CDA10130071F03E /* ValidatorDictionary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,57 +79,52 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		62C1821C1C6312F5003788E7 /* ExactLengthRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExactLengthRule.swift; sourceTree = "<group>"; };
+		288B8AF0251709B400114B96 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		288B8B1D25170F4800114B96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		288B8B1F25170F4C00114B96 /* FullNameRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullNameRule.swift; sourceTree = "<group>"; };
+		288B8B2025170F4C00114B96 /* CardExpiryYearRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardExpiryYearRule.swift; sourceTree = "<group>"; };
+		288B8B2125170F4C00114B96 /* CharacterSetRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSetRule.swift; sourceTree = "<group>"; };
+		288B8B2225170F4C00114B96 /* PasswordRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRule.swift; sourceTree = "<group>"; };
+		288B8B2325170F4C00114B96 /* ExactLengthRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExactLengthRule.swift; sourceTree = "<group>"; };
+		288B8B2425170F4C00114B96 /* ConfirmRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmRule.swift; sourceTree = "<group>"; };
+		288B8B2525170F4C00114B96 /* MinLengthRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinLengthRule.swift; sourceTree = "<group>"; };
+		288B8B2625170F4C00114B96 /* FloatRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatRule.swift; sourceTree = "<group>"; };
+		288B8B2725170F4C00114B96 /* MaxLengthRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxLengthRule.swift; sourceTree = "<group>"; };
+		288B8B2825170F4C00114B96 /* CardExpiryMonthRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardExpiryMonthRule.swift; sourceTree = "<group>"; };
+		288B8B2925170F4C00114B96 /* RegexRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexRule.swift; sourceTree = "<group>"; };
+		288B8B2A25170F4C00114B96 /* ZipCodeRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZipCodeRule.swift; sourceTree = "<group>"; };
+		288B8B2B25170F4C00114B96 /* HexColorRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexColorRule.swift; sourceTree = "<group>"; };
+		288B8B2C25170F4C00114B96 /* EmailRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRule.swift; sourceTree = "<group>"; };
+		288B8B2D25170F4C00114B96 /* AlphaNumericRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphaNumericRule.swift; sourceTree = "<group>"; };
+		288B8B2E25170F4C00114B96 /* PhoneNumberRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberRule.swift; sourceTree = "<group>"; };
+		288B8B2F25170F4C00114B96 /* Rule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
+		288B8B3025170F4C00114B96 /* RequiredRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequiredRule.swift; sourceTree = "<group>"; };
+		288B8B3125170F4C00114B96 /* IPV4Rule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPV4Rule.swift; sourceTree = "<group>"; };
+		288B8B3225170F4C00114B96 /* ValidationRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationRule.swift; sourceTree = "<group>"; };
+		288B8B3325170F4C00114B96 /* AlphaRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphaRule.swift; sourceTree = "<group>"; };
+		288B8B3425170F4C00114B96 /* ISBNRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISBNRule.swift; sourceTree = "<group>"; };
+		288B8B7B2517102600114B96 /* SwiftValidator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftValidator.h; sourceTree = "<group>"; };
+		288B8B802517102F00114B96 /* SwiftValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftValidator.swift; sourceTree = "<group>"; };
+		288B8B892517107100114B96 /* ValidationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationDelegate.swift; sourceTree = "<group>"; };
+		288B8B8A2517107100114B96 /* ValidationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
+		288B8B8B2517107100114B96 /* ValidatorDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatorDictionary.swift; sourceTree = "<group>"; };
+		288B8B8C2517107100114B96 /* Validatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validatable.swift; sourceTree = "<group>"; };
+		288B8B8D2517107100114B96 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		288B8B982517110700114B96 /* SwiftValidatorTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftValidatorTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		288B8BA12517112200114B96 /* SwiftValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftValidatorTests.swift; path = Tests/SwiftValidatorTests/SwiftValidatorTests.swift; sourceTree = SOURCE_ROOT; };
+		288B8BA22517112200114B96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Tests/SwiftValidatorTests/Info.plist; sourceTree = SOURCE_ROOT; };
+		288B8BA32517112300114B96 /* XCTestManifests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XCTestManifests.swift; path = Tests/SwiftValidatorTests/XCTestManifests.swift; sourceTree = SOURCE_ROOT; };
 		62D1AE1B1A1E6D4400E4DFF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62D1AE1C1A1E6D4400E4DFF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62D1AE1E1A1E6D4400E4DFF8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		62D1AE211A1E6D4400E4DFF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		62D1AE231A1E6D4400E4DFF8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		62D1AE261A1E6D4400E4DFF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		62D1AE2C1A1E6D4500E4DFF8 /* ValidatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ValidatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		62D1AE311A1E6D4500E4DFF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		62D9B2551C7C0B2A00BAFCE3 /* ValidationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationDelegate.swift; sourceTree = "<group>"; };
-		7CC1E4CE1C636B4500AF013C /* AlphaRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlphaRule.swift; sourceTree = "<group>"; };
-		7CC1E4D01C637A7700AF013C /* AlphaNumericRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlphaNumericRule.swift; sourceTree = "<group>"; };
-		7CC1E4D21C637ABC00AF013C /* CharacterSetRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterSetRule.swift; sourceTree = "<group>"; };
-		7CC1E4D41C637C8500AF013C /* IPV4Rule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPV4Rule.swift; sourceTree = "<group>"; };
-		7CC1E4D61C637F6E00AF013C /* ISBNRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISBNRule.swift; sourceTree = "<group>"; };
-		7CC1E4DA1C63BFA600AF013C /* HexColorRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexColorRule.swift; sourceTree = "<group>"; };
-		C87F60691E2B678B00EB8429 /* CardExpiryMonthRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardExpiryMonthRule.swift; sourceTree = "<group>"; };
-		C87F606B1E2B68C900EB8429 /* CardExpiryYearRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardExpiryYearRule.swift; sourceTree = "<group>"; };
 		FB465CB31B9884F400398388 /* SwiftValidator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftValidator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FB465CB61B9884F400398388 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FB465CB71B9884F400398388 /* SwiftValidator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftValidator.h; sourceTree = "<group>"; };
 		FB465CBD1B9884F400398388 /* SwiftValidatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftValidatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FB465CC51B9884F400398388 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FB465CC61B9884F400398388 /* SwiftValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftValidatorTests.swift; sourceTree = "<group>"; };
-		FB465CE31B9889EA00398388 /* ConfirmRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmRule.swift; sourceTree = "<group>"; };
-		FB465CE41B9889EA00398388 /* EmailRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailRule.swift; sourceTree = "<group>"; };
-		FB465CE51B9889EA00398388 /* FloatRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatRule.swift; sourceTree = "<group>"; };
-		FB465CE61B9889EA00398388 /* FullNameRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullNameRule.swift; sourceTree = "<group>"; };
-		FB465CE71B9889EA00398388 /* MaxLengthRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaxLengthRule.swift; sourceTree = "<group>"; };
-		FB465CE81B9889EA00398388 /* MinLengthRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinLengthRule.swift; sourceTree = "<group>"; };
-		FB465CE91B9889EA00398388 /* PasswordRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordRule.swift; sourceTree = "<group>"; };
-		FB465CEA1B9889EA00398388 /* PhoneNumberRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberRule.swift; sourceTree = "<group>"; };
-		FB465CEB1B9889EA00398388 /* RegexRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegexRule.swift; sourceTree = "<group>"; };
-		FB465CEC1B9889EA00398388 /* RequiredRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequiredRule.swift; sourceTree = "<group>"; };
-		FB465CED1B9889EA00398388 /* Rule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
-		FB465CEE1B9889EA00398388 /* ValidationRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRule.swift; sourceTree = "<group>"; };
-		FB465CEF1B9889EA00398388 /* ZipCodeRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipCodeRule.swift; sourceTree = "<group>"; };
-		FB465CF11B9889EA00398388 /* ValidationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
-		FB465CF21B9889EA00398388 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
-		FB51E5AF1CD208B8004DE696 /* Validatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validatable.swift; sourceTree = "<group>"; };
-		FBA963621CDA10130071F03E /* ValidatorDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatorDictionary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		62D1AE291A1E6D4500E4DFF8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		FB465CAF1B9884F400398388 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -119,13 +143,93 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		288B8B1725170F0F00114B96 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				288B8B5B25170FED00114B96 /* SwiftValidator */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		288B8B1E25170F4C00114B96 /* Rules */ = {
+			isa = PBXGroup;
+			children = (
+				288B8B1F25170F4C00114B96 /* FullNameRule.swift */,
+				288B8B2025170F4C00114B96 /* CardExpiryYearRule.swift */,
+				288B8B2125170F4C00114B96 /* CharacterSetRule.swift */,
+				288B8B2225170F4C00114B96 /* PasswordRule.swift */,
+				288B8B2325170F4C00114B96 /* ExactLengthRule.swift */,
+				288B8B2425170F4C00114B96 /* ConfirmRule.swift */,
+				288B8B2525170F4C00114B96 /* MinLengthRule.swift */,
+				288B8B2625170F4C00114B96 /* FloatRule.swift */,
+				288B8B2725170F4C00114B96 /* MaxLengthRule.swift */,
+				288B8B2825170F4C00114B96 /* CardExpiryMonthRule.swift */,
+				288B8B2925170F4C00114B96 /* RegexRule.swift */,
+				288B8B2A25170F4C00114B96 /* ZipCodeRule.swift */,
+				288B8B2B25170F4C00114B96 /* HexColorRule.swift */,
+				288B8B2C25170F4C00114B96 /* EmailRule.swift */,
+				288B8B2D25170F4C00114B96 /* AlphaNumericRule.swift */,
+				288B8B2E25170F4C00114B96 /* PhoneNumberRule.swift */,
+				288B8B2F25170F4C00114B96 /* Rule.swift */,
+				288B8B3025170F4C00114B96 /* RequiredRule.swift */,
+				288B8B3125170F4C00114B96 /* IPV4Rule.swift */,
+				288B8B3225170F4C00114B96 /* ValidationRule.swift */,
+				288B8B3325170F4C00114B96 /* AlphaRule.swift */,
+				288B8B3425170F4C00114B96 /* ISBNRule.swift */,
+			);
+			path = Rules;
+			sourceTree = "<group>";
+		};
+		288B8B5B25170FED00114B96 /* SwiftValidator */ = {
+			isa = PBXGroup;
+			children = (
+				288B8B1E25170F4C00114B96 /* Rules */,
+				288B8B882517104400114B96 /* Core */,
+				288B8B1D25170F4800114B96 /* Info.plist */,
+				288B8B802517102F00114B96 /* SwiftValidator.swift */,
+				288B8B7B2517102600114B96 /* SwiftValidator.h */,
+			);
+			path = SwiftValidator;
+			sourceTree = "<group>";
+		};
+		288B8B882517104400114B96 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				288B8B8C2517107100114B96 /* Validatable.swift */,
+				288B8B892517107100114B96 /* ValidationDelegate.swift */,
+				288B8B8A2517107100114B96 /* ValidationError.swift */,
+				288B8B8D2517107100114B96 /* Validator.swift */,
+				288B8B8B2517107100114B96 /* ValidatorDictionary.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		288B8B96251710D200114B96 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				288B8B97251710DC00114B96 /* SwiftValidatorTests */,
+				288B8B982517110700114B96 /* SwiftValidatorTests-Bridging-Header.h */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		288B8B97251710DC00114B96 /* SwiftValidatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				288B8BA22517112200114B96 /* Info.plist */,
+				288B8BA12517112200114B96 /* SwiftValidatorTests.swift */,
+				288B8BA32517112300114B96 /* XCTestManifests.swift */,
+			);
+			path = SwiftValidatorTests;
+			sourceTree = "<group>";
+		};
 		62D1AE0E1A1E6D4400E4DFF8 = {
 			isa = PBXGroup;
 			children = (
+				288B8B96251710D200114B96 /* Tests */,
+				288B8B1725170F0F00114B96 /* Sources */,
+				288B8AF0251709B400114B96 /* Package.swift */,
 				62D1AE191A1E6D4400E4DFF8 /* Validator */,
-				62D1AE2F1A1E6D4500E4DFF8 /* ValidatorTests */,
-				FB465CB41B9884F400398388 /* SwiftValidator */,
-				FB465CC31B9884F400398388 /* SwiftValidatorTests */,
 				62D1AE181A1E6D4400E4DFF8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -133,7 +237,6 @@
 		62D1AE181A1E6D4400E4DFF8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				62D1AE2C1A1E6D4500E4DFF8 /* ValidatorTests.xctest */,
 				FB465CB31B9884F400398388 /* SwiftValidator.framework */,
 				FB465CBD1B9884F400398388 /* SwiftValidatorTests.xctest */,
 			);
@@ -161,99 +264,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		62D1AE2F1A1E6D4500E4DFF8 /* ValidatorTests */ = {
-			isa = PBXGroup;
-			children = (
-				62D1AE301A1E6D4500E4DFF8 /* Supporting Files */,
-			);
-			path = ValidatorTests;
-			sourceTree = "<group>";
-		};
-		62D1AE301A1E6D4500E4DFF8 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				62D1AE311A1E6D4500E4DFF8 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		FB465CB41B9884F400398388 /* SwiftValidator */ = {
-			isa = PBXGroup;
-			children = (
-				FB465CE21B9889EA00398388 /* Rules */,
-				FB465CF01B9889EA00398388 /* Core */,
-				FB465CB71B9884F400398388 /* SwiftValidator.h */,
-				FB465CB51B9884F400398388 /* Supporting Files */,
-			);
-			path = SwiftValidator;
-			sourceTree = "<group>";
-		};
-		FB465CB51B9884F400398388 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				FB465CB61B9884F400398388 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		FB465CC31B9884F400398388 /* SwiftValidatorTests */ = {
-			isa = PBXGroup;
-			children = (
-				FB465CC61B9884F400398388 /* SwiftValidatorTests.swift */,
-				FB465CC41B9884F400398388 /* Supporting Files */,
-			);
-			path = SwiftValidatorTests;
-			sourceTree = "<group>";
-		};
-		FB465CC41B9884F400398388 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				FB465CC51B9884F400398388 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		FB465CE21B9889EA00398388 /* Rules */ = {
-			isa = PBXGroup;
-			children = (
-				7CC1E4CE1C636B4500AF013C /* AlphaRule.swift */,
-				C87F606B1E2B68C900EB8429 /* CardExpiryYearRule.swift */,
-				C87F60691E2B678B00EB8429 /* CardExpiryMonthRule.swift */,
-				7CC1E4D01C637A7700AF013C /* AlphaNumericRule.swift */,
-				7CC1E4D21C637ABC00AF013C /* CharacterSetRule.swift */,
-				7CC1E4D41C637C8500AF013C /* IPV4Rule.swift */,
-				7CC1E4D61C637F6E00AF013C /* ISBNRule.swift */,
-				7CC1E4DA1C63BFA600AF013C /* HexColorRule.swift */,
-				FB465CE31B9889EA00398388 /* ConfirmRule.swift */,
-				FB465CE41B9889EA00398388 /* EmailRule.swift */,
-				FB465CE51B9889EA00398388 /* FloatRule.swift */,
-				FB465CE61B9889EA00398388 /* FullNameRule.swift */,
-				FB465CE71B9889EA00398388 /* MaxLengthRule.swift */,
-				FB465CE81B9889EA00398388 /* MinLengthRule.swift */,
-				FB465CE91B9889EA00398388 /* PasswordRule.swift */,
-				FB465CEA1B9889EA00398388 /* PhoneNumberRule.swift */,
-				FB465CEB1B9889EA00398388 /* RegexRule.swift */,
-				FB465CEC1B9889EA00398388 /* RequiredRule.swift */,
-				FB465CED1B9889EA00398388 /* Rule.swift */,
-				FB465CEE1B9889EA00398388 /* ValidationRule.swift */,
-				FB465CEF1B9889EA00398388 /* ZipCodeRule.swift */,
-				62C1821C1C6312F5003788E7 /* ExactLengthRule.swift */,
-			);
-			path = Rules;
-			sourceTree = "<group>";
-		};
-		FB465CF01B9889EA00398388 /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				62D9B2551C7C0B2A00BAFCE3 /* ValidationDelegate.swift */,
-				FB465CF11B9889EA00398388 /* ValidationError.swift */,
-				FB465CF21B9889EA00398388 /* Validator.swift */,
-				FB51E5AF1CD208B8004DE696 /* Validatable.swift */,
-				FBA963621CDA10130071F03E /* ValidatorDictionary.swift */,
-			);
-			path = Core;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -261,30 +271,13 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB465CB81B9884F400398388 /* SwiftValidator.h in Headers */,
+				288B8B7C2517102900114B96 /* SwiftValidator.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		62D1AE2B1A1E6D4500E4DFF8 /* ValidatorTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 62D1AE391A1E6D4500E4DFF8 /* Build configuration list for PBXNativeTarget "ValidatorTests" */;
-			buildPhases = (
-				62D1AE281A1E6D4500E4DFF8 /* Sources */,
-				62D1AE291A1E6D4500E4DFF8 /* Frameworks */,
-				62D1AE2A1A1E6D4500E4DFF8 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = ValidatorTests;
-			productName = ValidatorTests;
-			productReference = 62D1AE2C1A1E6D4500E4DFF8 /* ValidatorTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		FB465CB21B9884F400398388 /* SwiftValidator */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FB465CD01B9884F400398388 /* Build configuration list for PBXNativeTarget "SwiftValidator" */;
@@ -332,19 +325,13 @@
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = jpotts18;
 				TargetAttributes = {
-					62D1AE2B1A1E6D4500E4DFF8 = {
-						CreatedOnToolsVersion = 6.1;
-						LastSwiftMigration = 0820;
-						TestTargetID = 62D1AE161A1E6D4400E4DFF8;
-					};
 					FB465CB21B9884F400398388 = {
 						CreatedOnToolsVersion = 6.4;
 						LastSwiftMigration = 1020;
 					};
 					FB465CBC1B9884F400398388 = {
 						CreatedOnToolsVersion = 6.4;
-						LastSwiftMigration = 1020;
-						TestTargetID = 62D1AE161A1E6D4400E4DFF8;
+						LastSwiftMigration = 1200;
 					};
 				};
 			};
@@ -361,7 +348,6 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				62D1AE2B1A1E6D4500E4DFF8 /* ValidatorTests */,
 				FB465CB21B9884F400398388 /* SwiftValidator */,
 				FB465CBC1B9884F400398388 /* SwiftValidatorTests */,
 			);
@@ -369,13 +355,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		62D1AE2A1A1E6D4500E4DFF8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		FB465CB11B9884F400398388 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -393,44 +372,38 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		62D1AE281A1E6D4500E4DFF8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		FB465CAE1B9884F400398388 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB465CF41B9889EA00398388 /* EmailRule.swift in Sources */,
-				FB465CF61B9889EA00398388 /* FullNameRule.swift in Sources */,
-				FBA963631CDA10130071F03E /* ValidatorDictionary.swift in Sources */,
-				FB465CFF1B9889EA00398388 /* ZipCodeRule.swift in Sources */,
-				FB465CF91B9889EA00398388 /* PasswordRule.swift in Sources */,
-				7CC1E4D11C637A7700AF013C /* AlphaNumericRule.swift in Sources */,
-				7CC1E4D31C637ABC00AF013C /* CharacterSetRule.swift in Sources */,
-				FB465CFD1B9889EA00398388 /* Rule.swift in Sources */,
-				FB465CFA1B9889EA00398388 /* PhoneNumberRule.swift in Sources */,
-				FB465CF51B9889EA00398388 /* FloatRule.swift in Sources */,
-				C87F606C1E2B68C900EB8429 /* CardExpiryYearRule.swift in Sources */,
-				7CC1E4DB1C63BFA600AF013C /* HexColorRule.swift in Sources */,
-				FB465D011B9889EA00398388 /* Validator.swift in Sources */,
-				FB465CFE1B9889EA00398388 /* ValidationRule.swift in Sources */,
-				C87F606A1E2B678B00EB8429 /* CardExpiryMonthRule.swift in Sources */,
-				FB465CF31B9889EA00398388 /* ConfirmRule.swift in Sources */,
-				FB51E5B01CD208B8004DE696 /* Validatable.swift in Sources */,
-				7CC1E4D51C637C8500AF013C /* IPV4Rule.swift in Sources */,
-				7CC1E4D71C637F6E00AF013C /* ISBNRule.swift in Sources */,
-				FB465D001B9889EA00398388 /* ValidationError.swift in Sources */,
-				FB465CFC1B9889EA00398388 /* RequiredRule.swift in Sources */,
-				FB465CFB1B9889EA00398388 /* RegexRule.swift in Sources */,
-				7CC1E4CF1C636B4500AF013C /* AlphaRule.swift in Sources */,
-				62D9B2561C7C0B2A00BAFCE3 /* ValidationDelegate.swift in Sources */,
-				FB465CF81B9889EA00398388 /* MinLengthRule.swift in Sources */,
-				FB465CF71B9889EA00398388 /* MaxLengthRule.swift in Sources */,
-				62C1821D1C6312F5003788E7 /* ExactLengthRule.swift in Sources */,
+				288B8B692517100B00114B96 /* PasswordRule.swift in Sources */,
+				288B8B702517100B00114B96 /* MinLengthRule.swift in Sources */,
+				288B8B712517100B00114B96 /* CharacterSetRule.swift in Sources */,
+				288B8B652517100B00114B96 /* FloatRule.swift in Sources */,
+				288B8B922517107100114B96 /* Validator.swift in Sources */,
+				288B8B902517107100114B96 /* ValidatorDictionary.swift in Sources */,
+				288B8B682517100B00114B96 /* RegexRule.swift in Sources */,
+				288B8B812517102F00114B96 /* SwiftValidator.swift in Sources */,
+				288B8B6A2517100B00114B96 /* Rule.swift in Sources */,
+				288B8B6B2517100B00114B96 /* MaxLengthRule.swift in Sources */,
+				288B8B5C2517100100114B96 /* FullNameRule.swift in Sources */,
+				288B8B912517107100114B96 /* Validatable.swift in Sources */,
+				288B8B6C2517100B00114B96 /* ZipCodeRule.swift in Sources */,
+				288B8B672517100B00114B96 /* EmailRule.swift in Sources */,
+				288B8B8F2517107100114B96 /* ValidationError.swift in Sources */,
+				288B8B662517100B00114B96 /* ValidationRule.swift in Sources */,
+				288B8B602517100400114B96 /* CardExpiryYearRule.swift in Sources */,
+				288B8B732517100B00114B96 /* ConfirmRule.swift in Sources */,
+				288B8B752517100B00114B96 /* CardExpiryMonthRule.swift in Sources */,
+				288B8B772517100B00114B96 /* RequiredRule.swift in Sources */,
+				288B8B722517100B00114B96 /* IPV4Rule.swift in Sources */,
+				288B8B8E2517107100114B96 /* ValidationDelegate.swift in Sources */,
+				288B8B6D2517100B00114B96 /* AlphaNumericRule.swift in Sources */,
+				288B8B6E2517100B00114B96 /* HexColorRule.swift in Sources */,
+				288B8B642517100B00114B96 /* ExactLengthRule.swift in Sources */,
+				288B8B762517100B00114B96 /* PhoneNumberRule.swift in Sources */,
+				288B8B6F2517100B00114B96 /* ISBNRule.swift in Sources */,
+				288B8B742517100B00114B96 /* AlphaRule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,7 +411,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB465CC71B9884F400398388 /* SwiftValidatorTests.swift in Sources */,
+				2858C0DB2517C0880087C315 /* RegexRule.swift in Sources */,
+				2858C0D62517C0880087C315 /* AlphaNumericRule.swift in Sources */,
+				2858C0DE2517C0880087C315 /* AlphaRule.swift in Sources */,
+				2858C0E22517C0880087C315 /* ISBNRule.swift in Sources */,
+				2858C0CF2517C07D0087C315 /* Validatable.swift in Sources */,
+				2858C0CE2517C07D0087C315 /* ValidatorDictionary.swift in Sources */,
+				288B8BA42517112300114B96 /* SwiftValidatorTests.swift in Sources */,
+				2858C0E92517C0880087C315 /* MaxLengthRule.swift in Sources */,
+				2858C0E32517C0880087C315 /* PasswordRule.swift in Sources */,
+				2858C0E12517C0880087C315 /* MinLengthRule.swift in Sources */,
+				2858C0DC2517C0880087C315 /* RequiredRule.swift in Sources */,
+				2858C0EA2517C0880087C315 /* ConfirmRule.swift in Sources */,
+				2858C0D72517C0880087C315 /* EmailRule.swift in Sources */,
+				2858C0DF2517C0880087C315 /* CardExpiryYearRule.swift in Sources */,
+				2858C0E82517C0880087C315 /* FullNameRule.swift in Sources */,
+				2858C0D12517C07D0087C315 /* Validator.swift in Sources */,
+				2858C0D92517C0880087C315 /* CharacterSetRule.swift in Sources */,
+				2858C0E62517C0880087C315 /* PhoneNumberRule.swift in Sources */,
+				2858C0D22517C07D0087C315 /* ValidationError.swift in Sources */,
+				2858C0E02517C0880087C315 /* HexColorRule.swift in Sources */,
+				2858C0E52517C0880087C315 /* FloatRule.swift in Sources */,
+				2858C0DA2517C0880087C315 /* CardExpiryMonthRule.swift in Sources */,
+				2858C0DD2517C0880087C315 /* IPV4Rule.swift in Sources */,
+				288B8BA62517112300114B96 /* XCTestManifests.swift in Sources */,
+				2858C0D82517C0880087C315 /* Rule.swift in Sources */,
+				2858C0D52517C0880087C315 /* ZipCodeRule.swift in Sources */,
+				2858C0E72517C0880087C315 /* ValidationRule.swift in Sources */,
+				2858C0D02517C07D0087C315 /* ValidationDelegate.swift in Sources */,
+				2858C0E42517C0880087C315 /* ExactLengthRule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,36 +576,6 @@
 			};
 			name = Release;
 		};
-		62D1AE3A1A1E6D4500E4DFF8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_MODULES = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = ValidatorTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "me.jeffpotter.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Validator.app/Validator";
-			};
-			name = Debug;
-		};
-		62D1AE3B1A1E6D4500E4DFF8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = ValidatorTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "me.jeffpotter.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Validator.app/Validator";
-			};
-			name = Release;
-		};
 		FB465CCC1B9884F400398388 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -620,7 +591,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = SwiftValidator/Info.plist;
+				INFOPLIST_FILE = Sources/SwiftValidator/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.jeffpotter.$(PRODUCT_NAME:rfc1034identifier)";
@@ -645,7 +616,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = SwiftValidator/Info.plist;
+				INFOPLIST_FILE = Sources/SwiftValidator/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.jeffpotter.$(PRODUCT_NAME:rfc1034identifier)";
@@ -662,6 +633,8 @@
 		FB465CCE1B9884F400398388 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -672,19 +645,22 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = SwiftValidatorTests/Info.plist;
+				INFOPLIST_FILE = Tests/SwiftValidatorTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.levous.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tests/SwiftValidatorTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Validator.app/Validator";
 			};
 			name = Debug;
 		};
 		FB465CCF1B9884F400398388 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -692,14 +668,14 @@
 					"$(inherited)",
 				);
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = SwiftValidatorTests/Info.plist;
+				INFOPLIST_FILE = Tests/SwiftValidatorTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.levous.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tests/SwiftValidatorTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Validator.app/Validator";
 			};
 			name = Release;
 		};
@@ -711,15 +687,6 @@
 			buildConfigurations = (
 				62D1AE341A1E6D4500E4DFF8 /* Debug */,
 				62D1AE351A1E6D4500E4DFF8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		62D1AE391A1E6D4500E4DFF8 /* Build configuration list for PBXNativeTarget "ValidatorTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				62D1AE3A1A1E6D4500E4DFF8 /* Debug */,
-				62D1AE3B1A1E6D4500E4DFF8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -56,6 +56,12 @@ If you are using Carthage you will need to add this to your `Cartfile`
 github "jpotts18/SwiftValidator"
 ```
 
+If you are using Swift Package Manager you need to add this to your dependencies.
+
+```bash
+https://github.com/SwiftValidatorCommunity/SwiftValidator
+```
+
 ## Usage 
 
 You can now import SwiftValidator framework into your files.
