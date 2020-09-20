@@ -6,7 +6,6 @@
 //  Copyright © 2016 jpotts18. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 public typealias ValidatableField = AnyObject & Validatable
