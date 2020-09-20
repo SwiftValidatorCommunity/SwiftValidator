@@ -24,6 +24,7 @@
 /* Begin PBXFileReference section */
 		288B8AE3251705CE00114B96 /* Tests */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Tests; sourceTree = "<group>"; };
 		288B8AE4251705D600114B96 /* Sources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sources; sourceTree = "<group>"; };
+		288B8AF0251709B400114B96 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		62D1AE1B1A1E6D4400E4DFF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62D1AE1C1A1E6D4400E4DFF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62D1AE1E1A1E6D4400E4DFF8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +69,7 @@
 		62D1AE0E1A1E6D4400E4DFF8 = {
 			isa = PBXGroup;
 			children = (
+				288B8AF0251709B400114B96 /* Package.swift */,
 				288B8AE4251705D600114B96 /* Sources */,
 				288B8AE3251705CE00114B96 /* Tests */,
 				62D1AE191A1E6D4400E4DFF8 /* Validator */,
