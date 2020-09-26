@@ -1,7 +1,7 @@
 SwiftValidator
 ===============
 
-[![Build Status](https://travis-ci.org/jpotts18/SwiftValidator.svg?branch=travis-ci)](https://travis-ci.org/jpotts18/SwiftValidator) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![codecov.io](https://codecov.io/github/jpotts18/SwiftValidator/coverage.svg?branch=master)](https://codecov.io/github/jpotts18/SwiftValidator?branch=master)
+[![Build Status](https://travis-ci.org/SwiftValidatorCommunity/SwiftValidator.svg?branch=master)](https://travis-ci.org/SwiftValidatorCommunity/SwiftValidator) [![codecov.io](https://codecov.io/github/SwiftValidatorCommunity/SwiftValidator/coverage.svg?branch=master)](https://codecov.io/github/SwiftValidatorCommunity/SwiftValidator?branch=master)
 
 Swift Validator is a rule-based validation library for Swift.
 
@@ -21,6 +21,9 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, "8.1"
 
 use_frameworks!
+
+# Swift 4.2
+pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :tag => '4.2.0'
 
 # Swift 3
 # Extended beyond UITextField
@@ -82,7 +85,7 @@ override func viewDidLoad() {
 	
 	// You can now pass in regex and length parameters through overloaded contructors
 	validator.registerField(phoneNumberTextField, errorLabel: phoneNumberErrorLabel, rules: [RequiredRule(), MinLengthRule(length: 9)])
-	validator.registerField(zipcodeTextField, errorLabel: zipcodeErrorLabel, rules: [RequiredRule(), ZipCodeRule(regex = "\\d{5}")])
+	validator.registerField(zipcodeTextField, errorLabel: zipcodeErrorLabel, rules: [RequiredRule(), ZipCodeRule(regex : "\\d{5}")])
 
 	// You can unregister a text field if you no longer want to validate it
 	validator.unregisterField(fullNameTextField)
@@ -106,6 +109,19 @@ Implement the Validation Delegate in your View controller
 func validationSuccessful() {
 	// submit the form
 }
+
+func validationFailed(_ errors:[(Validatable ,ValidationError)]) {
+  // turn the fields to red
+  for (field, error) in errors {
+    if let field = field as? UITextField {
+      field.layer.borderColor = UIColor.red.cgColor
+      field.layer.borderWidth = 1.0
+    }
+    error.errorLabel?.text = error.errorMessage // works if you added labels
+    error.errorLabel?.isHidden = false
+  }
+}
+
 ```
 
 ## Single Field Validation
@@ -146,7 +162,7 @@ class SSNVRule: RegexRule {
 ```
 
 ## Documentation
-Checkout the docs <a href="http://jpotts18.github.io/SwiftValidator/">here</a> via [@jazzydocs](https://twitter.com/jazzydocs).
+Checkout the docs <a href="http://swiftvalidatorcommunity.github.io/SwiftValidator/">here</a> via [@jazzydocs](https://twitter.com/jazzydocs).
 
 
 Credits

@@ -19,7 +19,15 @@ public protocol Validatable {
 
 extension UITextField: Validatable {
     
+    open var validationText: String {
+        return text ?? ""
+    }
+}
+
+extension UITextView: Validatable {
+    
     public var validationText: String {
         return text ?? ""
     }
 }
+

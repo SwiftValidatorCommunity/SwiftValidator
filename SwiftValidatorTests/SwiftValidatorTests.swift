@@ -31,10 +31,17 @@ class SwiftValidatorTests: XCTestCase {
     let VALID_FLOAT = "1234.444"
     let INVALID_FLOAT = "1234.44.44"
     
+    let VALID_CARD_EXPIRY_MONTH = "10"
+    let INVALID_CARD_EXPIRY_MONTH = "13"
+    
+    let VALID_CARD_EXPIRY_YEAR = "2018"
+    let INVALID_CARD_EXPIRY_YEAR = "2016"
+    
     let LEN_3 = "hey"
     let LEN_5 = "Howdy"
     let LEN_20 = "Paint the cat orange"
     
+    let REGISTER_TXT_VIEW = UITextView()
     let REGISTER_TXT_FIELD = UITextField()
     let REGISTER_VALIDATOR = Validator()
     let REGISTER_RULES = [Rule]()
@@ -57,6 +64,36 @@ class SwiftValidatorTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
+    
+    
+    // MARK: Expiry Month
+    
+    func testCardExpiryMonthValid() {
+        XCTAssertTrue(CardExpiryMonthRule().validate(VALID_CARD_EXPIRY_MONTH), "Expiry month Should be valid")
+    }
+    
+    func testCardExpiryMonthInvalid() {
+        XCTAssertFalse(CardExpiryMonthRule().validate(INVALID_CARD_EXPIRY_MONTH), "Expiry month Should be invalid")
+    }
+    
+    func testCardExpiryMonthmessage() {
+            XCTAssertNotNil(CardExpiryMonthRule().errorMessage())
+    }
+    
+    // MARK: Expiry Year
+    
+    func testCardExpiryYearValid() {
+        XCTAssertTrue(CardExpiryYearRule().validate(VALID_CARD_EXPIRY_YEAR), "Expiry year Should be valid")
+    }
+    
+    func testCardExpiryYearInvalid() {
+        XCTAssertFalse(CardExpiryYearRule().validate(INVALID_CARD_EXPIRY_YEAR), "Expiry year Should be invalid")
+    }
+    
+    func testCardExpiryYearmessage() {
+        XCTAssertNotNil(CardExpiryYearRule().errorMessage())
+    }
+    
     
     // MARK: Required
     
@@ -320,13 +357,17 @@ class SwiftValidatorTests: XCTestCase {
     }
     
     // MARK: Register Field
-    
-    func testRegisterField(){
+    func testRegisterTextView(){
+        REGISTER_VALIDATOR.registerField(REGISTER_TXT_VIEW, rules: REGISTER_RULES)
+        XCTAssert(REGISTER_VALIDATOR.validations[REGISTER_TXT_VIEW] != nil, "Textfield should register")
+    }
+ 
+    func testRegisterTextField(){
         REGISTER_VALIDATOR.registerField(REGISTER_TXT_FIELD, rules: REGISTER_RULES)
         XCTAssert(REGISTER_VALIDATOR.validations[REGISTER_TXT_FIELD] != nil, "Textfield should register")
     }
     
-    func testUnregisterField(){
+    func testUnregisterTextField(){
         UNREGISTER_VALIDATOR.registerField(UNREGISTER_TXT_FIELD, rules: UNREGISTER_RULES)
         UNREGISTER_VALIDATOR.unregisterField(UNREGISTER_TXT_FIELD)
         XCTAssert(UNREGISTER_VALIDATOR.validations[UNREGISTER_TXT_FIELD] == nil, "Textfield should unregister")
@@ -367,6 +408,18 @@ class SwiftValidatorTests: XCTestCase {
         REGISTER_TXT_FIELD.text = INVALID_EMAIL
         REGISTER_VALIDATOR.validateField(REGISTER_TXT_FIELD) { error in
             XCTAssert(error?.errorMessage.characters.count ?? 0 > 0, "Should state 'invalid email'")
+        }
+    }
+    
+    func testValidateTextViewField() {
+        REGISTER_VALIDATOR.registerField(REGISTER_TXT_VIEW, rules: [RequiredRule()])
+        REGISTER_TXT_VIEW.text = "Some notes"
+        REGISTER_VALIDATOR.validateField(REGISTER_TXT_VIEW) { error in
+            XCTAssert(error == nil, "Should not present error")
+        }
+        REGISTER_TXT_VIEW.text = nil
+        REGISTER_VALIDATOR.validateField(REGISTER_TXT_VIEW) { error in
+            XCTAssert(error!.errorMessage == "This field is required")
         }
     }
     
