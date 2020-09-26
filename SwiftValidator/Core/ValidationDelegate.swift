@@ -25,3 +25,12 @@ public protocol ValidationDelegate {
      */
     func validationFailed(_ errors: [(Validatable, ValidationError)])
 }
+
+/**
+ Provides a dummy default implementation for the `validationFailed` method.
+ */
+public extension ValidationDelegate {
+    func validationFailed(_ errors: [(Validatable, ValidationError)]) {
+        
+    }
+}

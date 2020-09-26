@@ -24,7 +24,21 @@ public class Validator {
     /// Variable that holds error closure to display negative status of field.
     private var errorStyleTransform:((_ validationError:ValidationError)->Void)?
     /// - returns: An initialized object, or nil if an object could not be created for some reason that would not result in an exception.
-    public init(){}
+    public init() {
+        styleTransformers(success: { (validationRule: ValidationRule) -> Void in
+            if let field = validationRule.field as? UITextField {
+                field.layer.borderWidth = 0.0
+            }
+            validationRule.errorLabel?.isHidden = true
+        }, error: { (validationError: ValidationError) -> Void in
+            if let field = validationError.field as? UITextField {
+                field.layer.borderColor = UIColor.red.cgColor
+                field.layer.borderWidth = 1.0
+            }
+            validationError.errorLabel?.text = validationError.errorMessage
+            validationError.errorLabel?.isHidden = false
+        })
+    }
     
     // MARK: Private functions
     
