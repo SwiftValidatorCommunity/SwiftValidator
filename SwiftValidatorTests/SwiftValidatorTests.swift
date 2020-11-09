@@ -8,7 +8,7 @@
 
 import UIKit
 import XCTest
-//import Validator // example app
+import Validator // example app
 import SwiftValidator // framework
 
 class SwiftValidatorTests: XCTestCase {
@@ -140,22 +140,22 @@ class SwiftValidatorTests: XCTestCase {
     // MARK: Canadian Postal Code
 
     func testCanadianPostalCodeValid() {
-        let ValidCanadianPostalCodes = ["N6K 2V9","N6K-2V9","n7k 1n2","n7k-1n2"]
-        for code in ValidCanadianPostalCodes {
+        let validCanadianPostalCodes = ["N6K 2V9","N6K-2V9","n7k 1n2","n7k-1n2","n7k1n2","N6K2V9"]
+        for code in validCanadianPostalCodes {
             XCTAssertTrue(CanadianPostalCodeRule().validate(code), "Canadian Postal Code should be valid")
         }
     }
     
     func testCanadianPostalCodeInvalid() {
-        let InvaliCanadianPostalCodesd = ["N6K 2V","N68-279","989 1n2","7k-1n2"]
-        for code in InvaliCanadianPostalCodesd {
+        let invaliCanadianPostalCodesd = ["N6K 2V","N68-279","989 1n2","7k-1n2"]
+        for code in invaliCanadianPostalCodesd {
             XCTAssertTrue(CanadianPostalCodeRule().validate(code), "Canadian Postal Code should be valid")
         }
     }
     
-//    func testZipCodeMessage() {
-//        XCTAssertNotNil(ZipCodeRule().errorMessage())
-//    }
+    func testCanadianPostalCodeMessage() {
+        XCTAssertNotNil(CanadianPostalCodeRule().errorMessage())
+    }
     
     
     // MARK: Email
