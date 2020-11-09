@@ -8,7 +8,7 @@
 
 import UIKit
 import XCTest
-import Validator // example app
+//import Validator // example app
 import SwiftValidator // framework
 
 class SwiftValidatorTests: XCTestCase {
@@ -136,6 +136,27 @@ class SwiftValidatorTests: XCTestCase {
     func testZipCodeMessage() {
         XCTAssertNotNil(ZipCodeRule().errorMessage())
     }
+    
+    // MARK: Canadian Postal Code
+
+    func testCanadianPostalCodeValid() {
+        let ValidCanadianPostalCodes = ["N6K 2V9","N6K-2V9","n7k 1n2","n7k-1n2"]
+        for code in ValidCanadianPostalCodes {
+            XCTAssertTrue(CanadianPostalCodeRule().validate(code), "Canadian Postal Code should be valid")
+        }
+    }
+    
+    func testCanadianPostalCodeInvalid() {
+        let InvaliCanadianPostalCodesd = ["N6K 2V","N68-279","989 1n2","7k-1n2"]
+        for code in InvaliCanadianPostalCodesd {
+            XCTAssertTrue(CanadianPostalCodeRule().validate(code), "Canadian Postal Code should be valid")
+        }
+    }
+    
+//    func testZipCodeMessage() {
+//        XCTAssertNotNil(ZipCodeRule().errorMessage())
+//    }
+    
     
     // MARK: Email
     
@@ -407,7 +428,7 @@ class SwiftValidatorTests: XCTestCase {
         }
         REGISTER_TXT_FIELD.text = INVALID_EMAIL
         REGISTER_VALIDATOR.validateField(REGISTER_TXT_FIELD) { error in
-            XCTAssert(error?.errorMessage.characters.count ?? 0 > 0, "Should state 'invalid email'")
+            XCTAssert(error?.errorMessage.count ?? 0 > 0, "Should state 'invalid email'")
         }
     }
     

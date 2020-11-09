@@ -15,6 +15,7 @@
 		7CC1E4D51C637C8500AF013C /* IPV4Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC1E4D41C637C8500AF013C /* IPV4Rule.swift */; };
 		7CC1E4D71C637F6E00AF013C /* ISBNRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC1E4D61C637F6E00AF013C /* ISBNRule.swift */; };
 		7CC1E4DB1C63BFA600AF013C /* HexColorRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC1E4DA1C63BFA600AF013C /* HexColorRule.swift */; };
+		8E363B6F2558D1DF00FF41E5 /* CanadianPostalCodeRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E363B6E2558D1DF00FF41E5 /* CanadianPostalCodeRule.swift */; };
 		C87F606A1E2B678B00EB8429 /* CardExpiryMonthRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87F60691E2B678B00EB8429 /* CardExpiryMonthRule.swift */; };
 		C87F606C1E2B68C900EB8429 /* CardExpiryYearRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87F606B1E2B68C900EB8429 /* CardExpiryYearRule.swift */; };
 		FB465CB81B9884F400398388 /* SwiftValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = FB465CB71B9884F400398388 /* SwiftValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -66,6 +67,7 @@
 		7CC1E4D41C637C8500AF013C /* IPV4Rule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPV4Rule.swift; sourceTree = "<group>"; };
 		7CC1E4D61C637F6E00AF013C /* ISBNRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISBNRule.swift; sourceTree = "<group>"; };
 		7CC1E4DA1C63BFA600AF013C /* HexColorRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexColorRule.swift; sourceTree = "<group>"; };
+		8E363B6E2558D1DF00FF41E5 /* CanadianPostalCodeRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanadianPostalCodeRule.swift; sourceTree = "<group>"; };
 		C87F60691E2B678B00EB8429 /* CardExpiryMonthRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardExpiryMonthRule.swift; sourceTree = "<group>"; };
 		C87F606B1E2B68C900EB8429 /* CardExpiryYearRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardExpiryYearRule.swift; sourceTree = "<group>"; };
 		FB465CB31B9884F400398388 /* SwiftValidator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftValidator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -238,6 +240,7 @@
 				FB465CEE1B9889EA00398388 /* ValidationRule.swift */,
 				FB465CEF1B9889EA00398388 /* ZipCodeRule.swift */,
 				62C1821C1C6312F5003788E7 /* ExactLengthRule.swift */,
+				8E363B6E2558D1DF00FF41E5 /* CanadianPostalCodeRule.swift */,
 			);
 			path = Rules;
 			sourceTree = "<group>";
@@ -334,17 +337,19 @@
 				TargetAttributes = {
 					62D1AE2B1A1E6D4500E4DFF8 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = J7YCHK8ZJ4;
 						LastSwiftMigration = 0820;
-						TestTargetID = 62D1AE161A1E6D4400E4DFF8;
 					};
 					FB465CB21B9884F400398388 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = J7YCHK8ZJ4;
 						LastSwiftMigration = 1020;
+						ProvisioningStyle = Automatic;
 					};
 					FB465CBC1B9884F400398388 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = J7YCHK8ZJ4;
 						LastSwiftMigration = 1020;
-						TestTargetID = 62D1AE161A1E6D4400E4DFF8;
 					};
 				};
 			};
@@ -428,6 +433,7 @@
 				FB465CFB1B9889EA00398388 /* RegexRule.swift in Sources */,
 				7CC1E4CF1C636B4500AF013C /* AlphaRule.swift in Sources */,
 				62D9B2561C7C0B2A00BAFCE3 /* ValidationDelegate.swift in Sources */,
+				8E363B6F2558D1DF00FF41E5 /* CanadianPostalCodeRule.swift in Sources */,
 				FB465CF81B9889EA00398388 /* MinLengthRule.swift in Sources */,
 				FB465CF71B9889EA00398388 /* MaxLengthRule.swift in Sources */,
 				62C1821D1C6312F5003788E7 /* ExactLengthRule.swift in Sources */,
@@ -578,8 +584,8 @@
 		62D1AE3A1A1E6D4500E4DFF8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = J7YCHK8ZJ4;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -588,30 +594,31 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.jeffpotter.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Validator.app/Validator";
 			};
 			name = Debug;
 		};
 		62D1AE3B1A1E6D4500E4DFF8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = J7YCHK8ZJ4;
 				INFOPLIST_FILE = ValidatorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.jeffpotter.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Validator.app/Validator";
 			};
 			name = Release;
 		};
 		FB465CCC1B9884F400398388 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = J7YCHK8ZJ4;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -625,6 +632,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.jeffpotter.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -636,11 +645,14 @@
 		FB465CCD1B9884F400398388 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = J7YCHK8ZJ4;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -650,6 +662,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.jeffpotter.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
@@ -662,7 +676,9 @@
 		FB465CCE1B9884F400398388 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = J7YCHK8ZJ4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -678,15 +694,16 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.levous.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Validator.app/Validator";
 			};
 			name = Debug;
 		};
 		FB465CCF1B9884F400398388 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = J7YCHK8ZJ4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -699,7 +716,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Validator.app/Validator";
 			};
 			name = Release;
 		};
