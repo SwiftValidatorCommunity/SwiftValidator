@@ -137,6 +137,27 @@ class SwiftValidatorTests: XCTestCase {
         XCTAssertNotNil(ZipCodeRule().errorMessage())
     }
     
+    // MARK: Canadian Postal Code
+
+    func testCanadianPostalCodeValid() {
+        let validCanadianPostalCodes = ["N6K 2V9","N6K-2V9","n7k 1n2","n7k-1n2","n7k1n2","N6K2V9"]
+        for code in validCanadianPostalCodes {
+            XCTAssertTrue(CanadianPostalCodeRule().validate(code), "Canadian Postal Code should be valid")
+        }
+    }
+    
+    func testCanadianPostalCodeInvalid() {
+        let invaliCanadianPostalCodesd = ["N6K 2V","N68-279","989 1n2","7k-1n2"]
+        for code in invaliCanadianPostalCodesd {
+            XCTAssertTrue(CanadianPostalCodeRule().validate(code), "Canadian Postal Code should be valid")
+        }
+    }
+    
+    func testCanadianPostalCodeMessage() {
+        XCTAssertNotNil(CanadianPostalCodeRule().errorMessage())
+    }
+    
+    
     // MARK: Email
     
     func testEmail() {
@@ -407,7 +428,7 @@ class SwiftValidatorTests: XCTestCase {
         }
         REGISTER_TXT_FIELD.text = INVALID_EMAIL
         REGISTER_VALIDATOR.validateField(REGISTER_TXT_FIELD) { error in
-            XCTAssert(error?.errorMessage.characters.count ?? 0 > 0, "Should state 'invalid email'")
+            XCTAssert(error?.errorMessage.count ?? 0 > 0, "Should state 'invalid email'")
         }
     }
     
